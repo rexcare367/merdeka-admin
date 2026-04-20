@@ -1,0 +1,379 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Account {
+  id                String   @id
+  created_at        DateTime @default(now())
+  updated_at        DateTime
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  access_token      String?
+  refresh_token     String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  User              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model ApiKey {
+  id            String      @id @unique
+  createdAt     DateTime    @default(now())
+  lastUsedAt    DateTime?
+  label         String?
+  hashedKey     String      @unique
+  environmentId String
+  Environment   Environment @relation(fields: [environmentId], references: [id], onDelete: Cascade)
+}
+
+model Attribute {
+  id               String         @id
+  created_at       DateTime       @default(now())
+  updated_at       DateTime
+  attributeClassId String
+  personId         String
+  value            String
+  AttributeClass   AttributeClass @relation(fields: [attributeClassId], references: [id], onDelete: Cascade)
+  Person           Person         @relation(fields: [personId], references: [id], onDelete: Cascade)
+
+  @@unique([attributeClassId, personId])
+}
+
+model AttributeClass {
+  id                    String                  @id
+  created_at            DateTime                @default(now())
+  updated_at            DateTime
+  name                  String
+  description           String?
+  type                  AttributeType
+  environmentId         String
+  Attribute             Attribute[]
+  Environment           Environment             @relation(fields: [environmentId], references: [id], onDelete: Cascade)
+  SurveyAttributeFilter SurveyAttributeFilter[]
+
+  @@unique([name, environmentId])
+}
+
+model Display {
+  id         String        @id
+  created_at DateTime      @default(now())
+  updated_at DateTime
+  surveyId   String
+  personId   String?
+  status     DisplayStatus @default(seen)
+  Person     Person?       @relation(fields: [personId], references: [id], onDelete: Cascade)
+  Survey     Survey        @relation(fields: [surveyId], references: [id], onDelete: Cascade)
+}
+
+model Environment {
+  id                   String           @id
+  created_at           DateTime         @default(now())
+  updated_at           DateTime
+  type                 EnvironmentType
+  productId            String
+  widgetSetupCompleted Boolean          @default(false)
+  ApiKey               ApiKey[]
+  AttributeClass       AttributeClass[]
+  Product              Product          @relation(fields: [productId], references: [id], onDelete: Cascade)
+  EventClass           EventClass[]
+  Person               Person[]
+  Survey               Survey[]
+  Webhook              Webhook[]
+}
+
+model Event {
+  id           String      @id
+  created_at   DateTime    @default(now())
+  eventClassId String?
+  sessionId    String
+  properties   Json        @default("{}")
+  EventClass   EventClass? @relation(fields: [eventClassId], references: [id])
+  Session      Session     @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+}
+
+model EventClass {
+  id            String          @id
+  created_at    DateTime        @default(now())
+  updated_at    DateTime
+  name          String
+  description   String?
+  type          EventType
+  noCodeConfig  Json?
+  environmentId String
+  Event         Event[]
+  Environment   Environment     @relation(fields: [environmentId], references: [id], onDelete: Cascade)
+  SurveyTrigger SurveyTrigger[]
+
+  @@unique([name, environmentId])
+}
+
+model Invite {
+  id                           String         @id
+  email                        String
+  name                         String?
+  teamId                       String
+  creatorId                    String
+  acceptorId                   String?
+  accepted                     Boolean        @default(false)
+  createdAt                    DateTime       @default(now())
+  expiresAt                    DateTime
+  role                         MembershipRole @default(admin)
+  User_Invite_acceptorIdToUser User?          @relation("Invite_acceptorIdToUser", fields: [acceptorId], references: [id], onDelete: Cascade)
+  User_Invite_creatorIdToUser  User           @relation("Invite_creatorIdToUser", fields: [creatorId], references: [id])
+  Team                         Team           @relation(fields: [teamId], references: [id], onDelete: Cascade)
+
+  @@index([email, teamId], map: "email_teamId_unique")
+}
+
+model Membership {
+  teamId   String
+  userId   String
+  accepted Boolean        @default(false)
+  role     MembershipRole
+  Team     Team           @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  User     User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([userId, teamId])
+}
+
+model Person {
+  id            String      @id
+  created_at    DateTime    @default(now())
+  updated_at    DateTime
+  environmentId String
+  Attribute     Attribute[]
+  Display       Display[]
+  Environment   Environment @relation(fields: [environmentId], references: [id], onDelete: Cascade)
+  Response      Response[]
+  Session       Session[]
+}
+
+model Product {
+  id            String        @id
+  created_at    DateTime      @default(now())
+  updated_at    DateTime
+  name          String
+  teamId        String
+  brandColor    String        @default("#64748b")
+  recontactDays Int           @default(7)
+  Environment   Environment[]
+  Team          Team          @relation(fields: [teamId], references: [id], onDelete: Cascade)
+}
+
+model Response {
+  id             String   @id
+  created_at     DateTime @default(now())
+  updated_at     DateTime
+  finished       Boolean  @default(false)
+  surveyId       String
+  personId       String?
+  data           Json     @default("{}")
+  meta           Json     @default("{}")
+  userAttributes Json     @default("[]")
+  Person         Person?  @relation(fields: [personId], references: [id], onDelete: Cascade)
+  Survey         Survey   @relation(fields: [surveyId], references: [id], onDelete: Cascade)
+}
+
+model Session {
+  id         String   @id
+  created_at DateTime @default(now())
+  updated_at DateTime
+  personId   String
+  Event      Event[]
+  Person     Person   @relation(fields: [personId], references: [id], onDelete: Cascade)
+}
+
+model Survey {
+  id                    String                  @id
+  created_at            DateTime                @default(now())
+  updated_at            DateTime
+  name                  String
+  environmentId         String
+  status                SurveyStatus            @default(draft)
+  questions             Json                    @default("[]")
+  displayOption         displayOptions          @default(displayOnce)
+  recontactDays         Int?
+  thankYouCard          Json                    @default("{\"enabled\": false}")
+  type                  SurveyType              @default(web)
+  Display               Display[]
+  Response              Response[]
+  Environment           Environment             @relation(fields: [environmentId], references: [id], onDelete: Cascade)
+  SurveyAttributeFilter SurveyAttributeFilter[]
+  SurveyTrigger         SurveyTrigger[]
+}
+
+model SurveyAttributeFilter {
+  id               String                         @id
+  created_at       DateTime                       @default(now())
+  updated_at       DateTime
+  attributeClassId String
+  surveyId         String
+  condition        SurveyAttributeFilterCondition
+  value            String
+  AttributeClass   AttributeClass                 @relation(fields: [attributeClassId], references: [id], onDelete: Cascade)
+  Survey           Survey                         @relation(fields: [surveyId], references: [id], onDelete: Cascade)
+
+  @@unique([surveyId, attributeClassId])
+}
+
+model SurveyTrigger {
+  id           String     @id
+  created_at   DateTime   @default(now())
+  updated_at   DateTime
+  surveyId     String
+  eventClassId String
+  EventClass   EventClass @relation(fields: [eventClassId], references: [id], onDelete: Cascade)
+  Survey       Survey     @relation(fields: [surveyId], references: [id], onDelete: Cascade)
+
+  @@unique([surveyId, eventClassId])
+}
+
+model Team {
+  id               String       @id
+  created_at       DateTime     @default(now())
+  updated_at       DateTime
+  name             String
+  plan             Plan         @default(free)
+  stripeCustomerId String?
+  Invite           Invite[]
+  Membership       Membership[]
+  Product          Product[]
+}
+
+model User {
+  id                             String           @id
+  created_at                     DateTime         @default(now())
+  updated_at                     DateTime
+  name                           String?
+  email                          String           @unique
+  email_verified                 DateTime?
+  password                       String?
+  identityProvider               IdentityProvider @default(email)
+  identityProviderAccountId      String?
+  groupId                        String?
+  objective                      Objective?
+  role                           Role?
+  onboardingCompleted            Boolean          @default(false)
+  Account                        Account[]
+  Invite_Invite_acceptorIdToUser Invite[]         @relation("Invite_acceptorIdToUser")
+  Invite_Invite_creatorIdToUser  Invite[]         @relation("Invite_creatorIdToUser")
+  Membership                     Membership[]
+}
+
+model Webhook {
+  id            String             @id
+  created_at    DateTime           @default(now())
+  updated_at    DateTime
+  url           String
+  environmentId String
+  triggers      PipelineTriggers[]
+  Environment   Environment        @relation(fields: [environmentId], references: [id], onDelete: Cascade)
+}
+
+enum AttributeType {
+  code
+  noCode
+  automatic
+}
+
+enum DisplayStatus {
+  seen
+  responded
+}
+
+enum EnvironmentType {
+  production
+  development
+}
+
+enum EventType {
+  code
+  noCode
+  automatic
+}
+
+enum IdentityProvider {
+  email
+  github
+}
+
+enum Intention {
+  survey_user_segments
+  survey_at_specific_point_in_user_journey
+  enrich_customer_profiles
+  collect_all_user_feedback_on_one_platform
+  other
+}
+
+enum MembershipRole {
+  owner
+  admin
+  editor
+  developer
+  viewer
+}
+
+enum Objective {
+  increase_conversion
+  improve_user_retention
+  increase_user_adoption
+  sharpen_marketing_messaging
+  support_sales
+  other
+}
+
+enum PipelineTriggers {
+  responseCreated
+  responseUpdated
+  responseFinished
+}
+
+enum Plan {
+  free
+  pro
+}
+
+enum Role {
+  project_manager
+  engineer
+  founder
+  marketing_specialist
+  other
+}
+
+enum SurveyAttributeFilterCondition {
+  equals
+  notEquals
+}
+
+enum SurveyStatus {
+  draft
+  inProgress
+  paused
+  completed
+  archived
+}
+
+enum SurveyType {
+  email
+  link
+  mobile
+  web
+}
+
+enum displayOptions {
+  displayOnce
+  displayMultiple
+  respondMultiple
+}
