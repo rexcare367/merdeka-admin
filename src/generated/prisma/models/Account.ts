@@ -28,10 +28,12 @@ export type AggregateAccount = {
 
 export type AccountAvgAggregateOutputType = {
   expires_at: number | null
+  ext_expires_in: number | null
 }
 
 export type AccountSumAggregateOutputType = {
   expires_at: number | null
+  ext_expires_in: number | null
 }
 
 export type AccountMinAggregateOutputType = {
@@ -49,6 +51,7 @@ export type AccountMinAggregateOutputType = {
   scope: string | null
   id_token: string | null
   session_state: string | null
+  ext_expires_in: number | null
 }
 
 export type AccountMaxAggregateOutputType = {
@@ -66,6 +69,7 @@ export type AccountMaxAggregateOutputType = {
   scope: string | null
   id_token: string | null
   session_state: string | null
+  ext_expires_in: number | null
 }
 
 export type AccountCountAggregateOutputType = {
@@ -83,16 +87,19 @@ export type AccountCountAggregateOutputType = {
   scope: number
   id_token: number
   session_state: number
+  ext_expires_in: number
   _all: number
 }
 
 
 export type AccountAvgAggregateInputType = {
   expires_at?: true
+  ext_expires_in?: true
 }
 
 export type AccountSumAggregateInputType = {
   expires_at?: true
+  ext_expires_in?: true
 }
 
 export type AccountMinAggregateInputType = {
@@ -110,6 +117,7 @@ export type AccountMinAggregateInputType = {
   scope?: true
   id_token?: true
   session_state?: true
+  ext_expires_in?: true
 }
 
 export type AccountMaxAggregateInputType = {
@@ -127,6 +135,7 @@ export type AccountMaxAggregateInputType = {
   scope?: true
   id_token?: true
   session_state?: true
+  ext_expires_in?: true
 }
 
 export type AccountCountAggregateInputType = {
@@ -144,6 +153,7 @@ export type AccountCountAggregateInputType = {
   scope?: true
   id_token?: true
   session_state?: true
+  ext_expires_in?: true
   _all?: true
 }
 
@@ -248,6 +258,7 @@ export type AccountGroupByOutputType = {
   scope: string | null
   id_token: string | null
   session_state: string | null
+  ext_expires_in: number | null
   _count: AccountCountAggregateOutputType | null
   _avg: AccountAvgAggregateOutputType | null
   _sum: AccountSumAggregateOutputType | null
@@ -288,6 +299,7 @@ export type AccountWhereInput = {
   scope?: Prisma.StringNullableFilter<"Account"> | string | null
   id_token?: Prisma.StringNullableFilter<"Account"> | string | null
   session_state?: Prisma.StringNullableFilter<"Account"> | string | null
+  ext_expires_in?: Prisma.IntNullableFilter<"Account"> | number | null
   User?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
 
@@ -306,6 +318,7 @@ export type AccountOrderByWithRelationInput = {
   scope?: Prisma.SortOrderInput | Prisma.SortOrder
   id_token?: Prisma.SortOrderInput | Prisma.SortOrder
   session_state?: Prisma.SortOrderInput | Prisma.SortOrder
+  ext_expires_in?: Prisma.SortOrderInput | Prisma.SortOrder
   User?: Prisma.UserOrderByWithRelationInput
 }
 
@@ -328,6 +341,7 @@ export type AccountWhereUniqueInput = Prisma.AtLeast<{
   scope?: Prisma.StringNullableFilter<"Account"> | string | null
   id_token?: Prisma.StringNullableFilter<"Account"> | string | null
   session_state?: Prisma.StringNullableFilter<"Account"> | string | null
+  ext_expires_in?: Prisma.IntNullableFilter<"Account"> | number | null
   User?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }, "id" | "provider_providerAccountId">
 
@@ -346,6 +360,7 @@ export type AccountOrderByWithAggregationInput = {
   scope?: Prisma.SortOrderInput | Prisma.SortOrder
   id_token?: Prisma.SortOrderInput | Prisma.SortOrder
   session_state?: Prisma.SortOrderInput | Prisma.SortOrder
+  ext_expires_in?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.AccountCountOrderByAggregateInput
   _avg?: Prisma.AccountAvgOrderByAggregateInput
   _max?: Prisma.AccountMaxOrderByAggregateInput
@@ -371,6 +386,7 @@ export type AccountScalarWhereWithAggregatesInput = {
   scope?: Prisma.StringNullableWithAggregatesFilter<"Account"> | string | null
   id_token?: Prisma.StringNullableWithAggregatesFilter<"Account"> | string | null
   session_state?: Prisma.StringNullableWithAggregatesFilter<"Account"> | string | null
+  ext_expires_in?: Prisma.IntNullableWithAggregatesFilter<"Account"> | number | null
 }
 
 export type AccountCreateInput = {
@@ -387,6 +403,7 @@ export type AccountCreateInput = {
   scope?: string | null
   id_token?: string | null
   session_state?: string | null
+  ext_expires_in?: number | null
   User: Prisma.UserCreateNestedOneWithoutAccountInput
 }
 
@@ -405,6 +422,7 @@ export type AccountUncheckedCreateInput = {
   scope?: string | null
   id_token?: string | null
   session_state?: string | null
+  ext_expires_in?: number | null
 }
 
 export type AccountUpdateInput = {
@@ -421,6 +439,7 @@ export type AccountUpdateInput = {
   scope?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   id_token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   session_state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ext_expires_in?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   User?: Prisma.UserUpdateOneRequiredWithoutAccountNestedInput
 }
 
@@ -439,6 +458,7 @@ export type AccountUncheckedUpdateInput = {
   scope?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   id_token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   session_state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ext_expires_in?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type AccountCreateManyInput = {
@@ -456,6 +476,7 @@ export type AccountCreateManyInput = {
   scope?: string | null
   id_token?: string | null
   session_state?: string | null
+  ext_expires_in?: number | null
 }
 
 export type AccountUpdateManyMutationInput = {
@@ -472,6 +493,7 @@ export type AccountUpdateManyMutationInput = {
   scope?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   id_token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   session_state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ext_expires_in?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type AccountUncheckedUpdateManyInput = {
@@ -489,6 +511,7 @@ export type AccountUncheckedUpdateManyInput = {
   scope?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   id_token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   session_state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ext_expires_in?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type AccountProviderProviderAccountIdCompoundUniqueInput = {
@@ -511,10 +534,12 @@ export type AccountCountOrderByAggregateInput = {
   scope?: Prisma.SortOrder
   id_token?: Prisma.SortOrder
   session_state?: Prisma.SortOrder
+  ext_expires_in?: Prisma.SortOrder
 }
 
 export type AccountAvgOrderByAggregateInput = {
   expires_at?: Prisma.SortOrder
+  ext_expires_in?: Prisma.SortOrder
 }
 
 export type AccountMaxOrderByAggregateInput = {
@@ -532,6 +557,7 @@ export type AccountMaxOrderByAggregateInput = {
   scope?: Prisma.SortOrder
   id_token?: Prisma.SortOrder
   session_state?: Prisma.SortOrder
+  ext_expires_in?: Prisma.SortOrder
 }
 
 export type AccountMinOrderByAggregateInput = {
@@ -549,10 +575,12 @@ export type AccountMinOrderByAggregateInput = {
   scope?: Prisma.SortOrder
   id_token?: Prisma.SortOrder
   session_state?: Prisma.SortOrder
+  ext_expires_in?: Prisma.SortOrder
 }
 
 export type AccountSumOrderByAggregateInput = {
   expires_at?: Prisma.SortOrder
+  ext_expires_in?: Prisma.SortOrder
 }
 
 export type AccountListRelationFilter = {
@@ -641,6 +669,7 @@ export type AccountCreateWithoutUserInput = {
   scope?: string | null
   id_token?: string | null
   session_state?: string | null
+  ext_expires_in?: number | null
 }
 
 export type AccountUncheckedCreateWithoutUserInput = {
@@ -657,6 +686,7 @@ export type AccountUncheckedCreateWithoutUserInput = {
   scope?: string | null
   id_token?: string | null
   session_state?: string | null
+  ext_expires_in?: number | null
 }
 
 export type AccountCreateOrConnectWithoutUserInput = {
@@ -703,6 +733,7 @@ export type AccountScalarWhereInput = {
   scope?: Prisma.StringNullableFilter<"Account"> | string | null
   id_token?: Prisma.StringNullableFilter<"Account"> | string | null
   session_state?: Prisma.StringNullableFilter<"Account"> | string | null
+  ext_expires_in?: Prisma.IntNullableFilter<"Account"> | number | null
 }
 
 export type AccountCreateManyUserInput = {
@@ -719,6 +750,7 @@ export type AccountCreateManyUserInput = {
   scope?: string | null
   id_token?: string | null
   session_state?: string | null
+  ext_expires_in?: number | null
 }
 
 export type AccountUpdateWithoutUserInput = {
@@ -735,6 +767,7 @@ export type AccountUpdateWithoutUserInput = {
   scope?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   id_token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   session_state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ext_expires_in?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type AccountUncheckedUpdateWithoutUserInput = {
@@ -751,6 +784,7 @@ export type AccountUncheckedUpdateWithoutUserInput = {
   scope?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   id_token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   session_state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ext_expires_in?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type AccountUncheckedUpdateManyWithoutUserInput = {
@@ -767,6 +801,7 @@ export type AccountUncheckedUpdateManyWithoutUserInput = {
   scope?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   id_token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   session_state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ext_expires_in?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 
@@ -786,6 +821,7 @@ export type AccountSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   scope?: boolean
   id_token?: boolean
   session_state?: boolean
+  ext_expires_in?: boolean
   User?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["account"]>
 
@@ -804,6 +840,7 @@ export type AccountSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   scope?: boolean
   id_token?: boolean
   session_state?: boolean
+  ext_expires_in?: boolean
   User?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["account"]>
 
@@ -822,6 +859,7 @@ export type AccountSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   scope?: boolean
   id_token?: boolean
   session_state?: boolean
+  ext_expires_in?: boolean
   User?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["account"]>
 
@@ -840,9 +878,10 @@ export type AccountSelectScalar = {
   scope?: boolean
   id_token?: boolean
   session_state?: boolean
+  ext_expires_in?: boolean
 }
 
-export type AccountOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "created_at" | "updated_at" | "userId" | "type" | "provider" | "providerAccountId" | "access_token" | "refresh_token" | "expires_at" | "token_type" | "scope" | "id_token" | "session_state", ExtArgs["result"]["account"]>
+export type AccountOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "created_at" | "updated_at" | "userId" | "type" | "provider" | "providerAccountId" | "access_token" | "refresh_token" | "expires_at" | "token_type" | "scope" | "id_token" | "session_state" | "ext_expires_in", ExtArgs["result"]["account"]>
 export type AccountInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   User?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
@@ -873,6 +912,7 @@ export type $AccountPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     scope: string | null
     id_token: string | null
     session_state: string | null
+    ext_expires_in: number | null
   }, ExtArgs["result"]["account"]>
   composites: {}
 }
@@ -1311,6 +1351,7 @@ export interface AccountFieldRefs {
   readonly scope: Prisma.FieldRef<"Account", 'String'>
   readonly id_token: Prisma.FieldRef<"Account", 'String'>
   readonly session_state: Prisma.FieldRef<"Account", 'String'>
+  readonly ext_expires_in: Prisma.FieldRef<"Account", 'Int'>
 }
     
 

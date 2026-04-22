@@ -8,7 +8,7 @@ import { Label } from '@/components/ui/label'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { signIn } from 'next-auth/react'
+import { signIn, getSession } from 'next-auth/react'
 import { useState, type FormEvent } from 'react'
 
 export const Login = () => {
@@ -34,6 +34,14 @@ export const Login = () => {
     if (result?.error) {
       setError('Invalid email or password.')
       return
+    }
+    const session = await getSession()
+    if (session?.accessToken) {
+      try {
+        sessionStorage.setItem('adminAccessToken', session.accessToken)
+      } catch {
+        /* ignore */
+      }
     }
     router.push(callbackUrl)
     router.refresh()
@@ -108,7 +116,7 @@ export const Login = () => {
               <Button className='w-full' type='submit' disabled={pending}>
                 {pending ? 'Signing in…' : 'Sign In'}
               </Button>
-              <div className='flex items center gap-2 justify-center mt-6 flex-wrap'>
+              <div className='flex items-center gap-2 justify-center mt-6 flex-wrap'>
                 <p className='text-base font-medium text-link dark:text-darklink'>
                   New to Matdash?
                 </p>

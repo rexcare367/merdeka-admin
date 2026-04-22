@@ -29,8 +29,7 @@ export type DisplayMinAggregateOutputType = {
   created_at: Date | null
   updated_at: Date | null
   surveyId: string | null
-  personId: string | null
-  status: $Enums.DisplayStatus | null
+  contactId: string | null
 }
 
 export type DisplayMaxAggregateOutputType = {
@@ -38,8 +37,7 @@ export type DisplayMaxAggregateOutputType = {
   created_at: Date | null
   updated_at: Date | null
   surveyId: string | null
-  personId: string | null
-  status: $Enums.DisplayStatus | null
+  contactId: string | null
 }
 
 export type DisplayCountAggregateOutputType = {
@@ -47,8 +45,7 @@ export type DisplayCountAggregateOutputType = {
   created_at: number
   updated_at: number
   surveyId: number
-  personId: number
-  status: number
+  contactId: number
   _all: number
 }
 
@@ -58,8 +55,7 @@ export type DisplayMinAggregateInputType = {
   created_at?: true
   updated_at?: true
   surveyId?: true
-  personId?: true
-  status?: true
+  contactId?: true
 }
 
 export type DisplayMaxAggregateInputType = {
@@ -67,8 +63,7 @@ export type DisplayMaxAggregateInputType = {
   created_at?: true
   updated_at?: true
   surveyId?: true
-  personId?: true
-  status?: true
+  contactId?: true
 }
 
 export type DisplayCountAggregateInputType = {
@@ -76,8 +71,7 @@ export type DisplayCountAggregateInputType = {
   created_at?: true
   updated_at?: true
   surveyId?: true
-  personId?: true
-  status?: true
+  contactId?: true
   _all?: true
 }
 
@@ -158,8 +152,7 @@ export type DisplayGroupByOutputType = {
   created_at: Date
   updated_at: Date
   surveyId: string
-  personId: string | null
-  status: $Enums.DisplayStatus
+  contactId: string | null
   _count: DisplayCountAggregateOutputType | null
   _min: DisplayMinAggregateOutputType | null
   _max: DisplayMaxAggregateOutputType | null
@@ -188,10 +181,10 @@ export type DisplayWhereInput = {
   created_at?: Prisma.DateTimeFilter<"Display"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Display"> | Date | string
   surveyId?: Prisma.StringFilter<"Display"> | string
-  personId?: Prisma.StringNullableFilter<"Display"> | string | null
-  status?: Prisma.EnumDisplayStatusFilter<"Display"> | $Enums.DisplayStatus
-  Person?: Prisma.XOR<Prisma.PersonNullableScalarRelationFilter, Prisma.PersonWhereInput> | null
+  contactId?: Prisma.StringNullableFilter<"Display"> | string | null
+  Contact?: Prisma.XOR<Prisma.ContactNullableScalarRelationFilter, Prisma.ContactWhereInput> | null
   Survey?: Prisma.XOR<Prisma.SurveyScalarRelationFilter, Prisma.SurveyWhereInput>
+  Response?: Prisma.XOR<Prisma.ResponseNullableScalarRelationFilter, Prisma.ResponseWhereInput> | null
 }
 
 export type DisplayOrderByWithRelationInput = {
@@ -199,10 +192,10 @@ export type DisplayOrderByWithRelationInput = {
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   surveyId?: Prisma.SortOrder
-  personId?: Prisma.SortOrderInput | Prisma.SortOrder
-  status?: Prisma.SortOrder
-  Person?: Prisma.PersonOrderByWithRelationInput
+  contactId?: Prisma.SortOrderInput | Prisma.SortOrder
+  Contact?: Prisma.ContactOrderByWithRelationInput
   Survey?: Prisma.SurveyOrderByWithRelationInput
+  Response?: Prisma.ResponseOrderByWithRelationInput
 }
 
 export type DisplayWhereUniqueInput = Prisma.AtLeast<{
@@ -213,10 +206,10 @@ export type DisplayWhereUniqueInput = Prisma.AtLeast<{
   created_at?: Prisma.DateTimeFilter<"Display"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Display"> | Date | string
   surveyId?: Prisma.StringFilter<"Display"> | string
-  personId?: Prisma.StringNullableFilter<"Display"> | string | null
-  status?: Prisma.EnumDisplayStatusFilter<"Display"> | $Enums.DisplayStatus
-  Person?: Prisma.XOR<Prisma.PersonNullableScalarRelationFilter, Prisma.PersonWhereInput> | null
+  contactId?: Prisma.StringNullableFilter<"Display"> | string | null
+  Contact?: Prisma.XOR<Prisma.ContactNullableScalarRelationFilter, Prisma.ContactWhereInput> | null
   Survey?: Prisma.XOR<Prisma.SurveyScalarRelationFilter, Prisma.SurveyWhereInput>
+  Response?: Prisma.XOR<Prisma.ResponseNullableScalarRelationFilter, Prisma.ResponseWhereInput> | null
 }, "id">
 
 export type DisplayOrderByWithAggregationInput = {
@@ -224,8 +217,7 @@ export type DisplayOrderByWithAggregationInput = {
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   surveyId?: Prisma.SortOrder
-  personId?: Prisma.SortOrderInput | Prisma.SortOrder
-  status?: Prisma.SortOrder
+  contactId?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.DisplayCountOrderByAggregateInput
   _max?: Prisma.DisplayMaxOrderByAggregateInput
   _min?: Prisma.DisplayMinOrderByAggregateInput
@@ -239,17 +231,16 @@ export type DisplayScalarWhereWithAggregatesInput = {
   created_at?: Prisma.DateTimeWithAggregatesFilter<"Display"> | Date | string
   updated_at?: Prisma.DateTimeWithAggregatesFilter<"Display"> | Date | string
   surveyId?: Prisma.StringWithAggregatesFilter<"Display"> | string
-  personId?: Prisma.StringNullableWithAggregatesFilter<"Display"> | string | null
-  status?: Prisma.EnumDisplayStatusWithAggregatesFilter<"Display"> | $Enums.DisplayStatus
+  contactId?: Prisma.StringNullableWithAggregatesFilter<"Display"> | string | null
 }
 
 export type DisplayCreateInput = {
   id: string
   created_at?: Date | string
   updated_at: Date | string
-  status?: $Enums.DisplayStatus
-  Person?: Prisma.PersonCreateNestedOneWithoutDisplayInput
+  Contact?: Prisma.ContactCreateNestedOneWithoutDisplayInput
   Survey: Prisma.SurveyCreateNestedOneWithoutDisplayInput
+  Response?: Prisma.ResponseCreateNestedOneWithoutDisplayInput
 }
 
 export type DisplayUncheckedCreateInput = {
@@ -257,17 +248,17 @@ export type DisplayUncheckedCreateInput = {
   created_at?: Date | string
   updated_at: Date | string
   surveyId: string
-  personId?: string | null
-  status?: $Enums.DisplayStatus
+  contactId?: string | null
+  Response?: Prisma.ResponseUncheckedCreateNestedOneWithoutDisplayInput
 }
 
 export type DisplayUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.EnumDisplayStatusFieldUpdateOperationsInput | $Enums.DisplayStatus
-  Person?: Prisma.PersonUpdateOneWithoutDisplayNestedInput
+  Contact?: Prisma.ContactUpdateOneWithoutDisplayNestedInput
   Survey?: Prisma.SurveyUpdateOneRequiredWithoutDisplayNestedInput
+  Response?: Prisma.ResponseUpdateOneWithoutDisplayNestedInput
 }
 
 export type DisplayUncheckedUpdateInput = {
@@ -275,8 +266,8 @@ export type DisplayUncheckedUpdateInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   surveyId?: Prisma.StringFieldUpdateOperationsInput | string
-  personId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.EnumDisplayStatusFieldUpdateOperationsInput | $Enums.DisplayStatus
+  contactId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Response?: Prisma.ResponseUncheckedUpdateOneWithoutDisplayNestedInput
 }
 
 export type DisplayCreateManyInput = {
@@ -284,15 +275,13 @@ export type DisplayCreateManyInput = {
   created_at?: Date | string
   updated_at: Date | string
   surveyId: string
-  personId?: string | null
-  status?: $Enums.DisplayStatus
+  contactId?: string | null
 }
 
 export type DisplayUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.EnumDisplayStatusFieldUpdateOperationsInput | $Enums.DisplayStatus
 }
 
 export type DisplayUncheckedUpdateManyInput = {
@@ -300,8 +289,7 @@ export type DisplayUncheckedUpdateManyInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   surveyId?: Prisma.StringFieldUpdateOperationsInput | string
-  personId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.EnumDisplayStatusFieldUpdateOperationsInput | $Enums.DisplayStatus
+  contactId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DisplayCountOrderByAggregateInput = {
@@ -309,8 +297,7 @@ export type DisplayCountOrderByAggregateInput = {
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   surveyId?: Prisma.SortOrder
-  personId?: Prisma.SortOrder
-  status?: Prisma.SortOrder
+  contactId?: Prisma.SortOrder
 }
 
 export type DisplayMaxOrderByAggregateInput = {
@@ -318,8 +305,7 @@ export type DisplayMaxOrderByAggregateInput = {
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   surveyId?: Prisma.SortOrder
-  personId?: Prisma.SortOrder
-  status?: Prisma.SortOrder
+  contactId?: Prisma.SortOrder
 }
 
 export type DisplayMinOrderByAggregateInput = {
@@ -327,8 +313,12 @@ export type DisplayMinOrderByAggregateInput = {
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   surveyId?: Prisma.SortOrder
-  personId?: Prisma.SortOrder
-  status?: Prisma.SortOrder
+  contactId?: Prisma.SortOrder
+}
+
+export type DisplayNullableScalarRelationFilter = {
+  is?: Prisma.DisplayWhereInput | null
+  isNot?: Prisma.DisplayWhereInput | null
 }
 
 export type DisplayListRelationFilter = {
@@ -341,50 +331,20 @@ export type DisplayOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type EnumDisplayStatusFieldUpdateOperationsInput = {
-  set?: $Enums.DisplayStatus
+export type DisplayCreateNestedOneWithoutResponseInput = {
+  create?: Prisma.XOR<Prisma.DisplayCreateWithoutResponseInput, Prisma.DisplayUncheckedCreateWithoutResponseInput>
+  connectOrCreate?: Prisma.DisplayCreateOrConnectWithoutResponseInput
+  connect?: Prisma.DisplayWhereUniqueInput
 }
 
-export type DisplayCreateNestedManyWithoutPersonInput = {
-  create?: Prisma.XOR<Prisma.DisplayCreateWithoutPersonInput, Prisma.DisplayUncheckedCreateWithoutPersonInput> | Prisma.DisplayCreateWithoutPersonInput[] | Prisma.DisplayUncheckedCreateWithoutPersonInput[]
-  connectOrCreate?: Prisma.DisplayCreateOrConnectWithoutPersonInput | Prisma.DisplayCreateOrConnectWithoutPersonInput[]
-  createMany?: Prisma.DisplayCreateManyPersonInputEnvelope
-  connect?: Prisma.DisplayWhereUniqueInput | Prisma.DisplayWhereUniqueInput[]
-}
-
-export type DisplayUncheckedCreateNestedManyWithoutPersonInput = {
-  create?: Prisma.XOR<Prisma.DisplayCreateWithoutPersonInput, Prisma.DisplayUncheckedCreateWithoutPersonInput> | Prisma.DisplayCreateWithoutPersonInput[] | Prisma.DisplayUncheckedCreateWithoutPersonInput[]
-  connectOrCreate?: Prisma.DisplayCreateOrConnectWithoutPersonInput | Prisma.DisplayCreateOrConnectWithoutPersonInput[]
-  createMany?: Prisma.DisplayCreateManyPersonInputEnvelope
-  connect?: Prisma.DisplayWhereUniqueInput | Prisma.DisplayWhereUniqueInput[]
-}
-
-export type DisplayUpdateManyWithoutPersonNestedInput = {
-  create?: Prisma.XOR<Prisma.DisplayCreateWithoutPersonInput, Prisma.DisplayUncheckedCreateWithoutPersonInput> | Prisma.DisplayCreateWithoutPersonInput[] | Prisma.DisplayUncheckedCreateWithoutPersonInput[]
-  connectOrCreate?: Prisma.DisplayCreateOrConnectWithoutPersonInput | Prisma.DisplayCreateOrConnectWithoutPersonInput[]
-  upsert?: Prisma.DisplayUpsertWithWhereUniqueWithoutPersonInput | Prisma.DisplayUpsertWithWhereUniqueWithoutPersonInput[]
-  createMany?: Prisma.DisplayCreateManyPersonInputEnvelope
-  set?: Prisma.DisplayWhereUniqueInput | Prisma.DisplayWhereUniqueInput[]
-  disconnect?: Prisma.DisplayWhereUniqueInput | Prisma.DisplayWhereUniqueInput[]
-  delete?: Prisma.DisplayWhereUniqueInput | Prisma.DisplayWhereUniqueInput[]
-  connect?: Prisma.DisplayWhereUniqueInput | Prisma.DisplayWhereUniqueInput[]
-  update?: Prisma.DisplayUpdateWithWhereUniqueWithoutPersonInput | Prisma.DisplayUpdateWithWhereUniqueWithoutPersonInput[]
-  updateMany?: Prisma.DisplayUpdateManyWithWhereWithoutPersonInput | Prisma.DisplayUpdateManyWithWhereWithoutPersonInput[]
-  deleteMany?: Prisma.DisplayScalarWhereInput | Prisma.DisplayScalarWhereInput[]
-}
-
-export type DisplayUncheckedUpdateManyWithoutPersonNestedInput = {
-  create?: Prisma.XOR<Prisma.DisplayCreateWithoutPersonInput, Prisma.DisplayUncheckedCreateWithoutPersonInput> | Prisma.DisplayCreateWithoutPersonInput[] | Prisma.DisplayUncheckedCreateWithoutPersonInput[]
-  connectOrCreate?: Prisma.DisplayCreateOrConnectWithoutPersonInput | Prisma.DisplayCreateOrConnectWithoutPersonInput[]
-  upsert?: Prisma.DisplayUpsertWithWhereUniqueWithoutPersonInput | Prisma.DisplayUpsertWithWhereUniqueWithoutPersonInput[]
-  createMany?: Prisma.DisplayCreateManyPersonInputEnvelope
-  set?: Prisma.DisplayWhereUniqueInput | Prisma.DisplayWhereUniqueInput[]
-  disconnect?: Prisma.DisplayWhereUniqueInput | Prisma.DisplayWhereUniqueInput[]
-  delete?: Prisma.DisplayWhereUniqueInput | Prisma.DisplayWhereUniqueInput[]
-  connect?: Prisma.DisplayWhereUniqueInput | Prisma.DisplayWhereUniqueInput[]
-  update?: Prisma.DisplayUpdateWithWhereUniqueWithoutPersonInput | Prisma.DisplayUpdateWithWhereUniqueWithoutPersonInput[]
-  updateMany?: Prisma.DisplayUpdateManyWithWhereWithoutPersonInput | Prisma.DisplayUpdateManyWithWhereWithoutPersonInput[]
-  deleteMany?: Prisma.DisplayScalarWhereInput | Prisma.DisplayScalarWhereInput[]
+export type DisplayUpdateOneWithoutResponseNestedInput = {
+  create?: Prisma.XOR<Prisma.DisplayCreateWithoutResponseInput, Prisma.DisplayUncheckedCreateWithoutResponseInput>
+  connectOrCreate?: Prisma.DisplayCreateOrConnectWithoutResponseInput
+  upsert?: Prisma.DisplayUpsertWithoutResponseInput
+  disconnect?: Prisma.DisplayWhereInput | boolean
+  delete?: Prisma.DisplayWhereInput | boolean
+  connect?: Prisma.DisplayWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.DisplayUpdateToOneWithWhereWithoutResponseInput, Prisma.DisplayUpdateWithoutResponseInput>, Prisma.DisplayUncheckedUpdateWithoutResponseInput>
 }
 
 export type DisplayCreateNestedManyWithoutSurveyInput = {
@@ -429,74 +389,110 @@ export type DisplayUncheckedUpdateManyWithoutSurveyNestedInput = {
   deleteMany?: Prisma.DisplayScalarWhereInput | Prisma.DisplayScalarWhereInput[]
 }
 
-export type DisplayCreateWithoutPersonInput = {
+export type DisplayCreateNestedManyWithoutContactInput = {
+  create?: Prisma.XOR<Prisma.DisplayCreateWithoutContactInput, Prisma.DisplayUncheckedCreateWithoutContactInput> | Prisma.DisplayCreateWithoutContactInput[] | Prisma.DisplayUncheckedCreateWithoutContactInput[]
+  connectOrCreate?: Prisma.DisplayCreateOrConnectWithoutContactInput | Prisma.DisplayCreateOrConnectWithoutContactInput[]
+  createMany?: Prisma.DisplayCreateManyContactInputEnvelope
+  connect?: Prisma.DisplayWhereUniqueInput | Prisma.DisplayWhereUniqueInput[]
+}
+
+export type DisplayUncheckedCreateNestedManyWithoutContactInput = {
+  create?: Prisma.XOR<Prisma.DisplayCreateWithoutContactInput, Prisma.DisplayUncheckedCreateWithoutContactInput> | Prisma.DisplayCreateWithoutContactInput[] | Prisma.DisplayUncheckedCreateWithoutContactInput[]
+  connectOrCreate?: Prisma.DisplayCreateOrConnectWithoutContactInput | Prisma.DisplayCreateOrConnectWithoutContactInput[]
+  createMany?: Prisma.DisplayCreateManyContactInputEnvelope
+  connect?: Prisma.DisplayWhereUniqueInput | Prisma.DisplayWhereUniqueInput[]
+}
+
+export type DisplayUpdateManyWithoutContactNestedInput = {
+  create?: Prisma.XOR<Prisma.DisplayCreateWithoutContactInput, Prisma.DisplayUncheckedCreateWithoutContactInput> | Prisma.DisplayCreateWithoutContactInput[] | Prisma.DisplayUncheckedCreateWithoutContactInput[]
+  connectOrCreate?: Prisma.DisplayCreateOrConnectWithoutContactInput | Prisma.DisplayCreateOrConnectWithoutContactInput[]
+  upsert?: Prisma.DisplayUpsertWithWhereUniqueWithoutContactInput | Prisma.DisplayUpsertWithWhereUniqueWithoutContactInput[]
+  createMany?: Prisma.DisplayCreateManyContactInputEnvelope
+  set?: Prisma.DisplayWhereUniqueInput | Prisma.DisplayWhereUniqueInput[]
+  disconnect?: Prisma.DisplayWhereUniqueInput | Prisma.DisplayWhereUniqueInput[]
+  delete?: Prisma.DisplayWhereUniqueInput | Prisma.DisplayWhereUniqueInput[]
+  connect?: Prisma.DisplayWhereUniqueInput | Prisma.DisplayWhereUniqueInput[]
+  update?: Prisma.DisplayUpdateWithWhereUniqueWithoutContactInput | Prisma.DisplayUpdateWithWhereUniqueWithoutContactInput[]
+  updateMany?: Prisma.DisplayUpdateManyWithWhereWithoutContactInput | Prisma.DisplayUpdateManyWithWhereWithoutContactInput[]
+  deleteMany?: Prisma.DisplayScalarWhereInput | Prisma.DisplayScalarWhereInput[]
+}
+
+export type DisplayUncheckedUpdateManyWithoutContactNestedInput = {
+  create?: Prisma.XOR<Prisma.DisplayCreateWithoutContactInput, Prisma.DisplayUncheckedCreateWithoutContactInput> | Prisma.DisplayCreateWithoutContactInput[] | Prisma.DisplayUncheckedCreateWithoutContactInput[]
+  connectOrCreate?: Prisma.DisplayCreateOrConnectWithoutContactInput | Prisma.DisplayCreateOrConnectWithoutContactInput[]
+  upsert?: Prisma.DisplayUpsertWithWhereUniqueWithoutContactInput | Prisma.DisplayUpsertWithWhereUniqueWithoutContactInput[]
+  createMany?: Prisma.DisplayCreateManyContactInputEnvelope
+  set?: Prisma.DisplayWhereUniqueInput | Prisma.DisplayWhereUniqueInput[]
+  disconnect?: Prisma.DisplayWhereUniqueInput | Prisma.DisplayWhereUniqueInput[]
+  delete?: Prisma.DisplayWhereUniqueInput | Prisma.DisplayWhereUniqueInput[]
+  connect?: Prisma.DisplayWhereUniqueInput | Prisma.DisplayWhereUniqueInput[]
+  update?: Prisma.DisplayUpdateWithWhereUniqueWithoutContactInput | Prisma.DisplayUpdateWithWhereUniqueWithoutContactInput[]
+  updateMany?: Prisma.DisplayUpdateManyWithWhereWithoutContactInput | Prisma.DisplayUpdateManyWithWhereWithoutContactInput[]
+  deleteMany?: Prisma.DisplayScalarWhereInput | Prisma.DisplayScalarWhereInput[]
+}
+
+export type DisplayCreateWithoutResponseInput = {
   id: string
   created_at?: Date | string
   updated_at: Date | string
-  status?: $Enums.DisplayStatus
+  Contact?: Prisma.ContactCreateNestedOneWithoutDisplayInput
   Survey: Prisma.SurveyCreateNestedOneWithoutDisplayInput
 }
 
-export type DisplayUncheckedCreateWithoutPersonInput = {
+export type DisplayUncheckedCreateWithoutResponseInput = {
   id: string
   created_at?: Date | string
   updated_at: Date | string
   surveyId: string
-  status?: $Enums.DisplayStatus
+  contactId?: string | null
 }
 
-export type DisplayCreateOrConnectWithoutPersonInput = {
+export type DisplayCreateOrConnectWithoutResponseInput = {
   where: Prisma.DisplayWhereUniqueInput
-  create: Prisma.XOR<Prisma.DisplayCreateWithoutPersonInput, Prisma.DisplayUncheckedCreateWithoutPersonInput>
+  create: Prisma.XOR<Prisma.DisplayCreateWithoutResponseInput, Prisma.DisplayUncheckedCreateWithoutResponseInput>
 }
 
-export type DisplayCreateManyPersonInputEnvelope = {
-  data: Prisma.DisplayCreateManyPersonInput | Prisma.DisplayCreateManyPersonInput[]
-  skipDuplicates?: boolean
+export type DisplayUpsertWithoutResponseInput = {
+  update: Prisma.XOR<Prisma.DisplayUpdateWithoutResponseInput, Prisma.DisplayUncheckedUpdateWithoutResponseInput>
+  create: Prisma.XOR<Prisma.DisplayCreateWithoutResponseInput, Prisma.DisplayUncheckedCreateWithoutResponseInput>
+  where?: Prisma.DisplayWhereInput
 }
 
-export type DisplayUpsertWithWhereUniqueWithoutPersonInput = {
-  where: Prisma.DisplayWhereUniqueInput
-  update: Prisma.XOR<Prisma.DisplayUpdateWithoutPersonInput, Prisma.DisplayUncheckedUpdateWithoutPersonInput>
-  create: Prisma.XOR<Prisma.DisplayCreateWithoutPersonInput, Prisma.DisplayUncheckedCreateWithoutPersonInput>
+export type DisplayUpdateToOneWithWhereWithoutResponseInput = {
+  where?: Prisma.DisplayWhereInput
+  data: Prisma.XOR<Prisma.DisplayUpdateWithoutResponseInput, Prisma.DisplayUncheckedUpdateWithoutResponseInput>
 }
 
-export type DisplayUpdateWithWhereUniqueWithoutPersonInput = {
-  where: Prisma.DisplayWhereUniqueInput
-  data: Prisma.XOR<Prisma.DisplayUpdateWithoutPersonInput, Prisma.DisplayUncheckedUpdateWithoutPersonInput>
+export type DisplayUpdateWithoutResponseInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  Contact?: Prisma.ContactUpdateOneWithoutDisplayNestedInput
+  Survey?: Prisma.SurveyUpdateOneRequiredWithoutDisplayNestedInput
 }
 
-export type DisplayUpdateManyWithWhereWithoutPersonInput = {
-  where: Prisma.DisplayScalarWhereInput
-  data: Prisma.XOR<Prisma.DisplayUpdateManyMutationInput, Prisma.DisplayUncheckedUpdateManyWithoutPersonInput>
-}
-
-export type DisplayScalarWhereInput = {
-  AND?: Prisma.DisplayScalarWhereInput | Prisma.DisplayScalarWhereInput[]
-  OR?: Prisma.DisplayScalarWhereInput[]
-  NOT?: Prisma.DisplayScalarWhereInput | Prisma.DisplayScalarWhereInput[]
-  id?: Prisma.StringFilter<"Display"> | string
-  created_at?: Prisma.DateTimeFilter<"Display"> | Date | string
-  updated_at?: Prisma.DateTimeFilter<"Display"> | Date | string
-  surveyId?: Prisma.StringFilter<"Display"> | string
-  personId?: Prisma.StringNullableFilter<"Display"> | string | null
-  status?: Prisma.EnumDisplayStatusFilter<"Display"> | $Enums.DisplayStatus
+export type DisplayUncheckedUpdateWithoutResponseInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  surveyId?: Prisma.StringFieldUpdateOperationsInput | string
+  contactId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DisplayCreateWithoutSurveyInput = {
   id: string
   created_at?: Date | string
   updated_at: Date | string
-  status?: $Enums.DisplayStatus
-  Person?: Prisma.PersonCreateNestedOneWithoutDisplayInput
+  Contact?: Prisma.ContactCreateNestedOneWithoutDisplayInput
+  Response?: Prisma.ResponseCreateNestedOneWithoutDisplayInput
 }
 
 export type DisplayUncheckedCreateWithoutSurveyInput = {
   id: string
   created_at?: Date | string
   updated_at: Date | string
-  personId?: string | null
-  status?: $Enums.DisplayStatus
+  contactId?: string | null
+  Response?: Prisma.ResponseUncheckedCreateNestedOneWithoutDisplayInput
 }
 
 export type DisplayCreateOrConnectWithoutSurveyInput = {
@@ -525,68 +521,117 @@ export type DisplayUpdateManyWithWhereWithoutSurveyInput = {
   data: Prisma.XOR<Prisma.DisplayUpdateManyMutationInput, Prisma.DisplayUncheckedUpdateManyWithoutSurveyInput>
 }
 
-export type DisplayCreateManyPersonInput = {
+export type DisplayScalarWhereInput = {
+  AND?: Prisma.DisplayScalarWhereInput | Prisma.DisplayScalarWhereInput[]
+  OR?: Prisma.DisplayScalarWhereInput[]
+  NOT?: Prisma.DisplayScalarWhereInput | Prisma.DisplayScalarWhereInput[]
+  id?: Prisma.StringFilter<"Display"> | string
+  created_at?: Prisma.DateTimeFilter<"Display"> | Date | string
+  updated_at?: Prisma.DateTimeFilter<"Display"> | Date | string
+  surveyId?: Prisma.StringFilter<"Display"> | string
+  contactId?: Prisma.StringNullableFilter<"Display"> | string | null
+}
+
+export type DisplayCreateWithoutContactInput = {
+  id: string
+  created_at?: Date | string
+  updated_at: Date | string
+  Survey: Prisma.SurveyCreateNestedOneWithoutDisplayInput
+  Response?: Prisma.ResponseCreateNestedOneWithoutDisplayInput
+}
+
+export type DisplayUncheckedCreateWithoutContactInput = {
   id: string
   created_at?: Date | string
   updated_at: Date | string
   surveyId: string
-  status?: $Enums.DisplayStatus
+  Response?: Prisma.ResponseUncheckedCreateNestedOneWithoutDisplayInput
 }
 
-export type DisplayUpdateWithoutPersonInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.EnumDisplayStatusFieldUpdateOperationsInput | $Enums.DisplayStatus
-  Survey?: Prisma.SurveyUpdateOneRequiredWithoutDisplayNestedInput
+export type DisplayCreateOrConnectWithoutContactInput = {
+  where: Prisma.DisplayWhereUniqueInput
+  create: Prisma.XOR<Prisma.DisplayCreateWithoutContactInput, Prisma.DisplayUncheckedCreateWithoutContactInput>
 }
 
-export type DisplayUncheckedUpdateWithoutPersonInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  surveyId?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumDisplayStatusFieldUpdateOperationsInput | $Enums.DisplayStatus
+export type DisplayCreateManyContactInputEnvelope = {
+  data: Prisma.DisplayCreateManyContactInput | Prisma.DisplayCreateManyContactInput[]
+  skipDuplicates?: boolean
 }
 
-export type DisplayUncheckedUpdateManyWithoutPersonInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  surveyId?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumDisplayStatusFieldUpdateOperationsInput | $Enums.DisplayStatus
+export type DisplayUpsertWithWhereUniqueWithoutContactInput = {
+  where: Prisma.DisplayWhereUniqueInput
+  update: Prisma.XOR<Prisma.DisplayUpdateWithoutContactInput, Prisma.DisplayUncheckedUpdateWithoutContactInput>
+  create: Prisma.XOR<Prisma.DisplayCreateWithoutContactInput, Prisma.DisplayUncheckedCreateWithoutContactInput>
+}
+
+export type DisplayUpdateWithWhereUniqueWithoutContactInput = {
+  where: Prisma.DisplayWhereUniqueInput
+  data: Prisma.XOR<Prisma.DisplayUpdateWithoutContactInput, Prisma.DisplayUncheckedUpdateWithoutContactInput>
+}
+
+export type DisplayUpdateManyWithWhereWithoutContactInput = {
+  where: Prisma.DisplayScalarWhereInput
+  data: Prisma.XOR<Prisma.DisplayUpdateManyMutationInput, Prisma.DisplayUncheckedUpdateManyWithoutContactInput>
 }
 
 export type DisplayCreateManySurveyInput = {
   id: string
   created_at?: Date | string
   updated_at: Date | string
-  personId?: string | null
-  status?: $Enums.DisplayStatus
+  contactId?: string | null
 }
 
 export type DisplayUpdateWithoutSurveyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.EnumDisplayStatusFieldUpdateOperationsInput | $Enums.DisplayStatus
-  Person?: Prisma.PersonUpdateOneWithoutDisplayNestedInput
+  Contact?: Prisma.ContactUpdateOneWithoutDisplayNestedInput
+  Response?: Prisma.ResponseUpdateOneWithoutDisplayNestedInput
 }
 
 export type DisplayUncheckedUpdateWithoutSurveyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  personId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.EnumDisplayStatusFieldUpdateOperationsInput | $Enums.DisplayStatus
+  contactId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Response?: Prisma.ResponseUncheckedUpdateOneWithoutDisplayNestedInput
 }
 
 export type DisplayUncheckedUpdateManyWithoutSurveyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  personId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.EnumDisplayStatusFieldUpdateOperationsInput | $Enums.DisplayStatus
+  contactId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+}
+
+export type DisplayCreateManyContactInput = {
+  id: string
+  created_at?: Date | string
+  updated_at: Date | string
+  surveyId: string
+}
+
+export type DisplayUpdateWithoutContactInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  Survey?: Prisma.SurveyUpdateOneRequiredWithoutDisplayNestedInput
+  Response?: Prisma.ResponseUpdateOneWithoutDisplayNestedInput
+}
+
+export type DisplayUncheckedUpdateWithoutContactInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  surveyId?: Prisma.StringFieldUpdateOperationsInput | string
+  Response?: Prisma.ResponseUncheckedUpdateOneWithoutDisplayNestedInput
+}
+
+export type DisplayUncheckedUpdateManyWithoutContactInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  surveyId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 
@@ -596,10 +641,10 @@ export type DisplaySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   created_at?: boolean
   updated_at?: boolean
   surveyId?: boolean
-  personId?: boolean
-  status?: boolean
-  Person?: boolean | Prisma.Display$PersonArgs<ExtArgs>
+  contactId?: boolean
+  Contact?: boolean | Prisma.Display$ContactArgs<ExtArgs>
   Survey?: boolean | Prisma.SurveyDefaultArgs<ExtArgs>
+  Response?: boolean | Prisma.Display$ResponseArgs<ExtArgs>
 }, ExtArgs["result"]["display"]>
 
 export type DisplaySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -607,9 +652,8 @@ export type DisplaySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   created_at?: boolean
   updated_at?: boolean
   surveyId?: boolean
-  personId?: boolean
-  status?: boolean
-  Person?: boolean | Prisma.Display$PersonArgs<ExtArgs>
+  contactId?: boolean
+  Contact?: boolean | Prisma.Display$ContactArgs<ExtArgs>
   Survey?: boolean | Prisma.SurveyDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["display"]>
 
@@ -618,9 +662,8 @@ export type DisplaySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   created_at?: boolean
   updated_at?: boolean
   surveyId?: boolean
-  personId?: boolean
-  status?: boolean
-  Person?: boolean | Prisma.Display$PersonArgs<ExtArgs>
+  contactId?: boolean
+  Contact?: boolean | Prisma.Display$ContactArgs<ExtArgs>
   Survey?: boolean | Prisma.SurveyDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["display"]>
 
@@ -629,37 +672,37 @@ export type DisplaySelectScalar = {
   created_at?: boolean
   updated_at?: boolean
   surveyId?: boolean
-  personId?: boolean
-  status?: boolean
+  contactId?: boolean
 }
 
-export type DisplayOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "created_at" | "updated_at" | "surveyId" | "personId" | "status", ExtArgs["result"]["display"]>
+export type DisplayOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "created_at" | "updated_at" | "surveyId" | "contactId", ExtArgs["result"]["display"]>
 export type DisplayInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  Person?: boolean | Prisma.Display$PersonArgs<ExtArgs>
+  Contact?: boolean | Prisma.Display$ContactArgs<ExtArgs>
   Survey?: boolean | Prisma.SurveyDefaultArgs<ExtArgs>
+  Response?: boolean | Prisma.Display$ResponseArgs<ExtArgs>
 }
 export type DisplayIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  Person?: boolean | Prisma.Display$PersonArgs<ExtArgs>
+  Contact?: boolean | Prisma.Display$ContactArgs<ExtArgs>
   Survey?: boolean | Prisma.SurveyDefaultArgs<ExtArgs>
 }
 export type DisplayIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  Person?: boolean | Prisma.Display$PersonArgs<ExtArgs>
+  Contact?: boolean | Prisma.Display$ContactArgs<ExtArgs>
   Survey?: boolean | Prisma.SurveyDefaultArgs<ExtArgs>
 }
 
 export type $DisplayPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Display"
   objects: {
-    Person: Prisma.$PersonPayload<ExtArgs> | null
+    Contact: Prisma.$ContactPayload<ExtArgs> | null
     Survey: Prisma.$SurveyPayload<ExtArgs>
+    Response: Prisma.$ResponsePayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     created_at: Date
     updated_at: Date
     surveyId: string
-    personId: string | null
-    status: $Enums.DisplayStatus
+    contactId: string | null
   }, ExtArgs["result"]["display"]>
   composites: {}
 }
@@ -1054,8 +1097,9 @@ readonly fields: DisplayFieldRefs;
  */
 export interface Prisma__DisplayClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  Person<T extends Prisma.Display$PersonArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Display$PersonArgs<ExtArgs>>): Prisma.Prisma__PersonClient<runtime.Types.Result.GetResult<Prisma.$PersonPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  Contact<T extends Prisma.Display$ContactArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Display$ContactArgs<ExtArgs>>): Prisma.Prisma__ContactClient<runtime.Types.Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   Survey<T extends Prisma.SurveyDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SurveyDefaultArgs<ExtArgs>>): Prisma.Prisma__SurveyClient<runtime.Types.Result.GetResult<Prisma.$SurveyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  Response<T extends Prisma.Display$ResponseArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Display$ResponseArgs<ExtArgs>>): Prisma.Prisma__ResponseClient<runtime.Types.Result.GetResult<Prisma.$ResponsePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1089,8 +1133,7 @@ export interface DisplayFieldRefs {
   readonly created_at: Prisma.FieldRef<"Display", 'DateTime'>
   readonly updated_at: Prisma.FieldRef<"Display", 'DateTime'>
   readonly surveyId: Prisma.FieldRef<"Display", 'String'>
-  readonly personId: Prisma.FieldRef<"Display", 'String'>
-  readonly status: Prisma.FieldRef<"Display", 'DisplayStatus'>
+  readonly contactId: Prisma.FieldRef<"Display", 'String'>
 }
     
 
@@ -1492,22 +1535,41 @@ export type DisplayDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
 }
 
 /**
- * Display.Person
+ * Display.Contact
  */
-export type Display$PersonArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Display$ContactArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Person
+   * Select specific fields to fetch from the Contact
    */
-  select?: Prisma.PersonSelect<ExtArgs> | null
+  select?: Prisma.ContactSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Person
+   * Omit specific fields from the Contact
    */
-  omit?: Prisma.PersonOmit<ExtArgs> | null
+  omit?: Prisma.ContactOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.PersonInclude<ExtArgs> | null
-  where?: Prisma.PersonWhereInput
+  include?: Prisma.ContactInclude<ExtArgs> | null
+  where?: Prisma.ContactWhereInput
+}
+
+/**
+ * Display.Response
+ */
+export type Display$ResponseArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Response
+   */
+  select?: Prisma.ResponseSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Response
+   */
+  omit?: Prisma.ResponseOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ResponseInclude<ExtArgs> | null
+  where?: Prisma.ResponseWhereInput
 }
 
 /**

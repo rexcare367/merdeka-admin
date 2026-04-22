@@ -9,23 +9,6 @@
 * 🟢 You can import this file directly.
 */
 
-export const AttributeType = {
-  code: 'code',
-  noCode: 'noCode',
-  automatic: 'automatic'
-} as const
-
-export type AttributeType = (typeof AttributeType)[keyof typeof AttributeType]
-
-
-export const DisplayStatus = {
-  seen: 'seen',
-  responded: 'responded'
-} as const
-
-export type DisplayStatus = (typeof DisplayStatus)[keyof typeof DisplayStatus]
-
-
 export const EnvironmentType = {
   production: 'production',
   development: 'development'
@@ -34,55 +17,16 @@ export const EnvironmentType = {
 export type EnvironmentType = (typeof EnvironmentType)[keyof typeof EnvironmentType]
 
 
-export const EventType = {
-  code: 'code',
-  noCode: 'noCode',
-  automatic: 'automatic'
-} as const
-
-export type EventType = (typeof EventType)[keyof typeof EventType]
-
-
 export const IdentityProvider = {
   email: 'email',
-  github: 'github'
+  github: 'github',
+  google: 'google',
+  azuread: 'azuread',
+  openid: 'openid',
+  saml: 'saml'
 } as const
 
 export type IdentityProvider = (typeof IdentityProvider)[keyof typeof IdentityProvider]
-
-
-export const Intention = {
-  survey_user_segments: 'survey_user_segments',
-  survey_at_specific_point_in_user_journey: 'survey_at_specific_point_in_user_journey',
-  enrich_customer_profiles: 'enrich_customer_profiles',
-  collect_all_user_feedback_on_one_platform: 'collect_all_user_feedback_on_one_platform',
-  other: 'other'
-} as const
-
-export type Intention = (typeof Intention)[keyof typeof Intention]
-
-
-export const MembershipRole = {
-  owner: 'owner',
-  admin: 'admin',
-  editor: 'editor',
-  developer: 'developer',
-  viewer: 'viewer'
-} as const
-
-export type MembershipRole = (typeof MembershipRole)[keyof typeof MembershipRole]
-
-
-export const Objective = {
-  increase_conversion: 'increase_conversion',
-  improve_user_retention: 'improve_user_retention',
-  increase_user_adoption: 'increase_user_adoption',
-  sharpen_marketing_messaging: 'sharpen_marketing_messaging',
-  support_sales: 'support_sales',
-  other: 'other'
-} as const
-
-export type Objective = (typeof Objective)[keyof typeof Objective]
 
 
 export const PipelineTriggers = {
@@ -92,25 +36,6 @@ export const PipelineTriggers = {
 } as const
 
 export type PipelineTriggers = (typeof PipelineTriggers)[keyof typeof PipelineTriggers]
-
-
-export const Plan = {
-  free: 'free',
-  pro: 'pro'
-} as const
-
-export type Plan = (typeof Plan)[keyof typeof Plan]
-
-
-export const Role = {
-  project_manager: 'project_manager',
-  engineer: 'engineer',
-  founder: 'founder',
-  marketing_specialist: 'marketing_specialist',
-  other: 'other'
-} as const
-
-export type Role = (typeof Role)[keyof typeof Role]
 
 
 export const SurveyAttributeFilterCondition = {
@@ -125,18 +50,15 @@ export const SurveyStatus = {
   draft: 'draft',
   inProgress: 'inProgress',
   paused: 'paused',
-  completed: 'completed',
-  archived: 'archived'
+  completed: 'completed'
 } as const
 
 export type SurveyStatus = (typeof SurveyStatus)[keyof typeof SurveyStatus]
 
 
 export const SurveyType = {
-  email: 'email',
   link: 'link',
-  mobile: 'mobile',
-  web: 'web'
+  app: 'app'
 } as const
 
 export type SurveyType = (typeof SurveyType)[keyof typeof SurveyType]
@@ -145,7 +67,153 @@ export type SurveyType = (typeof SurveyType)[keyof typeof SurveyType]
 export const displayOptions = {
   displayOnce: 'displayOnce',
   displayMultiple: 'displayMultiple',
-  respondMultiple: 'respondMultiple'
+  respondMultiple: 'respondMultiple',
+  displaySome: 'displaySome'
 } as const
 
 export type displayOptions = (typeof displayOptions)[keyof typeof displayOptions]
+
+
+export const ActionType = {
+  code: 'code',
+  noCode: 'noCode'
+} as const
+
+export type ActionType = (typeof ActionType)[keyof typeof ActionType]
+
+
+export const AdminAuditTargetType = {
+  organization: 'organization',
+  membership: 'membership',
+  project: 'project',
+  environment: 'environment',
+  survey: 'survey',
+  response: 'response',
+  contact: 'contact',
+  tag: 'tag',
+  team: 'team',
+  invite: 'invite',
+  apiKey: 'apiKey',
+  webhook: 'webhook',
+  other: 'other'
+} as const
+
+export type AdminAuditTargetType = (typeof AdminAuditTargetType)[keyof typeof AdminAuditTargetType]
+
+
+export const AdminOrgAccessLevel = {
+  read: 'read',
+  manage: 'manage'
+} as const
+
+export type AdminOrgAccessLevel = (typeof AdminOrgAccessLevel)[keyof typeof AdminOrgAccessLevel]
+
+
+export const AdminRole = {
+  superAdmin: 'superAdmin',
+  supportAdmin: 'supportAdmin',
+  readOnly: 'readOnly'
+} as const
+
+export type AdminRole = (typeof AdminRole)[keyof typeof AdminRole]
+
+
+export const ApiKeyPermission = {
+  read: 'read',
+  write: 'write',
+  manage: 'manage'
+} as const
+
+export type ApiKeyPermission = (typeof ApiKeyPermission)[keyof typeof ApiKeyPermission]
+
+
+export const ContactAttributeType = {
+  default: 'default',
+  custom: 'custom'
+} as const
+
+export type ContactAttributeType = (typeof ContactAttributeType)[keyof typeof ContactAttributeType]
+
+
+export const DataMigrationStatus = {
+  pending: 'pending',
+  applied: 'applied',
+  failed: 'failed'
+} as const
+
+export type DataMigrationStatus = (typeof DataMigrationStatus)[keyof typeof DataMigrationStatus]
+
+
+export const IntegrationType = {
+  googleSheets: 'googleSheets',
+  airtable: 'airtable',
+  notion: 'notion',
+  slack: 'slack'
+} as const
+
+export type IntegrationType = (typeof IntegrationType)[keyof typeof IntegrationType]
+
+
+export const OrganizationRole = {
+  owner: 'owner',
+  manager: 'manager',
+  member: 'member',
+  billing: 'billing'
+} as const
+
+export type OrganizationRole = (typeof OrganizationRole)[keyof typeof OrganizationRole]
+
+
+export const ProjectTeamPermission = {
+  read: 'read',
+  readWrite: 'readWrite',
+  manage: 'manage'
+} as const
+
+export type ProjectTeamPermission = (typeof ProjectTeamPermission)[keyof typeof ProjectTeamPermission]
+
+
+export const ResponseQuotaLinkStatus = {
+  screenedIn: 'screenedIn',
+  screenedOut: 'screenedOut'
+} as const
+
+export type ResponseQuotaLinkStatus = (typeof ResponseQuotaLinkStatus)[keyof typeof ResponseQuotaLinkStatus]
+
+
+export const SurveyQuotaAction = {
+  endSurvey: 'endSurvey',
+  continueSurvey: 'continueSurvey'
+} as const
+
+export type SurveyQuotaAction = (typeof SurveyQuotaAction)[keyof typeof SurveyQuotaAction]
+
+
+export const TeamUserRole = {
+  admin: 'admin',
+  contributor: 'contributor'
+} as const
+
+export type TeamUserRole = (typeof TeamUserRole)[keyof typeof TeamUserRole]
+
+
+export const WebhookSource = {
+  user: 'user',
+  zapier: 'zapier',
+  make: 'make',
+  n8n: 'n8n',
+  activepieces: 'activepieces'
+} as const
+
+export type WebhookSource = (typeof WebhookSource)[keyof typeof WebhookSource]
+
+
+export const WidgetPlacement = {
+  bottomLeft: 'bottomLeft',
+  bottomRight: 'bottomRight',
+  topLeft: 'topLeft',
+  topRight: 'topRight',
+  center: 'center'
+} as const
+
+export type WidgetPlacement = (typeof WidgetPlacement)[keyof typeof WidgetPlacement]

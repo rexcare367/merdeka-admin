@@ -12,7 +12,13 @@ export default {
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id
-        token.email = user.email
+        if (user.email) {
+          token.email = user.email
+        }
+        const u = user as { accessToken?: string }
+        if (typeof u.accessToken === "string") {
+          token.accessToken = u.accessToken
+        }
       }
       return token
     },
@@ -22,6 +28,9 @@ export default {
         if (token.email) {
           session.user.email = token.email as string
         }
+      }
+      if (typeof token.accessToken === "string") {
+        session.accessToken = token.accessToken
       }
       return session
     },

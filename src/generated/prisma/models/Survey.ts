@@ -28,10 +28,20 @@ export type AggregateSurvey = {
 
 export type SurveyAvgAggregateOutputType = {
   recontactDays: number | null
+  autoClose: number | null
+  delay: number | null
+  autoComplete: number | null
+  displayPercentage: runtime.Decimal | null
+  displayLimit: number | null
 }
 
 export type SurveySumAggregateOutputType = {
   recontactDays: number | null
+  autoClose: number | null
+  delay: number | null
+  autoComplete: number | null
+  displayPercentage: runtime.Decimal | null
+  displayLimit: number | null
 }
 
 export type SurveyMinAggregateOutputType = {
@@ -44,6 +54,19 @@ export type SurveyMinAggregateOutputType = {
   displayOption: $Enums.displayOptions | null
   recontactDays: number | null
   type: $Enums.SurveyType | null
+  autoClose: number | null
+  delay: number | null
+  autoComplete: number | null
+  redirectUrl: string | null
+  pin: string | null
+  displayPercentage: runtime.Decimal | null
+  createdBy: string | null
+  segmentId: string | null
+  displayLimit: number | null
+  showLanguageSwitch: boolean | null
+  isVerifyEmailEnabled: boolean | null
+  isSingleResponsePerEmailEnabled: boolean | null
+  isBackButtonHidden: boolean | null
 }
 
 export type SurveyMaxAggregateOutputType = {
@@ -56,6 +79,19 @@ export type SurveyMaxAggregateOutputType = {
   displayOption: $Enums.displayOptions | null
   recontactDays: number | null
   type: $Enums.SurveyType | null
+  autoClose: number | null
+  delay: number | null
+  autoComplete: number | null
+  redirectUrl: string | null
+  pin: string | null
+  displayPercentage: runtime.Decimal | null
+  createdBy: string | null
+  segmentId: string | null
+  displayLimit: number | null
+  showLanguageSwitch: boolean | null
+  isVerifyEmailEnabled: boolean | null
+  isSingleResponsePerEmailEnabled: boolean | null
+  isBackButtonHidden: boolean | null
 }
 
 export type SurveyCountAggregateOutputType = {
@@ -68,18 +104,52 @@ export type SurveyCountAggregateOutputType = {
   questions: number
   displayOption: number
   recontactDays: number
-  thankYouCard: number
   type: number
+  autoClose: number
+  delay: number
+  autoComplete: number
+  redirectUrl: number
+  surveyClosedMessage: number
+  singleUse: number
+  projectOverwrites: number
+  hiddenFields: number
+  pin: number
+  welcomeCard: number
+  styling: number
+  displayPercentage: number
+  createdBy: number
+  segmentId: number
+  inlineTriggers: number
+  displayLimit: number
+  showLanguageSwitch: number
+  isVerifyEmailEnabled: number
+  endings: number
+  variables: number
+  isSingleResponsePerEmailEnabled: number
+  isBackButtonHidden: number
+  recaptcha: number
+  metadata: number
+  blocks: number
   _all: number
 }
 
 
 export type SurveyAvgAggregateInputType = {
   recontactDays?: true
+  autoClose?: true
+  delay?: true
+  autoComplete?: true
+  displayPercentage?: true
+  displayLimit?: true
 }
 
 export type SurveySumAggregateInputType = {
   recontactDays?: true
+  autoClose?: true
+  delay?: true
+  autoComplete?: true
+  displayPercentage?: true
+  displayLimit?: true
 }
 
 export type SurveyMinAggregateInputType = {
@@ -92,6 +162,19 @@ export type SurveyMinAggregateInputType = {
   displayOption?: true
   recontactDays?: true
   type?: true
+  autoClose?: true
+  delay?: true
+  autoComplete?: true
+  redirectUrl?: true
+  pin?: true
+  displayPercentage?: true
+  createdBy?: true
+  segmentId?: true
+  displayLimit?: true
+  showLanguageSwitch?: true
+  isVerifyEmailEnabled?: true
+  isSingleResponsePerEmailEnabled?: true
+  isBackButtonHidden?: true
 }
 
 export type SurveyMaxAggregateInputType = {
@@ -104,6 +187,19 @@ export type SurveyMaxAggregateInputType = {
   displayOption?: true
   recontactDays?: true
   type?: true
+  autoClose?: true
+  delay?: true
+  autoComplete?: true
+  redirectUrl?: true
+  pin?: true
+  displayPercentage?: true
+  createdBy?: true
+  segmentId?: true
+  displayLimit?: true
+  showLanguageSwitch?: true
+  isVerifyEmailEnabled?: true
+  isSingleResponsePerEmailEnabled?: true
+  isBackButtonHidden?: true
 }
 
 export type SurveyCountAggregateInputType = {
@@ -116,8 +212,32 @@ export type SurveyCountAggregateInputType = {
   questions?: true
   displayOption?: true
   recontactDays?: true
-  thankYouCard?: true
   type?: true
+  autoClose?: true
+  delay?: true
+  autoComplete?: true
+  redirectUrl?: true
+  surveyClosedMessage?: true
+  singleUse?: true
+  projectOverwrites?: true
+  hiddenFields?: true
+  pin?: true
+  welcomeCard?: true
+  styling?: true
+  displayPercentage?: true
+  createdBy?: true
+  segmentId?: true
+  inlineTriggers?: true
+  displayLimit?: true
+  showLanguageSwitch?: true
+  isVerifyEmailEnabled?: true
+  endings?: true
+  variables?: true
+  isSingleResponsePerEmailEnabled?: true
+  isBackButtonHidden?: true
+  recaptcha?: true
+  metadata?: true
+  blocks?: true
   _all?: true
 }
 
@@ -217,8 +337,32 @@ export type SurveyGroupByOutputType = {
   questions: runtime.JsonValue
   displayOption: $Enums.displayOptions
   recontactDays: number | null
-  thankYouCard: runtime.JsonValue
   type: $Enums.SurveyType
+  autoClose: number | null
+  delay: number
+  autoComplete: number | null
+  redirectUrl: string | null
+  surveyClosedMessage: runtime.JsonValue | null
+  singleUse: runtime.JsonValue | null
+  projectOverwrites: runtime.JsonValue | null
+  hiddenFields: runtime.JsonValue
+  pin: string | null
+  welcomeCard: runtime.JsonValue
+  styling: runtime.JsonValue | null
+  displayPercentage: runtime.Decimal | null
+  createdBy: string | null
+  segmentId: string | null
+  inlineTriggers: runtime.JsonValue | null
+  displayLimit: number | null
+  showLanguageSwitch: boolean | null
+  isVerifyEmailEnabled: boolean
+  endings: runtime.JsonValue[]
+  variables: runtime.JsonValue
+  isSingleResponsePerEmailEnabled: boolean
+  isBackButtonHidden: boolean
+  recaptcha: runtime.JsonValue | null
+  metadata: runtime.JsonValue
+  blocks: runtime.JsonValue[]
   _count: SurveyCountAggregateOutputType | null
   _avg: SurveyAvgAggregateOutputType | null
   _sum: SurveySumAggregateOutputType | null
@@ -254,12 +398,41 @@ export type SurveyWhereInput = {
   questions?: Prisma.JsonFilter<"Survey">
   displayOption?: Prisma.EnumdisplayOptionsFilter<"Survey"> | $Enums.displayOptions
   recontactDays?: Prisma.IntNullableFilter<"Survey"> | number | null
-  thankYouCard?: Prisma.JsonFilter<"Survey">
   type?: Prisma.EnumSurveyTypeFilter<"Survey"> | $Enums.SurveyType
+  autoClose?: Prisma.IntNullableFilter<"Survey"> | number | null
+  delay?: Prisma.IntFilter<"Survey"> | number
+  autoComplete?: Prisma.IntNullableFilter<"Survey"> | number | null
+  redirectUrl?: Prisma.StringNullableFilter<"Survey"> | string | null
+  surveyClosedMessage?: Prisma.JsonNullableFilter<"Survey">
+  singleUse?: Prisma.JsonNullableFilter<"Survey">
+  projectOverwrites?: Prisma.JsonNullableFilter<"Survey">
+  hiddenFields?: Prisma.JsonFilter<"Survey">
+  pin?: Prisma.StringNullableFilter<"Survey"> | string | null
+  welcomeCard?: Prisma.JsonFilter<"Survey">
+  styling?: Prisma.JsonNullableFilter<"Survey">
+  displayPercentage?: Prisma.DecimalNullableFilter<"Survey"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdBy?: Prisma.StringNullableFilter<"Survey"> | string | null
+  segmentId?: Prisma.StringNullableFilter<"Survey"> | string | null
+  inlineTriggers?: Prisma.JsonNullableFilter<"Survey">
+  displayLimit?: Prisma.IntNullableFilter<"Survey"> | number | null
+  showLanguageSwitch?: Prisma.BoolNullableFilter<"Survey"> | boolean | null
+  isVerifyEmailEnabled?: Prisma.BoolFilter<"Survey"> | boolean
+  endings?: Prisma.JsonNullableListFilter<"Survey">
+  variables?: Prisma.JsonFilter<"Survey">
+  isSingleResponsePerEmailEnabled?: Prisma.BoolFilter<"Survey"> | boolean
+  isBackButtonHidden?: Prisma.BoolFilter<"Survey"> | boolean
+  recaptcha?: Prisma.JsonNullableFilter<"Survey">
+  metadata?: Prisma.JsonFilter<"Survey">
+  blocks?: Prisma.JsonNullableListFilter<"Survey">
   Display?: Prisma.DisplayListRelationFilter
   Response?: Prisma.ResponseListRelationFilter
+  User?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
   Environment?: Prisma.XOR<Prisma.EnvironmentScalarRelationFilter, Prisma.EnvironmentWhereInput>
+  Segment?: Prisma.XOR<Prisma.SegmentNullableScalarRelationFilter, Prisma.SegmentWhereInput> | null
   SurveyAttributeFilter?: Prisma.SurveyAttributeFilterListRelationFilter
+  SurveyFollowUp?: Prisma.SurveyFollowUpListRelationFilter
+  SurveyLanguage?: Prisma.SurveyLanguageListRelationFilter
+  SurveyQuota?: Prisma.SurveyQuotaListRelationFilter
   SurveyTrigger?: Prisma.SurveyTriggerListRelationFilter
 }
 
@@ -273,12 +446,41 @@ export type SurveyOrderByWithRelationInput = {
   questions?: Prisma.SortOrder
   displayOption?: Prisma.SortOrder
   recontactDays?: Prisma.SortOrderInput | Prisma.SortOrder
-  thankYouCard?: Prisma.SortOrder
   type?: Prisma.SortOrder
+  autoClose?: Prisma.SortOrderInput | Prisma.SortOrder
+  delay?: Prisma.SortOrder
+  autoComplete?: Prisma.SortOrderInput | Prisma.SortOrder
+  redirectUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  surveyClosedMessage?: Prisma.SortOrderInput | Prisma.SortOrder
+  singleUse?: Prisma.SortOrderInput | Prisma.SortOrder
+  projectOverwrites?: Prisma.SortOrderInput | Prisma.SortOrder
+  hiddenFields?: Prisma.SortOrder
+  pin?: Prisma.SortOrderInput | Prisma.SortOrder
+  welcomeCard?: Prisma.SortOrder
+  styling?: Prisma.SortOrderInput | Prisma.SortOrder
+  displayPercentage?: Prisma.SortOrderInput | Prisma.SortOrder
+  createdBy?: Prisma.SortOrderInput | Prisma.SortOrder
+  segmentId?: Prisma.SortOrderInput | Prisma.SortOrder
+  inlineTriggers?: Prisma.SortOrderInput | Prisma.SortOrder
+  displayLimit?: Prisma.SortOrderInput | Prisma.SortOrder
+  showLanguageSwitch?: Prisma.SortOrderInput | Prisma.SortOrder
+  isVerifyEmailEnabled?: Prisma.SortOrder
+  endings?: Prisma.SortOrder
+  variables?: Prisma.SortOrder
+  isSingleResponsePerEmailEnabled?: Prisma.SortOrder
+  isBackButtonHidden?: Prisma.SortOrder
+  recaptcha?: Prisma.SortOrderInput | Prisma.SortOrder
+  metadata?: Prisma.SortOrder
+  blocks?: Prisma.SortOrder
   Display?: Prisma.DisplayOrderByRelationAggregateInput
   Response?: Prisma.ResponseOrderByRelationAggregateInput
+  User?: Prisma.UserOrderByWithRelationInput
   Environment?: Prisma.EnvironmentOrderByWithRelationInput
+  Segment?: Prisma.SegmentOrderByWithRelationInput
   SurveyAttributeFilter?: Prisma.SurveyAttributeFilterOrderByRelationAggregateInput
+  SurveyFollowUp?: Prisma.SurveyFollowUpOrderByRelationAggregateInput
+  SurveyLanguage?: Prisma.SurveyLanguageOrderByRelationAggregateInput
+  SurveyQuota?: Prisma.SurveyQuotaOrderByRelationAggregateInput
   SurveyTrigger?: Prisma.SurveyTriggerOrderByRelationAggregateInput
 }
 
@@ -295,12 +497,41 @@ export type SurveyWhereUniqueInput = Prisma.AtLeast<{
   questions?: Prisma.JsonFilter<"Survey">
   displayOption?: Prisma.EnumdisplayOptionsFilter<"Survey"> | $Enums.displayOptions
   recontactDays?: Prisma.IntNullableFilter<"Survey"> | number | null
-  thankYouCard?: Prisma.JsonFilter<"Survey">
   type?: Prisma.EnumSurveyTypeFilter<"Survey"> | $Enums.SurveyType
+  autoClose?: Prisma.IntNullableFilter<"Survey"> | number | null
+  delay?: Prisma.IntFilter<"Survey"> | number
+  autoComplete?: Prisma.IntNullableFilter<"Survey"> | number | null
+  redirectUrl?: Prisma.StringNullableFilter<"Survey"> | string | null
+  surveyClosedMessage?: Prisma.JsonNullableFilter<"Survey">
+  singleUse?: Prisma.JsonNullableFilter<"Survey">
+  projectOverwrites?: Prisma.JsonNullableFilter<"Survey">
+  hiddenFields?: Prisma.JsonFilter<"Survey">
+  pin?: Prisma.StringNullableFilter<"Survey"> | string | null
+  welcomeCard?: Prisma.JsonFilter<"Survey">
+  styling?: Prisma.JsonNullableFilter<"Survey">
+  displayPercentage?: Prisma.DecimalNullableFilter<"Survey"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdBy?: Prisma.StringNullableFilter<"Survey"> | string | null
+  segmentId?: Prisma.StringNullableFilter<"Survey"> | string | null
+  inlineTriggers?: Prisma.JsonNullableFilter<"Survey">
+  displayLimit?: Prisma.IntNullableFilter<"Survey"> | number | null
+  showLanguageSwitch?: Prisma.BoolNullableFilter<"Survey"> | boolean | null
+  isVerifyEmailEnabled?: Prisma.BoolFilter<"Survey"> | boolean
+  endings?: Prisma.JsonNullableListFilter<"Survey">
+  variables?: Prisma.JsonFilter<"Survey">
+  isSingleResponsePerEmailEnabled?: Prisma.BoolFilter<"Survey"> | boolean
+  isBackButtonHidden?: Prisma.BoolFilter<"Survey"> | boolean
+  recaptcha?: Prisma.JsonNullableFilter<"Survey">
+  metadata?: Prisma.JsonFilter<"Survey">
+  blocks?: Prisma.JsonNullableListFilter<"Survey">
   Display?: Prisma.DisplayListRelationFilter
   Response?: Prisma.ResponseListRelationFilter
+  User?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
   Environment?: Prisma.XOR<Prisma.EnvironmentScalarRelationFilter, Prisma.EnvironmentWhereInput>
+  Segment?: Prisma.XOR<Prisma.SegmentNullableScalarRelationFilter, Prisma.SegmentWhereInput> | null
   SurveyAttributeFilter?: Prisma.SurveyAttributeFilterListRelationFilter
+  SurveyFollowUp?: Prisma.SurveyFollowUpListRelationFilter
+  SurveyLanguage?: Prisma.SurveyLanguageListRelationFilter
+  SurveyQuota?: Prisma.SurveyQuotaListRelationFilter
   SurveyTrigger?: Prisma.SurveyTriggerListRelationFilter
 }, "id">
 
@@ -314,8 +545,32 @@ export type SurveyOrderByWithAggregationInput = {
   questions?: Prisma.SortOrder
   displayOption?: Prisma.SortOrder
   recontactDays?: Prisma.SortOrderInput | Prisma.SortOrder
-  thankYouCard?: Prisma.SortOrder
   type?: Prisma.SortOrder
+  autoClose?: Prisma.SortOrderInput | Prisma.SortOrder
+  delay?: Prisma.SortOrder
+  autoComplete?: Prisma.SortOrderInput | Prisma.SortOrder
+  redirectUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  surveyClosedMessage?: Prisma.SortOrderInput | Prisma.SortOrder
+  singleUse?: Prisma.SortOrderInput | Prisma.SortOrder
+  projectOverwrites?: Prisma.SortOrderInput | Prisma.SortOrder
+  hiddenFields?: Prisma.SortOrder
+  pin?: Prisma.SortOrderInput | Prisma.SortOrder
+  welcomeCard?: Prisma.SortOrder
+  styling?: Prisma.SortOrderInput | Prisma.SortOrder
+  displayPercentage?: Prisma.SortOrderInput | Prisma.SortOrder
+  createdBy?: Prisma.SortOrderInput | Prisma.SortOrder
+  segmentId?: Prisma.SortOrderInput | Prisma.SortOrder
+  inlineTriggers?: Prisma.SortOrderInput | Prisma.SortOrder
+  displayLimit?: Prisma.SortOrderInput | Prisma.SortOrder
+  showLanguageSwitch?: Prisma.SortOrderInput | Prisma.SortOrder
+  isVerifyEmailEnabled?: Prisma.SortOrder
+  endings?: Prisma.SortOrder
+  variables?: Prisma.SortOrder
+  isSingleResponsePerEmailEnabled?: Prisma.SortOrder
+  isBackButtonHidden?: Prisma.SortOrder
+  recaptcha?: Prisma.SortOrderInput | Prisma.SortOrder
+  metadata?: Prisma.SortOrder
+  blocks?: Prisma.SortOrder
   _count?: Prisma.SurveyCountOrderByAggregateInput
   _avg?: Prisma.SurveyAvgOrderByAggregateInput
   _max?: Prisma.SurveyMaxOrderByAggregateInput
@@ -336,8 +591,32 @@ export type SurveyScalarWhereWithAggregatesInput = {
   questions?: Prisma.JsonWithAggregatesFilter<"Survey">
   displayOption?: Prisma.EnumdisplayOptionsWithAggregatesFilter<"Survey"> | $Enums.displayOptions
   recontactDays?: Prisma.IntNullableWithAggregatesFilter<"Survey"> | number | null
-  thankYouCard?: Prisma.JsonWithAggregatesFilter<"Survey">
   type?: Prisma.EnumSurveyTypeWithAggregatesFilter<"Survey"> | $Enums.SurveyType
+  autoClose?: Prisma.IntNullableWithAggregatesFilter<"Survey"> | number | null
+  delay?: Prisma.IntWithAggregatesFilter<"Survey"> | number
+  autoComplete?: Prisma.IntNullableWithAggregatesFilter<"Survey"> | number | null
+  redirectUrl?: Prisma.StringNullableWithAggregatesFilter<"Survey"> | string | null
+  surveyClosedMessage?: Prisma.JsonNullableWithAggregatesFilter<"Survey">
+  singleUse?: Prisma.JsonNullableWithAggregatesFilter<"Survey">
+  projectOverwrites?: Prisma.JsonNullableWithAggregatesFilter<"Survey">
+  hiddenFields?: Prisma.JsonWithAggregatesFilter<"Survey">
+  pin?: Prisma.StringNullableWithAggregatesFilter<"Survey"> | string | null
+  welcomeCard?: Prisma.JsonWithAggregatesFilter<"Survey">
+  styling?: Prisma.JsonNullableWithAggregatesFilter<"Survey">
+  displayPercentage?: Prisma.DecimalNullableWithAggregatesFilter<"Survey"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdBy?: Prisma.StringNullableWithAggregatesFilter<"Survey"> | string | null
+  segmentId?: Prisma.StringNullableWithAggregatesFilter<"Survey"> | string | null
+  inlineTriggers?: Prisma.JsonNullableWithAggregatesFilter<"Survey">
+  displayLimit?: Prisma.IntNullableWithAggregatesFilter<"Survey"> | number | null
+  showLanguageSwitch?: Prisma.BoolNullableWithAggregatesFilter<"Survey"> | boolean | null
+  isVerifyEmailEnabled?: Prisma.BoolWithAggregatesFilter<"Survey"> | boolean
+  endings?: Prisma.JsonNullableListFilter<"Survey">
+  variables?: Prisma.JsonWithAggregatesFilter<"Survey">
+  isSingleResponsePerEmailEnabled?: Prisma.BoolWithAggregatesFilter<"Survey"> | boolean
+  isBackButtonHidden?: Prisma.BoolWithAggregatesFilter<"Survey"> | boolean
+  recaptcha?: Prisma.JsonNullableWithAggregatesFilter<"Survey">
+  metadata?: Prisma.JsonWithAggregatesFilter<"Survey">
+  blocks?: Prisma.JsonNullableListFilter<"Survey">
 }
 
 export type SurveyCreateInput = {
@@ -349,12 +628,39 @@ export type SurveyCreateInput = {
   questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   displayOption?: $Enums.displayOptions
   recontactDays?: number | null
-  thankYouCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   type?: $Enums.SurveyType
+  autoClose?: number | null
+  delay?: number
+  autoComplete?: number | null
+  redirectUrl?: string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: number | null
+  showLanguageSwitch?: boolean | null
+  isVerifyEmailEnabled?: boolean
+  endings?: Prisma.SurveyCreateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: boolean
+  isBackButtonHidden?: boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyCreateblocksInput | runtime.InputJsonValue[]
   Display?: Prisma.DisplayCreateNestedManyWithoutSurveyInput
   Response?: Prisma.ResponseCreateNestedManyWithoutSurveyInput
+  User?: Prisma.UserCreateNestedOneWithoutSurveyInput
   Environment: Prisma.EnvironmentCreateNestedOneWithoutSurveyInput
+  Segment?: Prisma.SegmentCreateNestedOneWithoutSurveyInput
   SurveyAttributeFilter?: Prisma.SurveyAttributeFilterCreateNestedManyWithoutSurveyInput
+  SurveyFollowUp?: Prisma.SurveyFollowUpCreateNestedManyWithoutSurveyInput
+  SurveyLanguage?: Prisma.SurveyLanguageCreateNestedManyWithoutSurveyInput
+  SurveyQuota?: Prisma.SurveyQuotaCreateNestedManyWithoutSurveyInput
   SurveyTrigger?: Prisma.SurveyTriggerCreateNestedManyWithoutSurveyInput
 }
 
@@ -368,11 +674,38 @@ export type SurveyUncheckedCreateInput = {
   questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   displayOption?: $Enums.displayOptions
   recontactDays?: number | null
-  thankYouCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   type?: $Enums.SurveyType
+  autoClose?: number | null
+  delay?: number
+  autoComplete?: number | null
+  redirectUrl?: string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdBy?: string | null
+  segmentId?: string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: number | null
+  showLanguageSwitch?: boolean | null
+  isVerifyEmailEnabled?: boolean
+  endings?: Prisma.SurveyCreateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: boolean
+  isBackButtonHidden?: boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyCreateblocksInput | runtime.InputJsonValue[]
   Display?: Prisma.DisplayUncheckedCreateNestedManyWithoutSurveyInput
   Response?: Prisma.ResponseUncheckedCreateNestedManyWithoutSurveyInput
   SurveyAttributeFilter?: Prisma.SurveyAttributeFilterUncheckedCreateNestedManyWithoutSurveyInput
+  SurveyFollowUp?: Prisma.SurveyFollowUpUncheckedCreateNestedManyWithoutSurveyInput
+  SurveyLanguage?: Prisma.SurveyLanguageUncheckedCreateNestedManyWithoutSurveyInput
+  SurveyQuota?: Prisma.SurveyQuotaUncheckedCreateNestedManyWithoutSurveyInput
   SurveyTrigger?: Prisma.SurveyTriggerUncheckedCreateNestedManyWithoutSurveyInput
 }
 
@@ -385,12 +718,39 @@ export type SurveyUpdateInput = {
   questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   displayOption?: Prisma.EnumdisplayOptionsFieldUpdateOperationsInput | $Enums.displayOptions
   recontactDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  thankYouCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   type?: Prisma.EnumSurveyTypeFieldUpdateOperationsInput | $Enums.SurveyType
+  autoClose?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  delay?: Prisma.IntFieldUpdateOperationsInput | number
+  autoComplete?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  redirectUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  showLanguageSwitch?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  isVerifyEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  endings?: Prisma.SurveyUpdateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isBackButtonHidden?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyUpdateblocksInput | runtime.InputJsonValue[]
   Display?: Prisma.DisplayUpdateManyWithoutSurveyNestedInput
   Response?: Prisma.ResponseUpdateManyWithoutSurveyNestedInput
+  User?: Prisma.UserUpdateOneWithoutSurveyNestedInput
   Environment?: Prisma.EnvironmentUpdateOneRequiredWithoutSurveyNestedInput
+  Segment?: Prisma.SegmentUpdateOneWithoutSurveyNestedInput
   SurveyAttributeFilter?: Prisma.SurveyAttributeFilterUpdateManyWithoutSurveyNestedInput
+  SurveyFollowUp?: Prisma.SurveyFollowUpUpdateManyWithoutSurveyNestedInput
+  SurveyLanguage?: Prisma.SurveyLanguageUpdateManyWithoutSurveyNestedInput
+  SurveyQuota?: Prisma.SurveyQuotaUpdateManyWithoutSurveyNestedInput
   SurveyTrigger?: Prisma.SurveyTriggerUpdateManyWithoutSurveyNestedInput
 }
 
@@ -404,11 +764,38 @@ export type SurveyUncheckedUpdateInput = {
   questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   displayOption?: Prisma.EnumdisplayOptionsFieldUpdateOperationsInput | $Enums.displayOptions
   recontactDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  thankYouCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   type?: Prisma.EnumSurveyTypeFieldUpdateOperationsInput | $Enums.SurveyType
+  autoClose?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  delay?: Prisma.IntFieldUpdateOperationsInput | number
+  autoComplete?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  redirectUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  segmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  showLanguageSwitch?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  isVerifyEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  endings?: Prisma.SurveyUpdateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isBackButtonHidden?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyUpdateblocksInput | runtime.InputJsonValue[]
   Display?: Prisma.DisplayUncheckedUpdateManyWithoutSurveyNestedInput
   Response?: Prisma.ResponseUncheckedUpdateManyWithoutSurveyNestedInput
   SurveyAttributeFilter?: Prisma.SurveyAttributeFilterUncheckedUpdateManyWithoutSurveyNestedInput
+  SurveyFollowUp?: Prisma.SurveyFollowUpUncheckedUpdateManyWithoutSurveyNestedInput
+  SurveyLanguage?: Prisma.SurveyLanguageUncheckedUpdateManyWithoutSurveyNestedInput
+  SurveyQuota?: Prisma.SurveyQuotaUncheckedUpdateManyWithoutSurveyNestedInput
   SurveyTrigger?: Prisma.SurveyTriggerUncheckedUpdateManyWithoutSurveyNestedInput
 }
 
@@ -422,8 +809,32 @@ export type SurveyCreateManyInput = {
   questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   displayOption?: $Enums.displayOptions
   recontactDays?: number | null
-  thankYouCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   type?: $Enums.SurveyType
+  autoClose?: number | null
+  delay?: number
+  autoComplete?: number | null
+  redirectUrl?: string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdBy?: string | null
+  segmentId?: string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: number | null
+  showLanguageSwitch?: boolean | null
+  isVerifyEmailEnabled?: boolean
+  endings?: Prisma.SurveyCreateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: boolean
+  isBackButtonHidden?: boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyCreateblocksInput | runtime.InputJsonValue[]
 }
 
 export type SurveyUpdateManyMutationInput = {
@@ -435,8 +846,30 @@ export type SurveyUpdateManyMutationInput = {
   questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   displayOption?: Prisma.EnumdisplayOptionsFieldUpdateOperationsInput | $Enums.displayOptions
   recontactDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  thankYouCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   type?: Prisma.EnumSurveyTypeFieldUpdateOperationsInput | $Enums.SurveyType
+  autoClose?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  delay?: Prisma.IntFieldUpdateOperationsInput | number
+  autoComplete?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  redirectUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  showLanguageSwitch?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  isVerifyEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  endings?: Prisma.SurveyUpdateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isBackButtonHidden?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyUpdateblocksInput | runtime.InputJsonValue[]
 }
 
 export type SurveyUncheckedUpdateManyInput = {
@@ -449,8 +882,32 @@ export type SurveyUncheckedUpdateManyInput = {
   questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   displayOption?: Prisma.EnumdisplayOptionsFieldUpdateOperationsInput | $Enums.displayOptions
   recontactDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  thankYouCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   type?: Prisma.EnumSurveyTypeFieldUpdateOperationsInput | $Enums.SurveyType
+  autoClose?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  delay?: Prisma.IntFieldUpdateOperationsInput | number
+  autoComplete?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  redirectUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  segmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  showLanguageSwitch?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  isVerifyEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  endings?: Prisma.SurveyUpdateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isBackButtonHidden?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyUpdateblocksInput | runtime.InputJsonValue[]
 }
 
 export type SurveyScalarRelationFilter = {
@@ -468,6 +925,21 @@ export type SurveyOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
+export type JsonNullableListFilter<$PrismaModel = never> =
+| Prisma.PatchUndefined<
+    Prisma.Either<Required<JsonNullableListFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableListFilterBase<$PrismaModel>>, 'path'>>,
+    Required<JsonNullableListFilterBase<$PrismaModel>>
+  >
+| Prisma.OptionalFlat<Omit<Required<JsonNullableListFilterBase<$PrismaModel>>, 'path'>>
+
+export type JsonNullableListFilterBase<$PrismaModel = never> = {
+  equals?: runtime.InputJsonValue[] | Prisma.ListJsonFieldRefInput<$PrismaModel> | null
+  has?: runtime.InputJsonValue | Prisma.JsonFieldRefInput<$PrismaModel> | null
+  hasEvery?: runtime.InputJsonValue[] | Prisma.ListJsonFieldRefInput<$PrismaModel>
+  hasSome?: runtime.InputJsonValue[] | Prisma.ListJsonFieldRefInput<$PrismaModel>
+  isEmpty?: boolean
+}
+
 export type SurveyCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
@@ -478,12 +950,41 @@ export type SurveyCountOrderByAggregateInput = {
   questions?: Prisma.SortOrder
   displayOption?: Prisma.SortOrder
   recontactDays?: Prisma.SortOrder
-  thankYouCard?: Prisma.SortOrder
   type?: Prisma.SortOrder
+  autoClose?: Prisma.SortOrder
+  delay?: Prisma.SortOrder
+  autoComplete?: Prisma.SortOrder
+  redirectUrl?: Prisma.SortOrder
+  surveyClosedMessage?: Prisma.SortOrder
+  singleUse?: Prisma.SortOrder
+  projectOverwrites?: Prisma.SortOrder
+  hiddenFields?: Prisma.SortOrder
+  pin?: Prisma.SortOrder
+  welcomeCard?: Prisma.SortOrder
+  styling?: Prisma.SortOrder
+  displayPercentage?: Prisma.SortOrder
+  createdBy?: Prisma.SortOrder
+  segmentId?: Prisma.SortOrder
+  inlineTriggers?: Prisma.SortOrder
+  displayLimit?: Prisma.SortOrder
+  showLanguageSwitch?: Prisma.SortOrder
+  isVerifyEmailEnabled?: Prisma.SortOrder
+  endings?: Prisma.SortOrder
+  variables?: Prisma.SortOrder
+  isSingleResponsePerEmailEnabled?: Prisma.SortOrder
+  isBackButtonHidden?: Prisma.SortOrder
+  recaptcha?: Prisma.SortOrder
+  metadata?: Prisma.SortOrder
+  blocks?: Prisma.SortOrder
 }
 
 export type SurveyAvgOrderByAggregateInput = {
   recontactDays?: Prisma.SortOrder
+  autoClose?: Prisma.SortOrder
+  delay?: Prisma.SortOrder
+  autoComplete?: Prisma.SortOrder
+  displayPercentage?: Prisma.SortOrder
+  displayLimit?: Prisma.SortOrder
 }
 
 export type SurveyMaxOrderByAggregateInput = {
@@ -496,6 +997,19 @@ export type SurveyMaxOrderByAggregateInput = {
   displayOption?: Prisma.SortOrder
   recontactDays?: Prisma.SortOrder
   type?: Prisma.SortOrder
+  autoClose?: Prisma.SortOrder
+  delay?: Prisma.SortOrder
+  autoComplete?: Prisma.SortOrder
+  redirectUrl?: Prisma.SortOrder
+  pin?: Prisma.SortOrder
+  displayPercentage?: Prisma.SortOrder
+  createdBy?: Prisma.SortOrder
+  segmentId?: Prisma.SortOrder
+  displayLimit?: Prisma.SortOrder
+  showLanguageSwitch?: Prisma.SortOrder
+  isVerifyEmailEnabled?: Prisma.SortOrder
+  isSingleResponsePerEmailEnabled?: Prisma.SortOrder
+  isBackButtonHidden?: Prisma.SortOrder
 }
 
 export type SurveyMinOrderByAggregateInput = {
@@ -508,10 +1022,28 @@ export type SurveyMinOrderByAggregateInput = {
   displayOption?: Prisma.SortOrder
   recontactDays?: Prisma.SortOrder
   type?: Prisma.SortOrder
+  autoClose?: Prisma.SortOrder
+  delay?: Prisma.SortOrder
+  autoComplete?: Prisma.SortOrder
+  redirectUrl?: Prisma.SortOrder
+  pin?: Prisma.SortOrder
+  displayPercentage?: Prisma.SortOrder
+  createdBy?: Prisma.SortOrder
+  segmentId?: Prisma.SortOrder
+  displayLimit?: Prisma.SortOrder
+  showLanguageSwitch?: Prisma.SortOrder
+  isVerifyEmailEnabled?: Prisma.SortOrder
+  isSingleResponsePerEmailEnabled?: Prisma.SortOrder
+  isBackButtonHidden?: Prisma.SortOrder
 }
 
 export type SurveySumOrderByAggregateInput = {
   recontactDays?: Prisma.SortOrder
+  autoClose?: Prisma.SortOrder
+  delay?: Prisma.SortOrder
+  autoComplete?: Prisma.SortOrder
+  displayPercentage?: Prisma.SortOrder
+  displayLimit?: Prisma.SortOrder
 }
 
 export type SurveyCreateNestedOneWithoutDisplayInput = {
@@ -584,6 +1116,14 @@ export type SurveyUpdateOneRequiredWithoutResponseNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.SurveyUpdateToOneWithWhereWithoutResponseInput, Prisma.SurveyUpdateWithoutResponseInput>, Prisma.SurveyUncheckedUpdateWithoutResponseInput>
 }
 
+export type SurveyCreateendingsInput = {
+  set: runtime.InputJsonValue[]
+}
+
+export type SurveyCreateblocksInput = {
+  set: runtime.InputJsonValue[]
+}
+
 export type EnumSurveyStatusFieldUpdateOperationsInput = {
   set?: $Enums.SurveyStatus
 }
@@ -594,6 +1134,36 @@ export type EnumdisplayOptionsFieldUpdateOperationsInput = {
 
 export type EnumSurveyTypeFieldUpdateOperationsInput = {
   set?: $Enums.SurveyType
+}
+
+export type IntFieldUpdateOperationsInput = {
+  set?: number
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
+export type NullableDecimalFieldUpdateOperationsInput = {
+  set?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  increment?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  decrement?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  multiply?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
+}
+
+export type NullableBoolFieldUpdateOperationsInput = {
+  set?: boolean | null
+}
+
+export type SurveyUpdateendingsInput = {
+  set?: runtime.InputJsonValue[]
+  push?: runtime.InputJsonValue | runtime.InputJsonValue[]
+}
+
+export type SurveyUpdateblocksInput = {
+  set?: runtime.InputJsonValue[]
+  push?: runtime.InputJsonValue | runtime.InputJsonValue[]
 }
 
 export type SurveyCreateNestedOneWithoutSurveyAttributeFilterInput = {
@@ -624,6 +1194,132 @@ export type SurveyUpdateOneRequiredWithoutSurveyTriggerNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.SurveyUpdateToOneWithWhereWithoutSurveyTriggerInput, Prisma.SurveyUpdateWithoutSurveyTriggerInput>, Prisma.SurveyUncheckedUpdateWithoutSurveyTriggerInput>
 }
 
+export type SurveyCreateNestedManyWithoutUserInput = {
+  create?: Prisma.XOR<Prisma.SurveyCreateWithoutUserInput, Prisma.SurveyUncheckedCreateWithoutUserInput> | Prisma.SurveyCreateWithoutUserInput[] | Prisma.SurveyUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.SurveyCreateOrConnectWithoutUserInput | Prisma.SurveyCreateOrConnectWithoutUserInput[]
+  createMany?: Prisma.SurveyCreateManyUserInputEnvelope
+  connect?: Prisma.SurveyWhereUniqueInput | Prisma.SurveyWhereUniqueInput[]
+}
+
+export type SurveyUncheckedCreateNestedManyWithoutUserInput = {
+  create?: Prisma.XOR<Prisma.SurveyCreateWithoutUserInput, Prisma.SurveyUncheckedCreateWithoutUserInput> | Prisma.SurveyCreateWithoutUserInput[] | Prisma.SurveyUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.SurveyCreateOrConnectWithoutUserInput | Prisma.SurveyCreateOrConnectWithoutUserInput[]
+  createMany?: Prisma.SurveyCreateManyUserInputEnvelope
+  connect?: Prisma.SurveyWhereUniqueInput | Prisma.SurveyWhereUniqueInput[]
+}
+
+export type SurveyUpdateManyWithoutUserNestedInput = {
+  create?: Prisma.XOR<Prisma.SurveyCreateWithoutUserInput, Prisma.SurveyUncheckedCreateWithoutUserInput> | Prisma.SurveyCreateWithoutUserInput[] | Prisma.SurveyUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.SurveyCreateOrConnectWithoutUserInput | Prisma.SurveyCreateOrConnectWithoutUserInput[]
+  upsert?: Prisma.SurveyUpsertWithWhereUniqueWithoutUserInput | Prisma.SurveyUpsertWithWhereUniqueWithoutUserInput[]
+  createMany?: Prisma.SurveyCreateManyUserInputEnvelope
+  set?: Prisma.SurveyWhereUniqueInput | Prisma.SurveyWhereUniqueInput[]
+  disconnect?: Prisma.SurveyWhereUniqueInput | Prisma.SurveyWhereUniqueInput[]
+  delete?: Prisma.SurveyWhereUniqueInput | Prisma.SurveyWhereUniqueInput[]
+  connect?: Prisma.SurveyWhereUniqueInput | Prisma.SurveyWhereUniqueInput[]
+  update?: Prisma.SurveyUpdateWithWhereUniqueWithoutUserInput | Prisma.SurveyUpdateWithWhereUniqueWithoutUserInput[]
+  updateMany?: Prisma.SurveyUpdateManyWithWhereWithoutUserInput | Prisma.SurveyUpdateManyWithWhereWithoutUserInput[]
+  deleteMany?: Prisma.SurveyScalarWhereInput | Prisma.SurveyScalarWhereInput[]
+}
+
+export type SurveyUncheckedUpdateManyWithoutUserNestedInput = {
+  create?: Prisma.XOR<Prisma.SurveyCreateWithoutUserInput, Prisma.SurveyUncheckedCreateWithoutUserInput> | Prisma.SurveyCreateWithoutUserInput[] | Prisma.SurveyUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.SurveyCreateOrConnectWithoutUserInput | Prisma.SurveyCreateOrConnectWithoutUserInput[]
+  upsert?: Prisma.SurveyUpsertWithWhereUniqueWithoutUserInput | Prisma.SurveyUpsertWithWhereUniqueWithoutUserInput[]
+  createMany?: Prisma.SurveyCreateManyUserInputEnvelope
+  set?: Prisma.SurveyWhereUniqueInput | Prisma.SurveyWhereUniqueInput[]
+  disconnect?: Prisma.SurveyWhereUniqueInput | Prisma.SurveyWhereUniqueInput[]
+  delete?: Prisma.SurveyWhereUniqueInput | Prisma.SurveyWhereUniqueInput[]
+  connect?: Prisma.SurveyWhereUniqueInput | Prisma.SurveyWhereUniqueInput[]
+  update?: Prisma.SurveyUpdateWithWhereUniqueWithoutUserInput | Prisma.SurveyUpdateWithWhereUniqueWithoutUserInput[]
+  updateMany?: Prisma.SurveyUpdateManyWithWhereWithoutUserInput | Prisma.SurveyUpdateManyWithWhereWithoutUserInput[]
+  deleteMany?: Prisma.SurveyScalarWhereInput | Prisma.SurveyScalarWhereInput[]
+}
+
+export type SurveyCreateNestedManyWithoutSegmentInput = {
+  create?: Prisma.XOR<Prisma.SurveyCreateWithoutSegmentInput, Prisma.SurveyUncheckedCreateWithoutSegmentInput> | Prisma.SurveyCreateWithoutSegmentInput[] | Prisma.SurveyUncheckedCreateWithoutSegmentInput[]
+  connectOrCreate?: Prisma.SurveyCreateOrConnectWithoutSegmentInput | Prisma.SurveyCreateOrConnectWithoutSegmentInput[]
+  createMany?: Prisma.SurveyCreateManySegmentInputEnvelope
+  connect?: Prisma.SurveyWhereUniqueInput | Prisma.SurveyWhereUniqueInput[]
+}
+
+export type SurveyUncheckedCreateNestedManyWithoutSegmentInput = {
+  create?: Prisma.XOR<Prisma.SurveyCreateWithoutSegmentInput, Prisma.SurveyUncheckedCreateWithoutSegmentInput> | Prisma.SurveyCreateWithoutSegmentInput[] | Prisma.SurveyUncheckedCreateWithoutSegmentInput[]
+  connectOrCreate?: Prisma.SurveyCreateOrConnectWithoutSegmentInput | Prisma.SurveyCreateOrConnectWithoutSegmentInput[]
+  createMany?: Prisma.SurveyCreateManySegmentInputEnvelope
+  connect?: Prisma.SurveyWhereUniqueInput | Prisma.SurveyWhereUniqueInput[]
+}
+
+export type SurveyUpdateManyWithoutSegmentNestedInput = {
+  create?: Prisma.XOR<Prisma.SurveyCreateWithoutSegmentInput, Prisma.SurveyUncheckedCreateWithoutSegmentInput> | Prisma.SurveyCreateWithoutSegmentInput[] | Prisma.SurveyUncheckedCreateWithoutSegmentInput[]
+  connectOrCreate?: Prisma.SurveyCreateOrConnectWithoutSegmentInput | Prisma.SurveyCreateOrConnectWithoutSegmentInput[]
+  upsert?: Prisma.SurveyUpsertWithWhereUniqueWithoutSegmentInput | Prisma.SurveyUpsertWithWhereUniqueWithoutSegmentInput[]
+  createMany?: Prisma.SurveyCreateManySegmentInputEnvelope
+  set?: Prisma.SurveyWhereUniqueInput | Prisma.SurveyWhereUniqueInput[]
+  disconnect?: Prisma.SurveyWhereUniqueInput | Prisma.SurveyWhereUniqueInput[]
+  delete?: Prisma.SurveyWhereUniqueInput | Prisma.SurveyWhereUniqueInput[]
+  connect?: Prisma.SurveyWhereUniqueInput | Prisma.SurveyWhereUniqueInput[]
+  update?: Prisma.SurveyUpdateWithWhereUniqueWithoutSegmentInput | Prisma.SurveyUpdateWithWhereUniqueWithoutSegmentInput[]
+  updateMany?: Prisma.SurveyUpdateManyWithWhereWithoutSegmentInput | Prisma.SurveyUpdateManyWithWhereWithoutSegmentInput[]
+  deleteMany?: Prisma.SurveyScalarWhereInput | Prisma.SurveyScalarWhereInput[]
+}
+
+export type SurveyUncheckedUpdateManyWithoutSegmentNestedInput = {
+  create?: Prisma.XOR<Prisma.SurveyCreateWithoutSegmentInput, Prisma.SurveyUncheckedCreateWithoutSegmentInput> | Prisma.SurveyCreateWithoutSegmentInput[] | Prisma.SurveyUncheckedCreateWithoutSegmentInput[]
+  connectOrCreate?: Prisma.SurveyCreateOrConnectWithoutSegmentInput | Prisma.SurveyCreateOrConnectWithoutSegmentInput[]
+  upsert?: Prisma.SurveyUpsertWithWhereUniqueWithoutSegmentInput | Prisma.SurveyUpsertWithWhereUniqueWithoutSegmentInput[]
+  createMany?: Prisma.SurveyCreateManySegmentInputEnvelope
+  set?: Prisma.SurveyWhereUniqueInput | Prisma.SurveyWhereUniqueInput[]
+  disconnect?: Prisma.SurveyWhereUniqueInput | Prisma.SurveyWhereUniqueInput[]
+  delete?: Prisma.SurveyWhereUniqueInput | Prisma.SurveyWhereUniqueInput[]
+  connect?: Prisma.SurveyWhereUniqueInput | Prisma.SurveyWhereUniqueInput[]
+  update?: Prisma.SurveyUpdateWithWhereUniqueWithoutSegmentInput | Prisma.SurveyUpdateWithWhereUniqueWithoutSegmentInput[]
+  updateMany?: Prisma.SurveyUpdateManyWithWhereWithoutSegmentInput | Prisma.SurveyUpdateManyWithWhereWithoutSegmentInput[]
+  deleteMany?: Prisma.SurveyScalarWhereInput | Prisma.SurveyScalarWhereInput[]
+}
+
+export type SurveyCreateNestedOneWithoutSurveyFollowUpInput = {
+  create?: Prisma.XOR<Prisma.SurveyCreateWithoutSurveyFollowUpInput, Prisma.SurveyUncheckedCreateWithoutSurveyFollowUpInput>
+  connectOrCreate?: Prisma.SurveyCreateOrConnectWithoutSurveyFollowUpInput
+  connect?: Prisma.SurveyWhereUniqueInput
+}
+
+export type SurveyUpdateOneRequiredWithoutSurveyFollowUpNestedInput = {
+  create?: Prisma.XOR<Prisma.SurveyCreateWithoutSurveyFollowUpInput, Prisma.SurveyUncheckedCreateWithoutSurveyFollowUpInput>
+  connectOrCreate?: Prisma.SurveyCreateOrConnectWithoutSurveyFollowUpInput
+  upsert?: Prisma.SurveyUpsertWithoutSurveyFollowUpInput
+  connect?: Prisma.SurveyWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.SurveyUpdateToOneWithWhereWithoutSurveyFollowUpInput, Prisma.SurveyUpdateWithoutSurveyFollowUpInput>, Prisma.SurveyUncheckedUpdateWithoutSurveyFollowUpInput>
+}
+
+export type SurveyCreateNestedOneWithoutSurveyLanguageInput = {
+  create?: Prisma.XOR<Prisma.SurveyCreateWithoutSurveyLanguageInput, Prisma.SurveyUncheckedCreateWithoutSurveyLanguageInput>
+  connectOrCreate?: Prisma.SurveyCreateOrConnectWithoutSurveyLanguageInput
+  connect?: Prisma.SurveyWhereUniqueInput
+}
+
+export type SurveyUpdateOneRequiredWithoutSurveyLanguageNestedInput = {
+  create?: Prisma.XOR<Prisma.SurveyCreateWithoutSurveyLanguageInput, Prisma.SurveyUncheckedCreateWithoutSurveyLanguageInput>
+  connectOrCreate?: Prisma.SurveyCreateOrConnectWithoutSurveyLanguageInput
+  upsert?: Prisma.SurveyUpsertWithoutSurveyLanguageInput
+  connect?: Prisma.SurveyWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.SurveyUpdateToOneWithWhereWithoutSurveyLanguageInput, Prisma.SurveyUpdateWithoutSurveyLanguageInput>, Prisma.SurveyUncheckedUpdateWithoutSurveyLanguageInput>
+}
+
+export type SurveyCreateNestedOneWithoutSurveyQuotaInput = {
+  create?: Prisma.XOR<Prisma.SurveyCreateWithoutSurveyQuotaInput, Prisma.SurveyUncheckedCreateWithoutSurveyQuotaInput>
+  connectOrCreate?: Prisma.SurveyCreateOrConnectWithoutSurveyQuotaInput
+  connect?: Prisma.SurveyWhereUniqueInput
+}
+
+export type SurveyUpdateOneRequiredWithoutSurveyQuotaNestedInput = {
+  create?: Prisma.XOR<Prisma.SurveyCreateWithoutSurveyQuotaInput, Prisma.SurveyUncheckedCreateWithoutSurveyQuotaInput>
+  connectOrCreate?: Prisma.SurveyCreateOrConnectWithoutSurveyQuotaInput
+  upsert?: Prisma.SurveyUpsertWithoutSurveyQuotaInput
+  connect?: Prisma.SurveyWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.SurveyUpdateToOneWithWhereWithoutSurveyQuotaInput, Prisma.SurveyUpdateWithoutSurveyQuotaInput>, Prisma.SurveyUncheckedUpdateWithoutSurveyQuotaInput>
+}
+
 export type SurveyCreateWithoutDisplayInput = {
   id: string
   created_at?: Date | string
@@ -633,11 +1329,38 @@ export type SurveyCreateWithoutDisplayInput = {
   questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   displayOption?: $Enums.displayOptions
   recontactDays?: number | null
-  thankYouCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   type?: $Enums.SurveyType
+  autoClose?: number | null
+  delay?: number
+  autoComplete?: number | null
+  redirectUrl?: string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: number | null
+  showLanguageSwitch?: boolean | null
+  isVerifyEmailEnabled?: boolean
+  endings?: Prisma.SurveyCreateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: boolean
+  isBackButtonHidden?: boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyCreateblocksInput | runtime.InputJsonValue[]
   Response?: Prisma.ResponseCreateNestedManyWithoutSurveyInput
+  User?: Prisma.UserCreateNestedOneWithoutSurveyInput
   Environment: Prisma.EnvironmentCreateNestedOneWithoutSurveyInput
+  Segment?: Prisma.SegmentCreateNestedOneWithoutSurveyInput
   SurveyAttributeFilter?: Prisma.SurveyAttributeFilterCreateNestedManyWithoutSurveyInput
+  SurveyFollowUp?: Prisma.SurveyFollowUpCreateNestedManyWithoutSurveyInput
+  SurveyLanguage?: Prisma.SurveyLanguageCreateNestedManyWithoutSurveyInput
+  SurveyQuota?: Prisma.SurveyQuotaCreateNestedManyWithoutSurveyInput
   SurveyTrigger?: Prisma.SurveyTriggerCreateNestedManyWithoutSurveyInput
 }
 
@@ -651,10 +1374,37 @@ export type SurveyUncheckedCreateWithoutDisplayInput = {
   questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   displayOption?: $Enums.displayOptions
   recontactDays?: number | null
-  thankYouCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   type?: $Enums.SurveyType
+  autoClose?: number | null
+  delay?: number
+  autoComplete?: number | null
+  redirectUrl?: string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdBy?: string | null
+  segmentId?: string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: number | null
+  showLanguageSwitch?: boolean | null
+  isVerifyEmailEnabled?: boolean
+  endings?: Prisma.SurveyCreateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: boolean
+  isBackButtonHidden?: boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyCreateblocksInput | runtime.InputJsonValue[]
   Response?: Prisma.ResponseUncheckedCreateNestedManyWithoutSurveyInput
   SurveyAttributeFilter?: Prisma.SurveyAttributeFilterUncheckedCreateNestedManyWithoutSurveyInput
+  SurveyFollowUp?: Prisma.SurveyFollowUpUncheckedCreateNestedManyWithoutSurveyInput
+  SurveyLanguage?: Prisma.SurveyLanguageUncheckedCreateNestedManyWithoutSurveyInput
+  SurveyQuota?: Prisma.SurveyQuotaUncheckedCreateNestedManyWithoutSurveyInput
   SurveyTrigger?: Prisma.SurveyTriggerUncheckedCreateNestedManyWithoutSurveyInput
 }
 
@@ -683,11 +1433,38 @@ export type SurveyUpdateWithoutDisplayInput = {
   questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   displayOption?: Prisma.EnumdisplayOptionsFieldUpdateOperationsInput | $Enums.displayOptions
   recontactDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  thankYouCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   type?: Prisma.EnumSurveyTypeFieldUpdateOperationsInput | $Enums.SurveyType
+  autoClose?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  delay?: Prisma.IntFieldUpdateOperationsInput | number
+  autoComplete?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  redirectUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  showLanguageSwitch?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  isVerifyEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  endings?: Prisma.SurveyUpdateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isBackButtonHidden?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyUpdateblocksInput | runtime.InputJsonValue[]
   Response?: Prisma.ResponseUpdateManyWithoutSurveyNestedInput
+  User?: Prisma.UserUpdateOneWithoutSurveyNestedInput
   Environment?: Prisma.EnvironmentUpdateOneRequiredWithoutSurveyNestedInput
+  Segment?: Prisma.SegmentUpdateOneWithoutSurveyNestedInput
   SurveyAttributeFilter?: Prisma.SurveyAttributeFilterUpdateManyWithoutSurveyNestedInput
+  SurveyFollowUp?: Prisma.SurveyFollowUpUpdateManyWithoutSurveyNestedInput
+  SurveyLanguage?: Prisma.SurveyLanguageUpdateManyWithoutSurveyNestedInput
+  SurveyQuota?: Prisma.SurveyQuotaUpdateManyWithoutSurveyNestedInput
   SurveyTrigger?: Prisma.SurveyTriggerUpdateManyWithoutSurveyNestedInput
 }
 
@@ -701,10 +1478,37 @@ export type SurveyUncheckedUpdateWithoutDisplayInput = {
   questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   displayOption?: Prisma.EnumdisplayOptionsFieldUpdateOperationsInput | $Enums.displayOptions
   recontactDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  thankYouCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   type?: Prisma.EnumSurveyTypeFieldUpdateOperationsInput | $Enums.SurveyType
+  autoClose?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  delay?: Prisma.IntFieldUpdateOperationsInput | number
+  autoComplete?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  redirectUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  segmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  showLanguageSwitch?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  isVerifyEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  endings?: Prisma.SurveyUpdateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isBackButtonHidden?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyUpdateblocksInput | runtime.InputJsonValue[]
   Response?: Prisma.ResponseUncheckedUpdateManyWithoutSurveyNestedInput
   SurveyAttributeFilter?: Prisma.SurveyAttributeFilterUncheckedUpdateManyWithoutSurveyNestedInput
+  SurveyFollowUp?: Prisma.SurveyFollowUpUncheckedUpdateManyWithoutSurveyNestedInput
+  SurveyLanguage?: Prisma.SurveyLanguageUncheckedUpdateManyWithoutSurveyNestedInput
+  SurveyQuota?: Prisma.SurveyQuotaUncheckedUpdateManyWithoutSurveyNestedInput
   SurveyTrigger?: Prisma.SurveyTriggerUncheckedUpdateManyWithoutSurveyNestedInput
 }
 
@@ -717,11 +1521,38 @@ export type SurveyCreateWithoutEnvironmentInput = {
   questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   displayOption?: $Enums.displayOptions
   recontactDays?: number | null
-  thankYouCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   type?: $Enums.SurveyType
+  autoClose?: number | null
+  delay?: number
+  autoComplete?: number | null
+  redirectUrl?: string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: number | null
+  showLanguageSwitch?: boolean | null
+  isVerifyEmailEnabled?: boolean
+  endings?: Prisma.SurveyCreateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: boolean
+  isBackButtonHidden?: boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyCreateblocksInput | runtime.InputJsonValue[]
   Display?: Prisma.DisplayCreateNestedManyWithoutSurveyInput
   Response?: Prisma.ResponseCreateNestedManyWithoutSurveyInput
+  User?: Prisma.UserCreateNestedOneWithoutSurveyInput
+  Segment?: Prisma.SegmentCreateNestedOneWithoutSurveyInput
   SurveyAttributeFilter?: Prisma.SurveyAttributeFilterCreateNestedManyWithoutSurveyInput
+  SurveyFollowUp?: Prisma.SurveyFollowUpCreateNestedManyWithoutSurveyInput
+  SurveyLanguage?: Prisma.SurveyLanguageCreateNestedManyWithoutSurveyInput
+  SurveyQuota?: Prisma.SurveyQuotaCreateNestedManyWithoutSurveyInput
   SurveyTrigger?: Prisma.SurveyTriggerCreateNestedManyWithoutSurveyInput
 }
 
@@ -734,11 +1565,38 @@ export type SurveyUncheckedCreateWithoutEnvironmentInput = {
   questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   displayOption?: $Enums.displayOptions
   recontactDays?: number | null
-  thankYouCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   type?: $Enums.SurveyType
+  autoClose?: number | null
+  delay?: number
+  autoComplete?: number | null
+  redirectUrl?: string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdBy?: string | null
+  segmentId?: string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: number | null
+  showLanguageSwitch?: boolean | null
+  isVerifyEmailEnabled?: boolean
+  endings?: Prisma.SurveyCreateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: boolean
+  isBackButtonHidden?: boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyCreateblocksInput | runtime.InputJsonValue[]
   Display?: Prisma.DisplayUncheckedCreateNestedManyWithoutSurveyInput
   Response?: Prisma.ResponseUncheckedCreateNestedManyWithoutSurveyInput
   SurveyAttributeFilter?: Prisma.SurveyAttributeFilterUncheckedCreateNestedManyWithoutSurveyInput
+  SurveyFollowUp?: Prisma.SurveyFollowUpUncheckedCreateNestedManyWithoutSurveyInput
+  SurveyLanguage?: Prisma.SurveyLanguageUncheckedCreateNestedManyWithoutSurveyInput
+  SurveyQuota?: Prisma.SurveyQuotaUncheckedCreateNestedManyWithoutSurveyInput
   SurveyTrigger?: Prisma.SurveyTriggerUncheckedCreateNestedManyWithoutSurveyInput
 }
 
@@ -781,8 +1639,32 @@ export type SurveyScalarWhereInput = {
   questions?: Prisma.JsonFilter<"Survey">
   displayOption?: Prisma.EnumdisplayOptionsFilter<"Survey"> | $Enums.displayOptions
   recontactDays?: Prisma.IntNullableFilter<"Survey"> | number | null
-  thankYouCard?: Prisma.JsonFilter<"Survey">
   type?: Prisma.EnumSurveyTypeFilter<"Survey"> | $Enums.SurveyType
+  autoClose?: Prisma.IntNullableFilter<"Survey"> | number | null
+  delay?: Prisma.IntFilter<"Survey"> | number
+  autoComplete?: Prisma.IntNullableFilter<"Survey"> | number | null
+  redirectUrl?: Prisma.StringNullableFilter<"Survey"> | string | null
+  surveyClosedMessage?: Prisma.JsonNullableFilter<"Survey">
+  singleUse?: Prisma.JsonNullableFilter<"Survey">
+  projectOverwrites?: Prisma.JsonNullableFilter<"Survey">
+  hiddenFields?: Prisma.JsonFilter<"Survey">
+  pin?: Prisma.StringNullableFilter<"Survey"> | string | null
+  welcomeCard?: Prisma.JsonFilter<"Survey">
+  styling?: Prisma.JsonNullableFilter<"Survey">
+  displayPercentage?: Prisma.DecimalNullableFilter<"Survey"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdBy?: Prisma.StringNullableFilter<"Survey"> | string | null
+  segmentId?: Prisma.StringNullableFilter<"Survey"> | string | null
+  inlineTriggers?: Prisma.JsonNullableFilter<"Survey">
+  displayLimit?: Prisma.IntNullableFilter<"Survey"> | number | null
+  showLanguageSwitch?: Prisma.BoolNullableFilter<"Survey"> | boolean | null
+  isVerifyEmailEnabled?: Prisma.BoolFilter<"Survey"> | boolean
+  endings?: Prisma.JsonNullableListFilter<"Survey">
+  variables?: Prisma.JsonFilter<"Survey">
+  isSingleResponsePerEmailEnabled?: Prisma.BoolFilter<"Survey"> | boolean
+  isBackButtonHidden?: Prisma.BoolFilter<"Survey"> | boolean
+  recaptcha?: Prisma.JsonNullableFilter<"Survey">
+  metadata?: Prisma.JsonFilter<"Survey">
+  blocks?: Prisma.JsonNullableListFilter<"Survey">
 }
 
 export type SurveyCreateWithoutResponseInput = {
@@ -794,11 +1676,38 @@ export type SurveyCreateWithoutResponseInput = {
   questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   displayOption?: $Enums.displayOptions
   recontactDays?: number | null
-  thankYouCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   type?: $Enums.SurveyType
+  autoClose?: number | null
+  delay?: number
+  autoComplete?: number | null
+  redirectUrl?: string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: number | null
+  showLanguageSwitch?: boolean | null
+  isVerifyEmailEnabled?: boolean
+  endings?: Prisma.SurveyCreateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: boolean
+  isBackButtonHidden?: boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyCreateblocksInput | runtime.InputJsonValue[]
   Display?: Prisma.DisplayCreateNestedManyWithoutSurveyInput
+  User?: Prisma.UserCreateNestedOneWithoutSurveyInput
   Environment: Prisma.EnvironmentCreateNestedOneWithoutSurveyInput
+  Segment?: Prisma.SegmentCreateNestedOneWithoutSurveyInput
   SurveyAttributeFilter?: Prisma.SurveyAttributeFilterCreateNestedManyWithoutSurveyInput
+  SurveyFollowUp?: Prisma.SurveyFollowUpCreateNestedManyWithoutSurveyInput
+  SurveyLanguage?: Prisma.SurveyLanguageCreateNestedManyWithoutSurveyInput
+  SurveyQuota?: Prisma.SurveyQuotaCreateNestedManyWithoutSurveyInput
   SurveyTrigger?: Prisma.SurveyTriggerCreateNestedManyWithoutSurveyInput
 }
 
@@ -812,10 +1721,37 @@ export type SurveyUncheckedCreateWithoutResponseInput = {
   questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   displayOption?: $Enums.displayOptions
   recontactDays?: number | null
-  thankYouCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   type?: $Enums.SurveyType
+  autoClose?: number | null
+  delay?: number
+  autoComplete?: number | null
+  redirectUrl?: string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdBy?: string | null
+  segmentId?: string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: number | null
+  showLanguageSwitch?: boolean | null
+  isVerifyEmailEnabled?: boolean
+  endings?: Prisma.SurveyCreateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: boolean
+  isBackButtonHidden?: boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyCreateblocksInput | runtime.InputJsonValue[]
   Display?: Prisma.DisplayUncheckedCreateNestedManyWithoutSurveyInput
   SurveyAttributeFilter?: Prisma.SurveyAttributeFilterUncheckedCreateNestedManyWithoutSurveyInput
+  SurveyFollowUp?: Prisma.SurveyFollowUpUncheckedCreateNestedManyWithoutSurveyInput
+  SurveyLanguage?: Prisma.SurveyLanguageUncheckedCreateNestedManyWithoutSurveyInput
+  SurveyQuota?: Prisma.SurveyQuotaUncheckedCreateNestedManyWithoutSurveyInput
   SurveyTrigger?: Prisma.SurveyTriggerUncheckedCreateNestedManyWithoutSurveyInput
 }
 
@@ -844,11 +1780,38 @@ export type SurveyUpdateWithoutResponseInput = {
   questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   displayOption?: Prisma.EnumdisplayOptionsFieldUpdateOperationsInput | $Enums.displayOptions
   recontactDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  thankYouCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   type?: Prisma.EnumSurveyTypeFieldUpdateOperationsInput | $Enums.SurveyType
+  autoClose?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  delay?: Prisma.IntFieldUpdateOperationsInput | number
+  autoComplete?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  redirectUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  showLanguageSwitch?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  isVerifyEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  endings?: Prisma.SurveyUpdateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isBackButtonHidden?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyUpdateblocksInput | runtime.InputJsonValue[]
   Display?: Prisma.DisplayUpdateManyWithoutSurveyNestedInput
+  User?: Prisma.UserUpdateOneWithoutSurveyNestedInput
   Environment?: Prisma.EnvironmentUpdateOneRequiredWithoutSurveyNestedInput
+  Segment?: Prisma.SegmentUpdateOneWithoutSurveyNestedInput
   SurveyAttributeFilter?: Prisma.SurveyAttributeFilterUpdateManyWithoutSurveyNestedInput
+  SurveyFollowUp?: Prisma.SurveyFollowUpUpdateManyWithoutSurveyNestedInput
+  SurveyLanguage?: Prisma.SurveyLanguageUpdateManyWithoutSurveyNestedInput
+  SurveyQuota?: Prisma.SurveyQuotaUpdateManyWithoutSurveyNestedInput
   SurveyTrigger?: Prisma.SurveyTriggerUpdateManyWithoutSurveyNestedInput
 }
 
@@ -862,10 +1825,37 @@ export type SurveyUncheckedUpdateWithoutResponseInput = {
   questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   displayOption?: Prisma.EnumdisplayOptionsFieldUpdateOperationsInput | $Enums.displayOptions
   recontactDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  thankYouCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   type?: Prisma.EnumSurveyTypeFieldUpdateOperationsInput | $Enums.SurveyType
+  autoClose?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  delay?: Prisma.IntFieldUpdateOperationsInput | number
+  autoComplete?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  redirectUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  segmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  showLanguageSwitch?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  isVerifyEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  endings?: Prisma.SurveyUpdateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isBackButtonHidden?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyUpdateblocksInput | runtime.InputJsonValue[]
   Display?: Prisma.DisplayUncheckedUpdateManyWithoutSurveyNestedInput
   SurveyAttributeFilter?: Prisma.SurveyAttributeFilterUncheckedUpdateManyWithoutSurveyNestedInput
+  SurveyFollowUp?: Prisma.SurveyFollowUpUncheckedUpdateManyWithoutSurveyNestedInput
+  SurveyLanguage?: Prisma.SurveyLanguageUncheckedUpdateManyWithoutSurveyNestedInput
+  SurveyQuota?: Prisma.SurveyQuotaUncheckedUpdateManyWithoutSurveyNestedInput
   SurveyTrigger?: Prisma.SurveyTriggerUncheckedUpdateManyWithoutSurveyNestedInput
 }
 
@@ -878,11 +1868,38 @@ export type SurveyCreateWithoutSurveyAttributeFilterInput = {
   questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   displayOption?: $Enums.displayOptions
   recontactDays?: number | null
-  thankYouCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   type?: $Enums.SurveyType
+  autoClose?: number | null
+  delay?: number
+  autoComplete?: number | null
+  redirectUrl?: string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: number | null
+  showLanguageSwitch?: boolean | null
+  isVerifyEmailEnabled?: boolean
+  endings?: Prisma.SurveyCreateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: boolean
+  isBackButtonHidden?: boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyCreateblocksInput | runtime.InputJsonValue[]
   Display?: Prisma.DisplayCreateNestedManyWithoutSurveyInput
   Response?: Prisma.ResponseCreateNestedManyWithoutSurveyInput
+  User?: Prisma.UserCreateNestedOneWithoutSurveyInput
   Environment: Prisma.EnvironmentCreateNestedOneWithoutSurveyInput
+  Segment?: Prisma.SegmentCreateNestedOneWithoutSurveyInput
+  SurveyFollowUp?: Prisma.SurveyFollowUpCreateNestedManyWithoutSurveyInput
+  SurveyLanguage?: Prisma.SurveyLanguageCreateNestedManyWithoutSurveyInput
+  SurveyQuota?: Prisma.SurveyQuotaCreateNestedManyWithoutSurveyInput
   SurveyTrigger?: Prisma.SurveyTriggerCreateNestedManyWithoutSurveyInput
 }
 
@@ -896,10 +1913,37 @@ export type SurveyUncheckedCreateWithoutSurveyAttributeFilterInput = {
   questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   displayOption?: $Enums.displayOptions
   recontactDays?: number | null
-  thankYouCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   type?: $Enums.SurveyType
+  autoClose?: number | null
+  delay?: number
+  autoComplete?: number | null
+  redirectUrl?: string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdBy?: string | null
+  segmentId?: string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: number | null
+  showLanguageSwitch?: boolean | null
+  isVerifyEmailEnabled?: boolean
+  endings?: Prisma.SurveyCreateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: boolean
+  isBackButtonHidden?: boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyCreateblocksInput | runtime.InputJsonValue[]
   Display?: Prisma.DisplayUncheckedCreateNestedManyWithoutSurveyInput
   Response?: Prisma.ResponseUncheckedCreateNestedManyWithoutSurveyInput
+  SurveyFollowUp?: Prisma.SurveyFollowUpUncheckedCreateNestedManyWithoutSurveyInput
+  SurveyLanguage?: Prisma.SurveyLanguageUncheckedCreateNestedManyWithoutSurveyInput
+  SurveyQuota?: Prisma.SurveyQuotaUncheckedCreateNestedManyWithoutSurveyInput
   SurveyTrigger?: Prisma.SurveyTriggerUncheckedCreateNestedManyWithoutSurveyInput
 }
 
@@ -928,11 +1972,38 @@ export type SurveyUpdateWithoutSurveyAttributeFilterInput = {
   questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   displayOption?: Prisma.EnumdisplayOptionsFieldUpdateOperationsInput | $Enums.displayOptions
   recontactDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  thankYouCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   type?: Prisma.EnumSurveyTypeFieldUpdateOperationsInput | $Enums.SurveyType
+  autoClose?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  delay?: Prisma.IntFieldUpdateOperationsInput | number
+  autoComplete?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  redirectUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  showLanguageSwitch?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  isVerifyEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  endings?: Prisma.SurveyUpdateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isBackButtonHidden?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyUpdateblocksInput | runtime.InputJsonValue[]
   Display?: Prisma.DisplayUpdateManyWithoutSurveyNestedInput
   Response?: Prisma.ResponseUpdateManyWithoutSurveyNestedInput
+  User?: Prisma.UserUpdateOneWithoutSurveyNestedInput
   Environment?: Prisma.EnvironmentUpdateOneRequiredWithoutSurveyNestedInput
+  Segment?: Prisma.SegmentUpdateOneWithoutSurveyNestedInput
+  SurveyFollowUp?: Prisma.SurveyFollowUpUpdateManyWithoutSurveyNestedInput
+  SurveyLanguage?: Prisma.SurveyLanguageUpdateManyWithoutSurveyNestedInput
+  SurveyQuota?: Prisma.SurveyQuotaUpdateManyWithoutSurveyNestedInput
   SurveyTrigger?: Prisma.SurveyTriggerUpdateManyWithoutSurveyNestedInput
 }
 
@@ -946,10 +2017,37 @@ export type SurveyUncheckedUpdateWithoutSurveyAttributeFilterInput = {
   questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   displayOption?: Prisma.EnumdisplayOptionsFieldUpdateOperationsInput | $Enums.displayOptions
   recontactDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  thankYouCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   type?: Prisma.EnumSurveyTypeFieldUpdateOperationsInput | $Enums.SurveyType
+  autoClose?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  delay?: Prisma.IntFieldUpdateOperationsInput | number
+  autoComplete?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  redirectUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  segmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  showLanguageSwitch?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  isVerifyEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  endings?: Prisma.SurveyUpdateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isBackButtonHidden?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyUpdateblocksInput | runtime.InputJsonValue[]
   Display?: Prisma.DisplayUncheckedUpdateManyWithoutSurveyNestedInput
   Response?: Prisma.ResponseUncheckedUpdateManyWithoutSurveyNestedInput
+  SurveyFollowUp?: Prisma.SurveyFollowUpUncheckedUpdateManyWithoutSurveyNestedInput
+  SurveyLanguage?: Prisma.SurveyLanguageUncheckedUpdateManyWithoutSurveyNestedInput
+  SurveyQuota?: Prisma.SurveyQuotaUncheckedUpdateManyWithoutSurveyNestedInput
   SurveyTrigger?: Prisma.SurveyTriggerUncheckedUpdateManyWithoutSurveyNestedInput
 }
 
@@ -962,12 +2060,39 @@ export type SurveyCreateWithoutSurveyTriggerInput = {
   questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   displayOption?: $Enums.displayOptions
   recontactDays?: number | null
-  thankYouCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   type?: $Enums.SurveyType
+  autoClose?: number | null
+  delay?: number
+  autoComplete?: number | null
+  redirectUrl?: string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: number | null
+  showLanguageSwitch?: boolean | null
+  isVerifyEmailEnabled?: boolean
+  endings?: Prisma.SurveyCreateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: boolean
+  isBackButtonHidden?: boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyCreateblocksInput | runtime.InputJsonValue[]
   Display?: Prisma.DisplayCreateNestedManyWithoutSurveyInput
   Response?: Prisma.ResponseCreateNestedManyWithoutSurveyInput
+  User?: Prisma.UserCreateNestedOneWithoutSurveyInput
   Environment: Prisma.EnvironmentCreateNestedOneWithoutSurveyInput
+  Segment?: Prisma.SegmentCreateNestedOneWithoutSurveyInput
   SurveyAttributeFilter?: Prisma.SurveyAttributeFilterCreateNestedManyWithoutSurveyInput
+  SurveyFollowUp?: Prisma.SurveyFollowUpCreateNestedManyWithoutSurveyInput
+  SurveyLanguage?: Prisma.SurveyLanguageCreateNestedManyWithoutSurveyInput
+  SurveyQuota?: Prisma.SurveyQuotaCreateNestedManyWithoutSurveyInput
 }
 
 export type SurveyUncheckedCreateWithoutSurveyTriggerInput = {
@@ -980,11 +2105,38 @@ export type SurveyUncheckedCreateWithoutSurveyTriggerInput = {
   questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   displayOption?: $Enums.displayOptions
   recontactDays?: number | null
-  thankYouCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   type?: $Enums.SurveyType
+  autoClose?: number | null
+  delay?: number
+  autoComplete?: number | null
+  redirectUrl?: string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdBy?: string | null
+  segmentId?: string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: number | null
+  showLanguageSwitch?: boolean | null
+  isVerifyEmailEnabled?: boolean
+  endings?: Prisma.SurveyCreateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: boolean
+  isBackButtonHidden?: boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyCreateblocksInput | runtime.InputJsonValue[]
   Display?: Prisma.DisplayUncheckedCreateNestedManyWithoutSurveyInput
   Response?: Prisma.ResponseUncheckedCreateNestedManyWithoutSurveyInput
   SurveyAttributeFilter?: Prisma.SurveyAttributeFilterUncheckedCreateNestedManyWithoutSurveyInput
+  SurveyFollowUp?: Prisma.SurveyFollowUpUncheckedCreateNestedManyWithoutSurveyInput
+  SurveyLanguage?: Prisma.SurveyLanguageUncheckedCreateNestedManyWithoutSurveyInput
+  SurveyQuota?: Prisma.SurveyQuotaUncheckedCreateNestedManyWithoutSurveyInput
 }
 
 export type SurveyCreateOrConnectWithoutSurveyTriggerInput = {
@@ -1012,12 +2164,39 @@ export type SurveyUpdateWithoutSurveyTriggerInput = {
   questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   displayOption?: Prisma.EnumdisplayOptionsFieldUpdateOperationsInput | $Enums.displayOptions
   recontactDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  thankYouCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   type?: Prisma.EnumSurveyTypeFieldUpdateOperationsInput | $Enums.SurveyType
+  autoClose?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  delay?: Prisma.IntFieldUpdateOperationsInput | number
+  autoComplete?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  redirectUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  showLanguageSwitch?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  isVerifyEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  endings?: Prisma.SurveyUpdateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isBackButtonHidden?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyUpdateblocksInput | runtime.InputJsonValue[]
   Display?: Prisma.DisplayUpdateManyWithoutSurveyNestedInput
   Response?: Prisma.ResponseUpdateManyWithoutSurveyNestedInput
+  User?: Prisma.UserUpdateOneWithoutSurveyNestedInput
   Environment?: Prisma.EnvironmentUpdateOneRequiredWithoutSurveyNestedInput
+  Segment?: Prisma.SegmentUpdateOneWithoutSurveyNestedInput
   SurveyAttributeFilter?: Prisma.SurveyAttributeFilterUpdateManyWithoutSurveyNestedInput
+  SurveyFollowUp?: Prisma.SurveyFollowUpUpdateManyWithoutSurveyNestedInput
+  SurveyLanguage?: Prisma.SurveyLanguageUpdateManyWithoutSurveyNestedInput
+  SurveyQuota?: Prisma.SurveyQuotaUpdateManyWithoutSurveyNestedInput
 }
 
 export type SurveyUncheckedUpdateWithoutSurveyTriggerInput = {
@@ -1030,11 +2209,842 @@ export type SurveyUncheckedUpdateWithoutSurveyTriggerInput = {
   questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   displayOption?: Prisma.EnumdisplayOptionsFieldUpdateOperationsInput | $Enums.displayOptions
   recontactDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  thankYouCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   type?: Prisma.EnumSurveyTypeFieldUpdateOperationsInput | $Enums.SurveyType
+  autoClose?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  delay?: Prisma.IntFieldUpdateOperationsInput | number
+  autoComplete?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  redirectUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  segmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  showLanguageSwitch?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  isVerifyEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  endings?: Prisma.SurveyUpdateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isBackButtonHidden?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyUpdateblocksInput | runtime.InputJsonValue[]
   Display?: Prisma.DisplayUncheckedUpdateManyWithoutSurveyNestedInput
   Response?: Prisma.ResponseUncheckedUpdateManyWithoutSurveyNestedInput
   SurveyAttributeFilter?: Prisma.SurveyAttributeFilterUncheckedUpdateManyWithoutSurveyNestedInput
+  SurveyFollowUp?: Prisma.SurveyFollowUpUncheckedUpdateManyWithoutSurveyNestedInput
+  SurveyLanguage?: Prisma.SurveyLanguageUncheckedUpdateManyWithoutSurveyNestedInput
+  SurveyQuota?: Prisma.SurveyQuotaUncheckedUpdateManyWithoutSurveyNestedInput
+}
+
+export type SurveyCreateWithoutUserInput = {
+  id: string
+  created_at?: Date | string
+  updated_at: Date | string
+  name: string
+  status?: $Enums.SurveyStatus
+  questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  displayOption?: $Enums.displayOptions
+  recontactDays?: number | null
+  type?: $Enums.SurveyType
+  autoClose?: number | null
+  delay?: number
+  autoComplete?: number | null
+  redirectUrl?: string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: number | null
+  showLanguageSwitch?: boolean | null
+  isVerifyEmailEnabled?: boolean
+  endings?: Prisma.SurveyCreateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: boolean
+  isBackButtonHidden?: boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyCreateblocksInput | runtime.InputJsonValue[]
+  Display?: Prisma.DisplayCreateNestedManyWithoutSurveyInput
+  Response?: Prisma.ResponseCreateNestedManyWithoutSurveyInput
+  Environment: Prisma.EnvironmentCreateNestedOneWithoutSurveyInput
+  Segment?: Prisma.SegmentCreateNestedOneWithoutSurveyInput
+  SurveyAttributeFilter?: Prisma.SurveyAttributeFilterCreateNestedManyWithoutSurveyInput
+  SurveyFollowUp?: Prisma.SurveyFollowUpCreateNestedManyWithoutSurveyInput
+  SurveyLanguage?: Prisma.SurveyLanguageCreateNestedManyWithoutSurveyInput
+  SurveyQuota?: Prisma.SurveyQuotaCreateNestedManyWithoutSurveyInput
+  SurveyTrigger?: Prisma.SurveyTriggerCreateNestedManyWithoutSurveyInput
+}
+
+export type SurveyUncheckedCreateWithoutUserInput = {
+  id: string
+  created_at?: Date | string
+  updated_at: Date | string
+  name: string
+  environmentId: string
+  status?: $Enums.SurveyStatus
+  questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  displayOption?: $Enums.displayOptions
+  recontactDays?: number | null
+  type?: $Enums.SurveyType
+  autoClose?: number | null
+  delay?: number
+  autoComplete?: number | null
+  redirectUrl?: string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  segmentId?: string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: number | null
+  showLanguageSwitch?: boolean | null
+  isVerifyEmailEnabled?: boolean
+  endings?: Prisma.SurveyCreateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: boolean
+  isBackButtonHidden?: boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyCreateblocksInput | runtime.InputJsonValue[]
+  Display?: Prisma.DisplayUncheckedCreateNestedManyWithoutSurveyInput
+  Response?: Prisma.ResponseUncheckedCreateNestedManyWithoutSurveyInput
+  SurveyAttributeFilter?: Prisma.SurveyAttributeFilterUncheckedCreateNestedManyWithoutSurveyInput
+  SurveyFollowUp?: Prisma.SurveyFollowUpUncheckedCreateNestedManyWithoutSurveyInput
+  SurveyLanguage?: Prisma.SurveyLanguageUncheckedCreateNestedManyWithoutSurveyInput
+  SurveyQuota?: Prisma.SurveyQuotaUncheckedCreateNestedManyWithoutSurveyInput
+  SurveyTrigger?: Prisma.SurveyTriggerUncheckedCreateNestedManyWithoutSurveyInput
+}
+
+export type SurveyCreateOrConnectWithoutUserInput = {
+  where: Prisma.SurveyWhereUniqueInput
+  create: Prisma.XOR<Prisma.SurveyCreateWithoutUserInput, Prisma.SurveyUncheckedCreateWithoutUserInput>
+}
+
+export type SurveyCreateManyUserInputEnvelope = {
+  data: Prisma.SurveyCreateManyUserInput | Prisma.SurveyCreateManyUserInput[]
+  skipDuplicates?: boolean
+}
+
+export type SurveyUpsertWithWhereUniqueWithoutUserInput = {
+  where: Prisma.SurveyWhereUniqueInput
+  update: Prisma.XOR<Prisma.SurveyUpdateWithoutUserInput, Prisma.SurveyUncheckedUpdateWithoutUserInput>
+  create: Prisma.XOR<Prisma.SurveyCreateWithoutUserInput, Prisma.SurveyUncheckedCreateWithoutUserInput>
+}
+
+export type SurveyUpdateWithWhereUniqueWithoutUserInput = {
+  where: Prisma.SurveyWhereUniqueInput
+  data: Prisma.XOR<Prisma.SurveyUpdateWithoutUserInput, Prisma.SurveyUncheckedUpdateWithoutUserInput>
+}
+
+export type SurveyUpdateManyWithWhereWithoutUserInput = {
+  where: Prisma.SurveyScalarWhereInput
+  data: Prisma.XOR<Prisma.SurveyUpdateManyMutationInput, Prisma.SurveyUncheckedUpdateManyWithoutUserInput>
+}
+
+export type SurveyCreateWithoutSegmentInput = {
+  id: string
+  created_at?: Date | string
+  updated_at: Date | string
+  name: string
+  status?: $Enums.SurveyStatus
+  questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  displayOption?: $Enums.displayOptions
+  recontactDays?: number | null
+  type?: $Enums.SurveyType
+  autoClose?: number | null
+  delay?: number
+  autoComplete?: number | null
+  redirectUrl?: string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: number | null
+  showLanguageSwitch?: boolean | null
+  isVerifyEmailEnabled?: boolean
+  endings?: Prisma.SurveyCreateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: boolean
+  isBackButtonHidden?: boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyCreateblocksInput | runtime.InputJsonValue[]
+  Display?: Prisma.DisplayCreateNestedManyWithoutSurveyInput
+  Response?: Prisma.ResponseCreateNestedManyWithoutSurveyInput
+  User?: Prisma.UserCreateNestedOneWithoutSurveyInput
+  Environment: Prisma.EnvironmentCreateNestedOneWithoutSurveyInput
+  SurveyAttributeFilter?: Prisma.SurveyAttributeFilterCreateNestedManyWithoutSurveyInput
+  SurveyFollowUp?: Prisma.SurveyFollowUpCreateNestedManyWithoutSurveyInput
+  SurveyLanguage?: Prisma.SurveyLanguageCreateNestedManyWithoutSurveyInput
+  SurveyQuota?: Prisma.SurveyQuotaCreateNestedManyWithoutSurveyInput
+  SurveyTrigger?: Prisma.SurveyTriggerCreateNestedManyWithoutSurveyInput
+}
+
+export type SurveyUncheckedCreateWithoutSegmentInput = {
+  id: string
+  created_at?: Date | string
+  updated_at: Date | string
+  name: string
+  environmentId: string
+  status?: $Enums.SurveyStatus
+  questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  displayOption?: $Enums.displayOptions
+  recontactDays?: number | null
+  type?: $Enums.SurveyType
+  autoClose?: number | null
+  delay?: number
+  autoComplete?: number | null
+  redirectUrl?: string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdBy?: string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: number | null
+  showLanguageSwitch?: boolean | null
+  isVerifyEmailEnabled?: boolean
+  endings?: Prisma.SurveyCreateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: boolean
+  isBackButtonHidden?: boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyCreateblocksInput | runtime.InputJsonValue[]
+  Display?: Prisma.DisplayUncheckedCreateNestedManyWithoutSurveyInput
+  Response?: Prisma.ResponseUncheckedCreateNestedManyWithoutSurveyInput
+  SurveyAttributeFilter?: Prisma.SurveyAttributeFilterUncheckedCreateNestedManyWithoutSurveyInput
+  SurveyFollowUp?: Prisma.SurveyFollowUpUncheckedCreateNestedManyWithoutSurveyInput
+  SurveyLanguage?: Prisma.SurveyLanguageUncheckedCreateNestedManyWithoutSurveyInput
+  SurveyQuota?: Prisma.SurveyQuotaUncheckedCreateNestedManyWithoutSurveyInput
+  SurveyTrigger?: Prisma.SurveyTriggerUncheckedCreateNestedManyWithoutSurveyInput
+}
+
+export type SurveyCreateOrConnectWithoutSegmentInput = {
+  where: Prisma.SurveyWhereUniqueInput
+  create: Prisma.XOR<Prisma.SurveyCreateWithoutSegmentInput, Prisma.SurveyUncheckedCreateWithoutSegmentInput>
+}
+
+export type SurveyCreateManySegmentInputEnvelope = {
+  data: Prisma.SurveyCreateManySegmentInput | Prisma.SurveyCreateManySegmentInput[]
+  skipDuplicates?: boolean
+}
+
+export type SurveyUpsertWithWhereUniqueWithoutSegmentInput = {
+  where: Prisma.SurveyWhereUniqueInput
+  update: Prisma.XOR<Prisma.SurveyUpdateWithoutSegmentInput, Prisma.SurveyUncheckedUpdateWithoutSegmentInput>
+  create: Prisma.XOR<Prisma.SurveyCreateWithoutSegmentInput, Prisma.SurveyUncheckedCreateWithoutSegmentInput>
+}
+
+export type SurveyUpdateWithWhereUniqueWithoutSegmentInput = {
+  where: Prisma.SurveyWhereUniqueInput
+  data: Prisma.XOR<Prisma.SurveyUpdateWithoutSegmentInput, Prisma.SurveyUncheckedUpdateWithoutSegmentInput>
+}
+
+export type SurveyUpdateManyWithWhereWithoutSegmentInput = {
+  where: Prisma.SurveyScalarWhereInput
+  data: Prisma.XOR<Prisma.SurveyUpdateManyMutationInput, Prisma.SurveyUncheckedUpdateManyWithoutSegmentInput>
+}
+
+export type SurveyCreateWithoutSurveyFollowUpInput = {
+  id: string
+  created_at?: Date | string
+  updated_at: Date | string
+  name: string
+  status?: $Enums.SurveyStatus
+  questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  displayOption?: $Enums.displayOptions
+  recontactDays?: number | null
+  type?: $Enums.SurveyType
+  autoClose?: number | null
+  delay?: number
+  autoComplete?: number | null
+  redirectUrl?: string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: number | null
+  showLanguageSwitch?: boolean | null
+  isVerifyEmailEnabled?: boolean
+  endings?: Prisma.SurveyCreateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: boolean
+  isBackButtonHidden?: boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyCreateblocksInput | runtime.InputJsonValue[]
+  Display?: Prisma.DisplayCreateNestedManyWithoutSurveyInput
+  Response?: Prisma.ResponseCreateNestedManyWithoutSurveyInput
+  User?: Prisma.UserCreateNestedOneWithoutSurveyInput
+  Environment: Prisma.EnvironmentCreateNestedOneWithoutSurveyInput
+  Segment?: Prisma.SegmentCreateNestedOneWithoutSurveyInput
+  SurveyAttributeFilter?: Prisma.SurveyAttributeFilterCreateNestedManyWithoutSurveyInput
+  SurveyLanguage?: Prisma.SurveyLanguageCreateNestedManyWithoutSurveyInput
+  SurveyQuota?: Prisma.SurveyQuotaCreateNestedManyWithoutSurveyInput
+  SurveyTrigger?: Prisma.SurveyTriggerCreateNestedManyWithoutSurveyInput
+}
+
+export type SurveyUncheckedCreateWithoutSurveyFollowUpInput = {
+  id: string
+  created_at?: Date | string
+  updated_at: Date | string
+  name: string
+  environmentId: string
+  status?: $Enums.SurveyStatus
+  questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  displayOption?: $Enums.displayOptions
+  recontactDays?: number | null
+  type?: $Enums.SurveyType
+  autoClose?: number | null
+  delay?: number
+  autoComplete?: number | null
+  redirectUrl?: string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdBy?: string | null
+  segmentId?: string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: number | null
+  showLanguageSwitch?: boolean | null
+  isVerifyEmailEnabled?: boolean
+  endings?: Prisma.SurveyCreateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: boolean
+  isBackButtonHidden?: boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyCreateblocksInput | runtime.InputJsonValue[]
+  Display?: Prisma.DisplayUncheckedCreateNestedManyWithoutSurveyInput
+  Response?: Prisma.ResponseUncheckedCreateNestedManyWithoutSurveyInput
+  SurveyAttributeFilter?: Prisma.SurveyAttributeFilterUncheckedCreateNestedManyWithoutSurveyInput
+  SurveyLanguage?: Prisma.SurveyLanguageUncheckedCreateNestedManyWithoutSurveyInput
+  SurveyQuota?: Prisma.SurveyQuotaUncheckedCreateNestedManyWithoutSurveyInput
+  SurveyTrigger?: Prisma.SurveyTriggerUncheckedCreateNestedManyWithoutSurveyInput
+}
+
+export type SurveyCreateOrConnectWithoutSurveyFollowUpInput = {
+  where: Prisma.SurveyWhereUniqueInput
+  create: Prisma.XOR<Prisma.SurveyCreateWithoutSurveyFollowUpInput, Prisma.SurveyUncheckedCreateWithoutSurveyFollowUpInput>
+}
+
+export type SurveyUpsertWithoutSurveyFollowUpInput = {
+  update: Prisma.XOR<Prisma.SurveyUpdateWithoutSurveyFollowUpInput, Prisma.SurveyUncheckedUpdateWithoutSurveyFollowUpInput>
+  create: Prisma.XOR<Prisma.SurveyCreateWithoutSurveyFollowUpInput, Prisma.SurveyUncheckedCreateWithoutSurveyFollowUpInput>
+  where?: Prisma.SurveyWhereInput
+}
+
+export type SurveyUpdateToOneWithWhereWithoutSurveyFollowUpInput = {
+  where?: Prisma.SurveyWhereInput
+  data: Prisma.XOR<Prisma.SurveyUpdateWithoutSurveyFollowUpInput, Prisma.SurveyUncheckedUpdateWithoutSurveyFollowUpInput>
+}
+
+export type SurveyUpdateWithoutSurveyFollowUpInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumSurveyStatusFieldUpdateOperationsInput | $Enums.SurveyStatus
+  questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  displayOption?: Prisma.EnumdisplayOptionsFieldUpdateOperationsInput | $Enums.displayOptions
+  recontactDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  type?: Prisma.EnumSurveyTypeFieldUpdateOperationsInput | $Enums.SurveyType
+  autoClose?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  delay?: Prisma.IntFieldUpdateOperationsInput | number
+  autoComplete?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  redirectUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  showLanguageSwitch?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  isVerifyEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  endings?: Prisma.SurveyUpdateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isBackButtonHidden?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyUpdateblocksInput | runtime.InputJsonValue[]
+  Display?: Prisma.DisplayUpdateManyWithoutSurveyNestedInput
+  Response?: Prisma.ResponseUpdateManyWithoutSurveyNestedInput
+  User?: Prisma.UserUpdateOneWithoutSurveyNestedInput
+  Environment?: Prisma.EnvironmentUpdateOneRequiredWithoutSurveyNestedInput
+  Segment?: Prisma.SegmentUpdateOneWithoutSurveyNestedInput
+  SurveyAttributeFilter?: Prisma.SurveyAttributeFilterUpdateManyWithoutSurveyNestedInput
+  SurveyLanguage?: Prisma.SurveyLanguageUpdateManyWithoutSurveyNestedInput
+  SurveyQuota?: Prisma.SurveyQuotaUpdateManyWithoutSurveyNestedInput
+  SurveyTrigger?: Prisma.SurveyTriggerUpdateManyWithoutSurveyNestedInput
+}
+
+export type SurveyUncheckedUpdateWithoutSurveyFollowUpInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  environmentId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumSurveyStatusFieldUpdateOperationsInput | $Enums.SurveyStatus
+  questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  displayOption?: Prisma.EnumdisplayOptionsFieldUpdateOperationsInput | $Enums.displayOptions
+  recontactDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  type?: Prisma.EnumSurveyTypeFieldUpdateOperationsInput | $Enums.SurveyType
+  autoClose?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  delay?: Prisma.IntFieldUpdateOperationsInput | number
+  autoComplete?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  redirectUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  segmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  showLanguageSwitch?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  isVerifyEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  endings?: Prisma.SurveyUpdateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isBackButtonHidden?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyUpdateblocksInput | runtime.InputJsonValue[]
+  Display?: Prisma.DisplayUncheckedUpdateManyWithoutSurveyNestedInput
+  Response?: Prisma.ResponseUncheckedUpdateManyWithoutSurveyNestedInput
+  SurveyAttributeFilter?: Prisma.SurveyAttributeFilterUncheckedUpdateManyWithoutSurveyNestedInput
+  SurveyLanguage?: Prisma.SurveyLanguageUncheckedUpdateManyWithoutSurveyNestedInput
+  SurveyQuota?: Prisma.SurveyQuotaUncheckedUpdateManyWithoutSurveyNestedInput
+  SurveyTrigger?: Prisma.SurveyTriggerUncheckedUpdateManyWithoutSurveyNestedInput
+}
+
+export type SurveyCreateWithoutSurveyLanguageInput = {
+  id: string
+  created_at?: Date | string
+  updated_at: Date | string
+  name: string
+  status?: $Enums.SurveyStatus
+  questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  displayOption?: $Enums.displayOptions
+  recontactDays?: number | null
+  type?: $Enums.SurveyType
+  autoClose?: number | null
+  delay?: number
+  autoComplete?: number | null
+  redirectUrl?: string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: number | null
+  showLanguageSwitch?: boolean | null
+  isVerifyEmailEnabled?: boolean
+  endings?: Prisma.SurveyCreateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: boolean
+  isBackButtonHidden?: boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyCreateblocksInput | runtime.InputJsonValue[]
+  Display?: Prisma.DisplayCreateNestedManyWithoutSurveyInput
+  Response?: Prisma.ResponseCreateNestedManyWithoutSurveyInput
+  User?: Prisma.UserCreateNestedOneWithoutSurveyInput
+  Environment: Prisma.EnvironmentCreateNestedOneWithoutSurveyInput
+  Segment?: Prisma.SegmentCreateNestedOneWithoutSurveyInput
+  SurveyAttributeFilter?: Prisma.SurveyAttributeFilterCreateNestedManyWithoutSurveyInput
+  SurveyFollowUp?: Prisma.SurveyFollowUpCreateNestedManyWithoutSurveyInput
+  SurveyQuota?: Prisma.SurveyQuotaCreateNestedManyWithoutSurveyInput
+  SurveyTrigger?: Prisma.SurveyTriggerCreateNestedManyWithoutSurveyInput
+}
+
+export type SurveyUncheckedCreateWithoutSurveyLanguageInput = {
+  id: string
+  created_at?: Date | string
+  updated_at: Date | string
+  name: string
+  environmentId: string
+  status?: $Enums.SurveyStatus
+  questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  displayOption?: $Enums.displayOptions
+  recontactDays?: number | null
+  type?: $Enums.SurveyType
+  autoClose?: number | null
+  delay?: number
+  autoComplete?: number | null
+  redirectUrl?: string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdBy?: string | null
+  segmentId?: string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: number | null
+  showLanguageSwitch?: boolean | null
+  isVerifyEmailEnabled?: boolean
+  endings?: Prisma.SurveyCreateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: boolean
+  isBackButtonHidden?: boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyCreateblocksInput | runtime.InputJsonValue[]
+  Display?: Prisma.DisplayUncheckedCreateNestedManyWithoutSurveyInput
+  Response?: Prisma.ResponseUncheckedCreateNestedManyWithoutSurveyInput
+  SurveyAttributeFilter?: Prisma.SurveyAttributeFilterUncheckedCreateNestedManyWithoutSurveyInput
+  SurveyFollowUp?: Prisma.SurveyFollowUpUncheckedCreateNestedManyWithoutSurveyInput
+  SurveyQuota?: Prisma.SurveyQuotaUncheckedCreateNestedManyWithoutSurveyInput
+  SurveyTrigger?: Prisma.SurveyTriggerUncheckedCreateNestedManyWithoutSurveyInput
+}
+
+export type SurveyCreateOrConnectWithoutSurveyLanguageInput = {
+  where: Prisma.SurveyWhereUniqueInput
+  create: Prisma.XOR<Prisma.SurveyCreateWithoutSurveyLanguageInput, Prisma.SurveyUncheckedCreateWithoutSurveyLanguageInput>
+}
+
+export type SurveyUpsertWithoutSurveyLanguageInput = {
+  update: Prisma.XOR<Prisma.SurveyUpdateWithoutSurveyLanguageInput, Prisma.SurveyUncheckedUpdateWithoutSurveyLanguageInput>
+  create: Prisma.XOR<Prisma.SurveyCreateWithoutSurveyLanguageInput, Prisma.SurveyUncheckedCreateWithoutSurveyLanguageInput>
+  where?: Prisma.SurveyWhereInput
+}
+
+export type SurveyUpdateToOneWithWhereWithoutSurveyLanguageInput = {
+  where?: Prisma.SurveyWhereInput
+  data: Prisma.XOR<Prisma.SurveyUpdateWithoutSurveyLanguageInput, Prisma.SurveyUncheckedUpdateWithoutSurveyLanguageInput>
+}
+
+export type SurveyUpdateWithoutSurveyLanguageInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumSurveyStatusFieldUpdateOperationsInput | $Enums.SurveyStatus
+  questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  displayOption?: Prisma.EnumdisplayOptionsFieldUpdateOperationsInput | $Enums.displayOptions
+  recontactDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  type?: Prisma.EnumSurveyTypeFieldUpdateOperationsInput | $Enums.SurveyType
+  autoClose?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  delay?: Prisma.IntFieldUpdateOperationsInput | number
+  autoComplete?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  redirectUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  showLanguageSwitch?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  isVerifyEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  endings?: Prisma.SurveyUpdateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isBackButtonHidden?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyUpdateblocksInput | runtime.InputJsonValue[]
+  Display?: Prisma.DisplayUpdateManyWithoutSurveyNestedInput
+  Response?: Prisma.ResponseUpdateManyWithoutSurveyNestedInput
+  User?: Prisma.UserUpdateOneWithoutSurveyNestedInput
+  Environment?: Prisma.EnvironmentUpdateOneRequiredWithoutSurveyNestedInput
+  Segment?: Prisma.SegmentUpdateOneWithoutSurveyNestedInput
+  SurveyAttributeFilter?: Prisma.SurveyAttributeFilterUpdateManyWithoutSurveyNestedInput
+  SurveyFollowUp?: Prisma.SurveyFollowUpUpdateManyWithoutSurveyNestedInput
+  SurveyQuota?: Prisma.SurveyQuotaUpdateManyWithoutSurveyNestedInput
+  SurveyTrigger?: Prisma.SurveyTriggerUpdateManyWithoutSurveyNestedInput
+}
+
+export type SurveyUncheckedUpdateWithoutSurveyLanguageInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  environmentId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumSurveyStatusFieldUpdateOperationsInput | $Enums.SurveyStatus
+  questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  displayOption?: Prisma.EnumdisplayOptionsFieldUpdateOperationsInput | $Enums.displayOptions
+  recontactDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  type?: Prisma.EnumSurveyTypeFieldUpdateOperationsInput | $Enums.SurveyType
+  autoClose?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  delay?: Prisma.IntFieldUpdateOperationsInput | number
+  autoComplete?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  redirectUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  segmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  showLanguageSwitch?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  isVerifyEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  endings?: Prisma.SurveyUpdateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isBackButtonHidden?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyUpdateblocksInput | runtime.InputJsonValue[]
+  Display?: Prisma.DisplayUncheckedUpdateManyWithoutSurveyNestedInput
+  Response?: Prisma.ResponseUncheckedUpdateManyWithoutSurveyNestedInput
+  SurveyAttributeFilter?: Prisma.SurveyAttributeFilterUncheckedUpdateManyWithoutSurveyNestedInput
+  SurveyFollowUp?: Prisma.SurveyFollowUpUncheckedUpdateManyWithoutSurveyNestedInput
+  SurveyQuota?: Prisma.SurveyQuotaUncheckedUpdateManyWithoutSurveyNestedInput
+  SurveyTrigger?: Prisma.SurveyTriggerUncheckedUpdateManyWithoutSurveyNestedInput
+}
+
+export type SurveyCreateWithoutSurveyQuotaInput = {
+  id: string
+  created_at?: Date | string
+  updated_at: Date | string
+  name: string
+  status?: $Enums.SurveyStatus
+  questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  displayOption?: $Enums.displayOptions
+  recontactDays?: number | null
+  type?: $Enums.SurveyType
+  autoClose?: number | null
+  delay?: number
+  autoComplete?: number | null
+  redirectUrl?: string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: number | null
+  showLanguageSwitch?: boolean | null
+  isVerifyEmailEnabled?: boolean
+  endings?: Prisma.SurveyCreateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: boolean
+  isBackButtonHidden?: boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyCreateblocksInput | runtime.InputJsonValue[]
+  Display?: Prisma.DisplayCreateNestedManyWithoutSurveyInput
+  Response?: Prisma.ResponseCreateNestedManyWithoutSurveyInput
+  User?: Prisma.UserCreateNestedOneWithoutSurveyInput
+  Environment: Prisma.EnvironmentCreateNestedOneWithoutSurveyInput
+  Segment?: Prisma.SegmentCreateNestedOneWithoutSurveyInput
+  SurveyAttributeFilter?: Prisma.SurveyAttributeFilterCreateNestedManyWithoutSurveyInput
+  SurveyFollowUp?: Prisma.SurveyFollowUpCreateNestedManyWithoutSurveyInput
+  SurveyLanguage?: Prisma.SurveyLanguageCreateNestedManyWithoutSurveyInput
+  SurveyTrigger?: Prisma.SurveyTriggerCreateNestedManyWithoutSurveyInput
+}
+
+export type SurveyUncheckedCreateWithoutSurveyQuotaInput = {
+  id: string
+  created_at?: Date | string
+  updated_at: Date | string
+  name: string
+  environmentId: string
+  status?: $Enums.SurveyStatus
+  questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  displayOption?: $Enums.displayOptions
+  recontactDays?: number | null
+  type?: $Enums.SurveyType
+  autoClose?: number | null
+  delay?: number
+  autoComplete?: number | null
+  redirectUrl?: string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdBy?: string | null
+  segmentId?: string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: number | null
+  showLanguageSwitch?: boolean | null
+  isVerifyEmailEnabled?: boolean
+  endings?: Prisma.SurveyCreateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: boolean
+  isBackButtonHidden?: boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyCreateblocksInput | runtime.InputJsonValue[]
+  Display?: Prisma.DisplayUncheckedCreateNestedManyWithoutSurveyInput
+  Response?: Prisma.ResponseUncheckedCreateNestedManyWithoutSurveyInput
+  SurveyAttributeFilter?: Prisma.SurveyAttributeFilterUncheckedCreateNestedManyWithoutSurveyInput
+  SurveyFollowUp?: Prisma.SurveyFollowUpUncheckedCreateNestedManyWithoutSurveyInput
+  SurveyLanguage?: Prisma.SurveyLanguageUncheckedCreateNestedManyWithoutSurveyInput
+  SurveyTrigger?: Prisma.SurveyTriggerUncheckedCreateNestedManyWithoutSurveyInput
+}
+
+export type SurveyCreateOrConnectWithoutSurveyQuotaInput = {
+  where: Prisma.SurveyWhereUniqueInput
+  create: Prisma.XOR<Prisma.SurveyCreateWithoutSurveyQuotaInput, Prisma.SurveyUncheckedCreateWithoutSurveyQuotaInput>
+}
+
+export type SurveyUpsertWithoutSurveyQuotaInput = {
+  update: Prisma.XOR<Prisma.SurveyUpdateWithoutSurveyQuotaInput, Prisma.SurveyUncheckedUpdateWithoutSurveyQuotaInput>
+  create: Prisma.XOR<Prisma.SurveyCreateWithoutSurveyQuotaInput, Prisma.SurveyUncheckedCreateWithoutSurveyQuotaInput>
+  where?: Prisma.SurveyWhereInput
+}
+
+export type SurveyUpdateToOneWithWhereWithoutSurveyQuotaInput = {
+  where?: Prisma.SurveyWhereInput
+  data: Prisma.XOR<Prisma.SurveyUpdateWithoutSurveyQuotaInput, Prisma.SurveyUncheckedUpdateWithoutSurveyQuotaInput>
+}
+
+export type SurveyUpdateWithoutSurveyQuotaInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumSurveyStatusFieldUpdateOperationsInput | $Enums.SurveyStatus
+  questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  displayOption?: Prisma.EnumdisplayOptionsFieldUpdateOperationsInput | $Enums.displayOptions
+  recontactDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  type?: Prisma.EnumSurveyTypeFieldUpdateOperationsInput | $Enums.SurveyType
+  autoClose?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  delay?: Prisma.IntFieldUpdateOperationsInput | number
+  autoComplete?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  redirectUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  showLanguageSwitch?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  isVerifyEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  endings?: Prisma.SurveyUpdateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isBackButtonHidden?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyUpdateblocksInput | runtime.InputJsonValue[]
+  Display?: Prisma.DisplayUpdateManyWithoutSurveyNestedInput
+  Response?: Prisma.ResponseUpdateManyWithoutSurveyNestedInput
+  User?: Prisma.UserUpdateOneWithoutSurveyNestedInput
+  Environment?: Prisma.EnvironmentUpdateOneRequiredWithoutSurveyNestedInput
+  Segment?: Prisma.SegmentUpdateOneWithoutSurveyNestedInput
+  SurveyAttributeFilter?: Prisma.SurveyAttributeFilterUpdateManyWithoutSurveyNestedInput
+  SurveyFollowUp?: Prisma.SurveyFollowUpUpdateManyWithoutSurveyNestedInput
+  SurveyLanguage?: Prisma.SurveyLanguageUpdateManyWithoutSurveyNestedInput
+  SurveyTrigger?: Prisma.SurveyTriggerUpdateManyWithoutSurveyNestedInput
+}
+
+export type SurveyUncheckedUpdateWithoutSurveyQuotaInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  environmentId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumSurveyStatusFieldUpdateOperationsInput | $Enums.SurveyStatus
+  questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  displayOption?: Prisma.EnumdisplayOptionsFieldUpdateOperationsInput | $Enums.displayOptions
+  recontactDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  type?: Prisma.EnumSurveyTypeFieldUpdateOperationsInput | $Enums.SurveyType
+  autoClose?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  delay?: Prisma.IntFieldUpdateOperationsInput | number
+  autoComplete?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  redirectUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  segmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  showLanguageSwitch?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  isVerifyEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  endings?: Prisma.SurveyUpdateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isBackButtonHidden?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyUpdateblocksInput | runtime.InputJsonValue[]
+  Display?: Prisma.DisplayUncheckedUpdateManyWithoutSurveyNestedInput
+  Response?: Prisma.ResponseUncheckedUpdateManyWithoutSurveyNestedInput
+  SurveyAttributeFilter?: Prisma.SurveyAttributeFilterUncheckedUpdateManyWithoutSurveyNestedInput
+  SurveyFollowUp?: Prisma.SurveyFollowUpUncheckedUpdateManyWithoutSurveyNestedInput
+  SurveyLanguage?: Prisma.SurveyLanguageUncheckedUpdateManyWithoutSurveyNestedInput
+  SurveyTrigger?: Prisma.SurveyTriggerUncheckedUpdateManyWithoutSurveyNestedInput
 }
 
 export type SurveyCreateManyEnvironmentInput = {
@@ -1046,8 +3056,32 @@ export type SurveyCreateManyEnvironmentInput = {
   questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   displayOption?: $Enums.displayOptions
   recontactDays?: number | null
-  thankYouCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   type?: $Enums.SurveyType
+  autoClose?: number | null
+  delay?: number
+  autoComplete?: number | null
+  redirectUrl?: string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdBy?: string | null
+  segmentId?: string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: number | null
+  showLanguageSwitch?: boolean | null
+  isVerifyEmailEnabled?: boolean
+  endings?: Prisma.SurveyCreateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: boolean
+  isBackButtonHidden?: boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyCreateblocksInput | runtime.InputJsonValue[]
 }
 
 export type SurveyUpdateWithoutEnvironmentInput = {
@@ -1059,11 +3093,38 @@ export type SurveyUpdateWithoutEnvironmentInput = {
   questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   displayOption?: Prisma.EnumdisplayOptionsFieldUpdateOperationsInput | $Enums.displayOptions
   recontactDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  thankYouCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   type?: Prisma.EnumSurveyTypeFieldUpdateOperationsInput | $Enums.SurveyType
+  autoClose?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  delay?: Prisma.IntFieldUpdateOperationsInput | number
+  autoComplete?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  redirectUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  showLanguageSwitch?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  isVerifyEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  endings?: Prisma.SurveyUpdateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isBackButtonHidden?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyUpdateblocksInput | runtime.InputJsonValue[]
   Display?: Prisma.DisplayUpdateManyWithoutSurveyNestedInput
   Response?: Prisma.ResponseUpdateManyWithoutSurveyNestedInput
+  User?: Prisma.UserUpdateOneWithoutSurveyNestedInput
+  Segment?: Prisma.SegmentUpdateOneWithoutSurveyNestedInput
   SurveyAttributeFilter?: Prisma.SurveyAttributeFilterUpdateManyWithoutSurveyNestedInput
+  SurveyFollowUp?: Prisma.SurveyFollowUpUpdateManyWithoutSurveyNestedInput
+  SurveyLanguage?: Prisma.SurveyLanguageUpdateManyWithoutSurveyNestedInput
+  SurveyQuota?: Prisma.SurveyQuotaUpdateManyWithoutSurveyNestedInput
   SurveyTrigger?: Prisma.SurveyTriggerUpdateManyWithoutSurveyNestedInput
 }
 
@@ -1076,11 +3137,38 @@ export type SurveyUncheckedUpdateWithoutEnvironmentInput = {
   questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   displayOption?: Prisma.EnumdisplayOptionsFieldUpdateOperationsInput | $Enums.displayOptions
   recontactDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  thankYouCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   type?: Prisma.EnumSurveyTypeFieldUpdateOperationsInput | $Enums.SurveyType
+  autoClose?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  delay?: Prisma.IntFieldUpdateOperationsInput | number
+  autoComplete?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  redirectUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  segmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  showLanguageSwitch?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  isVerifyEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  endings?: Prisma.SurveyUpdateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isBackButtonHidden?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyUpdateblocksInput | runtime.InputJsonValue[]
   Display?: Prisma.DisplayUncheckedUpdateManyWithoutSurveyNestedInput
   Response?: Prisma.ResponseUncheckedUpdateManyWithoutSurveyNestedInput
   SurveyAttributeFilter?: Prisma.SurveyAttributeFilterUncheckedUpdateManyWithoutSurveyNestedInput
+  SurveyFollowUp?: Prisma.SurveyFollowUpUncheckedUpdateManyWithoutSurveyNestedInput
+  SurveyLanguage?: Prisma.SurveyLanguageUncheckedUpdateManyWithoutSurveyNestedInput
+  SurveyQuota?: Prisma.SurveyQuotaUncheckedUpdateManyWithoutSurveyNestedInput
   SurveyTrigger?: Prisma.SurveyTriggerUncheckedUpdateManyWithoutSurveyNestedInput
 }
 
@@ -1093,8 +3181,356 @@ export type SurveyUncheckedUpdateManyWithoutEnvironmentInput = {
   questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   displayOption?: Prisma.EnumdisplayOptionsFieldUpdateOperationsInput | $Enums.displayOptions
   recontactDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  thankYouCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   type?: Prisma.EnumSurveyTypeFieldUpdateOperationsInput | $Enums.SurveyType
+  autoClose?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  delay?: Prisma.IntFieldUpdateOperationsInput | number
+  autoComplete?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  redirectUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  segmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  showLanguageSwitch?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  isVerifyEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  endings?: Prisma.SurveyUpdateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isBackButtonHidden?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyUpdateblocksInput | runtime.InputJsonValue[]
+}
+
+export type SurveyCreateManyUserInput = {
+  id: string
+  created_at?: Date | string
+  updated_at: Date | string
+  name: string
+  environmentId: string
+  status?: $Enums.SurveyStatus
+  questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  displayOption?: $Enums.displayOptions
+  recontactDays?: number | null
+  type?: $Enums.SurveyType
+  autoClose?: number | null
+  delay?: number
+  autoComplete?: number | null
+  redirectUrl?: string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  segmentId?: string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: number | null
+  showLanguageSwitch?: boolean | null
+  isVerifyEmailEnabled?: boolean
+  endings?: Prisma.SurveyCreateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: boolean
+  isBackButtonHidden?: boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyCreateblocksInput | runtime.InputJsonValue[]
+}
+
+export type SurveyUpdateWithoutUserInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumSurveyStatusFieldUpdateOperationsInput | $Enums.SurveyStatus
+  questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  displayOption?: Prisma.EnumdisplayOptionsFieldUpdateOperationsInput | $Enums.displayOptions
+  recontactDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  type?: Prisma.EnumSurveyTypeFieldUpdateOperationsInput | $Enums.SurveyType
+  autoClose?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  delay?: Prisma.IntFieldUpdateOperationsInput | number
+  autoComplete?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  redirectUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  showLanguageSwitch?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  isVerifyEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  endings?: Prisma.SurveyUpdateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isBackButtonHidden?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyUpdateblocksInput | runtime.InputJsonValue[]
+  Display?: Prisma.DisplayUpdateManyWithoutSurveyNestedInput
+  Response?: Prisma.ResponseUpdateManyWithoutSurveyNestedInput
+  Environment?: Prisma.EnvironmentUpdateOneRequiredWithoutSurveyNestedInput
+  Segment?: Prisma.SegmentUpdateOneWithoutSurveyNestedInput
+  SurveyAttributeFilter?: Prisma.SurveyAttributeFilterUpdateManyWithoutSurveyNestedInput
+  SurveyFollowUp?: Prisma.SurveyFollowUpUpdateManyWithoutSurveyNestedInput
+  SurveyLanguage?: Prisma.SurveyLanguageUpdateManyWithoutSurveyNestedInput
+  SurveyQuota?: Prisma.SurveyQuotaUpdateManyWithoutSurveyNestedInput
+  SurveyTrigger?: Prisma.SurveyTriggerUpdateManyWithoutSurveyNestedInput
+}
+
+export type SurveyUncheckedUpdateWithoutUserInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  environmentId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumSurveyStatusFieldUpdateOperationsInput | $Enums.SurveyStatus
+  questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  displayOption?: Prisma.EnumdisplayOptionsFieldUpdateOperationsInput | $Enums.displayOptions
+  recontactDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  type?: Prisma.EnumSurveyTypeFieldUpdateOperationsInput | $Enums.SurveyType
+  autoClose?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  delay?: Prisma.IntFieldUpdateOperationsInput | number
+  autoComplete?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  redirectUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  segmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  showLanguageSwitch?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  isVerifyEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  endings?: Prisma.SurveyUpdateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isBackButtonHidden?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyUpdateblocksInput | runtime.InputJsonValue[]
+  Display?: Prisma.DisplayUncheckedUpdateManyWithoutSurveyNestedInput
+  Response?: Prisma.ResponseUncheckedUpdateManyWithoutSurveyNestedInput
+  SurveyAttributeFilter?: Prisma.SurveyAttributeFilterUncheckedUpdateManyWithoutSurveyNestedInput
+  SurveyFollowUp?: Prisma.SurveyFollowUpUncheckedUpdateManyWithoutSurveyNestedInput
+  SurveyLanguage?: Prisma.SurveyLanguageUncheckedUpdateManyWithoutSurveyNestedInput
+  SurveyQuota?: Prisma.SurveyQuotaUncheckedUpdateManyWithoutSurveyNestedInput
+  SurveyTrigger?: Prisma.SurveyTriggerUncheckedUpdateManyWithoutSurveyNestedInput
+}
+
+export type SurveyUncheckedUpdateManyWithoutUserInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  environmentId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumSurveyStatusFieldUpdateOperationsInput | $Enums.SurveyStatus
+  questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  displayOption?: Prisma.EnumdisplayOptionsFieldUpdateOperationsInput | $Enums.displayOptions
+  recontactDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  type?: Prisma.EnumSurveyTypeFieldUpdateOperationsInput | $Enums.SurveyType
+  autoClose?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  delay?: Prisma.IntFieldUpdateOperationsInput | number
+  autoComplete?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  redirectUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  segmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  showLanguageSwitch?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  isVerifyEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  endings?: Prisma.SurveyUpdateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isBackButtonHidden?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyUpdateblocksInput | runtime.InputJsonValue[]
+}
+
+export type SurveyCreateManySegmentInput = {
+  id: string
+  created_at?: Date | string
+  updated_at: Date | string
+  name: string
+  environmentId: string
+  status?: $Enums.SurveyStatus
+  questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  displayOption?: $Enums.displayOptions
+  recontactDays?: number | null
+  type?: $Enums.SurveyType
+  autoClose?: number | null
+  delay?: number
+  autoComplete?: number | null
+  redirectUrl?: string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdBy?: string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: number | null
+  showLanguageSwitch?: boolean | null
+  isVerifyEmailEnabled?: boolean
+  endings?: Prisma.SurveyCreateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: boolean
+  isBackButtonHidden?: boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyCreateblocksInput | runtime.InputJsonValue[]
+}
+
+export type SurveyUpdateWithoutSegmentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumSurveyStatusFieldUpdateOperationsInput | $Enums.SurveyStatus
+  questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  displayOption?: Prisma.EnumdisplayOptionsFieldUpdateOperationsInput | $Enums.displayOptions
+  recontactDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  type?: Prisma.EnumSurveyTypeFieldUpdateOperationsInput | $Enums.SurveyType
+  autoClose?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  delay?: Prisma.IntFieldUpdateOperationsInput | number
+  autoComplete?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  redirectUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  showLanguageSwitch?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  isVerifyEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  endings?: Prisma.SurveyUpdateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isBackButtonHidden?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyUpdateblocksInput | runtime.InputJsonValue[]
+  Display?: Prisma.DisplayUpdateManyWithoutSurveyNestedInput
+  Response?: Prisma.ResponseUpdateManyWithoutSurveyNestedInput
+  User?: Prisma.UserUpdateOneWithoutSurveyNestedInput
+  Environment?: Prisma.EnvironmentUpdateOneRequiredWithoutSurveyNestedInput
+  SurveyAttributeFilter?: Prisma.SurveyAttributeFilterUpdateManyWithoutSurveyNestedInput
+  SurveyFollowUp?: Prisma.SurveyFollowUpUpdateManyWithoutSurveyNestedInput
+  SurveyLanguage?: Prisma.SurveyLanguageUpdateManyWithoutSurveyNestedInput
+  SurveyQuota?: Prisma.SurveyQuotaUpdateManyWithoutSurveyNestedInput
+  SurveyTrigger?: Prisma.SurveyTriggerUpdateManyWithoutSurveyNestedInput
+}
+
+export type SurveyUncheckedUpdateWithoutSegmentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  environmentId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumSurveyStatusFieldUpdateOperationsInput | $Enums.SurveyStatus
+  questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  displayOption?: Prisma.EnumdisplayOptionsFieldUpdateOperationsInput | $Enums.displayOptions
+  recontactDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  type?: Prisma.EnumSurveyTypeFieldUpdateOperationsInput | $Enums.SurveyType
+  autoClose?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  delay?: Prisma.IntFieldUpdateOperationsInput | number
+  autoComplete?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  redirectUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  showLanguageSwitch?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  isVerifyEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  endings?: Prisma.SurveyUpdateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isBackButtonHidden?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyUpdateblocksInput | runtime.InputJsonValue[]
+  Display?: Prisma.DisplayUncheckedUpdateManyWithoutSurveyNestedInput
+  Response?: Prisma.ResponseUncheckedUpdateManyWithoutSurveyNestedInput
+  SurveyAttributeFilter?: Prisma.SurveyAttributeFilterUncheckedUpdateManyWithoutSurveyNestedInput
+  SurveyFollowUp?: Prisma.SurveyFollowUpUncheckedUpdateManyWithoutSurveyNestedInput
+  SurveyLanguage?: Prisma.SurveyLanguageUncheckedUpdateManyWithoutSurveyNestedInput
+  SurveyQuota?: Prisma.SurveyQuotaUncheckedUpdateManyWithoutSurveyNestedInput
+  SurveyTrigger?: Prisma.SurveyTriggerUncheckedUpdateManyWithoutSurveyNestedInput
+}
+
+export type SurveyUncheckedUpdateManyWithoutSegmentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  environmentId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumSurveyStatusFieldUpdateOperationsInput | $Enums.SurveyStatus
+  questions?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  displayOption?: Prisma.EnumdisplayOptionsFieldUpdateOperationsInput | $Enums.displayOptions
+  recontactDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  type?: Prisma.EnumSurveyTypeFieldUpdateOperationsInput | $Enums.SurveyType
+  autoClose?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  delay?: Prisma.IntFieldUpdateOperationsInput | number
+  autoComplete?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  redirectUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surveyClosedMessage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUse?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  projectOverwrites?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  hiddenFields?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  pin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  welcomeCard?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  styling?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayPercentage?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  inlineTriggers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  displayLimit?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  showLanguageSwitch?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  isVerifyEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  endings?: Prisma.SurveyUpdateendingsInput | runtime.InputJsonValue[]
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  isSingleResponsePerEmailEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isBackButtonHidden?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  recaptcha?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  metadata?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  blocks?: Prisma.SurveyUpdateblocksInput | runtime.InputJsonValue[]
 }
 
 
@@ -1106,6 +3542,9 @@ export type SurveyCountOutputType = {
   Display: number
   Response: number
   SurveyAttributeFilter: number
+  SurveyFollowUp: number
+  SurveyLanguage: number
+  SurveyQuota: number
   SurveyTrigger: number
 }
 
@@ -1113,6 +3552,9 @@ export type SurveyCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions
   Display?: boolean | SurveyCountOutputTypeCountDisplayArgs
   Response?: boolean | SurveyCountOutputTypeCountResponseArgs
   SurveyAttributeFilter?: boolean | SurveyCountOutputTypeCountSurveyAttributeFilterArgs
+  SurveyFollowUp?: boolean | SurveyCountOutputTypeCountSurveyFollowUpArgs
+  SurveyLanguage?: boolean | SurveyCountOutputTypeCountSurveyLanguageArgs
+  SurveyQuota?: boolean | SurveyCountOutputTypeCountSurveyQuotaArgs
   SurveyTrigger?: boolean | SurveyCountOutputTypeCountSurveyTriggerArgs
 }
 
@@ -1150,6 +3592,27 @@ export type SurveyCountOutputTypeCountSurveyAttributeFilterArgs<ExtArgs extends 
 /**
  * SurveyCountOutputType without action
  */
+export type SurveyCountOutputTypeCountSurveyFollowUpArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SurveyFollowUpWhereInput
+}
+
+/**
+ * SurveyCountOutputType without action
+ */
+export type SurveyCountOutputTypeCountSurveyLanguageArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SurveyLanguageWhereInput
+}
+
+/**
+ * SurveyCountOutputType without action
+ */
+export type SurveyCountOutputTypeCountSurveyQuotaArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SurveyQuotaWhereInput
+}
+
+/**
+ * SurveyCountOutputType without action
+ */
 export type SurveyCountOutputTypeCountSurveyTriggerArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.SurveyTriggerWhereInput
 }
@@ -1165,12 +3628,41 @@ export type SurveySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   questions?: boolean
   displayOption?: boolean
   recontactDays?: boolean
-  thankYouCard?: boolean
   type?: boolean
+  autoClose?: boolean
+  delay?: boolean
+  autoComplete?: boolean
+  redirectUrl?: boolean
+  surveyClosedMessage?: boolean
+  singleUse?: boolean
+  projectOverwrites?: boolean
+  hiddenFields?: boolean
+  pin?: boolean
+  welcomeCard?: boolean
+  styling?: boolean
+  displayPercentage?: boolean
+  createdBy?: boolean
+  segmentId?: boolean
+  inlineTriggers?: boolean
+  displayLimit?: boolean
+  showLanguageSwitch?: boolean
+  isVerifyEmailEnabled?: boolean
+  endings?: boolean
+  variables?: boolean
+  isSingleResponsePerEmailEnabled?: boolean
+  isBackButtonHidden?: boolean
+  recaptcha?: boolean
+  metadata?: boolean
+  blocks?: boolean
   Display?: boolean | Prisma.Survey$DisplayArgs<ExtArgs>
   Response?: boolean | Prisma.Survey$ResponseArgs<ExtArgs>
+  User?: boolean | Prisma.Survey$UserArgs<ExtArgs>
   Environment?: boolean | Prisma.EnvironmentDefaultArgs<ExtArgs>
+  Segment?: boolean | Prisma.Survey$SegmentArgs<ExtArgs>
   SurveyAttributeFilter?: boolean | Prisma.Survey$SurveyAttributeFilterArgs<ExtArgs>
+  SurveyFollowUp?: boolean | Prisma.Survey$SurveyFollowUpArgs<ExtArgs>
+  SurveyLanguage?: boolean | Prisma.Survey$SurveyLanguageArgs<ExtArgs>
+  SurveyQuota?: boolean | Prisma.Survey$SurveyQuotaArgs<ExtArgs>
   SurveyTrigger?: boolean | Prisma.Survey$SurveyTriggerArgs<ExtArgs>
   _count?: boolean | Prisma.SurveyCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["survey"]>
@@ -1185,9 +3677,35 @@ export type SurveySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   questions?: boolean
   displayOption?: boolean
   recontactDays?: boolean
-  thankYouCard?: boolean
   type?: boolean
+  autoClose?: boolean
+  delay?: boolean
+  autoComplete?: boolean
+  redirectUrl?: boolean
+  surveyClosedMessage?: boolean
+  singleUse?: boolean
+  projectOverwrites?: boolean
+  hiddenFields?: boolean
+  pin?: boolean
+  welcomeCard?: boolean
+  styling?: boolean
+  displayPercentage?: boolean
+  createdBy?: boolean
+  segmentId?: boolean
+  inlineTriggers?: boolean
+  displayLimit?: boolean
+  showLanguageSwitch?: boolean
+  isVerifyEmailEnabled?: boolean
+  endings?: boolean
+  variables?: boolean
+  isSingleResponsePerEmailEnabled?: boolean
+  isBackButtonHidden?: boolean
+  recaptcha?: boolean
+  metadata?: boolean
+  blocks?: boolean
+  User?: boolean | Prisma.Survey$UserArgs<ExtArgs>
   Environment?: boolean | Prisma.EnvironmentDefaultArgs<ExtArgs>
+  Segment?: boolean | Prisma.Survey$SegmentArgs<ExtArgs>
 }, ExtArgs["result"]["survey"]>
 
 export type SurveySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1200,9 +3718,35 @@ export type SurveySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   questions?: boolean
   displayOption?: boolean
   recontactDays?: boolean
-  thankYouCard?: boolean
   type?: boolean
+  autoClose?: boolean
+  delay?: boolean
+  autoComplete?: boolean
+  redirectUrl?: boolean
+  surveyClosedMessage?: boolean
+  singleUse?: boolean
+  projectOverwrites?: boolean
+  hiddenFields?: boolean
+  pin?: boolean
+  welcomeCard?: boolean
+  styling?: boolean
+  displayPercentage?: boolean
+  createdBy?: boolean
+  segmentId?: boolean
+  inlineTriggers?: boolean
+  displayLimit?: boolean
+  showLanguageSwitch?: boolean
+  isVerifyEmailEnabled?: boolean
+  endings?: boolean
+  variables?: boolean
+  isSingleResponsePerEmailEnabled?: boolean
+  isBackButtonHidden?: boolean
+  recaptcha?: boolean
+  metadata?: boolean
+  blocks?: boolean
+  User?: boolean | Prisma.Survey$UserArgs<ExtArgs>
   Environment?: boolean | Prisma.EnvironmentDefaultArgs<ExtArgs>
+  Segment?: boolean | Prisma.Survey$SegmentArgs<ExtArgs>
 }, ExtArgs["result"]["survey"]>
 
 export type SurveySelectScalar = {
@@ -1215,24 +3759,57 @@ export type SurveySelectScalar = {
   questions?: boolean
   displayOption?: boolean
   recontactDays?: boolean
-  thankYouCard?: boolean
   type?: boolean
+  autoClose?: boolean
+  delay?: boolean
+  autoComplete?: boolean
+  redirectUrl?: boolean
+  surveyClosedMessage?: boolean
+  singleUse?: boolean
+  projectOverwrites?: boolean
+  hiddenFields?: boolean
+  pin?: boolean
+  welcomeCard?: boolean
+  styling?: boolean
+  displayPercentage?: boolean
+  createdBy?: boolean
+  segmentId?: boolean
+  inlineTriggers?: boolean
+  displayLimit?: boolean
+  showLanguageSwitch?: boolean
+  isVerifyEmailEnabled?: boolean
+  endings?: boolean
+  variables?: boolean
+  isSingleResponsePerEmailEnabled?: boolean
+  isBackButtonHidden?: boolean
+  recaptcha?: boolean
+  metadata?: boolean
+  blocks?: boolean
 }
 
-export type SurveyOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "created_at" | "updated_at" | "name" | "environmentId" | "status" | "questions" | "displayOption" | "recontactDays" | "thankYouCard" | "type", ExtArgs["result"]["survey"]>
+export type SurveyOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "created_at" | "updated_at" | "name" | "environmentId" | "status" | "questions" | "displayOption" | "recontactDays" | "type" | "autoClose" | "delay" | "autoComplete" | "redirectUrl" | "surveyClosedMessage" | "singleUse" | "projectOverwrites" | "hiddenFields" | "pin" | "welcomeCard" | "styling" | "displayPercentage" | "createdBy" | "segmentId" | "inlineTriggers" | "displayLimit" | "showLanguageSwitch" | "isVerifyEmailEnabled" | "endings" | "variables" | "isSingleResponsePerEmailEnabled" | "isBackButtonHidden" | "recaptcha" | "metadata" | "blocks", ExtArgs["result"]["survey"]>
 export type SurveyInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   Display?: boolean | Prisma.Survey$DisplayArgs<ExtArgs>
   Response?: boolean | Prisma.Survey$ResponseArgs<ExtArgs>
+  User?: boolean | Prisma.Survey$UserArgs<ExtArgs>
   Environment?: boolean | Prisma.EnvironmentDefaultArgs<ExtArgs>
+  Segment?: boolean | Prisma.Survey$SegmentArgs<ExtArgs>
   SurveyAttributeFilter?: boolean | Prisma.Survey$SurveyAttributeFilterArgs<ExtArgs>
+  SurveyFollowUp?: boolean | Prisma.Survey$SurveyFollowUpArgs<ExtArgs>
+  SurveyLanguage?: boolean | Prisma.Survey$SurveyLanguageArgs<ExtArgs>
+  SurveyQuota?: boolean | Prisma.Survey$SurveyQuotaArgs<ExtArgs>
   SurveyTrigger?: boolean | Prisma.Survey$SurveyTriggerArgs<ExtArgs>
   _count?: boolean | Prisma.SurveyCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type SurveyIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  User?: boolean | Prisma.Survey$UserArgs<ExtArgs>
   Environment?: boolean | Prisma.EnvironmentDefaultArgs<ExtArgs>
+  Segment?: boolean | Prisma.Survey$SegmentArgs<ExtArgs>
 }
 export type SurveyIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  User?: boolean | Prisma.Survey$UserArgs<ExtArgs>
   Environment?: boolean | Prisma.EnvironmentDefaultArgs<ExtArgs>
+  Segment?: boolean | Prisma.Survey$SegmentArgs<ExtArgs>
 }
 
 export type $SurveyPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1240,8 +3817,13 @@ export type $SurveyPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
   objects: {
     Display: Prisma.$DisplayPayload<ExtArgs>[]
     Response: Prisma.$ResponsePayload<ExtArgs>[]
+    User: Prisma.$UserPayload<ExtArgs> | null
     Environment: Prisma.$EnvironmentPayload<ExtArgs>
+    Segment: Prisma.$SegmentPayload<ExtArgs> | null
     SurveyAttributeFilter: Prisma.$SurveyAttributeFilterPayload<ExtArgs>[]
+    SurveyFollowUp: Prisma.$SurveyFollowUpPayload<ExtArgs>[]
+    SurveyLanguage: Prisma.$SurveyLanguagePayload<ExtArgs>[]
+    SurveyQuota: Prisma.$SurveyQuotaPayload<ExtArgs>[]
     SurveyTrigger: Prisma.$SurveyTriggerPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -1254,8 +3836,32 @@ export type $SurveyPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     questions: runtime.JsonValue
     displayOption: $Enums.displayOptions
     recontactDays: number | null
-    thankYouCard: runtime.JsonValue
     type: $Enums.SurveyType
+    autoClose: number | null
+    delay: number
+    autoComplete: number | null
+    redirectUrl: string | null
+    surveyClosedMessage: runtime.JsonValue | null
+    singleUse: runtime.JsonValue | null
+    projectOverwrites: runtime.JsonValue | null
+    hiddenFields: runtime.JsonValue
+    pin: string | null
+    welcomeCard: runtime.JsonValue
+    styling: runtime.JsonValue | null
+    displayPercentage: runtime.Decimal | null
+    createdBy: string | null
+    segmentId: string | null
+    inlineTriggers: runtime.JsonValue | null
+    displayLimit: number | null
+    showLanguageSwitch: boolean | null
+    isVerifyEmailEnabled: boolean
+    endings: runtime.JsonValue[]
+    variables: runtime.JsonValue
+    isSingleResponsePerEmailEnabled: boolean
+    isBackButtonHidden: boolean
+    recaptcha: runtime.JsonValue | null
+    metadata: runtime.JsonValue
+    blocks: runtime.JsonValue[]
   }, ExtArgs["result"]["survey"]>
   composites: {}
 }
@@ -1652,8 +4258,13 @@ export interface Prisma__SurveyClient<T, Null = never, ExtArgs extends runtime.T
   readonly [Symbol.toStringTag]: "PrismaPromise"
   Display<T extends Prisma.Survey$DisplayArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Survey$DisplayArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DisplayPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   Response<T extends Prisma.Survey$ResponseArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Survey$ResponseArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ResponsePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  User<T extends Prisma.Survey$UserArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Survey$UserArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   Environment<T extends Prisma.EnvironmentDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.EnvironmentDefaultArgs<ExtArgs>>): Prisma.Prisma__EnvironmentClient<runtime.Types.Result.GetResult<Prisma.$EnvironmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  Segment<T extends Prisma.Survey$SegmentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Survey$SegmentArgs<ExtArgs>>): Prisma.Prisma__SegmentClient<runtime.Types.Result.GetResult<Prisma.$SegmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   SurveyAttributeFilter<T extends Prisma.Survey$SurveyAttributeFilterArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Survey$SurveyAttributeFilterArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SurveyAttributeFilterPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  SurveyFollowUp<T extends Prisma.Survey$SurveyFollowUpArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Survey$SurveyFollowUpArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SurveyFollowUpPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  SurveyLanguage<T extends Prisma.Survey$SurveyLanguageArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Survey$SurveyLanguageArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SurveyLanguagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  SurveyQuota<T extends Prisma.Survey$SurveyQuotaArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Survey$SurveyQuotaArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SurveyQuotaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   SurveyTrigger<T extends Prisma.Survey$SurveyTriggerArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Survey$SurveyTriggerArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SurveyTriggerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1693,8 +4304,32 @@ export interface SurveyFieldRefs {
   readonly questions: Prisma.FieldRef<"Survey", 'Json'>
   readonly displayOption: Prisma.FieldRef<"Survey", 'displayOptions'>
   readonly recontactDays: Prisma.FieldRef<"Survey", 'Int'>
-  readonly thankYouCard: Prisma.FieldRef<"Survey", 'Json'>
   readonly type: Prisma.FieldRef<"Survey", 'SurveyType'>
+  readonly autoClose: Prisma.FieldRef<"Survey", 'Int'>
+  readonly delay: Prisma.FieldRef<"Survey", 'Int'>
+  readonly autoComplete: Prisma.FieldRef<"Survey", 'Int'>
+  readonly redirectUrl: Prisma.FieldRef<"Survey", 'String'>
+  readonly surveyClosedMessage: Prisma.FieldRef<"Survey", 'Json'>
+  readonly singleUse: Prisma.FieldRef<"Survey", 'Json'>
+  readonly projectOverwrites: Prisma.FieldRef<"Survey", 'Json'>
+  readonly hiddenFields: Prisma.FieldRef<"Survey", 'Json'>
+  readonly pin: Prisma.FieldRef<"Survey", 'String'>
+  readonly welcomeCard: Prisma.FieldRef<"Survey", 'Json'>
+  readonly styling: Prisma.FieldRef<"Survey", 'Json'>
+  readonly displayPercentage: Prisma.FieldRef<"Survey", 'Decimal'>
+  readonly createdBy: Prisma.FieldRef<"Survey", 'String'>
+  readonly segmentId: Prisma.FieldRef<"Survey", 'String'>
+  readonly inlineTriggers: Prisma.FieldRef<"Survey", 'Json'>
+  readonly displayLimit: Prisma.FieldRef<"Survey", 'Int'>
+  readonly showLanguageSwitch: Prisma.FieldRef<"Survey", 'Boolean'>
+  readonly isVerifyEmailEnabled: Prisma.FieldRef<"Survey", 'Boolean'>
+  readonly endings: Prisma.FieldRef<"Survey", 'Json[]'>
+  readonly variables: Prisma.FieldRef<"Survey", 'Json'>
+  readonly isSingleResponsePerEmailEnabled: Prisma.FieldRef<"Survey", 'Boolean'>
+  readonly isBackButtonHidden: Prisma.FieldRef<"Survey", 'Boolean'>
+  readonly recaptcha: Prisma.FieldRef<"Survey", 'Json'>
+  readonly metadata: Prisma.FieldRef<"Survey", 'Json'>
+  readonly blocks: Prisma.FieldRef<"Survey", 'Json[]'>
 }
     
 
@@ -2144,6 +4779,44 @@ export type Survey$ResponseArgs<ExtArgs extends runtime.Types.Extensions.Interna
 }
 
 /**
+ * Survey.User
+ */
+export type Survey$UserArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the User
+   */
+  select?: Prisma.UserSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the User
+   */
+  omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  where?: Prisma.UserWhereInput
+}
+
+/**
+ * Survey.Segment
+ */
+export type Survey$SegmentArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Segment
+   */
+  select?: Prisma.SegmentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Segment
+   */
+  omit?: Prisma.SegmentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SegmentInclude<ExtArgs> | null
+  where?: Prisma.SegmentWhereInput
+}
+
+/**
  * Survey.SurveyAttributeFilter
  */
 export type Survey$SurveyAttributeFilterArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2165,6 +4838,78 @@ export type Survey$SurveyAttributeFilterArgs<ExtArgs extends runtime.Types.Exten
   take?: number
   skip?: number
   distinct?: Prisma.SurveyAttributeFilterScalarFieldEnum | Prisma.SurveyAttributeFilterScalarFieldEnum[]
+}
+
+/**
+ * Survey.SurveyFollowUp
+ */
+export type Survey$SurveyFollowUpArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SurveyFollowUp
+   */
+  select?: Prisma.SurveyFollowUpSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SurveyFollowUp
+   */
+  omit?: Prisma.SurveyFollowUpOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SurveyFollowUpInclude<ExtArgs> | null
+  where?: Prisma.SurveyFollowUpWhereInput
+  orderBy?: Prisma.SurveyFollowUpOrderByWithRelationInput | Prisma.SurveyFollowUpOrderByWithRelationInput[]
+  cursor?: Prisma.SurveyFollowUpWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SurveyFollowUpScalarFieldEnum | Prisma.SurveyFollowUpScalarFieldEnum[]
+}
+
+/**
+ * Survey.SurveyLanguage
+ */
+export type Survey$SurveyLanguageArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SurveyLanguage
+   */
+  select?: Prisma.SurveyLanguageSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SurveyLanguage
+   */
+  omit?: Prisma.SurveyLanguageOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SurveyLanguageInclude<ExtArgs> | null
+  where?: Prisma.SurveyLanguageWhereInput
+  orderBy?: Prisma.SurveyLanguageOrderByWithRelationInput | Prisma.SurveyLanguageOrderByWithRelationInput[]
+  cursor?: Prisma.SurveyLanguageWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SurveyLanguageScalarFieldEnum | Prisma.SurveyLanguageScalarFieldEnum[]
+}
+
+/**
+ * Survey.SurveyQuota
+ */
+export type Survey$SurveyQuotaArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SurveyQuota
+   */
+  select?: Prisma.SurveyQuotaSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SurveyQuota
+   */
+  omit?: Prisma.SurveyQuotaOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SurveyQuotaInclude<ExtArgs> | null
+  where?: Prisma.SurveyQuotaWhereInput
+  orderBy?: Prisma.SurveyQuotaOrderByWithRelationInput | Prisma.SurveyQuotaOrderByWithRelationInput[]
+  cursor?: Prisma.SurveyQuotaWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SurveyQuotaScalarFieldEnum | Prisma.SurveyQuotaScalarFieldEnum[]
 }
 
 /**

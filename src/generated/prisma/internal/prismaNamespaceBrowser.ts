@@ -53,24 +53,39 @@ export const AnyNull = runtime.AnyNull
 export const ModelName = {
   Account: 'Account',
   ApiKey: 'ApiKey',
-  Attribute: 'Attribute',
-  AttributeClass: 'AttributeClass',
   Display: 'Display',
   Environment: 'Environment',
-  Event: 'Event',
-  EventClass: 'EventClass',
   Invite: 'Invite',
   Membership: 'Membership',
-  Person: 'Person',
-  Product: 'Product',
   Response: 'Response',
-  Session: 'Session',
   Survey: 'Survey',
   SurveyAttributeFilter: 'SurveyAttributeFilter',
   SurveyTrigger: 'SurveyTrigger',
   Team: 'Team',
   User: 'User',
-  Webhook: 'Webhook'
+  Webhook: 'Webhook',
+  ActionClass: 'ActionClass',
+  Admin: 'Admin',
+  AdminAuditLog: 'AdminAuditLog',
+  AdminOrganizationAccess: 'AdminOrganizationAccess',
+  ApiKeyEnvironment: 'ApiKeyEnvironment',
+  Contact: 'Contact',
+  ContactAttribute: 'ContactAttribute',
+  ContactAttributeKey: 'ContactAttributeKey',
+  DataMigration: 'DataMigration',
+  Integration: 'Integration',
+  Language: 'Language',
+  Organization: 'Organization',
+  Project: 'Project',
+  ProjectTeam: 'ProjectTeam',
+  ResponseQuotaLink: 'ResponseQuotaLink',
+  Segment: 'Segment',
+  SurveyFollowUp: 'SurveyFollowUp',
+  SurveyLanguage: 'SurveyLanguage',
+  SurveyQuota: 'SurveyQuota',
+  Tag: 'Tag',
+  TagsOnResponses: 'TagsOnResponses',
+  TeamUser: 'TeamUser'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -103,7 +118,8 @@ export const AccountScalarFieldEnum = {
   token_type: 'token_type',
   scope: 'scope',
   id_token: 'id_token',
-  session_state: 'session_state'
+  session_state: 'session_state',
+  ext_expires_in: 'ext_expires_in'
 } as const
 
 export type AccountScalarFieldEnum = (typeof AccountScalarFieldEnum)[keyof typeof AccountScalarFieldEnum]
@@ -112,38 +128,16 @@ export type AccountScalarFieldEnum = (typeof AccountScalarFieldEnum)[keyof typeo
 export const ApiKeyScalarFieldEnum = {
   id: 'id',
   createdAt: 'createdAt',
+  createdBy: 'createdBy',
   lastUsedAt: 'lastUsedAt',
   label: 'label',
   hashedKey: 'hashedKey',
-  environmentId: 'environmentId'
+  organizationId: 'organizationId',
+  organizationAccess: 'organizationAccess',
+  lookupHash: 'lookupHash'
 } as const
 
 export type ApiKeyScalarFieldEnum = (typeof ApiKeyScalarFieldEnum)[keyof typeof ApiKeyScalarFieldEnum]
-
-
-export const AttributeScalarFieldEnum = {
-  id: 'id',
-  created_at: 'created_at',
-  updated_at: 'updated_at',
-  attributeClassId: 'attributeClassId',
-  personId: 'personId',
-  value: 'value'
-} as const
-
-export type AttributeScalarFieldEnum = (typeof AttributeScalarFieldEnum)[keyof typeof AttributeScalarFieldEnum]
-
-
-export const AttributeClassScalarFieldEnum = {
-  id: 'id',
-  created_at: 'created_at',
-  updated_at: 'updated_at',
-  name: 'name',
-  description: 'description',
-  type: 'type',
-  environmentId: 'environmentId'
-} as const
-
-export type AttributeClassScalarFieldEnum = (typeof AttributeClassScalarFieldEnum)[keyof typeof AttributeClassScalarFieldEnum]
 
 
 export const DisplayScalarFieldEnum = {
@@ -151,8 +145,7 @@ export const DisplayScalarFieldEnum = {
   created_at: 'created_at',
   updated_at: 'updated_at',
   surveyId: 'surveyId',
-  personId: 'personId',
-  status: 'status'
+  contactId: 'contactId'
 } as const
 
 export type DisplayScalarFieldEnum = (typeof DisplayScalarFieldEnum)[keyof typeof DisplayScalarFieldEnum]
@@ -163,56 +156,31 @@ export const EnvironmentScalarFieldEnum = {
   created_at: 'created_at',
   updated_at: 'updated_at',
   type: 'type',
-  productId: 'productId',
-  widgetSetupCompleted: 'widgetSetupCompleted'
+  projectId: 'projectId',
+  appSetupCompleted: 'appSetupCompleted'
 } as const
 
 export type EnvironmentScalarFieldEnum = (typeof EnvironmentScalarFieldEnum)[keyof typeof EnvironmentScalarFieldEnum]
-
-
-export const EventScalarFieldEnum = {
-  id: 'id',
-  created_at: 'created_at',
-  eventClassId: 'eventClassId',
-  sessionId: 'sessionId',
-  properties: 'properties'
-} as const
-
-export type EventScalarFieldEnum = (typeof EventScalarFieldEnum)[keyof typeof EventScalarFieldEnum]
-
-
-export const EventClassScalarFieldEnum = {
-  id: 'id',
-  created_at: 'created_at',
-  updated_at: 'updated_at',
-  name: 'name',
-  description: 'description',
-  type: 'type',
-  noCodeConfig: 'noCodeConfig',
-  environmentId: 'environmentId'
-} as const
-
-export type EventClassScalarFieldEnum = (typeof EventClassScalarFieldEnum)[keyof typeof EventClassScalarFieldEnum]
 
 
 export const InviteScalarFieldEnum = {
   id: 'id',
   email: 'email',
   name: 'name',
-  teamId: 'teamId',
+  organizationId: 'organizationId',
   creatorId: 'creatorId',
   acceptorId: 'acceptorId',
-  accepted: 'accepted',
   createdAt: 'createdAt',
   expiresAt: 'expiresAt',
-  role: 'role'
+  role: 'role',
+  teamIds: 'teamIds'
 } as const
 
 export type InviteScalarFieldEnum = (typeof InviteScalarFieldEnum)[keyof typeof InviteScalarFieldEnum]
 
 
 export const MembershipScalarFieldEnum = {
-  teamId: 'teamId',
+  organizationId: 'organizationId',
   userId: 'userId',
   accepted: 'accepted',
   role: 'role'
@@ -221,52 +189,25 @@ export const MembershipScalarFieldEnum = {
 export type MembershipScalarFieldEnum = (typeof MembershipScalarFieldEnum)[keyof typeof MembershipScalarFieldEnum]
 
 
-export const PersonScalarFieldEnum = {
-  id: 'id',
-  created_at: 'created_at',
-  updated_at: 'updated_at',
-  environmentId: 'environmentId'
-} as const
-
-export type PersonScalarFieldEnum = (typeof PersonScalarFieldEnum)[keyof typeof PersonScalarFieldEnum]
-
-
-export const ProductScalarFieldEnum = {
-  id: 'id',
-  created_at: 'created_at',
-  updated_at: 'updated_at',
-  name: 'name',
-  teamId: 'teamId',
-  brandColor: 'brandColor',
-  recontactDays: 'recontactDays'
-} as const
-
-export type ProductScalarFieldEnum = (typeof ProductScalarFieldEnum)[keyof typeof ProductScalarFieldEnum]
-
-
 export const ResponseScalarFieldEnum = {
   id: 'id',
   created_at: 'created_at',
   updated_at: 'updated_at',
   finished: 'finished',
   surveyId: 'surveyId',
-  personId: 'personId',
+  contactId: 'contactId',
   data: 'data',
   meta: 'meta',
-  userAttributes: 'userAttributes'
+  contactAttributes: 'contactAttributes',
+  singleUseId: 'singleUseId',
+  ttc: 'ttc',
+  language: 'language',
+  variables: 'variables',
+  displayId: 'displayId',
+  endingId: 'endingId'
 } as const
 
 export type ResponseScalarFieldEnum = (typeof ResponseScalarFieldEnum)[keyof typeof ResponseScalarFieldEnum]
-
-
-export const SessionScalarFieldEnum = {
-  id: 'id',
-  created_at: 'created_at',
-  updated_at: 'updated_at',
-  personId: 'personId'
-} as const
-
-export type SessionScalarFieldEnum = (typeof SessionScalarFieldEnum)[keyof typeof SessionScalarFieldEnum]
 
 
 export const SurveyScalarFieldEnum = {
@@ -279,8 +220,32 @@ export const SurveyScalarFieldEnum = {
   questions: 'questions',
   displayOption: 'displayOption',
   recontactDays: 'recontactDays',
-  thankYouCard: 'thankYouCard',
-  type: 'type'
+  type: 'type',
+  autoClose: 'autoClose',
+  delay: 'delay',
+  autoComplete: 'autoComplete',
+  redirectUrl: 'redirectUrl',
+  surveyClosedMessage: 'surveyClosedMessage',
+  singleUse: 'singleUse',
+  projectOverwrites: 'projectOverwrites',
+  hiddenFields: 'hiddenFields',
+  pin: 'pin',
+  welcomeCard: 'welcomeCard',
+  styling: 'styling',
+  displayPercentage: 'displayPercentage',
+  createdBy: 'createdBy',
+  segmentId: 'segmentId',
+  inlineTriggers: 'inlineTriggers',
+  displayLimit: 'displayLimit',
+  showLanguageSwitch: 'showLanguageSwitch',
+  isVerifyEmailEnabled: 'isVerifyEmailEnabled',
+  endings: 'endings',
+  variables: 'variables',
+  isSingleResponsePerEmailEnabled: 'isSingleResponsePerEmailEnabled',
+  isBackButtonHidden: 'isBackButtonHidden',
+  recaptcha: 'recaptcha',
+  metadata: 'metadata',
+  blocks: 'blocks'
 } as const
 
 export type SurveyScalarFieldEnum = (typeof SurveyScalarFieldEnum)[keyof typeof SurveyScalarFieldEnum]
@@ -290,7 +255,7 @@ export const SurveyAttributeFilterScalarFieldEnum = {
   id: 'id',
   created_at: 'created_at',
   updated_at: 'updated_at',
-  attributeClassId: 'attributeClassId',
+  attributeKeyId: 'attributeKeyId',
   surveyId: 'surveyId',
   condition: 'condition',
   value: 'value'
@@ -304,7 +269,7 @@ export const SurveyTriggerScalarFieldEnum = {
   created_at: 'created_at',
   updated_at: 'updated_at',
   surveyId: 'surveyId',
-  eventClassId: 'eventClassId'
+  actionClassId: 'actionClassId'
 } as const
 
 export type SurveyTriggerScalarFieldEnum = (typeof SurveyTriggerScalarFieldEnum)[keyof typeof SurveyTriggerScalarFieldEnum]
@@ -315,8 +280,7 @@ export const TeamScalarFieldEnum = {
   created_at: 'created_at',
   updated_at: 'updated_at',
   name: 'name',
-  plan: 'plan',
-  stripeCustomerId: 'stripeCustomerId'
+  organizationId: 'organizationId'
 } as const
 
 export type TeamScalarFieldEnum = (typeof TeamScalarFieldEnum)[keyof typeof TeamScalarFieldEnum]
@@ -333,9 +297,13 @@ export const UserScalarFieldEnum = {
   identityProvider: 'identityProvider',
   identityProviderAccountId: 'identityProviderAccountId',
   groupId: 'groupId',
-  objective: 'objective',
-  role: 'role',
-  onboardingCompleted: 'onboardingCompleted'
+  notificationSettings: 'notificationSettings',
+  backupCodes: 'backupCodes',
+  twoFactorEnabled: 'twoFactorEnabled',
+  twoFactorSecret: 'twoFactorSecret',
+  locale: 'locale',
+  isActive: 'isActive',
+  lastLoginAt: 'lastLoginAt'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -347,10 +315,292 @@ export const WebhookScalarFieldEnum = {
   updated_at: 'updated_at',
   url: 'url',
   environmentId: 'environmentId',
-  triggers: 'triggers'
+  triggers: 'triggers',
+  surveyIds: 'surveyIds',
+  name: 'name',
+  source: 'source'
 } as const
 
 export type WebhookScalarFieldEnum = (typeof WebhookScalarFieldEnum)[keyof typeof WebhookScalarFieldEnum]
+
+
+export const ActionClassScalarFieldEnum = {
+  id: 'id',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  name: 'name',
+  description: 'description',
+  type: 'type',
+  noCodeConfig: 'noCodeConfig',
+  environmentId: 'environmentId',
+  key: 'key'
+} as const
+
+export type ActionClassScalarFieldEnum = (typeof ActionClassScalarFieldEnum)[keyof typeof ActionClassScalarFieldEnum]
+
+
+export const AdminScalarFieldEnum = {
+  id: 'id',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  email: 'email',
+  name: 'name',
+  password_hash: 'password_hash',
+  last_login_at: 'last_login_at',
+  is_active: 'is_active',
+  two_factor_secret: 'two_factor_secret',
+  two_factor_enabled: 'two_factor_enabled',
+  backup_codes: 'backup_codes',
+  role: 'role',
+  notes: 'notes'
+} as const
+
+export type AdminScalarFieldEnum = (typeof AdminScalarFieldEnum)[keyof typeof AdminScalarFieldEnum]
+
+
+export const AdminAuditLogScalarFieldEnum = {
+  id: 'id',
+  created_at: 'created_at',
+  adminId: 'adminId',
+  action: 'action',
+  targetType: 'targetType',
+  targetId: 'targetId',
+  organizationId: 'organizationId',
+  metadata: 'metadata',
+  ip: 'ip',
+  user_agent: 'user_agent'
+} as const
+
+export type AdminAuditLogScalarFieldEnum = (typeof AdminAuditLogScalarFieldEnum)[keyof typeof AdminAuditLogScalarFieldEnum]
+
+
+export const AdminOrganizationAccessScalarFieldEnum = {
+  adminId: 'adminId',
+  organizationId: 'organizationId',
+  access: 'access',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type AdminOrganizationAccessScalarFieldEnum = (typeof AdminOrganizationAccessScalarFieldEnum)[keyof typeof AdminOrganizationAccessScalarFieldEnum]
+
+
+export const ApiKeyEnvironmentScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  apiKeyId: 'apiKeyId',
+  environmentId: 'environmentId',
+  permission: 'permission'
+} as const
+
+export type ApiKeyEnvironmentScalarFieldEnum = (typeof ApiKeyEnvironmentScalarFieldEnum)[keyof typeof ApiKeyEnvironmentScalarFieldEnum]
+
+
+export const ContactScalarFieldEnum = {
+  id: 'id',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  environmentId: 'environmentId'
+} as const
+
+export type ContactScalarFieldEnum = (typeof ContactScalarFieldEnum)[keyof typeof ContactScalarFieldEnum]
+
+
+export const ContactAttributeScalarFieldEnum = {
+  id: 'id',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  attributeKeyId: 'attributeKeyId',
+  contactId: 'contactId',
+  value: 'value'
+} as const
+
+export type ContactAttributeScalarFieldEnum = (typeof ContactAttributeScalarFieldEnum)[keyof typeof ContactAttributeScalarFieldEnum]
+
+
+export const ContactAttributeKeyScalarFieldEnum = {
+  id: 'id',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  name: 'name',
+  description: 'description',
+  environmentId: 'environmentId',
+  type: 'type',
+  key: 'key',
+  isUnique: 'isUnique'
+} as const
+
+export type ContactAttributeKeyScalarFieldEnum = (typeof ContactAttributeKeyScalarFieldEnum)[keyof typeof ContactAttributeKeyScalarFieldEnum]
+
+
+export const DataMigrationScalarFieldEnum = {
+  id: 'id',
+  started_at: 'started_at',
+  finished_at: 'finished_at',
+  status: 'status',
+  name: 'name'
+} as const
+
+export type DataMigrationScalarFieldEnum = (typeof DataMigrationScalarFieldEnum)[keyof typeof DataMigrationScalarFieldEnum]
+
+
+export const IntegrationScalarFieldEnum = {
+  id: 'id',
+  type: 'type',
+  environmentId: 'environmentId',
+  config: 'config'
+} as const
+
+export type IntegrationScalarFieldEnum = (typeof IntegrationScalarFieldEnum)[keyof typeof IntegrationScalarFieldEnum]
+
+
+export const LanguageScalarFieldEnum = {
+  id: 'id',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  code: 'code',
+  alias: 'alias',
+  projectId: 'projectId'
+} as const
+
+export type LanguageScalarFieldEnum = (typeof LanguageScalarFieldEnum)[keyof typeof LanguageScalarFieldEnum]
+
+
+export const OrganizationScalarFieldEnum = {
+  id: 'id',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  name: 'name',
+  billing: 'billing',
+  isAIEnabled: 'isAIEnabled',
+  whitelabel: 'whitelabel'
+} as const
+
+export type OrganizationScalarFieldEnum = (typeof OrganizationScalarFieldEnum)[keyof typeof OrganizationScalarFieldEnum]
+
+
+export const ProjectScalarFieldEnum = {
+  id: 'id',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  name: 'name',
+  organizationId: 'organizationId',
+  recontactDays: 'recontactDays',
+  linkSurveyBranding: 'linkSurveyBranding',
+  clickOutsideClose: 'clickOutsideClose',
+  darkOverlay: 'darkOverlay',
+  placement: 'placement',
+  inAppSurveyBranding: 'inAppSurveyBranding',
+  styling: 'styling',
+  logo: 'logo',
+  config: 'config'
+} as const
+
+export type ProjectScalarFieldEnum = (typeof ProjectScalarFieldEnum)[keyof typeof ProjectScalarFieldEnum]
+
+
+export const ProjectTeamScalarFieldEnum = {
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  projectId: 'projectId',
+  teamId: 'teamId',
+  permission: 'permission'
+} as const
+
+export type ProjectTeamScalarFieldEnum = (typeof ProjectTeamScalarFieldEnum)[keyof typeof ProjectTeamScalarFieldEnum]
+
+
+export const ResponseQuotaLinkScalarFieldEnum = {
+  responseId: 'responseId',
+  quotaId: 'quotaId',
+  status: 'status'
+} as const
+
+export type ResponseQuotaLinkScalarFieldEnum = (typeof ResponseQuotaLinkScalarFieldEnum)[keyof typeof ResponseQuotaLinkScalarFieldEnum]
+
+
+export const SegmentScalarFieldEnum = {
+  id: 'id',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  title: 'title',
+  description: 'description',
+  isPrivate: 'isPrivate',
+  filters: 'filters',
+  environmentId: 'environmentId'
+} as const
+
+export type SegmentScalarFieldEnum = (typeof SegmentScalarFieldEnum)[keyof typeof SegmentScalarFieldEnum]
+
+
+export const SurveyFollowUpScalarFieldEnum = {
+  id: 'id',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  surveyId: 'surveyId',
+  name: 'name',
+  trigger: 'trigger',
+  action: 'action'
+} as const
+
+export type SurveyFollowUpScalarFieldEnum = (typeof SurveyFollowUpScalarFieldEnum)[keyof typeof SurveyFollowUpScalarFieldEnum]
+
+
+export const SurveyLanguageScalarFieldEnum = {
+  languageId: 'languageId',
+  surveyId: 'surveyId',
+  default: 'default',
+  enabled: 'enabled'
+} as const
+
+export type SurveyLanguageScalarFieldEnum = (typeof SurveyLanguageScalarFieldEnum)[keyof typeof SurveyLanguageScalarFieldEnum]
+
+
+export const SurveyQuotaScalarFieldEnum = {
+  id: 'id',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  surveyId: 'surveyId',
+  name: 'name',
+  limit: 'limit',
+  logic: 'logic',
+  action: 'action',
+  endingCardId: 'endingCardId',
+  countPartialSubmissions: 'countPartialSubmissions'
+} as const
+
+export type SurveyQuotaScalarFieldEnum = (typeof SurveyQuotaScalarFieldEnum)[keyof typeof SurveyQuotaScalarFieldEnum]
+
+
+export const TagScalarFieldEnum = {
+  id: 'id',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  name: 'name',
+  environmentId: 'environmentId'
+} as const
+
+export type TagScalarFieldEnum = (typeof TagScalarFieldEnum)[keyof typeof TagScalarFieldEnum]
+
+
+export const TagsOnResponsesScalarFieldEnum = {
+  responseId: 'responseId',
+  tagId: 'tagId'
+} as const
+
+export type TagsOnResponsesScalarFieldEnum = (typeof TagsOnResponsesScalarFieldEnum)[keyof typeof TagsOnResponsesScalarFieldEnum]
+
+
+export const TeamUserScalarFieldEnum = {
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  teamId: 'teamId',
+  userId: 'userId',
+  role: 'role'
+} as const
+
+export type TeamUserScalarFieldEnum = (typeof TeamUserScalarFieldEnum)[keyof typeof TeamUserScalarFieldEnum]
 
 
 export const SortOrder = {

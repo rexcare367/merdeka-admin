@@ -30,7 +30,11 @@ export type ResponseMinAggregateOutputType = {
   updated_at: Date | null
   finished: boolean | null
   surveyId: string | null
-  personId: string | null
+  contactId: string | null
+  singleUseId: string | null
+  language: string | null
+  displayId: string | null
+  endingId: string | null
 }
 
 export type ResponseMaxAggregateOutputType = {
@@ -39,7 +43,11 @@ export type ResponseMaxAggregateOutputType = {
   updated_at: Date | null
   finished: boolean | null
   surveyId: string | null
-  personId: string | null
+  contactId: string | null
+  singleUseId: string | null
+  language: string | null
+  displayId: string | null
+  endingId: string | null
 }
 
 export type ResponseCountAggregateOutputType = {
@@ -48,10 +56,16 @@ export type ResponseCountAggregateOutputType = {
   updated_at: number
   finished: number
   surveyId: number
-  personId: number
+  contactId: number
   data: number
   meta: number
-  userAttributes: number
+  contactAttributes: number
+  singleUseId: number
+  ttc: number
+  language: number
+  variables: number
+  displayId: number
+  endingId: number
   _all: number
 }
 
@@ -62,7 +76,11 @@ export type ResponseMinAggregateInputType = {
   updated_at?: true
   finished?: true
   surveyId?: true
-  personId?: true
+  contactId?: true
+  singleUseId?: true
+  language?: true
+  displayId?: true
+  endingId?: true
 }
 
 export type ResponseMaxAggregateInputType = {
@@ -71,7 +89,11 @@ export type ResponseMaxAggregateInputType = {
   updated_at?: true
   finished?: true
   surveyId?: true
-  personId?: true
+  contactId?: true
+  singleUseId?: true
+  language?: true
+  displayId?: true
+  endingId?: true
 }
 
 export type ResponseCountAggregateInputType = {
@@ -80,10 +102,16 @@ export type ResponseCountAggregateInputType = {
   updated_at?: true
   finished?: true
   surveyId?: true
-  personId?: true
+  contactId?: true
   data?: true
   meta?: true
-  userAttributes?: true
+  contactAttributes?: true
+  singleUseId?: true
+  ttc?: true
+  language?: true
+  variables?: true
+  displayId?: true
+  endingId?: true
   _all?: true
 }
 
@@ -165,10 +193,16 @@ export type ResponseGroupByOutputType = {
   updated_at: Date
   finished: boolean
   surveyId: string
-  personId: string | null
+  contactId: string | null
   data: runtime.JsonValue
   meta: runtime.JsonValue
-  userAttributes: runtime.JsonValue
+  contactAttributes: runtime.JsonValue | null
+  singleUseId: string | null
+  ttc: runtime.JsonValue
+  language: string | null
+  variables: runtime.JsonValue
+  displayId: string | null
+  endingId: string | null
   _count: ResponseCountAggregateOutputType | null
   _min: ResponseMinAggregateOutputType | null
   _max: ResponseMaxAggregateOutputType | null
@@ -198,12 +232,21 @@ export type ResponseWhereInput = {
   updated_at?: Prisma.DateTimeFilter<"Response"> | Date | string
   finished?: Prisma.BoolFilter<"Response"> | boolean
   surveyId?: Prisma.StringFilter<"Response"> | string
-  personId?: Prisma.StringNullableFilter<"Response"> | string | null
+  contactId?: Prisma.StringNullableFilter<"Response"> | string | null
   data?: Prisma.JsonFilter<"Response">
   meta?: Prisma.JsonFilter<"Response">
-  userAttributes?: Prisma.JsonFilter<"Response">
-  Person?: Prisma.XOR<Prisma.PersonNullableScalarRelationFilter, Prisma.PersonWhereInput> | null
+  contactAttributes?: Prisma.JsonNullableFilter<"Response">
+  singleUseId?: Prisma.StringNullableFilter<"Response"> | string | null
+  ttc?: Prisma.JsonFilter<"Response">
+  language?: Prisma.StringNullableFilter<"Response"> | string | null
+  variables?: Prisma.JsonFilter<"Response">
+  displayId?: Prisma.StringNullableFilter<"Response"> | string | null
+  endingId?: Prisma.StringNullableFilter<"Response"> | string | null
+  Contact?: Prisma.XOR<Prisma.ContactNullableScalarRelationFilter, Prisma.ContactWhereInput> | null
+  Display?: Prisma.XOR<Prisma.DisplayNullableScalarRelationFilter, Prisma.DisplayWhereInput> | null
   Survey?: Prisma.XOR<Prisma.SurveyScalarRelationFilter, Prisma.SurveyWhereInput>
+  ResponseQuotaLink?: Prisma.ResponseQuotaLinkListRelationFilter
+  TagsOnResponses?: Prisma.TagsOnResponsesListRelationFilter
 }
 
 export type ResponseOrderByWithRelationInput = {
@@ -212,16 +255,27 @@ export type ResponseOrderByWithRelationInput = {
   updated_at?: Prisma.SortOrder
   finished?: Prisma.SortOrder
   surveyId?: Prisma.SortOrder
-  personId?: Prisma.SortOrderInput | Prisma.SortOrder
+  contactId?: Prisma.SortOrderInput | Prisma.SortOrder
   data?: Prisma.SortOrder
   meta?: Prisma.SortOrder
-  userAttributes?: Prisma.SortOrder
-  Person?: Prisma.PersonOrderByWithRelationInput
+  contactAttributes?: Prisma.SortOrderInput | Prisma.SortOrder
+  singleUseId?: Prisma.SortOrderInput | Prisma.SortOrder
+  ttc?: Prisma.SortOrder
+  language?: Prisma.SortOrderInput | Prisma.SortOrder
+  variables?: Prisma.SortOrder
+  displayId?: Prisma.SortOrderInput | Prisma.SortOrder
+  endingId?: Prisma.SortOrderInput | Prisma.SortOrder
+  Contact?: Prisma.ContactOrderByWithRelationInput
+  Display?: Prisma.DisplayOrderByWithRelationInput
   Survey?: Prisma.SurveyOrderByWithRelationInput
+  ResponseQuotaLink?: Prisma.ResponseQuotaLinkOrderByRelationAggregateInput
+  TagsOnResponses?: Prisma.TagsOnResponsesOrderByRelationAggregateInput
 }
 
 export type ResponseWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  displayId?: string
+  surveyId_singleUseId?: Prisma.ResponseSurveyIdSingleUseIdCompoundUniqueInput
   AND?: Prisma.ResponseWhereInput | Prisma.ResponseWhereInput[]
   OR?: Prisma.ResponseWhereInput[]
   NOT?: Prisma.ResponseWhereInput | Prisma.ResponseWhereInput[]
@@ -229,13 +283,21 @@ export type ResponseWhereUniqueInput = Prisma.AtLeast<{
   updated_at?: Prisma.DateTimeFilter<"Response"> | Date | string
   finished?: Prisma.BoolFilter<"Response"> | boolean
   surveyId?: Prisma.StringFilter<"Response"> | string
-  personId?: Prisma.StringNullableFilter<"Response"> | string | null
+  contactId?: Prisma.StringNullableFilter<"Response"> | string | null
   data?: Prisma.JsonFilter<"Response">
   meta?: Prisma.JsonFilter<"Response">
-  userAttributes?: Prisma.JsonFilter<"Response">
-  Person?: Prisma.XOR<Prisma.PersonNullableScalarRelationFilter, Prisma.PersonWhereInput> | null
+  contactAttributes?: Prisma.JsonNullableFilter<"Response">
+  singleUseId?: Prisma.StringNullableFilter<"Response"> | string | null
+  ttc?: Prisma.JsonFilter<"Response">
+  language?: Prisma.StringNullableFilter<"Response"> | string | null
+  variables?: Prisma.JsonFilter<"Response">
+  endingId?: Prisma.StringNullableFilter<"Response"> | string | null
+  Contact?: Prisma.XOR<Prisma.ContactNullableScalarRelationFilter, Prisma.ContactWhereInput> | null
+  Display?: Prisma.XOR<Prisma.DisplayNullableScalarRelationFilter, Prisma.DisplayWhereInput> | null
   Survey?: Prisma.XOR<Prisma.SurveyScalarRelationFilter, Prisma.SurveyWhereInput>
-}, "id">
+  ResponseQuotaLink?: Prisma.ResponseQuotaLinkListRelationFilter
+  TagsOnResponses?: Prisma.TagsOnResponsesListRelationFilter
+}, "id" | "displayId" | "surveyId_singleUseId">
 
 export type ResponseOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -243,10 +305,16 @@ export type ResponseOrderByWithAggregationInput = {
   updated_at?: Prisma.SortOrder
   finished?: Prisma.SortOrder
   surveyId?: Prisma.SortOrder
-  personId?: Prisma.SortOrderInput | Prisma.SortOrder
+  contactId?: Prisma.SortOrderInput | Prisma.SortOrder
   data?: Prisma.SortOrder
   meta?: Prisma.SortOrder
-  userAttributes?: Prisma.SortOrder
+  contactAttributes?: Prisma.SortOrderInput | Prisma.SortOrder
+  singleUseId?: Prisma.SortOrderInput | Prisma.SortOrder
+  ttc?: Prisma.SortOrder
+  language?: Prisma.SortOrderInput | Prisma.SortOrder
+  variables?: Prisma.SortOrder
+  displayId?: Prisma.SortOrderInput | Prisma.SortOrder
+  endingId?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.ResponseCountOrderByAggregateInput
   _max?: Prisma.ResponseMaxOrderByAggregateInput
   _min?: Prisma.ResponseMinOrderByAggregateInput
@@ -261,34 +329,56 @@ export type ResponseScalarWhereWithAggregatesInput = {
   updated_at?: Prisma.DateTimeWithAggregatesFilter<"Response"> | Date | string
   finished?: Prisma.BoolWithAggregatesFilter<"Response"> | boolean
   surveyId?: Prisma.StringWithAggregatesFilter<"Response"> | string
-  personId?: Prisma.StringNullableWithAggregatesFilter<"Response"> | string | null
+  contactId?: Prisma.StringNullableWithAggregatesFilter<"Response"> | string | null
   data?: Prisma.JsonWithAggregatesFilter<"Response">
   meta?: Prisma.JsonWithAggregatesFilter<"Response">
-  userAttributes?: Prisma.JsonWithAggregatesFilter<"Response">
+  contactAttributes?: Prisma.JsonNullableWithAggregatesFilter<"Response">
+  singleUseId?: Prisma.StringNullableWithAggregatesFilter<"Response"> | string | null
+  ttc?: Prisma.JsonWithAggregatesFilter<"Response">
+  language?: Prisma.StringNullableWithAggregatesFilter<"Response"> | string | null
+  variables?: Prisma.JsonWithAggregatesFilter<"Response">
+  displayId?: Prisma.StringNullableWithAggregatesFilter<"Response"> | string | null
+  endingId?: Prisma.StringNullableWithAggregatesFilter<"Response"> | string | null
 }
 
 export type ResponseCreateInput = {
   id: string
   created_at?: Date | string
-  updated_at: Date | string
+  updated_at?: Date | string
   finished?: boolean
   data?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   meta?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  userAttributes?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  Person?: Prisma.PersonCreateNestedOneWithoutResponseInput
+  contactAttributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUseId?: string | null
+  ttc?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  language?: string | null
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  endingId?: string | null
+  Contact?: Prisma.ContactCreateNestedOneWithoutResponseInput
+  Display?: Prisma.DisplayCreateNestedOneWithoutResponseInput
   Survey: Prisma.SurveyCreateNestedOneWithoutResponseInput
+  ResponseQuotaLink?: Prisma.ResponseQuotaLinkCreateNestedManyWithoutResponseInput
+  TagsOnResponses?: Prisma.TagsOnResponsesCreateNestedManyWithoutResponseInput
 }
 
 export type ResponseUncheckedCreateInput = {
   id: string
   created_at?: Date | string
-  updated_at: Date | string
+  updated_at?: Date | string
   finished?: boolean
   surveyId: string
-  personId?: string | null
+  contactId?: string | null
   data?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   meta?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  userAttributes?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contactAttributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUseId?: string | null
+  ttc?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  language?: string | null
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  displayId?: string | null
+  endingId?: string | null
+  ResponseQuotaLink?: Prisma.ResponseQuotaLinkUncheckedCreateNestedManyWithoutResponseInput
+  TagsOnResponses?: Prisma.TagsOnResponsesUncheckedCreateNestedManyWithoutResponseInput
 }
 
 export type ResponseUpdateInput = {
@@ -298,9 +388,17 @@ export type ResponseUpdateInput = {
   finished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   data?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   meta?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  userAttributes?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  Person?: Prisma.PersonUpdateOneWithoutResponseNestedInput
+  contactAttributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ttc?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  endingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Contact?: Prisma.ContactUpdateOneWithoutResponseNestedInput
+  Display?: Prisma.DisplayUpdateOneWithoutResponseNestedInput
   Survey?: Prisma.SurveyUpdateOneRequiredWithoutResponseNestedInput
+  ResponseQuotaLink?: Prisma.ResponseQuotaLinkUpdateManyWithoutResponseNestedInput
+  TagsOnResponses?: Prisma.TagsOnResponsesUpdateManyWithoutResponseNestedInput
 }
 
 export type ResponseUncheckedUpdateInput = {
@@ -309,22 +407,36 @@ export type ResponseUncheckedUpdateInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   finished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   surveyId?: Prisma.StringFieldUpdateOperationsInput | string
-  personId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   data?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   meta?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  userAttributes?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contactAttributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ttc?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  displayId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  endingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ResponseQuotaLink?: Prisma.ResponseQuotaLinkUncheckedUpdateManyWithoutResponseNestedInput
+  TagsOnResponses?: Prisma.TagsOnResponsesUncheckedUpdateManyWithoutResponseNestedInput
 }
 
 export type ResponseCreateManyInput = {
   id: string
   created_at?: Date | string
-  updated_at: Date | string
+  updated_at?: Date | string
   finished?: boolean
   surveyId: string
-  personId?: string | null
+  contactId?: string | null
   data?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   meta?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  userAttributes?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contactAttributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUseId?: string | null
+  ttc?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  language?: string | null
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  displayId?: string | null
+  endingId?: string | null
 }
 
 export type ResponseUpdateManyMutationInput = {
@@ -334,7 +446,12 @@ export type ResponseUpdateManyMutationInput = {
   finished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   data?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   meta?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  userAttributes?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contactAttributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ttc?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  endingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type ResponseUncheckedUpdateManyInput = {
@@ -343,10 +460,70 @@ export type ResponseUncheckedUpdateManyInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   finished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   surveyId?: Prisma.StringFieldUpdateOperationsInput | string
-  personId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   data?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   meta?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  userAttributes?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contactAttributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ttc?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  displayId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  endingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+}
+
+export type ResponseNullableScalarRelationFilter = {
+  is?: Prisma.ResponseWhereInput | null
+  isNot?: Prisma.ResponseWhereInput | null
+}
+
+export type ResponseSurveyIdSingleUseIdCompoundUniqueInput = {
+  surveyId: string
+  singleUseId: string
+}
+
+export type ResponseCountOrderByAggregateInput = {
+  id?: Prisma.SortOrder
+  created_at?: Prisma.SortOrder
+  updated_at?: Prisma.SortOrder
+  finished?: Prisma.SortOrder
+  surveyId?: Prisma.SortOrder
+  contactId?: Prisma.SortOrder
+  data?: Prisma.SortOrder
+  meta?: Prisma.SortOrder
+  contactAttributes?: Prisma.SortOrder
+  singleUseId?: Prisma.SortOrder
+  ttc?: Prisma.SortOrder
+  language?: Prisma.SortOrder
+  variables?: Prisma.SortOrder
+  displayId?: Prisma.SortOrder
+  endingId?: Prisma.SortOrder
+}
+
+export type ResponseMaxOrderByAggregateInput = {
+  id?: Prisma.SortOrder
+  created_at?: Prisma.SortOrder
+  updated_at?: Prisma.SortOrder
+  finished?: Prisma.SortOrder
+  surveyId?: Prisma.SortOrder
+  contactId?: Prisma.SortOrder
+  singleUseId?: Prisma.SortOrder
+  language?: Prisma.SortOrder
+  displayId?: Prisma.SortOrder
+  endingId?: Prisma.SortOrder
+}
+
+export type ResponseMinOrderByAggregateInput = {
+  id?: Prisma.SortOrder
+  created_at?: Prisma.SortOrder
+  updated_at?: Prisma.SortOrder
+  finished?: Prisma.SortOrder
+  surveyId?: Prisma.SortOrder
+  contactId?: Prisma.SortOrder
+  singleUseId?: Prisma.SortOrder
+  language?: Prisma.SortOrder
+  displayId?: Prisma.SortOrder
+  endingId?: Prisma.SortOrder
 }
 
 export type ResponseListRelationFilter = {
@@ -359,76 +536,41 @@ export type ResponseOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type ResponseCountOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  created_at?: Prisma.SortOrder
-  updated_at?: Prisma.SortOrder
-  finished?: Prisma.SortOrder
-  surveyId?: Prisma.SortOrder
-  personId?: Prisma.SortOrder
-  data?: Prisma.SortOrder
-  meta?: Prisma.SortOrder
-  userAttributes?: Prisma.SortOrder
+export type ResponseScalarRelationFilter = {
+  is?: Prisma.ResponseWhereInput
+  isNot?: Prisma.ResponseWhereInput
 }
 
-export type ResponseMaxOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  created_at?: Prisma.SortOrder
-  updated_at?: Prisma.SortOrder
-  finished?: Prisma.SortOrder
-  surveyId?: Prisma.SortOrder
-  personId?: Prisma.SortOrder
+export type ResponseCreateNestedOneWithoutDisplayInput = {
+  create?: Prisma.XOR<Prisma.ResponseCreateWithoutDisplayInput, Prisma.ResponseUncheckedCreateWithoutDisplayInput>
+  connectOrCreate?: Prisma.ResponseCreateOrConnectWithoutDisplayInput
+  connect?: Prisma.ResponseWhereUniqueInput
 }
 
-export type ResponseMinOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  created_at?: Prisma.SortOrder
-  updated_at?: Prisma.SortOrder
-  finished?: Prisma.SortOrder
-  surveyId?: Prisma.SortOrder
-  personId?: Prisma.SortOrder
+export type ResponseUncheckedCreateNestedOneWithoutDisplayInput = {
+  create?: Prisma.XOR<Prisma.ResponseCreateWithoutDisplayInput, Prisma.ResponseUncheckedCreateWithoutDisplayInput>
+  connectOrCreate?: Prisma.ResponseCreateOrConnectWithoutDisplayInput
+  connect?: Prisma.ResponseWhereUniqueInput
 }
 
-export type ResponseCreateNestedManyWithoutPersonInput = {
-  create?: Prisma.XOR<Prisma.ResponseCreateWithoutPersonInput, Prisma.ResponseUncheckedCreateWithoutPersonInput> | Prisma.ResponseCreateWithoutPersonInput[] | Prisma.ResponseUncheckedCreateWithoutPersonInput[]
-  connectOrCreate?: Prisma.ResponseCreateOrConnectWithoutPersonInput | Prisma.ResponseCreateOrConnectWithoutPersonInput[]
-  createMany?: Prisma.ResponseCreateManyPersonInputEnvelope
-  connect?: Prisma.ResponseWhereUniqueInput | Prisma.ResponseWhereUniqueInput[]
+export type ResponseUpdateOneWithoutDisplayNestedInput = {
+  create?: Prisma.XOR<Prisma.ResponseCreateWithoutDisplayInput, Prisma.ResponseUncheckedCreateWithoutDisplayInput>
+  connectOrCreate?: Prisma.ResponseCreateOrConnectWithoutDisplayInput
+  upsert?: Prisma.ResponseUpsertWithoutDisplayInput
+  disconnect?: Prisma.ResponseWhereInput | boolean
+  delete?: Prisma.ResponseWhereInput | boolean
+  connect?: Prisma.ResponseWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ResponseUpdateToOneWithWhereWithoutDisplayInput, Prisma.ResponseUpdateWithoutDisplayInput>, Prisma.ResponseUncheckedUpdateWithoutDisplayInput>
 }
 
-export type ResponseUncheckedCreateNestedManyWithoutPersonInput = {
-  create?: Prisma.XOR<Prisma.ResponseCreateWithoutPersonInput, Prisma.ResponseUncheckedCreateWithoutPersonInput> | Prisma.ResponseCreateWithoutPersonInput[] | Prisma.ResponseUncheckedCreateWithoutPersonInput[]
-  connectOrCreate?: Prisma.ResponseCreateOrConnectWithoutPersonInput | Prisma.ResponseCreateOrConnectWithoutPersonInput[]
-  createMany?: Prisma.ResponseCreateManyPersonInputEnvelope
-  connect?: Prisma.ResponseWhereUniqueInput | Prisma.ResponseWhereUniqueInput[]
-}
-
-export type ResponseUpdateManyWithoutPersonNestedInput = {
-  create?: Prisma.XOR<Prisma.ResponseCreateWithoutPersonInput, Prisma.ResponseUncheckedCreateWithoutPersonInput> | Prisma.ResponseCreateWithoutPersonInput[] | Prisma.ResponseUncheckedCreateWithoutPersonInput[]
-  connectOrCreate?: Prisma.ResponseCreateOrConnectWithoutPersonInput | Prisma.ResponseCreateOrConnectWithoutPersonInput[]
-  upsert?: Prisma.ResponseUpsertWithWhereUniqueWithoutPersonInput | Prisma.ResponseUpsertWithWhereUniqueWithoutPersonInput[]
-  createMany?: Prisma.ResponseCreateManyPersonInputEnvelope
-  set?: Prisma.ResponseWhereUniqueInput | Prisma.ResponseWhereUniqueInput[]
-  disconnect?: Prisma.ResponseWhereUniqueInput | Prisma.ResponseWhereUniqueInput[]
-  delete?: Prisma.ResponseWhereUniqueInput | Prisma.ResponseWhereUniqueInput[]
-  connect?: Prisma.ResponseWhereUniqueInput | Prisma.ResponseWhereUniqueInput[]
-  update?: Prisma.ResponseUpdateWithWhereUniqueWithoutPersonInput | Prisma.ResponseUpdateWithWhereUniqueWithoutPersonInput[]
-  updateMany?: Prisma.ResponseUpdateManyWithWhereWithoutPersonInput | Prisma.ResponseUpdateManyWithWhereWithoutPersonInput[]
-  deleteMany?: Prisma.ResponseScalarWhereInput | Prisma.ResponseScalarWhereInput[]
-}
-
-export type ResponseUncheckedUpdateManyWithoutPersonNestedInput = {
-  create?: Prisma.XOR<Prisma.ResponseCreateWithoutPersonInput, Prisma.ResponseUncheckedCreateWithoutPersonInput> | Prisma.ResponseCreateWithoutPersonInput[] | Prisma.ResponseUncheckedCreateWithoutPersonInput[]
-  connectOrCreate?: Prisma.ResponseCreateOrConnectWithoutPersonInput | Prisma.ResponseCreateOrConnectWithoutPersonInput[]
-  upsert?: Prisma.ResponseUpsertWithWhereUniqueWithoutPersonInput | Prisma.ResponseUpsertWithWhereUniqueWithoutPersonInput[]
-  createMany?: Prisma.ResponseCreateManyPersonInputEnvelope
-  set?: Prisma.ResponseWhereUniqueInput | Prisma.ResponseWhereUniqueInput[]
-  disconnect?: Prisma.ResponseWhereUniqueInput | Prisma.ResponseWhereUniqueInput[]
-  delete?: Prisma.ResponseWhereUniqueInput | Prisma.ResponseWhereUniqueInput[]
-  connect?: Prisma.ResponseWhereUniqueInput | Prisma.ResponseWhereUniqueInput[]
-  update?: Prisma.ResponseUpdateWithWhereUniqueWithoutPersonInput | Prisma.ResponseUpdateWithWhereUniqueWithoutPersonInput[]
-  updateMany?: Prisma.ResponseUpdateManyWithWhereWithoutPersonInput | Prisma.ResponseUpdateManyWithWhereWithoutPersonInput[]
-  deleteMany?: Prisma.ResponseScalarWhereInput | Prisma.ResponseScalarWhereInput[]
+export type ResponseUncheckedUpdateOneWithoutDisplayNestedInput = {
+  create?: Prisma.XOR<Prisma.ResponseCreateWithoutDisplayInput, Prisma.ResponseUncheckedCreateWithoutDisplayInput>
+  connectOrCreate?: Prisma.ResponseCreateOrConnectWithoutDisplayInput
+  upsert?: Prisma.ResponseUpsertWithoutDisplayInput
+  disconnect?: Prisma.ResponseWhereInput | boolean
+  delete?: Prisma.ResponseWhereInput | boolean
+  connect?: Prisma.ResponseWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ResponseUpdateToOneWithWhereWithoutDisplayInput, Prisma.ResponseUpdateWithoutDisplayInput>, Prisma.ResponseUncheckedUpdateWithoutDisplayInput>
 }
 
 export type ResponseCreateNestedManyWithoutSurveyInput = {
@@ -473,89 +615,204 @@ export type ResponseUncheckedUpdateManyWithoutSurveyNestedInput = {
   deleteMany?: Prisma.ResponseScalarWhereInput | Prisma.ResponseScalarWhereInput[]
 }
 
-export type ResponseCreateWithoutPersonInput = {
+export type ResponseCreateNestedManyWithoutContactInput = {
+  create?: Prisma.XOR<Prisma.ResponseCreateWithoutContactInput, Prisma.ResponseUncheckedCreateWithoutContactInput> | Prisma.ResponseCreateWithoutContactInput[] | Prisma.ResponseUncheckedCreateWithoutContactInput[]
+  connectOrCreate?: Prisma.ResponseCreateOrConnectWithoutContactInput | Prisma.ResponseCreateOrConnectWithoutContactInput[]
+  createMany?: Prisma.ResponseCreateManyContactInputEnvelope
+  connect?: Prisma.ResponseWhereUniqueInput | Prisma.ResponseWhereUniqueInput[]
+}
+
+export type ResponseUncheckedCreateNestedManyWithoutContactInput = {
+  create?: Prisma.XOR<Prisma.ResponseCreateWithoutContactInput, Prisma.ResponseUncheckedCreateWithoutContactInput> | Prisma.ResponseCreateWithoutContactInput[] | Prisma.ResponseUncheckedCreateWithoutContactInput[]
+  connectOrCreate?: Prisma.ResponseCreateOrConnectWithoutContactInput | Prisma.ResponseCreateOrConnectWithoutContactInput[]
+  createMany?: Prisma.ResponseCreateManyContactInputEnvelope
+  connect?: Prisma.ResponseWhereUniqueInput | Prisma.ResponseWhereUniqueInput[]
+}
+
+export type ResponseUpdateManyWithoutContactNestedInput = {
+  create?: Prisma.XOR<Prisma.ResponseCreateWithoutContactInput, Prisma.ResponseUncheckedCreateWithoutContactInput> | Prisma.ResponseCreateWithoutContactInput[] | Prisma.ResponseUncheckedCreateWithoutContactInput[]
+  connectOrCreate?: Prisma.ResponseCreateOrConnectWithoutContactInput | Prisma.ResponseCreateOrConnectWithoutContactInput[]
+  upsert?: Prisma.ResponseUpsertWithWhereUniqueWithoutContactInput | Prisma.ResponseUpsertWithWhereUniqueWithoutContactInput[]
+  createMany?: Prisma.ResponseCreateManyContactInputEnvelope
+  set?: Prisma.ResponseWhereUniqueInput | Prisma.ResponseWhereUniqueInput[]
+  disconnect?: Prisma.ResponseWhereUniqueInput | Prisma.ResponseWhereUniqueInput[]
+  delete?: Prisma.ResponseWhereUniqueInput | Prisma.ResponseWhereUniqueInput[]
+  connect?: Prisma.ResponseWhereUniqueInput | Prisma.ResponseWhereUniqueInput[]
+  update?: Prisma.ResponseUpdateWithWhereUniqueWithoutContactInput | Prisma.ResponseUpdateWithWhereUniqueWithoutContactInput[]
+  updateMany?: Prisma.ResponseUpdateManyWithWhereWithoutContactInput | Prisma.ResponseUpdateManyWithWhereWithoutContactInput[]
+  deleteMany?: Prisma.ResponseScalarWhereInput | Prisma.ResponseScalarWhereInput[]
+}
+
+export type ResponseUncheckedUpdateManyWithoutContactNestedInput = {
+  create?: Prisma.XOR<Prisma.ResponseCreateWithoutContactInput, Prisma.ResponseUncheckedCreateWithoutContactInput> | Prisma.ResponseCreateWithoutContactInput[] | Prisma.ResponseUncheckedCreateWithoutContactInput[]
+  connectOrCreate?: Prisma.ResponseCreateOrConnectWithoutContactInput | Prisma.ResponseCreateOrConnectWithoutContactInput[]
+  upsert?: Prisma.ResponseUpsertWithWhereUniqueWithoutContactInput | Prisma.ResponseUpsertWithWhereUniqueWithoutContactInput[]
+  createMany?: Prisma.ResponseCreateManyContactInputEnvelope
+  set?: Prisma.ResponseWhereUniqueInput | Prisma.ResponseWhereUniqueInput[]
+  disconnect?: Prisma.ResponseWhereUniqueInput | Prisma.ResponseWhereUniqueInput[]
+  delete?: Prisma.ResponseWhereUniqueInput | Prisma.ResponseWhereUniqueInput[]
+  connect?: Prisma.ResponseWhereUniqueInput | Prisma.ResponseWhereUniqueInput[]
+  update?: Prisma.ResponseUpdateWithWhereUniqueWithoutContactInput | Prisma.ResponseUpdateWithWhereUniqueWithoutContactInput[]
+  updateMany?: Prisma.ResponseUpdateManyWithWhereWithoutContactInput | Prisma.ResponseUpdateManyWithWhereWithoutContactInput[]
+  deleteMany?: Prisma.ResponseScalarWhereInput | Prisma.ResponseScalarWhereInput[]
+}
+
+export type ResponseCreateNestedOneWithoutResponseQuotaLinkInput = {
+  create?: Prisma.XOR<Prisma.ResponseCreateWithoutResponseQuotaLinkInput, Prisma.ResponseUncheckedCreateWithoutResponseQuotaLinkInput>
+  connectOrCreate?: Prisma.ResponseCreateOrConnectWithoutResponseQuotaLinkInput
+  connect?: Prisma.ResponseWhereUniqueInput
+}
+
+export type ResponseUpdateOneRequiredWithoutResponseQuotaLinkNestedInput = {
+  create?: Prisma.XOR<Prisma.ResponseCreateWithoutResponseQuotaLinkInput, Prisma.ResponseUncheckedCreateWithoutResponseQuotaLinkInput>
+  connectOrCreate?: Prisma.ResponseCreateOrConnectWithoutResponseQuotaLinkInput
+  upsert?: Prisma.ResponseUpsertWithoutResponseQuotaLinkInput
+  connect?: Prisma.ResponseWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ResponseUpdateToOneWithWhereWithoutResponseQuotaLinkInput, Prisma.ResponseUpdateWithoutResponseQuotaLinkInput>, Prisma.ResponseUncheckedUpdateWithoutResponseQuotaLinkInput>
+}
+
+export type ResponseCreateNestedOneWithoutTagsOnResponsesInput = {
+  create?: Prisma.XOR<Prisma.ResponseCreateWithoutTagsOnResponsesInput, Prisma.ResponseUncheckedCreateWithoutTagsOnResponsesInput>
+  connectOrCreate?: Prisma.ResponseCreateOrConnectWithoutTagsOnResponsesInput
+  connect?: Prisma.ResponseWhereUniqueInput
+}
+
+export type ResponseUpdateOneRequiredWithoutTagsOnResponsesNestedInput = {
+  create?: Prisma.XOR<Prisma.ResponseCreateWithoutTagsOnResponsesInput, Prisma.ResponseUncheckedCreateWithoutTagsOnResponsesInput>
+  connectOrCreate?: Prisma.ResponseCreateOrConnectWithoutTagsOnResponsesInput
+  upsert?: Prisma.ResponseUpsertWithoutTagsOnResponsesInput
+  connect?: Prisma.ResponseWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ResponseUpdateToOneWithWhereWithoutTagsOnResponsesInput, Prisma.ResponseUpdateWithoutTagsOnResponsesInput>, Prisma.ResponseUncheckedUpdateWithoutTagsOnResponsesInput>
+}
+
+export type ResponseCreateWithoutDisplayInput = {
   id: string
   created_at?: Date | string
-  updated_at: Date | string
+  updated_at?: Date | string
   finished?: boolean
   data?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   meta?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  userAttributes?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contactAttributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUseId?: string | null
+  ttc?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  language?: string | null
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  endingId?: string | null
+  Contact?: Prisma.ContactCreateNestedOneWithoutResponseInput
   Survey: Prisma.SurveyCreateNestedOneWithoutResponseInput
+  ResponseQuotaLink?: Prisma.ResponseQuotaLinkCreateNestedManyWithoutResponseInput
+  TagsOnResponses?: Prisma.TagsOnResponsesCreateNestedManyWithoutResponseInput
 }
 
-export type ResponseUncheckedCreateWithoutPersonInput = {
+export type ResponseUncheckedCreateWithoutDisplayInput = {
   id: string
   created_at?: Date | string
-  updated_at: Date | string
+  updated_at?: Date | string
   finished?: boolean
   surveyId: string
+  contactId?: string | null
   data?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   meta?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  userAttributes?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contactAttributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUseId?: string | null
+  ttc?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  language?: string | null
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  endingId?: string | null
+  ResponseQuotaLink?: Prisma.ResponseQuotaLinkUncheckedCreateNestedManyWithoutResponseInput
+  TagsOnResponses?: Prisma.TagsOnResponsesUncheckedCreateNestedManyWithoutResponseInput
 }
 
-export type ResponseCreateOrConnectWithoutPersonInput = {
+export type ResponseCreateOrConnectWithoutDisplayInput = {
   where: Prisma.ResponseWhereUniqueInput
-  create: Prisma.XOR<Prisma.ResponseCreateWithoutPersonInput, Prisma.ResponseUncheckedCreateWithoutPersonInput>
+  create: Prisma.XOR<Prisma.ResponseCreateWithoutDisplayInput, Prisma.ResponseUncheckedCreateWithoutDisplayInput>
 }
 
-export type ResponseCreateManyPersonInputEnvelope = {
-  data: Prisma.ResponseCreateManyPersonInput | Prisma.ResponseCreateManyPersonInput[]
-  skipDuplicates?: boolean
+export type ResponseUpsertWithoutDisplayInput = {
+  update: Prisma.XOR<Prisma.ResponseUpdateWithoutDisplayInput, Prisma.ResponseUncheckedUpdateWithoutDisplayInput>
+  create: Prisma.XOR<Prisma.ResponseCreateWithoutDisplayInput, Prisma.ResponseUncheckedCreateWithoutDisplayInput>
+  where?: Prisma.ResponseWhereInput
 }
 
-export type ResponseUpsertWithWhereUniqueWithoutPersonInput = {
-  where: Prisma.ResponseWhereUniqueInput
-  update: Prisma.XOR<Prisma.ResponseUpdateWithoutPersonInput, Prisma.ResponseUncheckedUpdateWithoutPersonInput>
-  create: Prisma.XOR<Prisma.ResponseCreateWithoutPersonInput, Prisma.ResponseUncheckedCreateWithoutPersonInput>
+export type ResponseUpdateToOneWithWhereWithoutDisplayInput = {
+  where?: Prisma.ResponseWhereInput
+  data: Prisma.XOR<Prisma.ResponseUpdateWithoutDisplayInput, Prisma.ResponseUncheckedUpdateWithoutDisplayInput>
 }
 
-export type ResponseUpdateWithWhereUniqueWithoutPersonInput = {
-  where: Prisma.ResponseWhereUniqueInput
-  data: Prisma.XOR<Prisma.ResponseUpdateWithoutPersonInput, Prisma.ResponseUncheckedUpdateWithoutPersonInput>
+export type ResponseUpdateWithoutDisplayInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  finished?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  data?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  meta?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contactAttributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ttc?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  endingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Contact?: Prisma.ContactUpdateOneWithoutResponseNestedInput
+  Survey?: Prisma.SurveyUpdateOneRequiredWithoutResponseNestedInput
+  ResponseQuotaLink?: Prisma.ResponseQuotaLinkUpdateManyWithoutResponseNestedInput
+  TagsOnResponses?: Prisma.TagsOnResponsesUpdateManyWithoutResponseNestedInput
 }
 
-export type ResponseUpdateManyWithWhereWithoutPersonInput = {
-  where: Prisma.ResponseScalarWhereInput
-  data: Prisma.XOR<Prisma.ResponseUpdateManyMutationInput, Prisma.ResponseUncheckedUpdateManyWithoutPersonInput>
-}
-
-export type ResponseScalarWhereInput = {
-  AND?: Prisma.ResponseScalarWhereInput | Prisma.ResponseScalarWhereInput[]
-  OR?: Prisma.ResponseScalarWhereInput[]
-  NOT?: Prisma.ResponseScalarWhereInput | Prisma.ResponseScalarWhereInput[]
-  id?: Prisma.StringFilter<"Response"> | string
-  created_at?: Prisma.DateTimeFilter<"Response"> | Date | string
-  updated_at?: Prisma.DateTimeFilter<"Response"> | Date | string
-  finished?: Prisma.BoolFilter<"Response"> | boolean
-  surveyId?: Prisma.StringFilter<"Response"> | string
-  personId?: Prisma.StringNullableFilter<"Response"> | string | null
-  data?: Prisma.JsonFilter<"Response">
-  meta?: Prisma.JsonFilter<"Response">
-  userAttributes?: Prisma.JsonFilter<"Response">
+export type ResponseUncheckedUpdateWithoutDisplayInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  finished?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  surveyId?: Prisma.StringFieldUpdateOperationsInput | string
+  contactId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  data?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  meta?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contactAttributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ttc?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  endingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ResponseQuotaLink?: Prisma.ResponseQuotaLinkUncheckedUpdateManyWithoutResponseNestedInput
+  TagsOnResponses?: Prisma.TagsOnResponsesUncheckedUpdateManyWithoutResponseNestedInput
 }
 
 export type ResponseCreateWithoutSurveyInput = {
   id: string
   created_at?: Date | string
-  updated_at: Date | string
+  updated_at?: Date | string
   finished?: boolean
   data?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   meta?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  userAttributes?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  Person?: Prisma.PersonCreateNestedOneWithoutResponseInput
+  contactAttributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUseId?: string | null
+  ttc?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  language?: string | null
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  endingId?: string | null
+  Contact?: Prisma.ContactCreateNestedOneWithoutResponseInput
+  Display?: Prisma.DisplayCreateNestedOneWithoutResponseInput
+  ResponseQuotaLink?: Prisma.ResponseQuotaLinkCreateNestedManyWithoutResponseInput
+  TagsOnResponses?: Prisma.TagsOnResponsesCreateNestedManyWithoutResponseInput
 }
 
 export type ResponseUncheckedCreateWithoutSurveyInput = {
   id: string
   created_at?: Date | string
-  updated_at: Date | string
+  updated_at?: Date | string
   finished?: boolean
-  personId?: string | null
+  contactId?: string | null
   data?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   meta?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  userAttributes?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contactAttributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUseId?: string | null
+  ttc?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  language?: string | null
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  displayId?: string | null
+  endingId?: string | null
+  ResponseQuotaLink?: Prisma.ResponseQuotaLinkUncheckedCreateNestedManyWithoutResponseInput
+  TagsOnResponses?: Prisma.TagsOnResponsesUncheckedCreateNestedManyWithoutResponseInput
 }
 
 export type ResponseCreateOrConnectWithoutSurveyInput = {
@@ -584,59 +841,290 @@ export type ResponseUpdateManyWithWhereWithoutSurveyInput = {
   data: Prisma.XOR<Prisma.ResponseUpdateManyMutationInput, Prisma.ResponseUncheckedUpdateManyWithoutSurveyInput>
 }
 
-export type ResponseCreateManyPersonInput = {
+export type ResponseScalarWhereInput = {
+  AND?: Prisma.ResponseScalarWhereInput | Prisma.ResponseScalarWhereInput[]
+  OR?: Prisma.ResponseScalarWhereInput[]
+  NOT?: Prisma.ResponseScalarWhereInput | Prisma.ResponseScalarWhereInput[]
+  id?: Prisma.StringFilter<"Response"> | string
+  created_at?: Prisma.DateTimeFilter<"Response"> | Date | string
+  updated_at?: Prisma.DateTimeFilter<"Response"> | Date | string
+  finished?: Prisma.BoolFilter<"Response"> | boolean
+  surveyId?: Prisma.StringFilter<"Response"> | string
+  contactId?: Prisma.StringNullableFilter<"Response"> | string | null
+  data?: Prisma.JsonFilter<"Response">
+  meta?: Prisma.JsonFilter<"Response">
+  contactAttributes?: Prisma.JsonNullableFilter<"Response">
+  singleUseId?: Prisma.StringNullableFilter<"Response"> | string | null
+  ttc?: Prisma.JsonFilter<"Response">
+  language?: Prisma.StringNullableFilter<"Response"> | string | null
+  variables?: Prisma.JsonFilter<"Response">
+  displayId?: Prisma.StringNullableFilter<"Response"> | string | null
+  endingId?: Prisma.StringNullableFilter<"Response"> | string | null
+}
+
+export type ResponseCreateWithoutContactInput = {
   id: string
   created_at?: Date | string
-  updated_at: Date | string
+  updated_at?: Date | string
+  finished?: boolean
+  data?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  meta?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contactAttributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUseId?: string | null
+  ttc?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  language?: string | null
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  endingId?: string | null
+  Display?: Prisma.DisplayCreateNestedOneWithoutResponseInput
+  Survey: Prisma.SurveyCreateNestedOneWithoutResponseInput
+  ResponseQuotaLink?: Prisma.ResponseQuotaLinkCreateNestedManyWithoutResponseInput
+  TagsOnResponses?: Prisma.TagsOnResponsesCreateNestedManyWithoutResponseInput
+}
+
+export type ResponseUncheckedCreateWithoutContactInput = {
+  id: string
+  created_at?: Date | string
+  updated_at?: Date | string
   finished?: boolean
   surveyId: string
   data?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   meta?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  userAttributes?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contactAttributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUseId?: string | null
+  ttc?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  language?: string | null
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  displayId?: string | null
+  endingId?: string | null
+  ResponseQuotaLink?: Prisma.ResponseQuotaLinkUncheckedCreateNestedManyWithoutResponseInput
+  TagsOnResponses?: Prisma.TagsOnResponsesUncheckedCreateNestedManyWithoutResponseInput
 }
 
-export type ResponseUpdateWithoutPersonInput = {
+export type ResponseCreateOrConnectWithoutContactInput = {
+  where: Prisma.ResponseWhereUniqueInput
+  create: Prisma.XOR<Prisma.ResponseCreateWithoutContactInput, Prisma.ResponseUncheckedCreateWithoutContactInput>
+}
+
+export type ResponseCreateManyContactInputEnvelope = {
+  data: Prisma.ResponseCreateManyContactInput | Prisma.ResponseCreateManyContactInput[]
+  skipDuplicates?: boolean
+}
+
+export type ResponseUpsertWithWhereUniqueWithoutContactInput = {
+  where: Prisma.ResponseWhereUniqueInput
+  update: Prisma.XOR<Prisma.ResponseUpdateWithoutContactInput, Prisma.ResponseUncheckedUpdateWithoutContactInput>
+  create: Prisma.XOR<Prisma.ResponseCreateWithoutContactInput, Prisma.ResponseUncheckedCreateWithoutContactInput>
+}
+
+export type ResponseUpdateWithWhereUniqueWithoutContactInput = {
+  where: Prisma.ResponseWhereUniqueInput
+  data: Prisma.XOR<Prisma.ResponseUpdateWithoutContactInput, Prisma.ResponseUncheckedUpdateWithoutContactInput>
+}
+
+export type ResponseUpdateManyWithWhereWithoutContactInput = {
+  where: Prisma.ResponseScalarWhereInput
+  data: Prisma.XOR<Prisma.ResponseUpdateManyMutationInput, Prisma.ResponseUncheckedUpdateManyWithoutContactInput>
+}
+
+export type ResponseCreateWithoutResponseQuotaLinkInput = {
+  id: string
+  created_at?: Date | string
+  updated_at?: Date | string
+  finished?: boolean
+  data?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  meta?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contactAttributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUseId?: string | null
+  ttc?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  language?: string | null
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  endingId?: string | null
+  Contact?: Prisma.ContactCreateNestedOneWithoutResponseInput
+  Display?: Prisma.DisplayCreateNestedOneWithoutResponseInput
+  Survey: Prisma.SurveyCreateNestedOneWithoutResponseInput
+  TagsOnResponses?: Prisma.TagsOnResponsesCreateNestedManyWithoutResponseInput
+}
+
+export type ResponseUncheckedCreateWithoutResponseQuotaLinkInput = {
+  id: string
+  created_at?: Date | string
+  updated_at?: Date | string
+  finished?: boolean
+  surveyId: string
+  contactId?: string | null
+  data?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  meta?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contactAttributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUseId?: string | null
+  ttc?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  language?: string | null
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  displayId?: string | null
+  endingId?: string | null
+  TagsOnResponses?: Prisma.TagsOnResponsesUncheckedCreateNestedManyWithoutResponseInput
+}
+
+export type ResponseCreateOrConnectWithoutResponseQuotaLinkInput = {
+  where: Prisma.ResponseWhereUniqueInput
+  create: Prisma.XOR<Prisma.ResponseCreateWithoutResponseQuotaLinkInput, Prisma.ResponseUncheckedCreateWithoutResponseQuotaLinkInput>
+}
+
+export type ResponseUpsertWithoutResponseQuotaLinkInput = {
+  update: Prisma.XOR<Prisma.ResponseUpdateWithoutResponseQuotaLinkInput, Prisma.ResponseUncheckedUpdateWithoutResponseQuotaLinkInput>
+  create: Prisma.XOR<Prisma.ResponseCreateWithoutResponseQuotaLinkInput, Prisma.ResponseUncheckedCreateWithoutResponseQuotaLinkInput>
+  where?: Prisma.ResponseWhereInput
+}
+
+export type ResponseUpdateToOneWithWhereWithoutResponseQuotaLinkInput = {
+  where?: Prisma.ResponseWhereInput
+  data: Prisma.XOR<Prisma.ResponseUpdateWithoutResponseQuotaLinkInput, Prisma.ResponseUncheckedUpdateWithoutResponseQuotaLinkInput>
+}
+
+export type ResponseUpdateWithoutResponseQuotaLinkInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   finished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   data?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   meta?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  userAttributes?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contactAttributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ttc?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  endingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Contact?: Prisma.ContactUpdateOneWithoutResponseNestedInput
+  Display?: Prisma.DisplayUpdateOneWithoutResponseNestedInput
   Survey?: Prisma.SurveyUpdateOneRequiredWithoutResponseNestedInput
+  TagsOnResponses?: Prisma.TagsOnResponsesUpdateManyWithoutResponseNestedInput
 }
 
-export type ResponseUncheckedUpdateWithoutPersonInput = {
+export type ResponseUncheckedUpdateWithoutResponseQuotaLinkInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   finished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   surveyId?: Prisma.StringFieldUpdateOperationsInput | string
+  contactId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   data?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   meta?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  userAttributes?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contactAttributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ttc?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  displayId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  endingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  TagsOnResponses?: Prisma.TagsOnResponsesUncheckedUpdateManyWithoutResponseNestedInput
 }
 
-export type ResponseUncheckedUpdateManyWithoutPersonInput = {
+export type ResponseCreateWithoutTagsOnResponsesInput = {
+  id: string
+  created_at?: Date | string
+  updated_at?: Date | string
+  finished?: boolean
+  data?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  meta?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contactAttributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUseId?: string | null
+  ttc?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  language?: string | null
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  endingId?: string | null
+  Contact?: Prisma.ContactCreateNestedOneWithoutResponseInput
+  Display?: Prisma.DisplayCreateNestedOneWithoutResponseInput
+  Survey: Prisma.SurveyCreateNestedOneWithoutResponseInput
+  ResponseQuotaLink?: Prisma.ResponseQuotaLinkCreateNestedManyWithoutResponseInput
+}
+
+export type ResponseUncheckedCreateWithoutTagsOnResponsesInput = {
+  id: string
+  created_at?: Date | string
+  updated_at?: Date | string
+  finished?: boolean
+  surveyId: string
+  contactId?: string | null
+  data?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  meta?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contactAttributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUseId?: string | null
+  ttc?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  language?: string | null
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  displayId?: string | null
+  endingId?: string | null
+  ResponseQuotaLink?: Prisma.ResponseQuotaLinkUncheckedCreateNestedManyWithoutResponseInput
+}
+
+export type ResponseCreateOrConnectWithoutTagsOnResponsesInput = {
+  where: Prisma.ResponseWhereUniqueInput
+  create: Prisma.XOR<Prisma.ResponseCreateWithoutTagsOnResponsesInput, Prisma.ResponseUncheckedCreateWithoutTagsOnResponsesInput>
+}
+
+export type ResponseUpsertWithoutTagsOnResponsesInput = {
+  update: Prisma.XOR<Prisma.ResponseUpdateWithoutTagsOnResponsesInput, Prisma.ResponseUncheckedUpdateWithoutTagsOnResponsesInput>
+  create: Prisma.XOR<Prisma.ResponseCreateWithoutTagsOnResponsesInput, Prisma.ResponseUncheckedCreateWithoutTagsOnResponsesInput>
+  where?: Prisma.ResponseWhereInput
+}
+
+export type ResponseUpdateToOneWithWhereWithoutTagsOnResponsesInput = {
+  where?: Prisma.ResponseWhereInput
+  data: Prisma.XOR<Prisma.ResponseUpdateWithoutTagsOnResponsesInput, Prisma.ResponseUncheckedUpdateWithoutTagsOnResponsesInput>
+}
+
+export type ResponseUpdateWithoutTagsOnResponsesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  finished?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  data?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  meta?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contactAttributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ttc?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  endingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Contact?: Prisma.ContactUpdateOneWithoutResponseNestedInput
+  Display?: Prisma.DisplayUpdateOneWithoutResponseNestedInput
+  Survey?: Prisma.SurveyUpdateOneRequiredWithoutResponseNestedInput
+  ResponseQuotaLink?: Prisma.ResponseQuotaLinkUpdateManyWithoutResponseNestedInput
+}
+
+export type ResponseUncheckedUpdateWithoutTagsOnResponsesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   finished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   surveyId?: Prisma.StringFieldUpdateOperationsInput | string
+  contactId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   data?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   meta?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  userAttributes?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contactAttributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ttc?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  displayId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  endingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ResponseQuotaLink?: Prisma.ResponseQuotaLinkUncheckedUpdateManyWithoutResponseNestedInput
 }
 
 export type ResponseCreateManySurveyInput = {
   id: string
   created_at?: Date | string
-  updated_at: Date | string
+  updated_at?: Date | string
   finished?: boolean
-  personId?: string | null
+  contactId?: string | null
   data?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   meta?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  userAttributes?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contactAttributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUseId?: string | null
+  ttc?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  language?: string | null
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  displayId?: string | null
+  endingId?: string | null
 }
 
 export type ResponseUpdateWithoutSurveyInput = {
@@ -646,8 +1134,16 @@ export type ResponseUpdateWithoutSurveyInput = {
   finished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   data?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   meta?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  userAttributes?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  Person?: Prisma.PersonUpdateOneWithoutResponseNestedInput
+  contactAttributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ttc?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  endingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Contact?: Prisma.ContactUpdateOneWithoutResponseNestedInput
+  Display?: Prisma.DisplayUpdateOneWithoutResponseNestedInput
+  ResponseQuotaLink?: Prisma.ResponseQuotaLinkUpdateManyWithoutResponseNestedInput
+  TagsOnResponses?: Prisma.TagsOnResponsesUpdateManyWithoutResponseNestedInput
 }
 
 export type ResponseUncheckedUpdateWithoutSurveyInput = {
@@ -655,10 +1151,18 @@ export type ResponseUncheckedUpdateWithoutSurveyInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   finished?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  personId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   data?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   meta?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  userAttributes?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contactAttributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ttc?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  displayId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  endingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ResponseQuotaLink?: Prisma.ResponseQuotaLinkUncheckedUpdateManyWithoutResponseNestedInput
+  TagsOnResponses?: Prisma.TagsOnResponsesUncheckedUpdateManyWithoutResponseNestedInput
 }
 
 export type ResponseUncheckedUpdateManyWithoutSurveyInput = {
@@ -666,12 +1170,128 @@ export type ResponseUncheckedUpdateManyWithoutSurveyInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   finished?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  personId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   data?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   meta?: Prisma.JsonNullValueInput | runtime.InputJsonValue
-  userAttributes?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contactAttributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ttc?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  displayId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  endingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
+export type ResponseCreateManyContactInput = {
+  id: string
+  created_at?: Date | string
+  updated_at?: Date | string
+  finished?: boolean
+  surveyId: string
+  data?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  meta?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contactAttributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUseId?: string | null
+  ttc?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  language?: string | null
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  displayId?: string | null
+  endingId?: string | null
+}
+
+export type ResponseUpdateWithoutContactInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  finished?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  data?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  meta?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contactAttributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ttc?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  endingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Display?: Prisma.DisplayUpdateOneWithoutResponseNestedInput
+  Survey?: Prisma.SurveyUpdateOneRequiredWithoutResponseNestedInput
+  ResponseQuotaLink?: Prisma.ResponseQuotaLinkUpdateManyWithoutResponseNestedInput
+  TagsOnResponses?: Prisma.TagsOnResponsesUpdateManyWithoutResponseNestedInput
+}
+
+export type ResponseUncheckedUpdateWithoutContactInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  finished?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  surveyId?: Prisma.StringFieldUpdateOperationsInput | string
+  data?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  meta?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contactAttributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ttc?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  displayId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  endingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ResponseQuotaLink?: Prisma.ResponseQuotaLinkUncheckedUpdateManyWithoutResponseNestedInput
+  TagsOnResponses?: Prisma.TagsOnResponsesUncheckedUpdateManyWithoutResponseNestedInput
+}
+
+export type ResponseUncheckedUpdateManyWithoutContactInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  finished?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  surveyId?: Prisma.StringFieldUpdateOperationsInput | string
+  data?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  meta?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contactAttributes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  singleUseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ttc?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  variables?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  displayId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  endingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+}
+
+
+/**
+ * Count Type ResponseCountOutputType
+ */
+
+export type ResponseCountOutputType = {
+  ResponseQuotaLink: number
+  TagsOnResponses: number
+}
+
+export type ResponseCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  ResponseQuotaLink?: boolean | ResponseCountOutputTypeCountResponseQuotaLinkArgs
+  TagsOnResponses?: boolean | ResponseCountOutputTypeCountTagsOnResponsesArgs
+}
+
+/**
+ * ResponseCountOutputType without action
+ */
+export type ResponseCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ResponseCountOutputType
+   */
+  select?: Prisma.ResponseCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * ResponseCountOutputType without action
+ */
+export type ResponseCountOutputTypeCountResponseQuotaLinkArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ResponseQuotaLinkWhereInput
+}
+
+/**
+ * ResponseCountOutputType without action
+ */
+export type ResponseCountOutputTypeCountTagsOnResponsesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TagsOnResponsesWhereInput
+}
 
 
 export type ResponseSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -680,12 +1300,22 @@ export type ResponseSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   updated_at?: boolean
   finished?: boolean
   surveyId?: boolean
-  personId?: boolean
+  contactId?: boolean
   data?: boolean
   meta?: boolean
-  userAttributes?: boolean
-  Person?: boolean | Prisma.Response$PersonArgs<ExtArgs>
+  contactAttributes?: boolean
+  singleUseId?: boolean
+  ttc?: boolean
+  language?: boolean
+  variables?: boolean
+  displayId?: boolean
+  endingId?: boolean
+  Contact?: boolean | Prisma.Response$ContactArgs<ExtArgs>
+  Display?: boolean | Prisma.Response$DisplayArgs<ExtArgs>
   Survey?: boolean | Prisma.SurveyDefaultArgs<ExtArgs>
+  ResponseQuotaLink?: boolean | Prisma.Response$ResponseQuotaLinkArgs<ExtArgs>
+  TagsOnResponses?: boolean | Prisma.Response$TagsOnResponsesArgs<ExtArgs>
+  _count?: boolean | Prisma.ResponseCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["response"]>
 
 export type ResponseSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -694,11 +1324,18 @@ export type ResponseSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   updated_at?: boolean
   finished?: boolean
   surveyId?: boolean
-  personId?: boolean
+  contactId?: boolean
   data?: boolean
   meta?: boolean
-  userAttributes?: boolean
-  Person?: boolean | Prisma.Response$PersonArgs<ExtArgs>
+  contactAttributes?: boolean
+  singleUseId?: boolean
+  ttc?: boolean
+  language?: boolean
+  variables?: boolean
+  displayId?: boolean
+  endingId?: boolean
+  Contact?: boolean | Prisma.Response$ContactArgs<ExtArgs>
+  Display?: boolean | Prisma.Response$DisplayArgs<ExtArgs>
   Survey?: boolean | Prisma.SurveyDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["response"]>
 
@@ -708,11 +1345,18 @@ export type ResponseSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   updated_at?: boolean
   finished?: boolean
   surveyId?: boolean
-  personId?: boolean
+  contactId?: boolean
   data?: boolean
   meta?: boolean
-  userAttributes?: boolean
-  Person?: boolean | Prisma.Response$PersonArgs<ExtArgs>
+  contactAttributes?: boolean
+  singleUseId?: boolean
+  ttc?: boolean
+  language?: boolean
+  variables?: boolean
+  displayId?: boolean
+  endingId?: boolean
+  Contact?: boolean | Prisma.Response$ContactArgs<ExtArgs>
+  Display?: boolean | Prisma.Response$DisplayArgs<ExtArgs>
   Survey?: boolean | Prisma.SurveyDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["response"]>
 
@@ -722,31 +1366,46 @@ export type ResponseSelectScalar = {
   updated_at?: boolean
   finished?: boolean
   surveyId?: boolean
-  personId?: boolean
+  contactId?: boolean
   data?: boolean
   meta?: boolean
-  userAttributes?: boolean
+  contactAttributes?: boolean
+  singleUseId?: boolean
+  ttc?: boolean
+  language?: boolean
+  variables?: boolean
+  displayId?: boolean
+  endingId?: boolean
 }
 
-export type ResponseOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "created_at" | "updated_at" | "finished" | "surveyId" | "personId" | "data" | "meta" | "userAttributes", ExtArgs["result"]["response"]>
+export type ResponseOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "created_at" | "updated_at" | "finished" | "surveyId" | "contactId" | "data" | "meta" | "contactAttributes" | "singleUseId" | "ttc" | "language" | "variables" | "displayId" | "endingId", ExtArgs["result"]["response"]>
 export type ResponseInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  Person?: boolean | Prisma.Response$PersonArgs<ExtArgs>
+  Contact?: boolean | Prisma.Response$ContactArgs<ExtArgs>
+  Display?: boolean | Prisma.Response$DisplayArgs<ExtArgs>
   Survey?: boolean | Prisma.SurveyDefaultArgs<ExtArgs>
+  ResponseQuotaLink?: boolean | Prisma.Response$ResponseQuotaLinkArgs<ExtArgs>
+  TagsOnResponses?: boolean | Prisma.Response$TagsOnResponsesArgs<ExtArgs>
+  _count?: boolean | Prisma.ResponseCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ResponseIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  Person?: boolean | Prisma.Response$PersonArgs<ExtArgs>
+  Contact?: boolean | Prisma.Response$ContactArgs<ExtArgs>
+  Display?: boolean | Prisma.Response$DisplayArgs<ExtArgs>
   Survey?: boolean | Prisma.SurveyDefaultArgs<ExtArgs>
 }
 export type ResponseIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  Person?: boolean | Prisma.Response$PersonArgs<ExtArgs>
+  Contact?: boolean | Prisma.Response$ContactArgs<ExtArgs>
+  Display?: boolean | Prisma.Response$DisplayArgs<ExtArgs>
   Survey?: boolean | Prisma.SurveyDefaultArgs<ExtArgs>
 }
 
 export type $ResponsePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Response"
   objects: {
-    Person: Prisma.$PersonPayload<ExtArgs> | null
+    Contact: Prisma.$ContactPayload<ExtArgs> | null
+    Display: Prisma.$DisplayPayload<ExtArgs> | null
     Survey: Prisma.$SurveyPayload<ExtArgs>
+    ResponseQuotaLink: Prisma.$ResponseQuotaLinkPayload<ExtArgs>[]
+    TagsOnResponses: Prisma.$TagsOnResponsesPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -754,10 +1413,16 @@ export type $ResponsePayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     updated_at: Date
     finished: boolean
     surveyId: string
-    personId: string | null
+    contactId: string | null
     data: runtime.JsonValue
     meta: runtime.JsonValue
-    userAttributes: runtime.JsonValue
+    contactAttributes: runtime.JsonValue | null
+    singleUseId: string | null
+    ttc: runtime.JsonValue
+    language: string | null
+    variables: runtime.JsonValue
+    displayId: string | null
+    endingId: string | null
   }, ExtArgs["result"]["response"]>
   composites: {}
 }
@@ -1152,8 +1817,11 @@ readonly fields: ResponseFieldRefs;
  */
 export interface Prisma__ResponseClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  Person<T extends Prisma.Response$PersonArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Response$PersonArgs<ExtArgs>>): Prisma.Prisma__PersonClient<runtime.Types.Result.GetResult<Prisma.$PersonPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  Contact<T extends Prisma.Response$ContactArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Response$ContactArgs<ExtArgs>>): Prisma.Prisma__ContactClient<runtime.Types.Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  Display<T extends Prisma.Response$DisplayArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Response$DisplayArgs<ExtArgs>>): Prisma.Prisma__DisplayClient<runtime.Types.Result.GetResult<Prisma.$DisplayPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   Survey<T extends Prisma.SurveyDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SurveyDefaultArgs<ExtArgs>>): Prisma.Prisma__SurveyClient<runtime.Types.Result.GetResult<Prisma.$SurveyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  ResponseQuotaLink<T extends Prisma.Response$ResponseQuotaLinkArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Response$ResponseQuotaLinkArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ResponseQuotaLinkPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  TagsOnResponses<T extends Prisma.Response$TagsOnResponsesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Response$TagsOnResponsesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TagsOnResponsesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1188,10 +1856,16 @@ export interface ResponseFieldRefs {
   readonly updated_at: Prisma.FieldRef<"Response", 'DateTime'>
   readonly finished: Prisma.FieldRef<"Response", 'Boolean'>
   readonly surveyId: Prisma.FieldRef<"Response", 'String'>
-  readonly personId: Prisma.FieldRef<"Response", 'String'>
+  readonly contactId: Prisma.FieldRef<"Response", 'String'>
   readonly data: Prisma.FieldRef<"Response", 'Json'>
   readonly meta: Prisma.FieldRef<"Response", 'Json'>
-  readonly userAttributes: Prisma.FieldRef<"Response", 'Json'>
+  readonly contactAttributes: Prisma.FieldRef<"Response", 'Json'>
+  readonly singleUseId: Prisma.FieldRef<"Response", 'String'>
+  readonly ttc: Prisma.FieldRef<"Response", 'Json'>
+  readonly language: Prisma.FieldRef<"Response", 'String'>
+  readonly variables: Prisma.FieldRef<"Response", 'Json'>
+  readonly displayId: Prisma.FieldRef<"Response", 'String'>
+  readonly endingId: Prisma.FieldRef<"Response", 'String'>
 }
     
 
@@ -1593,22 +2267,89 @@ export type ResponseDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inte
 }
 
 /**
- * Response.Person
+ * Response.Contact
  */
-export type Response$PersonArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Response$ContactArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Person
+   * Select specific fields to fetch from the Contact
    */
-  select?: Prisma.PersonSelect<ExtArgs> | null
+  select?: Prisma.ContactSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Person
+   * Omit specific fields from the Contact
    */
-  omit?: Prisma.PersonOmit<ExtArgs> | null
+  omit?: Prisma.ContactOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.PersonInclude<ExtArgs> | null
-  where?: Prisma.PersonWhereInput
+  include?: Prisma.ContactInclude<ExtArgs> | null
+  where?: Prisma.ContactWhereInput
+}
+
+/**
+ * Response.Display
+ */
+export type Response$DisplayArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Display
+   */
+  select?: Prisma.DisplaySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Display
+   */
+  omit?: Prisma.DisplayOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DisplayInclude<ExtArgs> | null
+  where?: Prisma.DisplayWhereInput
+}
+
+/**
+ * Response.ResponseQuotaLink
+ */
+export type Response$ResponseQuotaLinkArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ResponseQuotaLink
+   */
+  select?: Prisma.ResponseQuotaLinkSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ResponseQuotaLink
+   */
+  omit?: Prisma.ResponseQuotaLinkOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ResponseQuotaLinkInclude<ExtArgs> | null
+  where?: Prisma.ResponseQuotaLinkWhereInput
+  orderBy?: Prisma.ResponseQuotaLinkOrderByWithRelationInput | Prisma.ResponseQuotaLinkOrderByWithRelationInput[]
+  cursor?: Prisma.ResponseQuotaLinkWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ResponseQuotaLinkScalarFieldEnum | Prisma.ResponseQuotaLinkScalarFieldEnum[]
+}
+
+/**
+ * Response.TagsOnResponses
+ */
+export type Response$TagsOnResponsesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the TagsOnResponses
+   */
+  select?: Prisma.TagsOnResponsesSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the TagsOnResponses
+   */
+  omit?: Prisma.TagsOnResponsesOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TagsOnResponsesInclude<ExtArgs> | null
+  where?: Prisma.TagsOnResponsesWhereInput
+  orderBy?: Prisma.TagsOnResponsesOrderByWithRelationInput | Prisma.TagsOnResponsesOrderByWithRelationInput[]
+  cursor?: Prisma.TagsOnResponsesWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TagsOnResponsesScalarFieldEnum | Prisma.TagsOnResponsesScalarFieldEnum[]
 }
 
 /**

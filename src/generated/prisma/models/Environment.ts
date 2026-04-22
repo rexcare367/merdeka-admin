@@ -29,8 +29,8 @@ export type EnvironmentMinAggregateOutputType = {
   created_at: Date | null
   updated_at: Date | null
   type: $Enums.EnvironmentType | null
-  productId: string | null
-  widgetSetupCompleted: boolean | null
+  projectId: string | null
+  appSetupCompleted: boolean | null
 }
 
 export type EnvironmentMaxAggregateOutputType = {
@@ -38,8 +38,8 @@ export type EnvironmentMaxAggregateOutputType = {
   created_at: Date | null
   updated_at: Date | null
   type: $Enums.EnvironmentType | null
-  productId: string | null
-  widgetSetupCompleted: boolean | null
+  projectId: string | null
+  appSetupCompleted: boolean | null
 }
 
 export type EnvironmentCountAggregateOutputType = {
@@ -47,8 +47,8 @@ export type EnvironmentCountAggregateOutputType = {
   created_at: number
   updated_at: number
   type: number
-  productId: number
-  widgetSetupCompleted: number
+  projectId: number
+  appSetupCompleted: number
   _all: number
 }
 
@@ -58,8 +58,8 @@ export type EnvironmentMinAggregateInputType = {
   created_at?: true
   updated_at?: true
   type?: true
-  productId?: true
-  widgetSetupCompleted?: true
+  projectId?: true
+  appSetupCompleted?: true
 }
 
 export type EnvironmentMaxAggregateInputType = {
@@ -67,8 +67,8 @@ export type EnvironmentMaxAggregateInputType = {
   created_at?: true
   updated_at?: true
   type?: true
-  productId?: true
-  widgetSetupCompleted?: true
+  projectId?: true
+  appSetupCompleted?: true
 }
 
 export type EnvironmentCountAggregateInputType = {
@@ -76,8 +76,8 @@ export type EnvironmentCountAggregateInputType = {
   created_at?: true
   updated_at?: true
   type?: true
-  productId?: true
-  widgetSetupCompleted?: true
+  projectId?: true
+  appSetupCompleted?: true
   _all?: true
 }
 
@@ -158,8 +158,8 @@ export type EnvironmentGroupByOutputType = {
   created_at: Date
   updated_at: Date
   type: $Enums.EnvironmentType
-  productId: string
-  widgetSetupCompleted: boolean
+  projectId: string
+  appSetupCompleted: boolean
   _count: EnvironmentCountAggregateOutputType | null
   _min: EnvironmentMinAggregateOutputType | null
   _max: EnvironmentMaxAggregateOutputType | null
@@ -188,14 +188,17 @@ export type EnvironmentWhereInput = {
   created_at?: Prisma.DateTimeFilter<"Environment"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Environment"> | Date | string
   type?: Prisma.EnumEnvironmentTypeFilter<"Environment"> | $Enums.EnvironmentType
-  productId?: Prisma.StringFilter<"Environment"> | string
-  widgetSetupCompleted?: Prisma.BoolFilter<"Environment"> | boolean
-  ApiKey?: Prisma.ApiKeyListRelationFilter
-  AttributeClass?: Prisma.AttributeClassListRelationFilter
-  Product?: Prisma.XOR<Prisma.ProductScalarRelationFilter, Prisma.ProductWhereInput>
-  EventClass?: Prisma.EventClassListRelationFilter
-  Person?: Prisma.PersonListRelationFilter
+  projectId?: Prisma.StringFilter<"Environment"> | string
+  appSetupCompleted?: Prisma.BoolFilter<"Environment"> | boolean
+  ActionClass?: Prisma.ActionClassListRelationFilter
+  ApiKeyEnvironment?: Prisma.ApiKeyEnvironmentListRelationFilter
+  Contact?: Prisma.ContactListRelationFilter
+  ContactAttributeKey?: Prisma.ContactAttributeKeyListRelationFilter
+  Project?: Prisma.XOR<Prisma.ProjectScalarRelationFilter, Prisma.ProjectWhereInput>
+  Integration?: Prisma.IntegrationListRelationFilter
+  Segment?: Prisma.SegmentListRelationFilter
   Survey?: Prisma.SurveyListRelationFilter
+  Tag?: Prisma.TagListRelationFilter
   Webhook?: Prisma.WebhookListRelationFilter
 }
 
@@ -204,14 +207,17 @@ export type EnvironmentOrderByWithRelationInput = {
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   type?: Prisma.SortOrder
-  productId?: Prisma.SortOrder
-  widgetSetupCompleted?: Prisma.SortOrder
-  ApiKey?: Prisma.ApiKeyOrderByRelationAggregateInput
-  AttributeClass?: Prisma.AttributeClassOrderByRelationAggregateInput
-  Product?: Prisma.ProductOrderByWithRelationInput
-  EventClass?: Prisma.EventClassOrderByRelationAggregateInput
-  Person?: Prisma.PersonOrderByRelationAggregateInput
+  projectId?: Prisma.SortOrder
+  appSetupCompleted?: Prisma.SortOrder
+  ActionClass?: Prisma.ActionClassOrderByRelationAggregateInput
+  ApiKeyEnvironment?: Prisma.ApiKeyEnvironmentOrderByRelationAggregateInput
+  Contact?: Prisma.ContactOrderByRelationAggregateInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyOrderByRelationAggregateInput
+  Project?: Prisma.ProjectOrderByWithRelationInput
+  Integration?: Prisma.IntegrationOrderByRelationAggregateInput
+  Segment?: Prisma.SegmentOrderByRelationAggregateInput
   Survey?: Prisma.SurveyOrderByRelationAggregateInput
+  Tag?: Prisma.TagOrderByRelationAggregateInput
   Webhook?: Prisma.WebhookOrderByRelationAggregateInput
 }
 
@@ -223,14 +229,17 @@ export type EnvironmentWhereUniqueInput = Prisma.AtLeast<{
   created_at?: Prisma.DateTimeFilter<"Environment"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Environment"> | Date | string
   type?: Prisma.EnumEnvironmentTypeFilter<"Environment"> | $Enums.EnvironmentType
-  productId?: Prisma.StringFilter<"Environment"> | string
-  widgetSetupCompleted?: Prisma.BoolFilter<"Environment"> | boolean
-  ApiKey?: Prisma.ApiKeyListRelationFilter
-  AttributeClass?: Prisma.AttributeClassListRelationFilter
-  Product?: Prisma.XOR<Prisma.ProductScalarRelationFilter, Prisma.ProductWhereInput>
-  EventClass?: Prisma.EventClassListRelationFilter
-  Person?: Prisma.PersonListRelationFilter
+  projectId?: Prisma.StringFilter<"Environment"> | string
+  appSetupCompleted?: Prisma.BoolFilter<"Environment"> | boolean
+  ActionClass?: Prisma.ActionClassListRelationFilter
+  ApiKeyEnvironment?: Prisma.ApiKeyEnvironmentListRelationFilter
+  Contact?: Prisma.ContactListRelationFilter
+  ContactAttributeKey?: Prisma.ContactAttributeKeyListRelationFilter
+  Project?: Prisma.XOR<Prisma.ProjectScalarRelationFilter, Prisma.ProjectWhereInput>
+  Integration?: Prisma.IntegrationListRelationFilter
+  Segment?: Prisma.SegmentListRelationFilter
   Survey?: Prisma.SurveyListRelationFilter
+  Tag?: Prisma.TagListRelationFilter
   Webhook?: Prisma.WebhookListRelationFilter
 }, "id">
 
@@ -239,8 +248,8 @@ export type EnvironmentOrderByWithAggregationInput = {
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   type?: Prisma.SortOrder
-  productId?: Prisma.SortOrder
-  widgetSetupCompleted?: Prisma.SortOrder
+  projectId?: Prisma.SortOrder
+  appSetupCompleted?: Prisma.SortOrder
   _count?: Prisma.EnvironmentCountOrderByAggregateInput
   _max?: Prisma.EnvironmentMaxOrderByAggregateInput
   _min?: Prisma.EnvironmentMinOrderByAggregateInput
@@ -254,8 +263,8 @@ export type EnvironmentScalarWhereWithAggregatesInput = {
   created_at?: Prisma.DateTimeWithAggregatesFilter<"Environment"> | Date | string
   updated_at?: Prisma.DateTimeWithAggregatesFilter<"Environment"> | Date | string
   type?: Prisma.EnumEnvironmentTypeWithAggregatesFilter<"Environment"> | $Enums.EnvironmentType
-  productId?: Prisma.StringWithAggregatesFilter<"Environment"> | string
-  widgetSetupCompleted?: Prisma.BoolWithAggregatesFilter<"Environment"> | boolean
+  projectId?: Prisma.StringWithAggregatesFilter<"Environment"> | string
+  appSetupCompleted?: Prisma.BoolWithAggregatesFilter<"Environment"> | boolean
 }
 
 export type EnvironmentCreateInput = {
@@ -263,13 +272,16 @@ export type EnvironmentCreateInput = {
   created_at?: Date | string
   updated_at: Date | string
   type: $Enums.EnvironmentType
-  widgetSetupCompleted?: boolean
-  ApiKey?: Prisma.ApiKeyCreateNestedManyWithoutEnvironmentInput
-  AttributeClass?: Prisma.AttributeClassCreateNestedManyWithoutEnvironmentInput
-  Product: Prisma.ProductCreateNestedOneWithoutEnvironmentInput
-  EventClass?: Prisma.EventClassCreateNestedManyWithoutEnvironmentInput
-  Person?: Prisma.PersonCreateNestedManyWithoutEnvironmentInput
+  appSetupCompleted?: boolean
+  ActionClass?: Prisma.ActionClassCreateNestedManyWithoutEnvironmentInput
+  ApiKeyEnvironment?: Prisma.ApiKeyEnvironmentCreateNestedManyWithoutEnvironmentInput
+  Contact?: Prisma.ContactCreateNestedManyWithoutEnvironmentInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyCreateNestedManyWithoutEnvironmentInput
+  Project: Prisma.ProjectCreateNestedOneWithoutEnvironmentInput
+  Integration?: Prisma.IntegrationCreateNestedManyWithoutEnvironmentInput
+  Segment?: Prisma.SegmentCreateNestedManyWithoutEnvironmentInput
   Survey?: Prisma.SurveyCreateNestedManyWithoutEnvironmentInput
+  Tag?: Prisma.TagCreateNestedManyWithoutEnvironmentInput
   Webhook?: Prisma.WebhookCreateNestedManyWithoutEnvironmentInput
 }
 
@@ -278,13 +290,16 @@ export type EnvironmentUncheckedCreateInput = {
   created_at?: Date | string
   updated_at: Date | string
   type: $Enums.EnvironmentType
-  productId: string
-  widgetSetupCompleted?: boolean
-  ApiKey?: Prisma.ApiKeyUncheckedCreateNestedManyWithoutEnvironmentInput
-  AttributeClass?: Prisma.AttributeClassUncheckedCreateNestedManyWithoutEnvironmentInput
-  EventClass?: Prisma.EventClassUncheckedCreateNestedManyWithoutEnvironmentInput
-  Person?: Prisma.PersonUncheckedCreateNestedManyWithoutEnvironmentInput
+  projectId: string
+  appSetupCompleted?: boolean
+  ActionClass?: Prisma.ActionClassUncheckedCreateNestedManyWithoutEnvironmentInput
+  ApiKeyEnvironment?: Prisma.ApiKeyEnvironmentUncheckedCreateNestedManyWithoutEnvironmentInput
+  Contact?: Prisma.ContactUncheckedCreateNestedManyWithoutEnvironmentInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyUncheckedCreateNestedManyWithoutEnvironmentInput
+  Integration?: Prisma.IntegrationUncheckedCreateNestedManyWithoutEnvironmentInput
+  Segment?: Prisma.SegmentUncheckedCreateNestedManyWithoutEnvironmentInput
   Survey?: Prisma.SurveyUncheckedCreateNestedManyWithoutEnvironmentInput
+  Tag?: Prisma.TagUncheckedCreateNestedManyWithoutEnvironmentInput
   Webhook?: Prisma.WebhookUncheckedCreateNestedManyWithoutEnvironmentInput
 }
 
@@ -293,13 +308,16 @@ export type EnvironmentUpdateInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   type?: Prisma.EnumEnvironmentTypeFieldUpdateOperationsInput | $Enums.EnvironmentType
-  widgetSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  ApiKey?: Prisma.ApiKeyUpdateManyWithoutEnvironmentNestedInput
-  AttributeClass?: Prisma.AttributeClassUpdateManyWithoutEnvironmentNestedInput
-  Product?: Prisma.ProductUpdateOneRequiredWithoutEnvironmentNestedInput
-  EventClass?: Prisma.EventClassUpdateManyWithoutEnvironmentNestedInput
-  Person?: Prisma.PersonUpdateManyWithoutEnvironmentNestedInput
+  appSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  ActionClass?: Prisma.ActionClassUpdateManyWithoutEnvironmentNestedInput
+  ApiKeyEnvironment?: Prisma.ApiKeyEnvironmentUpdateManyWithoutEnvironmentNestedInput
+  Contact?: Prisma.ContactUpdateManyWithoutEnvironmentNestedInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyUpdateManyWithoutEnvironmentNestedInput
+  Project?: Prisma.ProjectUpdateOneRequiredWithoutEnvironmentNestedInput
+  Integration?: Prisma.IntegrationUpdateManyWithoutEnvironmentNestedInput
+  Segment?: Prisma.SegmentUpdateManyWithoutEnvironmentNestedInput
   Survey?: Prisma.SurveyUpdateManyWithoutEnvironmentNestedInput
+  Tag?: Prisma.TagUpdateManyWithoutEnvironmentNestedInput
   Webhook?: Prisma.WebhookUpdateManyWithoutEnvironmentNestedInput
 }
 
@@ -308,13 +326,16 @@ export type EnvironmentUncheckedUpdateInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   type?: Prisma.EnumEnvironmentTypeFieldUpdateOperationsInput | $Enums.EnvironmentType
-  productId?: Prisma.StringFieldUpdateOperationsInput | string
-  widgetSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  ApiKey?: Prisma.ApiKeyUncheckedUpdateManyWithoutEnvironmentNestedInput
-  AttributeClass?: Prisma.AttributeClassUncheckedUpdateManyWithoutEnvironmentNestedInput
-  EventClass?: Prisma.EventClassUncheckedUpdateManyWithoutEnvironmentNestedInput
-  Person?: Prisma.PersonUncheckedUpdateManyWithoutEnvironmentNestedInput
+  projectId?: Prisma.StringFieldUpdateOperationsInput | string
+  appSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  ActionClass?: Prisma.ActionClassUncheckedUpdateManyWithoutEnvironmentNestedInput
+  ApiKeyEnvironment?: Prisma.ApiKeyEnvironmentUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Contact?: Prisma.ContactUncheckedUpdateManyWithoutEnvironmentNestedInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Integration?: Prisma.IntegrationUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Segment?: Prisma.SegmentUncheckedUpdateManyWithoutEnvironmentNestedInput
   Survey?: Prisma.SurveyUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Tag?: Prisma.TagUncheckedUpdateManyWithoutEnvironmentNestedInput
   Webhook?: Prisma.WebhookUncheckedUpdateManyWithoutEnvironmentNestedInput
 }
 
@@ -323,8 +344,8 @@ export type EnvironmentCreateManyInput = {
   created_at?: Date | string
   updated_at: Date | string
   type: $Enums.EnvironmentType
-  productId: string
-  widgetSetupCompleted?: boolean
+  projectId: string
+  appSetupCompleted?: boolean
 }
 
 export type EnvironmentUpdateManyMutationInput = {
@@ -332,7 +353,7 @@ export type EnvironmentUpdateManyMutationInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   type?: Prisma.EnumEnvironmentTypeFieldUpdateOperationsInput | $Enums.EnvironmentType
-  widgetSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  appSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type EnvironmentUncheckedUpdateManyInput = {
@@ -340,13 +361,8 @@ export type EnvironmentUncheckedUpdateManyInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   type?: Prisma.EnumEnvironmentTypeFieldUpdateOperationsInput | $Enums.EnvironmentType
-  productId?: Prisma.StringFieldUpdateOperationsInput | string
-  widgetSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-}
-
-export type EnvironmentScalarRelationFilter = {
-  is?: Prisma.EnvironmentWhereInput
-  isNot?: Prisma.EnvironmentWhereInput
+  projectId?: Prisma.StringFieldUpdateOperationsInput | string
+  appSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type EnvironmentCountOrderByAggregateInput = {
@@ -354,8 +370,8 @@ export type EnvironmentCountOrderByAggregateInput = {
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   type?: Prisma.SortOrder
-  productId?: Prisma.SortOrder
-  widgetSetupCompleted?: Prisma.SortOrder
+  projectId?: Prisma.SortOrder
+  appSetupCompleted?: Prisma.SortOrder
 }
 
 export type EnvironmentMaxOrderByAggregateInput = {
@@ -363,8 +379,8 @@ export type EnvironmentMaxOrderByAggregateInput = {
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   type?: Prisma.SortOrder
-  productId?: Prisma.SortOrder
-  widgetSetupCompleted?: Prisma.SortOrder
+  projectId?: Prisma.SortOrder
+  appSetupCompleted?: Prisma.SortOrder
 }
 
 export type EnvironmentMinOrderByAggregateInput = {
@@ -372,8 +388,13 @@ export type EnvironmentMinOrderByAggregateInput = {
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   type?: Prisma.SortOrder
-  productId?: Prisma.SortOrder
-  widgetSetupCompleted?: Prisma.SortOrder
+  projectId?: Prisma.SortOrder
+  appSetupCompleted?: Prisma.SortOrder
+}
+
+export type EnvironmentScalarRelationFilter = {
+  is?: Prisma.EnvironmentWhereInput
+  isNot?: Prisma.EnvironmentWhereInput
 }
 
 export type EnvironmentListRelationFilter = {
@@ -386,110 +407,12 @@ export type EnvironmentOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type EnvironmentCreateNestedOneWithoutApiKeyInput = {
-  create?: Prisma.XOR<Prisma.EnvironmentCreateWithoutApiKeyInput, Prisma.EnvironmentUncheckedCreateWithoutApiKeyInput>
-  connectOrCreate?: Prisma.EnvironmentCreateOrConnectWithoutApiKeyInput
-  connect?: Prisma.EnvironmentWhereUniqueInput
-}
-
-export type EnvironmentUpdateOneRequiredWithoutApiKeyNestedInput = {
-  create?: Prisma.XOR<Prisma.EnvironmentCreateWithoutApiKeyInput, Prisma.EnvironmentUncheckedCreateWithoutApiKeyInput>
-  connectOrCreate?: Prisma.EnvironmentCreateOrConnectWithoutApiKeyInput
-  upsert?: Prisma.EnvironmentUpsertWithoutApiKeyInput
-  connect?: Prisma.EnvironmentWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.EnvironmentUpdateToOneWithWhereWithoutApiKeyInput, Prisma.EnvironmentUpdateWithoutApiKeyInput>, Prisma.EnvironmentUncheckedUpdateWithoutApiKeyInput>
-}
-
-export type EnvironmentCreateNestedOneWithoutAttributeClassInput = {
-  create?: Prisma.XOR<Prisma.EnvironmentCreateWithoutAttributeClassInput, Prisma.EnvironmentUncheckedCreateWithoutAttributeClassInput>
-  connectOrCreate?: Prisma.EnvironmentCreateOrConnectWithoutAttributeClassInput
-  connect?: Prisma.EnvironmentWhereUniqueInput
-}
-
-export type EnvironmentUpdateOneRequiredWithoutAttributeClassNestedInput = {
-  create?: Prisma.XOR<Prisma.EnvironmentCreateWithoutAttributeClassInput, Prisma.EnvironmentUncheckedCreateWithoutAttributeClassInput>
-  connectOrCreate?: Prisma.EnvironmentCreateOrConnectWithoutAttributeClassInput
-  upsert?: Prisma.EnvironmentUpsertWithoutAttributeClassInput
-  connect?: Prisma.EnvironmentWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.EnvironmentUpdateToOneWithWhereWithoutAttributeClassInput, Prisma.EnvironmentUpdateWithoutAttributeClassInput>, Prisma.EnvironmentUncheckedUpdateWithoutAttributeClassInput>
-}
-
 export type EnumEnvironmentTypeFieldUpdateOperationsInput = {
   set?: $Enums.EnvironmentType
 }
 
 export type BoolFieldUpdateOperationsInput = {
   set?: boolean
-}
-
-export type EnvironmentCreateNestedOneWithoutEventClassInput = {
-  create?: Prisma.XOR<Prisma.EnvironmentCreateWithoutEventClassInput, Prisma.EnvironmentUncheckedCreateWithoutEventClassInput>
-  connectOrCreate?: Prisma.EnvironmentCreateOrConnectWithoutEventClassInput
-  connect?: Prisma.EnvironmentWhereUniqueInput
-}
-
-export type EnvironmentUpdateOneRequiredWithoutEventClassNestedInput = {
-  create?: Prisma.XOR<Prisma.EnvironmentCreateWithoutEventClassInput, Prisma.EnvironmentUncheckedCreateWithoutEventClassInput>
-  connectOrCreate?: Prisma.EnvironmentCreateOrConnectWithoutEventClassInput
-  upsert?: Prisma.EnvironmentUpsertWithoutEventClassInput
-  connect?: Prisma.EnvironmentWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.EnvironmentUpdateToOneWithWhereWithoutEventClassInput, Prisma.EnvironmentUpdateWithoutEventClassInput>, Prisma.EnvironmentUncheckedUpdateWithoutEventClassInput>
-}
-
-export type EnvironmentCreateNestedOneWithoutPersonInput = {
-  create?: Prisma.XOR<Prisma.EnvironmentCreateWithoutPersonInput, Prisma.EnvironmentUncheckedCreateWithoutPersonInput>
-  connectOrCreate?: Prisma.EnvironmentCreateOrConnectWithoutPersonInput
-  connect?: Prisma.EnvironmentWhereUniqueInput
-}
-
-export type EnvironmentUpdateOneRequiredWithoutPersonNestedInput = {
-  create?: Prisma.XOR<Prisma.EnvironmentCreateWithoutPersonInput, Prisma.EnvironmentUncheckedCreateWithoutPersonInput>
-  connectOrCreate?: Prisma.EnvironmentCreateOrConnectWithoutPersonInput
-  upsert?: Prisma.EnvironmentUpsertWithoutPersonInput
-  connect?: Prisma.EnvironmentWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.EnvironmentUpdateToOneWithWhereWithoutPersonInput, Prisma.EnvironmentUpdateWithoutPersonInput>, Prisma.EnvironmentUncheckedUpdateWithoutPersonInput>
-}
-
-export type EnvironmentCreateNestedManyWithoutProductInput = {
-  create?: Prisma.XOR<Prisma.EnvironmentCreateWithoutProductInput, Prisma.EnvironmentUncheckedCreateWithoutProductInput> | Prisma.EnvironmentCreateWithoutProductInput[] | Prisma.EnvironmentUncheckedCreateWithoutProductInput[]
-  connectOrCreate?: Prisma.EnvironmentCreateOrConnectWithoutProductInput | Prisma.EnvironmentCreateOrConnectWithoutProductInput[]
-  createMany?: Prisma.EnvironmentCreateManyProductInputEnvelope
-  connect?: Prisma.EnvironmentWhereUniqueInput | Prisma.EnvironmentWhereUniqueInput[]
-}
-
-export type EnvironmentUncheckedCreateNestedManyWithoutProductInput = {
-  create?: Prisma.XOR<Prisma.EnvironmentCreateWithoutProductInput, Prisma.EnvironmentUncheckedCreateWithoutProductInput> | Prisma.EnvironmentCreateWithoutProductInput[] | Prisma.EnvironmentUncheckedCreateWithoutProductInput[]
-  connectOrCreate?: Prisma.EnvironmentCreateOrConnectWithoutProductInput | Prisma.EnvironmentCreateOrConnectWithoutProductInput[]
-  createMany?: Prisma.EnvironmentCreateManyProductInputEnvelope
-  connect?: Prisma.EnvironmentWhereUniqueInput | Prisma.EnvironmentWhereUniqueInput[]
-}
-
-export type EnvironmentUpdateManyWithoutProductNestedInput = {
-  create?: Prisma.XOR<Prisma.EnvironmentCreateWithoutProductInput, Prisma.EnvironmentUncheckedCreateWithoutProductInput> | Prisma.EnvironmentCreateWithoutProductInput[] | Prisma.EnvironmentUncheckedCreateWithoutProductInput[]
-  connectOrCreate?: Prisma.EnvironmentCreateOrConnectWithoutProductInput | Prisma.EnvironmentCreateOrConnectWithoutProductInput[]
-  upsert?: Prisma.EnvironmentUpsertWithWhereUniqueWithoutProductInput | Prisma.EnvironmentUpsertWithWhereUniqueWithoutProductInput[]
-  createMany?: Prisma.EnvironmentCreateManyProductInputEnvelope
-  set?: Prisma.EnvironmentWhereUniqueInput | Prisma.EnvironmentWhereUniqueInput[]
-  disconnect?: Prisma.EnvironmentWhereUniqueInput | Prisma.EnvironmentWhereUniqueInput[]
-  delete?: Prisma.EnvironmentWhereUniqueInput | Prisma.EnvironmentWhereUniqueInput[]
-  connect?: Prisma.EnvironmentWhereUniqueInput | Prisma.EnvironmentWhereUniqueInput[]
-  update?: Prisma.EnvironmentUpdateWithWhereUniqueWithoutProductInput | Prisma.EnvironmentUpdateWithWhereUniqueWithoutProductInput[]
-  updateMany?: Prisma.EnvironmentUpdateManyWithWhereWithoutProductInput | Prisma.EnvironmentUpdateManyWithWhereWithoutProductInput[]
-  deleteMany?: Prisma.EnvironmentScalarWhereInput | Prisma.EnvironmentScalarWhereInput[]
-}
-
-export type EnvironmentUncheckedUpdateManyWithoutProductNestedInput = {
-  create?: Prisma.XOR<Prisma.EnvironmentCreateWithoutProductInput, Prisma.EnvironmentUncheckedCreateWithoutProductInput> | Prisma.EnvironmentCreateWithoutProductInput[] | Prisma.EnvironmentUncheckedCreateWithoutProductInput[]
-  connectOrCreate?: Prisma.EnvironmentCreateOrConnectWithoutProductInput | Prisma.EnvironmentCreateOrConnectWithoutProductInput[]
-  upsert?: Prisma.EnvironmentUpsertWithWhereUniqueWithoutProductInput | Prisma.EnvironmentUpsertWithWhereUniqueWithoutProductInput[]
-  createMany?: Prisma.EnvironmentCreateManyProductInputEnvelope
-  set?: Prisma.EnvironmentWhereUniqueInput | Prisma.EnvironmentWhereUniqueInput[]
-  disconnect?: Prisma.EnvironmentWhereUniqueInput | Prisma.EnvironmentWhereUniqueInput[]
-  delete?: Prisma.EnvironmentWhereUniqueInput | Prisma.EnvironmentWhereUniqueInput[]
-  connect?: Prisma.EnvironmentWhereUniqueInput | Prisma.EnvironmentWhereUniqueInput[]
-  update?: Prisma.EnvironmentUpdateWithWhereUniqueWithoutProductInput | Prisma.EnvironmentUpdateWithWhereUniqueWithoutProductInput[]
-  updateMany?: Prisma.EnvironmentUpdateManyWithWhereWithoutProductInput | Prisma.EnvironmentUpdateManyWithWhereWithoutProductInput[]
-  deleteMany?: Prisma.EnvironmentScalarWhereInput | Prisma.EnvironmentScalarWhereInput[]
 }
 
 export type EnvironmentCreateNestedOneWithoutSurveyInput = {
@@ -520,358 +443,144 @@ export type EnvironmentUpdateOneRequiredWithoutWebhookNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.EnvironmentUpdateToOneWithWhereWithoutWebhookInput, Prisma.EnvironmentUpdateWithoutWebhookInput>, Prisma.EnvironmentUncheckedUpdateWithoutWebhookInput>
 }
 
-export type EnvironmentCreateWithoutApiKeyInput = {
-  id: string
-  created_at?: Date | string
-  updated_at: Date | string
-  type: $Enums.EnvironmentType
-  widgetSetupCompleted?: boolean
-  AttributeClass?: Prisma.AttributeClassCreateNestedManyWithoutEnvironmentInput
-  Product: Prisma.ProductCreateNestedOneWithoutEnvironmentInput
-  EventClass?: Prisma.EventClassCreateNestedManyWithoutEnvironmentInput
-  Person?: Prisma.PersonCreateNestedManyWithoutEnvironmentInput
-  Survey?: Prisma.SurveyCreateNestedManyWithoutEnvironmentInput
-  Webhook?: Prisma.WebhookCreateNestedManyWithoutEnvironmentInput
+export type EnvironmentCreateNestedOneWithoutActionClassInput = {
+  create?: Prisma.XOR<Prisma.EnvironmentCreateWithoutActionClassInput, Prisma.EnvironmentUncheckedCreateWithoutActionClassInput>
+  connectOrCreate?: Prisma.EnvironmentCreateOrConnectWithoutActionClassInput
+  connect?: Prisma.EnvironmentWhereUniqueInput
 }
 
-export type EnvironmentUncheckedCreateWithoutApiKeyInput = {
-  id: string
-  created_at?: Date | string
-  updated_at: Date | string
-  type: $Enums.EnvironmentType
-  productId: string
-  widgetSetupCompleted?: boolean
-  AttributeClass?: Prisma.AttributeClassUncheckedCreateNestedManyWithoutEnvironmentInput
-  EventClass?: Prisma.EventClassUncheckedCreateNestedManyWithoutEnvironmentInput
-  Person?: Prisma.PersonUncheckedCreateNestedManyWithoutEnvironmentInput
-  Survey?: Prisma.SurveyUncheckedCreateNestedManyWithoutEnvironmentInput
-  Webhook?: Prisma.WebhookUncheckedCreateNestedManyWithoutEnvironmentInput
+export type EnvironmentUpdateOneRequiredWithoutActionClassNestedInput = {
+  create?: Prisma.XOR<Prisma.EnvironmentCreateWithoutActionClassInput, Prisma.EnvironmentUncheckedCreateWithoutActionClassInput>
+  connectOrCreate?: Prisma.EnvironmentCreateOrConnectWithoutActionClassInput
+  upsert?: Prisma.EnvironmentUpsertWithoutActionClassInput
+  connect?: Prisma.EnvironmentWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.EnvironmentUpdateToOneWithWhereWithoutActionClassInput, Prisma.EnvironmentUpdateWithoutActionClassInput>, Prisma.EnvironmentUncheckedUpdateWithoutActionClassInput>
 }
 
-export type EnvironmentCreateOrConnectWithoutApiKeyInput = {
-  where: Prisma.EnvironmentWhereUniqueInput
-  create: Prisma.XOR<Prisma.EnvironmentCreateWithoutApiKeyInput, Prisma.EnvironmentUncheckedCreateWithoutApiKeyInput>
+export type EnvironmentCreateNestedOneWithoutApiKeyEnvironmentInput = {
+  create?: Prisma.XOR<Prisma.EnvironmentCreateWithoutApiKeyEnvironmentInput, Prisma.EnvironmentUncheckedCreateWithoutApiKeyEnvironmentInput>
+  connectOrCreate?: Prisma.EnvironmentCreateOrConnectWithoutApiKeyEnvironmentInput
+  connect?: Prisma.EnvironmentWhereUniqueInput
 }
 
-export type EnvironmentUpsertWithoutApiKeyInput = {
-  update: Prisma.XOR<Prisma.EnvironmentUpdateWithoutApiKeyInput, Prisma.EnvironmentUncheckedUpdateWithoutApiKeyInput>
-  create: Prisma.XOR<Prisma.EnvironmentCreateWithoutApiKeyInput, Prisma.EnvironmentUncheckedCreateWithoutApiKeyInput>
-  where?: Prisma.EnvironmentWhereInput
+export type EnvironmentUpdateOneRequiredWithoutApiKeyEnvironmentNestedInput = {
+  create?: Prisma.XOR<Prisma.EnvironmentCreateWithoutApiKeyEnvironmentInput, Prisma.EnvironmentUncheckedCreateWithoutApiKeyEnvironmentInput>
+  connectOrCreate?: Prisma.EnvironmentCreateOrConnectWithoutApiKeyEnvironmentInput
+  upsert?: Prisma.EnvironmentUpsertWithoutApiKeyEnvironmentInput
+  connect?: Prisma.EnvironmentWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.EnvironmentUpdateToOneWithWhereWithoutApiKeyEnvironmentInput, Prisma.EnvironmentUpdateWithoutApiKeyEnvironmentInput>, Prisma.EnvironmentUncheckedUpdateWithoutApiKeyEnvironmentInput>
 }
 
-export type EnvironmentUpdateToOneWithWhereWithoutApiKeyInput = {
-  where?: Prisma.EnvironmentWhereInput
-  data: Prisma.XOR<Prisma.EnvironmentUpdateWithoutApiKeyInput, Prisma.EnvironmentUncheckedUpdateWithoutApiKeyInput>
+export type EnvironmentCreateNestedOneWithoutContactInput = {
+  create?: Prisma.XOR<Prisma.EnvironmentCreateWithoutContactInput, Prisma.EnvironmentUncheckedCreateWithoutContactInput>
+  connectOrCreate?: Prisma.EnvironmentCreateOrConnectWithoutContactInput
+  connect?: Prisma.EnvironmentWhereUniqueInput
 }
 
-export type EnvironmentUpdateWithoutApiKeyInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  type?: Prisma.EnumEnvironmentTypeFieldUpdateOperationsInput | $Enums.EnvironmentType
-  widgetSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  AttributeClass?: Prisma.AttributeClassUpdateManyWithoutEnvironmentNestedInput
-  Product?: Prisma.ProductUpdateOneRequiredWithoutEnvironmentNestedInput
-  EventClass?: Prisma.EventClassUpdateManyWithoutEnvironmentNestedInput
-  Person?: Prisma.PersonUpdateManyWithoutEnvironmentNestedInput
-  Survey?: Prisma.SurveyUpdateManyWithoutEnvironmentNestedInput
-  Webhook?: Prisma.WebhookUpdateManyWithoutEnvironmentNestedInput
+export type EnvironmentUpdateOneRequiredWithoutContactNestedInput = {
+  create?: Prisma.XOR<Prisma.EnvironmentCreateWithoutContactInput, Prisma.EnvironmentUncheckedCreateWithoutContactInput>
+  connectOrCreate?: Prisma.EnvironmentCreateOrConnectWithoutContactInput
+  upsert?: Prisma.EnvironmentUpsertWithoutContactInput
+  connect?: Prisma.EnvironmentWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.EnvironmentUpdateToOneWithWhereWithoutContactInput, Prisma.EnvironmentUpdateWithoutContactInput>, Prisma.EnvironmentUncheckedUpdateWithoutContactInput>
 }
 
-export type EnvironmentUncheckedUpdateWithoutApiKeyInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  type?: Prisma.EnumEnvironmentTypeFieldUpdateOperationsInput | $Enums.EnvironmentType
-  productId?: Prisma.StringFieldUpdateOperationsInput | string
-  widgetSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  AttributeClass?: Prisma.AttributeClassUncheckedUpdateManyWithoutEnvironmentNestedInput
-  EventClass?: Prisma.EventClassUncheckedUpdateManyWithoutEnvironmentNestedInput
-  Person?: Prisma.PersonUncheckedUpdateManyWithoutEnvironmentNestedInput
-  Survey?: Prisma.SurveyUncheckedUpdateManyWithoutEnvironmentNestedInput
-  Webhook?: Prisma.WebhookUncheckedUpdateManyWithoutEnvironmentNestedInput
+export type EnvironmentCreateNestedOneWithoutContactAttributeKeyInput = {
+  create?: Prisma.XOR<Prisma.EnvironmentCreateWithoutContactAttributeKeyInput, Prisma.EnvironmentUncheckedCreateWithoutContactAttributeKeyInput>
+  connectOrCreate?: Prisma.EnvironmentCreateOrConnectWithoutContactAttributeKeyInput
+  connect?: Prisma.EnvironmentWhereUniqueInput
 }
 
-export type EnvironmentCreateWithoutAttributeClassInput = {
-  id: string
-  created_at?: Date | string
-  updated_at: Date | string
-  type: $Enums.EnvironmentType
-  widgetSetupCompleted?: boolean
-  ApiKey?: Prisma.ApiKeyCreateNestedManyWithoutEnvironmentInput
-  Product: Prisma.ProductCreateNestedOneWithoutEnvironmentInput
-  EventClass?: Prisma.EventClassCreateNestedManyWithoutEnvironmentInput
-  Person?: Prisma.PersonCreateNestedManyWithoutEnvironmentInput
-  Survey?: Prisma.SurveyCreateNestedManyWithoutEnvironmentInput
-  Webhook?: Prisma.WebhookCreateNestedManyWithoutEnvironmentInput
+export type EnvironmentUpdateOneRequiredWithoutContactAttributeKeyNestedInput = {
+  create?: Prisma.XOR<Prisma.EnvironmentCreateWithoutContactAttributeKeyInput, Prisma.EnvironmentUncheckedCreateWithoutContactAttributeKeyInput>
+  connectOrCreate?: Prisma.EnvironmentCreateOrConnectWithoutContactAttributeKeyInput
+  upsert?: Prisma.EnvironmentUpsertWithoutContactAttributeKeyInput
+  connect?: Prisma.EnvironmentWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.EnvironmentUpdateToOneWithWhereWithoutContactAttributeKeyInput, Prisma.EnvironmentUpdateWithoutContactAttributeKeyInput>, Prisma.EnvironmentUncheckedUpdateWithoutContactAttributeKeyInput>
 }
 
-export type EnvironmentUncheckedCreateWithoutAttributeClassInput = {
-  id: string
-  created_at?: Date | string
-  updated_at: Date | string
-  type: $Enums.EnvironmentType
-  productId: string
-  widgetSetupCompleted?: boolean
-  ApiKey?: Prisma.ApiKeyUncheckedCreateNestedManyWithoutEnvironmentInput
-  EventClass?: Prisma.EventClassUncheckedCreateNestedManyWithoutEnvironmentInput
-  Person?: Prisma.PersonUncheckedCreateNestedManyWithoutEnvironmentInput
-  Survey?: Prisma.SurveyUncheckedCreateNestedManyWithoutEnvironmentInput
-  Webhook?: Prisma.WebhookUncheckedCreateNestedManyWithoutEnvironmentInput
+export type EnvironmentCreateNestedOneWithoutIntegrationInput = {
+  create?: Prisma.XOR<Prisma.EnvironmentCreateWithoutIntegrationInput, Prisma.EnvironmentUncheckedCreateWithoutIntegrationInput>
+  connectOrCreate?: Prisma.EnvironmentCreateOrConnectWithoutIntegrationInput
+  connect?: Prisma.EnvironmentWhereUniqueInput
 }
 
-export type EnvironmentCreateOrConnectWithoutAttributeClassInput = {
-  where: Prisma.EnvironmentWhereUniqueInput
-  create: Prisma.XOR<Prisma.EnvironmentCreateWithoutAttributeClassInput, Prisma.EnvironmentUncheckedCreateWithoutAttributeClassInput>
+export type EnvironmentUpdateOneRequiredWithoutIntegrationNestedInput = {
+  create?: Prisma.XOR<Prisma.EnvironmentCreateWithoutIntegrationInput, Prisma.EnvironmentUncheckedCreateWithoutIntegrationInput>
+  connectOrCreate?: Prisma.EnvironmentCreateOrConnectWithoutIntegrationInput
+  upsert?: Prisma.EnvironmentUpsertWithoutIntegrationInput
+  connect?: Prisma.EnvironmentWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.EnvironmentUpdateToOneWithWhereWithoutIntegrationInput, Prisma.EnvironmentUpdateWithoutIntegrationInput>, Prisma.EnvironmentUncheckedUpdateWithoutIntegrationInput>
 }
 
-export type EnvironmentUpsertWithoutAttributeClassInput = {
-  update: Prisma.XOR<Prisma.EnvironmentUpdateWithoutAttributeClassInput, Prisma.EnvironmentUncheckedUpdateWithoutAttributeClassInput>
-  create: Prisma.XOR<Prisma.EnvironmentCreateWithoutAttributeClassInput, Prisma.EnvironmentUncheckedCreateWithoutAttributeClassInput>
-  where?: Prisma.EnvironmentWhereInput
+export type EnvironmentCreateNestedManyWithoutProjectInput = {
+  create?: Prisma.XOR<Prisma.EnvironmentCreateWithoutProjectInput, Prisma.EnvironmentUncheckedCreateWithoutProjectInput> | Prisma.EnvironmentCreateWithoutProjectInput[] | Prisma.EnvironmentUncheckedCreateWithoutProjectInput[]
+  connectOrCreate?: Prisma.EnvironmentCreateOrConnectWithoutProjectInput | Prisma.EnvironmentCreateOrConnectWithoutProjectInput[]
+  createMany?: Prisma.EnvironmentCreateManyProjectInputEnvelope
+  connect?: Prisma.EnvironmentWhereUniqueInput | Prisma.EnvironmentWhereUniqueInput[]
 }
 
-export type EnvironmentUpdateToOneWithWhereWithoutAttributeClassInput = {
-  where?: Prisma.EnvironmentWhereInput
-  data: Prisma.XOR<Prisma.EnvironmentUpdateWithoutAttributeClassInput, Prisma.EnvironmentUncheckedUpdateWithoutAttributeClassInput>
+export type EnvironmentUncheckedCreateNestedManyWithoutProjectInput = {
+  create?: Prisma.XOR<Prisma.EnvironmentCreateWithoutProjectInput, Prisma.EnvironmentUncheckedCreateWithoutProjectInput> | Prisma.EnvironmentCreateWithoutProjectInput[] | Prisma.EnvironmentUncheckedCreateWithoutProjectInput[]
+  connectOrCreate?: Prisma.EnvironmentCreateOrConnectWithoutProjectInput | Prisma.EnvironmentCreateOrConnectWithoutProjectInput[]
+  createMany?: Prisma.EnvironmentCreateManyProjectInputEnvelope
+  connect?: Prisma.EnvironmentWhereUniqueInput | Prisma.EnvironmentWhereUniqueInput[]
 }
 
-export type EnvironmentUpdateWithoutAttributeClassInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  type?: Prisma.EnumEnvironmentTypeFieldUpdateOperationsInput | $Enums.EnvironmentType
-  widgetSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  ApiKey?: Prisma.ApiKeyUpdateManyWithoutEnvironmentNestedInput
-  Product?: Prisma.ProductUpdateOneRequiredWithoutEnvironmentNestedInput
-  EventClass?: Prisma.EventClassUpdateManyWithoutEnvironmentNestedInput
-  Person?: Prisma.PersonUpdateManyWithoutEnvironmentNestedInput
-  Survey?: Prisma.SurveyUpdateManyWithoutEnvironmentNestedInput
-  Webhook?: Prisma.WebhookUpdateManyWithoutEnvironmentNestedInput
+export type EnvironmentUpdateManyWithoutProjectNestedInput = {
+  create?: Prisma.XOR<Prisma.EnvironmentCreateWithoutProjectInput, Prisma.EnvironmentUncheckedCreateWithoutProjectInput> | Prisma.EnvironmentCreateWithoutProjectInput[] | Prisma.EnvironmentUncheckedCreateWithoutProjectInput[]
+  connectOrCreate?: Prisma.EnvironmentCreateOrConnectWithoutProjectInput | Prisma.EnvironmentCreateOrConnectWithoutProjectInput[]
+  upsert?: Prisma.EnvironmentUpsertWithWhereUniqueWithoutProjectInput | Prisma.EnvironmentUpsertWithWhereUniqueWithoutProjectInput[]
+  createMany?: Prisma.EnvironmentCreateManyProjectInputEnvelope
+  set?: Prisma.EnvironmentWhereUniqueInput | Prisma.EnvironmentWhereUniqueInput[]
+  disconnect?: Prisma.EnvironmentWhereUniqueInput | Prisma.EnvironmentWhereUniqueInput[]
+  delete?: Prisma.EnvironmentWhereUniqueInput | Prisma.EnvironmentWhereUniqueInput[]
+  connect?: Prisma.EnvironmentWhereUniqueInput | Prisma.EnvironmentWhereUniqueInput[]
+  update?: Prisma.EnvironmentUpdateWithWhereUniqueWithoutProjectInput | Prisma.EnvironmentUpdateWithWhereUniqueWithoutProjectInput[]
+  updateMany?: Prisma.EnvironmentUpdateManyWithWhereWithoutProjectInput | Prisma.EnvironmentUpdateManyWithWhereWithoutProjectInput[]
+  deleteMany?: Prisma.EnvironmentScalarWhereInput | Prisma.EnvironmentScalarWhereInput[]
 }
 
-export type EnvironmentUncheckedUpdateWithoutAttributeClassInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  type?: Prisma.EnumEnvironmentTypeFieldUpdateOperationsInput | $Enums.EnvironmentType
-  productId?: Prisma.StringFieldUpdateOperationsInput | string
-  widgetSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  ApiKey?: Prisma.ApiKeyUncheckedUpdateManyWithoutEnvironmentNestedInput
-  EventClass?: Prisma.EventClassUncheckedUpdateManyWithoutEnvironmentNestedInput
-  Person?: Prisma.PersonUncheckedUpdateManyWithoutEnvironmentNestedInput
-  Survey?: Prisma.SurveyUncheckedUpdateManyWithoutEnvironmentNestedInput
-  Webhook?: Prisma.WebhookUncheckedUpdateManyWithoutEnvironmentNestedInput
+export type EnvironmentUncheckedUpdateManyWithoutProjectNestedInput = {
+  create?: Prisma.XOR<Prisma.EnvironmentCreateWithoutProjectInput, Prisma.EnvironmentUncheckedCreateWithoutProjectInput> | Prisma.EnvironmentCreateWithoutProjectInput[] | Prisma.EnvironmentUncheckedCreateWithoutProjectInput[]
+  connectOrCreate?: Prisma.EnvironmentCreateOrConnectWithoutProjectInput | Prisma.EnvironmentCreateOrConnectWithoutProjectInput[]
+  upsert?: Prisma.EnvironmentUpsertWithWhereUniqueWithoutProjectInput | Prisma.EnvironmentUpsertWithWhereUniqueWithoutProjectInput[]
+  createMany?: Prisma.EnvironmentCreateManyProjectInputEnvelope
+  set?: Prisma.EnvironmentWhereUniqueInput | Prisma.EnvironmentWhereUniqueInput[]
+  disconnect?: Prisma.EnvironmentWhereUniqueInput | Prisma.EnvironmentWhereUniqueInput[]
+  delete?: Prisma.EnvironmentWhereUniqueInput | Prisma.EnvironmentWhereUniqueInput[]
+  connect?: Prisma.EnvironmentWhereUniqueInput | Prisma.EnvironmentWhereUniqueInput[]
+  update?: Prisma.EnvironmentUpdateWithWhereUniqueWithoutProjectInput | Prisma.EnvironmentUpdateWithWhereUniqueWithoutProjectInput[]
+  updateMany?: Prisma.EnvironmentUpdateManyWithWhereWithoutProjectInput | Prisma.EnvironmentUpdateManyWithWhereWithoutProjectInput[]
+  deleteMany?: Prisma.EnvironmentScalarWhereInput | Prisma.EnvironmentScalarWhereInput[]
 }
 
-export type EnvironmentCreateWithoutEventClassInput = {
-  id: string
-  created_at?: Date | string
-  updated_at: Date | string
-  type: $Enums.EnvironmentType
-  widgetSetupCompleted?: boolean
-  ApiKey?: Prisma.ApiKeyCreateNestedManyWithoutEnvironmentInput
-  AttributeClass?: Prisma.AttributeClassCreateNestedManyWithoutEnvironmentInput
-  Product: Prisma.ProductCreateNestedOneWithoutEnvironmentInput
-  Person?: Prisma.PersonCreateNestedManyWithoutEnvironmentInput
-  Survey?: Prisma.SurveyCreateNestedManyWithoutEnvironmentInput
-  Webhook?: Prisma.WebhookCreateNestedManyWithoutEnvironmentInput
+export type EnvironmentCreateNestedOneWithoutSegmentInput = {
+  create?: Prisma.XOR<Prisma.EnvironmentCreateWithoutSegmentInput, Prisma.EnvironmentUncheckedCreateWithoutSegmentInput>
+  connectOrCreate?: Prisma.EnvironmentCreateOrConnectWithoutSegmentInput
+  connect?: Prisma.EnvironmentWhereUniqueInput
 }
 
-export type EnvironmentUncheckedCreateWithoutEventClassInput = {
-  id: string
-  created_at?: Date | string
-  updated_at: Date | string
-  type: $Enums.EnvironmentType
-  productId: string
-  widgetSetupCompleted?: boolean
-  ApiKey?: Prisma.ApiKeyUncheckedCreateNestedManyWithoutEnvironmentInput
-  AttributeClass?: Prisma.AttributeClassUncheckedCreateNestedManyWithoutEnvironmentInput
-  Person?: Prisma.PersonUncheckedCreateNestedManyWithoutEnvironmentInput
-  Survey?: Prisma.SurveyUncheckedCreateNestedManyWithoutEnvironmentInput
-  Webhook?: Prisma.WebhookUncheckedCreateNestedManyWithoutEnvironmentInput
+export type EnvironmentUpdateOneRequiredWithoutSegmentNestedInput = {
+  create?: Prisma.XOR<Prisma.EnvironmentCreateWithoutSegmentInput, Prisma.EnvironmentUncheckedCreateWithoutSegmentInput>
+  connectOrCreate?: Prisma.EnvironmentCreateOrConnectWithoutSegmentInput
+  upsert?: Prisma.EnvironmentUpsertWithoutSegmentInput
+  connect?: Prisma.EnvironmentWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.EnvironmentUpdateToOneWithWhereWithoutSegmentInput, Prisma.EnvironmentUpdateWithoutSegmentInput>, Prisma.EnvironmentUncheckedUpdateWithoutSegmentInput>
 }
 
-export type EnvironmentCreateOrConnectWithoutEventClassInput = {
-  where: Prisma.EnvironmentWhereUniqueInput
-  create: Prisma.XOR<Prisma.EnvironmentCreateWithoutEventClassInput, Prisma.EnvironmentUncheckedCreateWithoutEventClassInput>
+export type EnvironmentCreateNestedOneWithoutTagInput = {
+  create?: Prisma.XOR<Prisma.EnvironmentCreateWithoutTagInput, Prisma.EnvironmentUncheckedCreateWithoutTagInput>
+  connectOrCreate?: Prisma.EnvironmentCreateOrConnectWithoutTagInput
+  connect?: Prisma.EnvironmentWhereUniqueInput
 }
 
-export type EnvironmentUpsertWithoutEventClassInput = {
-  update: Prisma.XOR<Prisma.EnvironmentUpdateWithoutEventClassInput, Prisma.EnvironmentUncheckedUpdateWithoutEventClassInput>
-  create: Prisma.XOR<Prisma.EnvironmentCreateWithoutEventClassInput, Prisma.EnvironmentUncheckedCreateWithoutEventClassInput>
-  where?: Prisma.EnvironmentWhereInput
-}
-
-export type EnvironmentUpdateToOneWithWhereWithoutEventClassInput = {
-  where?: Prisma.EnvironmentWhereInput
-  data: Prisma.XOR<Prisma.EnvironmentUpdateWithoutEventClassInput, Prisma.EnvironmentUncheckedUpdateWithoutEventClassInput>
-}
-
-export type EnvironmentUpdateWithoutEventClassInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  type?: Prisma.EnumEnvironmentTypeFieldUpdateOperationsInput | $Enums.EnvironmentType
-  widgetSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  ApiKey?: Prisma.ApiKeyUpdateManyWithoutEnvironmentNestedInput
-  AttributeClass?: Prisma.AttributeClassUpdateManyWithoutEnvironmentNestedInput
-  Product?: Prisma.ProductUpdateOneRequiredWithoutEnvironmentNestedInput
-  Person?: Prisma.PersonUpdateManyWithoutEnvironmentNestedInput
-  Survey?: Prisma.SurveyUpdateManyWithoutEnvironmentNestedInput
-  Webhook?: Prisma.WebhookUpdateManyWithoutEnvironmentNestedInput
-}
-
-export type EnvironmentUncheckedUpdateWithoutEventClassInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  type?: Prisma.EnumEnvironmentTypeFieldUpdateOperationsInput | $Enums.EnvironmentType
-  productId?: Prisma.StringFieldUpdateOperationsInput | string
-  widgetSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  ApiKey?: Prisma.ApiKeyUncheckedUpdateManyWithoutEnvironmentNestedInput
-  AttributeClass?: Prisma.AttributeClassUncheckedUpdateManyWithoutEnvironmentNestedInput
-  Person?: Prisma.PersonUncheckedUpdateManyWithoutEnvironmentNestedInput
-  Survey?: Prisma.SurveyUncheckedUpdateManyWithoutEnvironmentNestedInput
-  Webhook?: Prisma.WebhookUncheckedUpdateManyWithoutEnvironmentNestedInput
-}
-
-export type EnvironmentCreateWithoutPersonInput = {
-  id: string
-  created_at?: Date | string
-  updated_at: Date | string
-  type: $Enums.EnvironmentType
-  widgetSetupCompleted?: boolean
-  ApiKey?: Prisma.ApiKeyCreateNestedManyWithoutEnvironmentInput
-  AttributeClass?: Prisma.AttributeClassCreateNestedManyWithoutEnvironmentInput
-  Product: Prisma.ProductCreateNestedOneWithoutEnvironmentInput
-  EventClass?: Prisma.EventClassCreateNestedManyWithoutEnvironmentInput
-  Survey?: Prisma.SurveyCreateNestedManyWithoutEnvironmentInput
-  Webhook?: Prisma.WebhookCreateNestedManyWithoutEnvironmentInput
-}
-
-export type EnvironmentUncheckedCreateWithoutPersonInput = {
-  id: string
-  created_at?: Date | string
-  updated_at: Date | string
-  type: $Enums.EnvironmentType
-  productId: string
-  widgetSetupCompleted?: boolean
-  ApiKey?: Prisma.ApiKeyUncheckedCreateNestedManyWithoutEnvironmentInput
-  AttributeClass?: Prisma.AttributeClassUncheckedCreateNestedManyWithoutEnvironmentInput
-  EventClass?: Prisma.EventClassUncheckedCreateNestedManyWithoutEnvironmentInput
-  Survey?: Prisma.SurveyUncheckedCreateNestedManyWithoutEnvironmentInput
-  Webhook?: Prisma.WebhookUncheckedCreateNestedManyWithoutEnvironmentInput
-}
-
-export type EnvironmentCreateOrConnectWithoutPersonInput = {
-  where: Prisma.EnvironmentWhereUniqueInput
-  create: Prisma.XOR<Prisma.EnvironmentCreateWithoutPersonInput, Prisma.EnvironmentUncheckedCreateWithoutPersonInput>
-}
-
-export type EnvironmentUpsertWithoutPersonInput = {
-  update: Prisma.XOR<Prisma.EnvironmentUpdateWithoutPersonInput, Prisma.EnvironmentUncheckedUpdateWithoutPersonInput>
-  create: Prisma.XOR<Prisma.EnvironmentCreateWithoutPersonInput, Prisma.EnvironmentUncheckedCreateWithoutPersonInput>
-  where?: Prisma.EnvironmentWhereInput
-}
-
-export type EnvironmentUpdateToOneWithWhereWithoutPersonInput = {
-  where?: Prisma.EnvironmentWhereInput
-  data: Prisma.XOR<Prisma.EnvironmentUpdateWithoutPersonInput, Prisma.EnvironmentUncheckedUpdateWithoutPersonInput>
-}
-
-export type EnvironmentUpdateWithoutPersonInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  type?: Prisma.EnumEnvironmentTypeFieldUpdateOperationsInput | $Enums.EnvironmentType
-  widgetSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  ApiKey?: Prisma.ApiKeyUpdateManyWithoutEnvironmentNestedInput
-  AttributeClass?: Prisma.AttributeClassUpdateManyWithoutEnvironmentNestedInput
-  Product?: Prisma.ProductUpdateOneRequiredWithoutEnvironmentNestedInput
-  EventClass?: Prisma.EventClassUpdateManyWithoutEnvironmentNestedInput
-  Survey?: Prisma.SurveyUpdateManyWithoutEnvironmentNestedInput
-  Webhook?: Prisma.WebhookUpdateManyWithoutEnvironmentNestedInput
-}
-
-export type EnvironmentUncheckedUpdateWithoutPersonInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  type?: Prisma.EnumEnvironmentTypeFieldUpdateOperationsInput | $Enums.EnvironmentType
-  productId?: Prisma.StringFieldUpdateOperationsInput | string
-  widgetSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  ApiKey?: Prisma.ApiKeyUncheckedUpdateManyWithoutEnvironmentNestedInput
-  AttributeClass?: Prisma.AttributeClassUncheckedUpdateManyWithoutEnvironmentNestedInput
-  EventClass?: Prisma.EventClassUncheckedUpdateManyWithoutEnvironmentNestedInput
-  Survey?: Prisma.SurveyUncheckedUpdateManyWithoutEnvironmentNestedInput
-  Webhook?: Prisma.WebhookUncheckedUpdateManyWithoutEnvironmentNestedInput
-}
-
-export type EnvironmentCreateWithoutProductInput = {
-  id: string
-  created_at?: Date | string
-  updated_at: Date | string
-  type: $Enums.EnvironmentType
-  widgetSetupCompleted?: boolean
-  ApiKey?: Prisma.ApiKeyCreateNestedManyWithoutEnvironmentInput
-  AttributeClass?: Prisma.AttributeClassCreateNestedManyWithoutEnvironmentInput
-  EventClass?: Prisma.EventClassCreateNestedManyWithoutEnvironmentInput
-  Person?: Prisma.PersonCreateNestedManyWithoutEnvironmentInput
-  Survey?: Prisma.SurveyCreateNestedManyWithoutEnvironmentInput
-  Webhook?: Prisma.WebhookCreateNestedManyWithoutEnvironmentInput
-}
-
-export type EnvironmentUncheckedCreateWithoutProductInput = {
-  id: string
-  created_at?: Date | string
-  updated_at: Date | string
-  type: $Enums.EnvironmentType
-  widgetSetupCompleted?: boolean
-  ApiKey?: Prisma.ApiKeyUncheckedCreateNestedManyWithoutEnvironmentInput
-  AttributeClass?: Prisma.AttributeClassUncheckedCreateNestedManyWithoutEnvironmentInput
-  EventClass?: Prisma.EventClassUncheckedCreateNestedManyWithoutEnvironmentInput
-  Person?: Prisma.PersonUncheckedCreateNestedManyWithoutEnvironmentInput
-  Survey?: Prisma.SurveyUncheckedCreateNestedManyWithoutEnvironmentInput
-  Webhook?: Prisma.WebhookUncheckedCreateNestedManyWithoutEnvironmentInput
-}
-
-export type EnvironmentCreateOrConnectWithoutProductInput = {
-  where: Prisma.EnvironmentWhereUniqueInput
-  create: Prisma.XOR<Prisma.EnvironmentCreateWithoutProductInput, Prisma.EnvironmentUncheckedCreateWithoutProductInput>
-}
-
-export type EnvironmentCreateManyProductInputEnvelope = {
-  data: Prisma.EnvironmentCreateManyProductInput | Prisma.EnvironmentCreateManyProductInput[]
-  skipDuplicates?: boolean
-}
-
-export type EnvironmentUpsertWithWhereUniqueWithoutProductInput = {
-  where: Prisma.EnvironmentWhereUniqueInput
-  update: Prisma.XOR<Prisma.EnvironmentUpdateWithoutProductInput, Prisma.EnvironmentUncheckedUpdateWithoutProductInput>
-  create: Prisma.XOR<Prisma.EnvironmentCreateWithoutProductInput, Prisma.EnvironmentUncheckedCreateWithoutProductInput>
-}
-
-export type EnvironmentUpdateWithWhereUniqueWithoutProductInput = {
-  where: Prisma.EnvironmentWhereUniqueInput
-  data: Prisma.XOR<Prisma.EnvironmentUpdateWithoutProductInput, Prisma.EnvironmentUncheckedUpdateWithoutProductInput>
-}
-
-export type EnvironmentUpdateManyWithWhereWithoutProductInput = {
-  where: Prisma.EnvironmentScalarWhereInput
-  data: Prisma.XOR<Prisma.EnvironmentUpdateManyMutationInput, Prisma.EnvironmentUncheckedUpdateManyWithoutProductInput>
-}
-
-export type EnvironmentScalarWhereInput = {
-  AND?: Prisma.EnvironmentScalarWhereInput | Prisma.EnvironmentScalarWhereInput[]
-  OR?: Prisma.EnvironmentScalarWhereInput[]
-  NOT?: Prisma.EnvironmentScalarWhereInput | Prisma.EnvironmentScalarWhereInput[]
-  id?: Prisma.StringFilter<"Environment"> | string
-  created_at?: Prisma.DateTimeFilter<"Environment"> | Date | string
-  updated_at?: Prisma.DateTimeFilter<"Environment"> | Date | string
-  type?: Prisma.EnumEnvironmentTypeFilter<"Environment"> | $Enums.EnvironmentType
-  productId?: Prisma.StringFilter<"Environment"> | string
-  widgetSetupCompleted?: Prisma.BoolFilter<"Environment"> | boolean
+export type EnvironmentUpdateOneRequiredWithoutTagNestedInput = {
+  create?: Prisma.XOR<Prisma.EnvironmentCreateWithoutTagInput, Prisma.EnvironmentUncheckedCreateWithoutTagInput>
+  connectOrCreate?: Prisma.EnvironmentCreateOrConnectWithoutTagInput
+  upsert?: Prisma.EnvironmentUpsertWithoutTagInput
+  connect?: Prisma.EnvironmentWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.EnvironmentUpdateToOneWithWhereWithoutTagInput, Prisma.EnvironmentUpdateWithoutTagInput>, Prisma.EnvironmentUncheckedUpdateWithoutTagInput>
 }
 
 export type EnvironmentCreateWithoutSurveyInput = {
@@ -879,12 +588,15 @@ export type EnvironmentCreateWithoutSurveyInput = {
   created_at?: Date | string
   updated_at: Date | string
   type: $Enums.EnvironmentType
-  widgetSetupCompleted?: boolean
-  ApiKey?: Prisma.ApiKeyCreateNestedManyWithoutEnvironmentInput
-  AttributeClass?: Prisma.AttributeClassCreateNestedManyWithoutEnvironmentInput
-  Product: Prisma.ProductCreateNestedOneWithoutEnvironmentInput
-  EventClass?: Prisma.EventClassCreateNestedManyWithoutEnvironmentInput
-  Person?: Prisma.PersonCreateNestedManyWithoutEnvironmentInput
+  appSetupCompleted?: boolean
+  ActionClass?: Prisma.ActionClassCreateNestedManyWithoutEnvironmentInput
+  ApiKeyEnvironment?: Prisma.ApiKeyEnvironmentCreateNestedManyWithoutEnvironmentInput
+  Contact?: Prisma.ContactCreateNestedManyWithoutEnvironmentInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyCreateNestedManyWithoutEnvironmentInput
+  Project: Prisma.ProjectCreateNestedOneWithoutEnvironmentInput
+  Integration?: Prisma.IntegrationCreateNestedManyWithoutEnvironmentInput
+  Segment?: Prisma.SegmentCreateNestedManyWithoutEnvironmentInput
+  Tag?: Prisma.TagCreateNestedManyWithoutEnvironmentInput
   Webhook?: Prisma.WebhookCreateNestedManyWithoutEnvironmentInput
 }
 
@@ -893,12 +605,15 @@ export type EnvironmentUncheckedCreateWithoutSurveyInput = {
   created_at?: Date | string
   updated_at: Date | string
   type: $Enums.EnvironmentType
-  productId: string
-  widgetSetupCompleted?: boolean
-  ApiKey?: Prisma.ApiKeyUncheckedCreateNestedManyWithoutEnvironmentInput
-  AttributeClass?: Prisma.AttributeClassUncheckedCreateNestedManyWithoutEnvironmentInput
-  EventClass?: Prisma.EventClassUncheckedCreateNestedManyWithoutEnvironmentInput
-  Person?: Prisma.PersonUncheckedCreateNestedManyWithoutEnvironmentInput
+  projectId: string
+  appSetupCompleted?: boolean
+  ActionClass?: Prisma.ActionClassUncheckedCreateNestedManyWithoutEnvironmentInput
+  ApiKeyEnvironment?: Prisma.ApiKeyEnvironmentUncheckedCreateNestedManyWithoutEnvironmentInput
+  Contact?: Prisma.ContactUncheckedCreateNestedManyWithoutEnvironmentInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyUncheckedCreateNestedManyWithoutEnvironmentInput
+  Integration?: Prisma.IntegrationUncheckedCreateNestedManyWithoutEnvironmentInput
+  Segment?: Prisma.SegmentUncheckedCreateNestedManyWithoutEnvironmentInput
+  Tag?: Prisma.TagUncheckedCreateNestedManyWithoutEnvironmentInput
   Webhook?: Prisma.WebhookUncheckedCreateNestedManyWithoutEnvironmentInput
 }
 
@@ -923,12 +638,15 @@ export type EnvironmentUpdateWithoutSurveyInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   type?: Prisma.EnumEnvironmentTypeFieldUpdateOperationsInput | $Enums.EnvironmentType
-  widgetSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  ApiKey?: Prisma.ApiKeyUpdateManyWithoutEnvironmentNestedInput
-  AttributeClass?: Prisma.AttributeClassUpdateManyWithoutEnvironmentNestedInput
-  Product?: Prisma.ProductUpdateOneRequiredWithoutEnvironmentNestedInput
-  EventClass?: Prisma.EventClassUpdateManyWithoutEnvironmentNestedInput
-  Person?: Prisma.PersonUpdateManyWithoutEnvironmentNestedInput
+  appSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  ActionClass?: Prisma.ActionClassUpdateManyWithoutEnvironmentNestedInput
+  ApiKeyEnvironment?: Prisma.ApiKeyEnvironmentUpdateManyWithoutEnvironmentNestedInput
+  Contact?: Prisma.ContactUpdateManyWithoutEnvironmentNestedInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyUpdateManyWithoutEnvironmentNestedInput
+  Project?: Prisma.ProjectUpdateOneRequiredWithoutEnvironmentNestedInput
+  Integration?: Prisma.IntegrationUpdateManyWithoutEnvironmentNestedInput
+  Segment?: Prisma.SegmentUpdateManyWithoutEnvironmentNestedInput
+  Tag?: Prisma.TagUpdateManyWithoutEnvironmentNestedInput
   Webhook?: Prisma.WebhookUpdateManyWithoutEnvironmentNestedInput
 }
 
@@ -937,12 +655,15 @@ export type EnvironmentUncheckedUpdateWithoutSurveyInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   type?: Prisma.EnumEnvironmentTypeFieldUpdateOperationsInput | $Enums.EnvironmentType
-  productId?: Prisma.StringFieldUpdateOperationsInput | string
-  widgetSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  ApiKey?: Prisma.ApiKeyUncheckedUpdateManyWithoutEnvironmentNestedInput
-  AttributeClass?: Prisma.AttributeClassUncheckedUpdateManyWithoutEnvironmentNestedInput
-  EventClass?: Prisma.EventClassUncheckedUpdateManyWithoutEnvironmentNestedInput
-  Person?: Prisma.PersonUncheckedUpdateManyWithoutEnvironmentNestedInput
+  projectId?: Prisma.StringFieldUpdateOperationsInput | string
+  appSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  ActionClass?: Prisma.ActionClassUncheckedUpdateManyWithoutEnvironmentNestedInput
+  ApiKeyEnvironment?: Prisma.ApiKeyEnvironmentUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Contact?: Prisma.ContactUncheckedUpdateManyWithoutEnvironmentNestedInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Integration?: Prisma.IntegrationUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Segment?: Prisma.SegmentUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Tag?: Prisma.TagUncheckedUpdateManyWithoutEnvironmentNestedInput
   Webhook?: Prisma.WebhookUncheckedUpdateManyWithoutEnvironmentNestedInput
 }
 
@@ -951,13 +672,16 @@ export type EnvironmentCreateWithoutWebhookInput = {
   created_at?: Date | string
   updated_at: Date | string
   type: $Enums.EnvironmentType
-  widgetSetupCompleted?: boolean
-  ApiKey?: Prisma.ApiKeyCreateNestedManyWithoutEnvironmentInput
-  AttributeClass?: Prisma.AttributeClassCreateNestedManyWithoutEnvironmentInput
-  Product: Prisma.ProductCreateNestedOneWithoutEnvironmentInput
-  EventClass?: Prisma.EventClassCreateNestedManyWithoutEnvironmentInput
-  Person?: Prisma.PersonCreateNestedManyWithoutEnvironmentInput
+  appSetupCompleted?: boolean
+  ActionClass?: Prisma.ActionClassCreateNestedManyWithoutEnvironmentInput
+  ApiKeyEnvironment?: Prisma.ApiKeyEnvironmentCreateNestedManyWithoutEnvironmentInput
+  Contact?: Prisma.ContactCreateNestedManyWithoutEnvironmentInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyCreateNestedManyWithoutEnvironmentInput
+  Project: Prisma.ProjectCreateNestedOneWithoutEnvironmentInput
+  Integration?: Prisma.IntegrationCreateNestedManyWithoutEnvironmentInput
+  Segment?: Prisma.SegmentCreateNestedManyWithoutEnvironmentInput
   Survey?: Prisma.SurveyCreateNestedManyWithoutEnvironmentInput
+  Tag?: Prisma.TagCreateNestedManyWithoutEnvironmentInput
 }
 
 export type EnvironmentUncheckedCreateWithoutWebhookInput = {
@@ -965,13 +689,16 @@ export type EnvironmentUncheckedCreateWithoutWebhookInput = {
   created_at?: Date | string
   updated_at: Date | string
   type: $Enums.EnvironmentType
-  productId: string
-  widgetSetupCompleted?: boolean
-  ApiKey?: Prisma.ApiKeyUncheckedCreateNestedManyWithoutEnvironmentInput
-  AttributeClass?: Prisma.AttributeClassUncheckedCreateNestedManyWithoutEnvironmentInput
-  EventClass?: Prisma.EventClassUncheckedCreateNestedManyWithoutEnvironmentInput
-  Person?: Prisma.PersonUncheckedCreateNestedManyWithoutEnvironmentInput
+  projectId: string
+  appSetupCompleted?: boolean
+  ActionClass?: Prisma.ActionClassUncheckedCreateNestedManyWithoutEnvironmentInput
+  ApiKeyEnvironment?: Prisma.ApiKeyEnvironmentUncheckedCreateNestedManyWithoutEnvironmentInput
+  Contact?: Prisma.ContactUncheckedCreateNestedManyWithoutEnvironmentInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyUncheckedCreateNestedManyWithoutEnvironmentInput
+  Integration?: Prisma.IntegrationUncheckedCreateNestedManyWithoutEnvironmentInput
+  Segment?: Prisma.SegmentUncheckedCreateNestedManyWithoutEnvironmentInput
   Survey?: Prisma.SurveyUncheckedCreateNestedManyWithoutEnvironmentInput
+  Tag?: Prisma.TagUncheckedCreateNestedManyWithoutEnvironmentInput
 }
 
 export type EnvironmentCreateOrConnectWithoutWebhookInput = {
@@ -995,13 +722,16 @@ export type EnvironmentUpdateWithoutWebhookInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   type?: Prisma.EnumEnvironmentTypeFieldUpdateOperationsInput | $Enums.EnvironmentType
-  widgetSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  ApiKey?: Prisma.ApiKeyUpdateManyWithoutEnvironmentNestedInput
-  AttributeClass?: Prisma.AttributeClassUpdateManyWithoutEnvironmentNestedInput
-  Product?: Prisma.ProductUpdateOneRequiredWithoutEnvironmentNestedInput
-  EventClass?: Prisma.EventClassUpdateManyWithoutEnvironmentNestedInput
-  Person?: Prisma.PersonUpdateManyWithoutEnvironmentNestedInput
+  appSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  ActionClass?: Prisma.ActionClassUpdateManyWithoutEnvironmentNestedInput
+  ApiKeyEnvironment?: Prisma.ApiKeyEnvironmentUpdateManyWithoutEnvironmentNestedInput
+  Contact?: Prisma.ContactUpdateManyWithoutEnvironmentNestedInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyUpdateManyWithoutEnvironmentNestedInput
+  Project?: Prisma.ProjectUpdateOneRequiredWithoutEnvironmentNestedInput
+  Integration?: Prisma.IntegrationUpdateManyWithoutEnvironmentNestedInput
+  Segment?: Prisma.SegmentUpdateManyWithoutEnvironmentNestedInput
   Survey?: Prisma.SurveyUpdateManyWithoutEnvironmentNestedInput
+  Tag?: Prisma.TagUpdateManyWithoutEnvironmentNestedInput
 }
 
 export type EnvironmentUncheckedUpdateWithoutWebhookInput = {
@@ -1009,57 +739,726 @@ export type EnvironmentUncheckedUpdateWithoutWebhookInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   type?: Prisma.EnumEnvironmentTypeFieldUpdateOperationsInput | $Enums.EnvironmentType
-  productId?: Prisma.StringFieldUpdateOperationsInput | string
-  widgetSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  ApiKey?: Prisma.ApiKeyUncheckedUpdateManyWithoutEnvironmentNestedInput
-  AttributeClass?: Prisma.AttributeClassUncheckedUpdateManyWithoutEnvironmentNestedInput
-  EventClass?: Prisma.EventClassUncheckedUpdateManyWithoutEnvironmentNestedInput
-  Person?: Prisma.PersonUncheckedUpdateManyWithoutEnvironmentNestedInput
+  projectId?: Prisma.StringFieldUpdateOperationsInput | string
+  appSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  ActionClass?: Prisma.ActionClassUncheckedUpdateManyWithoutEnvironmentNestedInput
+  ApiKeyEnvironment?: Prisma.ApiKeyEnvironmentUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Contact?: Prisma.ContactUncheckedUpdateManyWithoutEnvironmentNestedInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Integration?: Prisma.IntegrationUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Segment?: Prisma.SegmentUncheckedUpdateManyWithoutEnvironmentNestedInput
   Survey?: Prisma.SurveyUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Tag?: Prisma.TagUncheckedUpdateManyWithoutEnvironmentNestedInput
 }
 
-export type EnvironmentCreateManyProductInput = {
+export type EnvironmentCreateWithoutActionClassInput = {
   id: string
   created_at?: Date | string
   updated_at: Date | string
   type: $Enums.EnvironmentType
-  widgetSetupCompleted?: boolean
+  appSetupCompleted?: boolean
+  ApiKeyEnvironment?: Prisma.ApiKeyEnvironmentCreateNestedManyWithoutEnvironmentInput
+  Contact?: Prisma.ContactCreateNestedManyWithoutEnvironmentInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyCreateNestedManyWithoutEnvironmentInput
+  Project: Prisma.ProjectCreateNestedOneWithoutEnvironmentInput
+  Integration?: Prisma.IntegrationCreateNestedManyWithoutEnvironmentInput
+  Segment?: Prisma.SegmentCreateNestedManyWithoutEnvironmentInput
+  Survey?: Prisma.SurveyCreateNestedManyWithoutEnvironmentInput
+  Tag?: Prisma.TagCreateNestedManyWithoutEnvironmentInput
+  Webhook?: Prisma.WebhookCreateNestedManyWithoutEnvironmentInput
 }
 
-export type EnvironmentUpdateWithoutProductInput = {
+export type EnvironmentUncheckedCreateWithoutActionClassInput = {
+  id: string
+  created_at?: Date | string
+  updated_at: Date | string
+  type: $Enums.EnvironmentType
+  projectId: string
+  appSetupCompleted?: boolean
+  ApiKeyEnvironment?: Prisma.ApiKeyEnvironmentUncheckedCreateNestedManyWithoutEnvironmentInput
+  Contact?: Prisma.ContactUncheckedCreateNestedManyWithoutEnvironmentInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyUncheckedCreateNestedManyWithoutEnvironmentInput
+  Integration?: Prisma.IntegrationUncheckedCreateNestedManyWithoutEnvironmentInput
+  Segment?: Prisma.SegmentUncheckedCreateNestedManyWithoutEnvironmentInput
+  Survey?: Prisma.SurveyUncheckedCreateNestedManyWithoutEnvironmentInput
+  Tag?: Prisma.TagUncheckedCreateNestedManyWithoutEnvironmentInput
+  Webhook?: Prisma.WebhookUncheckedCreateNestedManyWithoutEnvironmentInput
+}
+
+export type EnvironmentCreateOrConnectWithoutActionClassInput = {
+  where: Prisma.EnvironmentWhereUniqueInput
+  create: Prisma.XOR<Prisma.EnvironmentCreateWithoutActionClassInput, Prisma.EnvironmentUncheckedCreateWithoutActionClassInput>
+}
+
+export type EnvironmentUpsertWithoutActionClassInput = {
+  update: Prisma.XOR<Prisma.EnvironmentUpdateWithoutActionClassInput, Prisma.EnvironmentUncheckedUpdateWithoutActionClassInput>
+  create: Prisma.XOR<Prisma.EnvironmentCreateWithoutActionClassInput, Prisma.EnvironmentUncheckedCreateWithoutActionClassInput>
+  where?: Prisma.EnvironmentWhereInput
+}
+
+export type EnvironmentUpdateToOneWithWhereWithoutActionClassInput = {
+  where?: Prisma.EnvironmentWhereInput
+  data: Prisma.XOR<Prisma.EnvironmentUpdateWithoutActionClassInput, Prisma.EnvironmentUncheckedUpdateWithoutActionClassInput>
+}
+
+export type EnvironmentUpdateWithoutActionClassInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   type?: Prisma.EnumEnvironmentTypeFieldUpdateOperationsInput | $Enums.EnvironmentType
-  widgetSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  ApiKey?: Prisma.ApiKeyUpdateManyWithoutEnvironmentNestedInput
-  AttributeClass?: Prisma.AttributeClassUpdateManyWithoutEnvironmentNestedInput
-  EventClass?: Prisma.EventClassUpdateManyWithoutEnvironmentNestedInput
-  Person?: Prisma.PersonUpdateManyWithoutEnvironmentNestedInput
+  appSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  ApiKeyEnvironment?: Prisma.ApiKeyEnvironmentUpdateManyWithoutEnvironmentNestedInput
+  Contact?: Prisma.ContactUpdateManyWithoutEnvironmentNestedInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyUpdateManyWithoutEnvironmentNestedInput
+  Project?: Prisma.ProjectUpdateOneRequiredWithoutEnvironmentNestedInput
+  Integration?: Prisma.IntegrationUpdateManyWithoutEnvironmentNestedInput
+  Segment?: Prisma.SegmentUpdateManyWithoutEnvironmentNestedInput
+  Survey?: Prisma.SurveyUpdateManyWithoutEnvironmentNestedInput
+  Tag?: Prisma.TagUpdateManyWithoutEnvironmentNestedInput
+  Webhook?: Prisma.WebhookUpdateManyWithoutEnvironmentNestedInput
+}
+
+export type EnvironmentUncheckedUpdateWithoutActionClassInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  type?: Prisma.EnumEnvironmentTypeFieldUpdateOperationsInput | $Enums.EnvironmentType
+  projectId?: Prisma.StringFieldUpdateOperationsInput | string
+  appSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  ApiKeyEnvironment?: Prisma.ApiKeyEnvironmentUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Contact?: Prisma.ContactUncheckedUpdateManyWithoutEnvironmentNestedInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Integration?: Prisma.IntegrationUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Segment?: Prisma.SegmentUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Survey?: Prisma.SurveyUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Tag?: Prisma.TagUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Webhook?: Prisma.WebhookUncheckedUpdateManyWithoutEnvironmentNestedInput
+}
+
+export type EnvironmentCreateWithoutApiKeyEnvironmentInput = {
+  id: string
+  created_at?: Date | string
+  updated_at: Date | string
+  type: $Enums.EnvironmentType
+  appSetupCompleted?: boolean
+  ActionClass?: Prisma.ActionClassCreateNestedManyWithoutEnvironmentInput
+  Contact?: Prisma.ContactCreateNestedManyWithoutEnvironmentInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyCreateNestedManyWithoutEnvironmentInput
+  Project: Prisma.ProjectCreateNestedOneWithoutEnvironmentInput
+  Integration?: Prisma.IntegrationCreateNestedManyWithoutEnvironmentInput
+  Segment?: Prisma.SegmentCreateNestedManyWithoutEnvironmentInput
+  Survey?: Prisma.SurveyCreateNestedManyWithoutEnvironmentInput
+  Tag?: Prisma.TagCreateNestedManyWithoutEnvironmentInput
+  Webhook?: Prisma.WebhookCreateNestedManyWithoutEnvironmentInput
+}
+
+export type EnvironmentUncheckedCreateWithoutApiKeyEnvironmentInput = {
+  id: string
+  created_at?: Date | string
+  updated_at: Date | string
+  type: $Enums.EnvironmentType
+  projectId: string
+  appSetupCompleted?: boolean
+  ActionClass?: Prisma.ActionClassUncheckedCreateNestedManyWithoutEnvironmentInput
+  Contact?: Prisma.ContactUncheckedCreateNestedManyWithoutEnvironmentInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyUncheckedCreateNestedManyWithoutEnvironmentInput
+  Integration?: Prisma.IntegrationUncheckedCreateNestedManyWithoutEnvironmentInput
+  Segment?: Prisma.SegmentUncheckedCreateNestedManyWithoutEnvironmentInput
+  Survey?: Prisma.SurveyUncheckedCreateNestedManyWithoutEnvironmentInput
+  Tag?: Prisma.TagUncheckedCreateNestedManyWithoutEnvironmentInput
+  Webhook?: Prisma.WebhookUncheckedCreateNestedManyWithoutEnvironmentInput
+}
+
+export type EnvironmentCreateOrConnectWithoutApiKeyEnvironmentInput = {
+  where: Prisma.EnvironmentWhereUniqueInput
+  create: Prisma.XOR<Prisma.EnvironmentCreateWithoutApiKeyEnvironmentInput, Prisma.EnvironmentUncheckedCreateWithoutApiKeyEnvironmentInput>
+}
+
+export type EnvironmentUpsertWithoutApiKeyEnvironmentInput = {
+  update: Prisma.XOR<Prisma.EnvironmentUpdateWithoutApiKeyEnvironmentInput, Prisma.EnvironmentUncheckedUpdateWithoutApiKeyEnvironmentInput>
+  create: Prisma.XOR<Prisma.EnvironmentCreateWithoutApiKeyEnvironmentInput, Prisma.EnvironmentUncheckedCreateWithoutApiKeyEnvironmentInput>
+  where?: Prisma.EnvironmentWhereInput
+}
+
+export type EnvironmentUpdateToOneWithWhereWithoutApiKeyEnvironmentInput = {
+  where?: Prisma.EnvironmentWhereInput
+  data: Prisma.XOR<Prisma.EnvironmentUpdateWithoutApiKeyEnvironmentInput, Prisma.EnvironmentUncheckedUpdateWithoutApiKeyEnvironmentInput>
+}
+
+export type EnvironmentUpdateWithoutApiKeyEnvironmentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  type?: Prisma.EnumEnvironmentTypeFieldUpdateOperationsInput | $Enums.EnvironmentType
+  appSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  ActionClass?: Prisma.ActionClassUpdateManyWithoutEnvironmentNestedInput
+  Contact?: Prisma.ContactUpdateManyWithoutEnvironmentNestedInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyUpdateManyWithoutEnvironmentNestedInput
+  Project?: Prisma.ProjectUpdateOneRequiredWithoutEnvironmentNestedInput
+  Integration?: Prisma.IntegrationUpdateManyWithoutEnvironmentNestedInput
+  Segment?: Prisma.SegmentUpdateManyWithoutEnvironmentNestedInput
+  Survey?: Prisma.SurveyUpdateManyWithoutEnvironmentNestedInput
+  Tag?: Prisma.TagUpdateManyWithoutEnvironmentNestedInput
+  Webhook?: Prisma.WebhookUpdateManyWithoutEnvironmentNestedInput
+}
+
+export type EnvironmentUncheckedUpdateWithoutApiKeyEnvironmentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  type?: Prisma.EnumEnvironmentTypeFieldUpdateOperationsInput | $Enums.EnvironmentType
+  projectId?: Prisma.StringFieldUpdateOperationsInput | string
+  appSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  ActionClass?: Prisma.ActionClassUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Contact?: Prisma.ContactUncheckedUpdateManyWithoutEnvironmentNestedInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Integration?: Prisma.IntegrationUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Segment?: Prisma.SegmentUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Survey?: Prisma.SurveyUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Tag?: Prisma.TagUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Webhook?: Prisma.WebhookUncheckedUpdateManyWithoutEnvironmentNestedInput
+}
+
+export type EnvironmentCreateWithoutContactInput = {
+  id: string
+  created_at?: Date | string
+  updated_at: Date | string
+  type: $Enums.EnvironmentType
+  appSetupCompleted?: boolean
+  ActionClass?: Prisma.ActionClassCreateNestedManyWithoutEnvironmentInput
+  ApiKeyEnvironment?: Prisma.ApiKeyEnvironmentCreateNestedManyWithoutEnvironmentInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyCreateNestedManyWithoutEnvironmentInput
+  Project: Prisma.ProjectCreateNestedOneWithoutEnvironmentInput
+  Integration?: Prisma.IntegrationCreateNestedManyWithoutEnvironmentInput
+  Segment?: Prisma.SegmentCreateNestedManyWithoutEnvironmentInput
+  Survey?: Prisma.SurveyCreateNestedManyWithoutEnvironmentInput
+  Tag?: Prisma.TagCreateNestedManyWithoutEnvironmentInput
+  Webhook?: Prisma.WebhookCreateNestedManyWithoutEnvironmentInput
+}
+
+export type EnvironmentUncheckedCreateWithoutContactInput = {
+  id: string
+  created_at?: Date | string
+  updated_at: Date | string
+  type: $Enums.EnvironmentType
+  projectId: string
+  appSetupCompleted?: boolean
+  ActionClass?: Prisma.ActionClassUncheckedCreateNestedManyWithoutEnvironmentInput
+  ApiKeyEnvironment?: Prisma.ApiKeyEnvironmentUncheckedCreateNestedManyWithoutEnvironmentInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyUncheckedCreateNestedManyWithoutEnvironmentInput
+  Integration?: Prisma.IntegrationUncheckedCreateNestedManyWithoutEnvironmentInput
+  Segment?: Prisma.SegmentUncheckedCreateNestedManyWithoutEnvironmentInput
+  Survey?: Prisma.SurveyUncheckedCreateNestedManyWithoutEnvironmentInput
+  Tag?: Prisma.TagUncheckedCreateNestedManyWithoutEnvironmentInput
+  Webhook?: Prisma.WebhookUncheckedCreateNestedManyWithoutEnvironmentInput
+}
+
+export type EnvironmentCreateOrConnectWithoutContactInput = {
+  where: Prisma.EnvironmentWhereUniqueInput
+  create: Prisma.XOR<Prisma.EnvironmentCreateWithoutContactInput, Prisma.EnvironmentUncheckedCreateWithoutContactInput>
+}
+
+export type EnvironmentUpsertWithoutContactInput = {
+  update: Prisma.XOR<Prisma.EnvironmentUpdateWithoutContactInput, Prisma.EnvironmentUncheckedUpdateWithoutContactInput>
+  create: Prisma.XOR<Prisma.EnvironmentCreateWithoutContactInput, Prisma.EnvironmentUncheckedCreateWithoutContactInput>
+  where?: Prisma.EnvironmentWhereInput
+}
+
+export type EnvironmentUpdateToOneWithWhereWithoutContactInput = {
+  where?: Prisma.EnvironmentWhereInput
+  data: Prisma.XOR<Prisma.EnvironmentUpdateWithoutContactInput, Prisma.EnvironmentUncheckedUpdateWithoutContactInput>
+}
+
+export type EnvironmentUpdateWithoutContactInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  type?: Prisma.EnumEnvironmentTypeFieldUpdateOperationsInput | $Enums.EnvironmentType
+  appSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  ActionClass?: Prisma.ActionClassUpdateManyWithoutEnvironmentNestedInput
+  ApiKeyEnvironment?: Prisma.ApiKeyEnvironmentUpdateManyWithoutEnvironmentNestedInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyUpdateManyWithoutEnvironmentNestedInput
+  Project?: Prisma.ProjectUpdateOneRequiredWithoutEnvironmentNestedInput
+  Integration?: Prisma.IntegrationUpdateManyWithoutEnvironmentNestedInput
+  Segment?: Prisma.SegmentUpdateManyWithoutEnvironmentNestedInput
+  Survey?: Prisma.SurveyUpdateManyWithoutEnvironmentNestedInput
+  Tag?: Prisma.TagUpdateManyWithoutEnvironmentNestedInput
+  Webhook?: Prisma.WebhookUpdateManyWithoutEnvironmentNestedInput
+}
+
+export type EnvironmentUncheckedUpdateWithoutContactInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  type?: Prisma.EnumEnvironmentTypeFieldUpdateOperationsInput | $Enums.EnvironmentType
+  projectId?: Prisma.StringFieldUpdateOperationsInput | string
+  appSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  ActionClass?: Prisma.ActionClassUncheckedUpdateManyWithoutEnvironmentNestedInput
+  ApiKeyEnvironment?: Prisma.ApiKeyEnvironmentUncheckedUpdateManyWithoutEnvironmentNestedInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Integration?: Prisma.IntegrationUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Segment?: Prisma.SegmentUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Survey?: Prisma.SurveyUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Tag?: Prisma.TagUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Webhook?: Prisma.WebhookUncheckedUpdateManyWithoutEnvironmentNestedInput
+}
+
+export type EnvironmentCreateWithoutContactAttributeKeyInput = {
+  id: string
+  created_at?: Date | string
+  updated_at: Date | string
+  type: $Enums.EnvironmentType
+  appSetupCompleted?: boolean
+  ActionClass?: Prisma.ActionClassCreateNestedManyWithoutEnvironmentInput
+  ApiKeyEnvironment?: Prisma.ApiKeyEnvironmentCreateNestedManyWithoutEnvironmentInput
+  Contact?: Prisma.ContactCreateNestedManyWithoutEnvironmentInput
+  Project: Prisma.ProjectCreateNestedOneWithoutEnvironmentInput
+  Integration?: Prisma.IntegrationCreateNestedManyWithoutEnvironmentInput
+  Segment?: Prisma.SegmentCreateNestedManyWithoutEnvironmentInput
+  Survey?: Prisma.SurveyCreateNestedManyWithoutEnvironmentInput
+  Tag?: Prisma.TagCreateNestedManyWithoutEnvironmentInput
+  Webhook?: Prisma.WebhookCreateNestedManyWithoutEnvironmentInput
+}
+
+export type EnvironmentUncheckedCreateWithoutContactAttributeKeyInput = {
+  id: string
+  created_at?: Date | string
+  updated_at: Date | string
+  type: $Enums.EnvironmentType
+  projectId: string
+  appSetupCompleted?: boolean
+  ActionClass?: Prisma.ActionClassUncheckedCreateNestedManyWithoutEnvironmentInput
+  ApiKeyEnvironment?: Prisma.ApiKeyEnvironmentUncheckedCreateNestedManyWithoutEnvironmentInput
+  Contact?: Prisma.ContactUncheckedCreateNestedManyWithoutEnvironmentInput
+  Integration?: Prisma.IntegrationUncheckedCreateNestedManyWithoutEnvironmentInput
+  Segment?: Prisma.SegmentUncheckedCreateNestedManyWithoutEnvironmentInput
+  Survey?: Prisma.SurveyUncheckedCreateNestedManyWithoutEnvironmentInput
+  Tag?: Prisma.TagUncheckedCreateNestedManyWithoutEnvironmentInput
+  Webhook?: Prisma.WebhookUncheckedCreateNestedManyWithoutEnvironmentInput
+}
+
+export type EnvironmentCreateOrConnectWithoutContactAttributeKeyInput = {
+  where: Prisma.EnvironmentWhereUniqueInput
+  create: Prisma.XOR<Prisma.EnvironmentCreateWithoutContactAttributeKeyInput, Prisma.EnvironmentUncheckedCreateWithoutContactAttributeKeyInput>
+}
+
+export type EnvironmentUpsertWithoutContactAttributeKeyInput = {
+  update: Prisma.XOR<Prisma.EnvironmentUpdateWithoutContactAttributeKeyInput, Prisma.EnvironmentUncheckedUpdateWithoutContactAttributeKeyInput>
+  create: Prisma.XOR<Prisma.EnvironmentCreateWithoutContactAttributeKeyInput, Prisma.EnvironmentUncheckedCreateWithoutContactAttributeKeyInput>
+  where?: Prisma.EnvironmentWhereInput
+}
+
+export type EnvironmentUpdateToOneWithWhereWithoutContactAttributeKeyInput = {
+  where?: Prisma.EnvironmentWhereInput
+  data: Prisma.XOR<Prisma.EnvironmentUpdateWithoutContactAttributeKeyInput, Prisma.EnvironmentUncheckedUpdateWithoutContactAttributeKeyInput>
+}
+
+export type EnvironmentUpdateWithoutContactAttributeKeyInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  type?: Prisma.EnumEnvironmentTypeFieldUpdateOperationsInput | $Enums.EnvironmentType
+  appSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  ActionClass?: Prisma.ActionClassUpdateManyWithoutEnvironmentNestedInput
+  ApiKeyEnvironment?: Prisma.ApiKeyEnvironmentUpdateManyWithoutEnvironmentNestedInput
+  Contact?: Prisma.ContactUpdateManyWithoutEnvironmentNestedInput
+  Project?: Prisma.ProjectUpdateOneRequiredWithoutEnvironmentNestedInput
+  Integration?: Prisma.IntegrationUpdateManyWithoutEnvironmentNestedInput
+  Segment?: Prisma.SegmentUpdateManyWithoutEnvironmentNestedInput
+  Survey?: Prisma.SurveyUpdateManyWithoutEnvironmentNestedInput
+  Tag?: Prisma.TagUpdateManyWithoutEnvironmentNestedInput
+  Webhook?: Prisma.WebhookUpdateManyWithoutEnvironmentNestedInput
+}
+
+export type EnvironmentUncheckedUpdateWithoutContactAttributeKeyInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  type?: Prisma.EnumEnvironmentTypeFieldUpdateOperationsInput | $Enums.EnvironmentType
+  projectId?: Prisma.StringFieldUpdateOperationsInput | string
+  appSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  ActionClass?: Prisma.ActionClassUncheckedUpdateManyWithoutEnvironmentNestedInput
+  ApiKeyEnvironment?: Prisma.ApiKeyEnvironmentUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Contact?: Prisma.ContactUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Integration?: Prisma.IntegrationUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Segment?: Prisma.SegmentUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Survey?: Prisma.SurveyUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Tag?: Prisma.TagUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Webhook?: Prisma.WebhookUncheckedUpdateManyWithoutEnvironmentNestedInput
+}
+
+export type EnvironmentCreateWithoutIntegrationInput = {
+  id: string
+  created_at?: Date | string
+  updated_at: Date | string
+  type: $Enums.EnvironmentType
+  appSetupCompleted?: boolean
+  ActionClass?: Prisma.ActionClassCreateNestedManyWithoutEnvironmentInput
+  ApiKeyEnvironment?: Prisma.ApiKeyEnvironmentCreateNestedManyWithoutEnvironmentInput
+  Contact?: Prisma.ContactCreateNestedManyWithoutEnvironmentInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyCreateNestedManyWithoutEnvironmentInput
+  Project: Prisma.ProjectCreateNestedOneWithoutEnvironmentInput
+  Segment?: Prisma.SegmentCreateNestedManyWithoutEnvironmentInput
+  Survey?: Prisma.SurveyCreateNestedManyWithoutEnvironmentInput
+  Tag?: Prisma.TagCreateNestedManyWithoutEnvironmentInput
+  Webhook?: Prisma.WebhookCreateNestedManyWithoutEnvironmentInput
+}
+
+export type EnvironmentUncheckedCreateWithoutIntegrationInput = {
+  id: string
+  created_at?: Date | string
+  updated_at: Date | string
+  type: $Enums.EnvironmentType
+  projectId: string
+  appSetupCompleted?: boolean
+  ActionClass?: Prisma.ActionClassUncheckedCreateNestedManyWithoutEnvironmentInput
+  ApiKeyEnvironment?: Prisma.ApiKeyEnvironmentUncheckedCreateNestedManyWithoutEnvironmentInput
+  Contact?: Prisma.ContactUncheckedCreateNestedManyWithoutEnvironmentInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyUncheckedCreateNestedManyWithoutEnvironmentInput
+  Segment?: Prisma.SegmentUncheckedCreateNestedManyWithoutEnvironmentInput
+  Survey?: Prisma.SurveyUncheckedCreateNestedManyWithoutEnvironmentInput
+  Tag?: Prisma.TagUncheckedCreateNestedManyWithoutEnvironmentInput
+  Webhook?: Prisma.WebhookUncheckedCreateNestedManyWithoutEnvironmentInput
+}
+
+export type EnvironmentCreateOrConnectWithoutIntegrationInput = {
+  where: Prisma.EnvironmentWhereUniqueInput
+  create: Prisma.XOR<Prisma.EnvironmentCreateWithoutIntegrationInput, Prisma.EnvironmentUncheckedCreateWithoutIntegrationInput>
+}
+
+export type EnvironmentUpsertWithoutIntegrationInput = {
+  update: Prisma.XOR<Prisma.EnvironmentUpdateWithoutIntegrationInput, Prisma.EnvironmentUncheckedUpdateWithoutIntegrationInput>
+  create: Prisma.XOR<Prisma.EnvironmentCreateWithoutIntegrationInput, Prisma.EnvironmentUncheckedCreateWithoutIntegrationInput>
+  where?: Prisma.EnvironmentWhereInput
+}
+
+export type EnvironmentUpdateToOneWithWhereWithoutIntegrationInput = {
+  where?: Prisma.EnvironmentWhereInput
+  data: Prisma.XOR<Prisma.EnvironmentUpdateWithoutIntegrationInput, Prisma.EnvironmentUncheckedUpdateWithoutIntegrationInput>
+}
+
+export type EnvironmentUpdateWithoutIntegrationInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  type?: Prisma.EnumEnvironmentTypeFieldUpdateOperationsInput | $Enums.EnvironmentType
+  appSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  ActionClass?: Prisma.ActionClassUpdateManyWithoutEnvironmentNestedInput
+  ApiKeyEnvironment?: Prisma.ApiKeyEnvironmentUpdateManyWithoutEnvironmentNestedInput
+  Contact?: Prisma.ContactUpdateManyWithoutEnvironmentNestedInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyUpdateManyWithoutEnvironmentNestedInput
+  Project?: Prisma.ProjectUpdateOneRequiredWithoutEnvironmentNestedInput
+  Segment?: Prisma.SegmentUpdateManyWithoutEnvironmentNestedInput
+  Survey?: Prisma.SurveyUpdateManyWithoutEnvironmentNestedInput
+  Tag?: Prisma.TagUpdateManyWithoutEnvironmentNestedInput
+  Webhook?: Prisma.WebhookUpdateManyWithoutEnvironmentNestedInput
+}
+
+export type EnvironmentUncheckedUpdateWithoutIntegrationInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  type?: Prisma.EnumEnvironmentTypeFieldUpdateOperationsInput | $Enums.EnvironmentType
+  projectId?: Prisma.StringFieldUpdateOperationsInput | string
+  appSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  ActionClass?: Prisma.ActionClassUncheckedUpdateManyWithoutEnvironmentNestedInput
+  ApiKeyEnvironment?: Prisma.ApiKeyEnvironmentUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Contact?: Prisma.ContactUncheckedUpdateManyWithoutEnvironmentNestedInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Segment?: Prisma.SegmentUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Survey?: Prisma.SurveyUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Tag?: Prisma.TagUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Webhook?: Prisma.WebhookUncheckedUpdateManyWithoutEnvironmentNestedInput
+}
+
+export type EnvironmentCreateWithoutProjectInput = {
+  id: string
+  created_at?: Date | string
+  updated_at: Date | string
+  type: $Enums.EnvironmentType
+  appSetupCompleted?: boolean
+  ActionClass?: Prisma.ActionClassCreateNestedManyWithoutEnvironmentInput
+  ApiKeyEnvironment?: Prisma.ApiKeyEnvironmentCreateNestedManyWithoutEnvironmentInput
+  Contact?: Prisma.ContactCreateNestedManyWithoutEnvironmentInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyCreateNestedManyWithoutEnvironmentInput
+  Integration?: Prisma.IntegrationCreateNestedManyWithoutEnvironmentInput
+  Segment?: Prisma.SegmentCreateNestedManyWithoutEnvironmentInput
+  Survey?: Prisma.SurveyCreateNestedManyWithoutEnvironmentInput
+  Tag?: Prisma.TagCreateNestedManyWithoutEnvironmentInput
+  Webhook?: Prisma.WebhookCreateNestedManyWithoutEnvironmentInput
+}
+
+export type EnvironmentUncheckedCreateWithoutProjectInput = {
+  id: string
+  created_at?: Date | string
+  updated_at: Date | string
+  type: $Enums.EnvironmentType
+  appSetupCompleted?: boolean
+  ActionClass?: Prisma.ActionClassUncheckedCreateNestedManyWithoutEnvironmentInput
+  ApiKeyEnvironment?: Prisma.ApiKeyEnvironmentUncheckedCreateNestedManyWithoutEnvironmentInput
+  Contact?: Prisma.ContactUncheckedCreateNestedManyWithoutEnvironmentInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyUncheckedCreateNestedManyWithoutEnvironmentInput
+  Integration?: Prisma.IntegrationUncheckedCreateNestedManyWithoutEnvironmentInput
+  Segment?: Prisma.SegmentUncheckedCreateNestedManyWithoutEnvironmentInput
+  Survey?: Prisma.SurveyUncheckedCreateNestedManyWithoutEnvironmentInput
+  Tag?: Prisma.TagUncheckedCreateNestedManyWithoutEnvironmentInput
+  Webhook?: Prisma.WebhookUncheckedCreateNestedManyWithoutEnvironmentInput
+}
+
+export type EnvironmentCreateOrConnectWithoutProjectInput = {
+  where: Prisma.EnvironmentWhereUniqueInput
+  create: Prisma.XOR<Prisma.EnvironmentCreateWithoutProjectInput, Prisma.EnvironmentUncheckedCreateWithoutProjectInput>
+}
+
+export type EnvironmentCreateManyProjectInputEnvelope = {
+  data: Prisma.EnvironmentCreateManyProjectInput | Prisma.EnvironmentCreateManyProjectInput[]
+  skipDuplicates?: boolean
+}
+
+export type EnvironmentUpsertWithWhereUniqueWithoutProjectInput = {
+  where: Prisma.EnvironmentWhereUniqueInput
+  update: Prisma.XOR<Prisma.EnvironmentUpdateWithoutProjectInput, Prisma.EnvironmentUncheckedUpdateWithoutProjectInput>
+  create: Prisma.XOR<Prisma.EnvironmentCreateWithoutProjectInput, Prisma.EnvironmentUncheckedCreateWithoutProjectInput>
+}
+
+export type EnvironmentUpdateWithWhereUniqueWithoutProjectInput = {
+  where: Prisma.EnvironmentWhereUniqueInput
+  data: Prisma.XOR<Prisma.EnvironmentUpdateWithoutProjectInput, Prisma.EnvironmentUncheckedUpdateWithoutProjectInput>
+}
+
+export type EnvironmentUpdateManyWithWhereWithoutProjectInput = {
+  where: Prisma.EnvironmentScalarWhereInput
+  data: Prisma.XOR<Prisma.EnvironmentUpdateManyMutationInput, Prisma.EnvironmentUncheckedUpdateManyWithoutProjectInput>
+}
+
+export type EnvironmentScalarWhereInput = {
+  AND?: Prisma.EnvironmentScalarWhereInput | Prisma.EnvironmentScalarWhereInput[]
+  OR?: Prisma.EnvironmentScalarWhereInput[]
+  NOT?: Prisma.EnvironmentScalarWhereInput | Prisma.EnvironmentScalarWhereInput[]
+  id?: Prisma.StringFilter<"Environment"> | string
+  created_at?: Prisma.DateTimeFilter<"Environment"> | Date | string
+  updated_at?: Prisma.DateTimeFilter<"Environment"> | Date | string
+  type?: Prisma.EnumEnvironmentTypeFilter<"Environment"> | $Enums.EnvironmentType
+  projectId?: Prisma.StringFilter<"Environment"> | string
+  appSetupCompleted?: Prisma.BoolFilter<"Environment"> | boolean
+}
+
+export type EnvironmentCreateWithoutSegmentInput = {
+  id: string
+  created_at?: Date | string
+  updated_at: Date | string
+  type: $Enums.EnvironmentType
+  appSetupCompleted?: boolean
+  ActionClass?: Prisma.ActionClassCreateNestedManyWithoutEnvironmentInput
+  ApiKeyEnvironment?: Prisma.ApiKeyEnvironmentCreateNestedManyWithoutEnvironmentInput
+  Contact?: Prisma.ContactCreateNestedManyWithoutEnvironmentInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyCreateNestedManyWithoutEnvironmentInput
+  Project: Prisma.ProjectCreateNestedOneWithoutEnvironmentInput
+  Integration?: Prisma.IntegrationCreateNestedManyWithoutEnvironmentInput
+  Survey?: Prisma.SurveyCreateNestedManyWithoutEnvironmentInput
+  Tag?: Prisma.TagCreateNestedManyWithoutEnvironmentInput
+  Webhook?: Prisma.WebhookCreateNestedManyWithoutEnvironmentInput
+}
+
+export type EnvironmentUncheckedCreateWithoutSegmentInput = {
+  id: string
+  created_at?: Date | string
+  updated_at: Date | string
+  type: $Enums.EnvironmentType
+  projectId: string
+  appSetupCompleted?: boolean
+  ActionClass?: Prisma.ActionClassUncheckedCreateNestedManyWithoutEnvironmentInput
+  ApiKeyEnvironment?: Prisma.ApiKeyEnvironmentUncheckedCreateNestedManyWithoutEnvironmentInput
+  Contact?: Prisma.ContactUncheckedCreateNestedManyWithoutEnvironmentInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyUncheckedCreateNestedManyWithoutEnvironmentInput
+  Integration?: Prisma.IntegrationUncheckedCreateNestedManyWithoutEnvironmentInput
+  Survey?: Prisma.SurveyUncheckedCreateNestedManyWithoutEnvironmentInput
+  Tag?: Prisma.TagUncheckedCreateNestedManyWithoutEnvironmentInput
+  Webhook?: Prisma.WebhookUncheckedCreateNestedManyWithoutEnvironmentInput
+}
+
+export type EnvironmentCreateOrConnectWithoutSegmentInput = {
+  where: Prisma.EnvironmentWhereUniqueInput
+  create: Prisma.XOR<Prisma.EnvironmentCreateWithoutSegmentInput, Prisma.EnvironmentUncheckedCreateWithoutSegmentInput>
+}
+
+export type EnvironmentUpsertWithoutSegmentInput = {
+  update: Prisma.XOR<Prisma.EnvironmentUpdateWithoutSegmentInput, Prisma.EnvironmentUncheckedUpdateWithoutSegmentInput>
+  create: Prisma.XOR<Prisma.EnvironmentCreateWithoutSegmentInput, Prisma.EnvironmentUncheckedCreateWithoutSegmentInput>
+  where?: Prisma.EnvironmentWhereInput
+}
+
+export type EnvironmentUpdateToOneWithWhereWithoutSegmentInput = {
+  where?: Prisma.EnvironmentWhereInput
+  data: Prisma.XOR<Prisma.EnvironmentUpdateWithoutSegmentInput, Prisma.EnvironmentUncheckedUpdateWithoutSegmentInput>
+}
+
+export type EnvironmentUpdateWithoutSegmentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  type?: Prisma.EnumEnvironmentTypeFieldUpdateOperationsInput | $Enums.EnvironmentType
+  appSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  ActionClass?: Prisma.ActionClassUpdateManyWithoutEnvironmentNestedInput
+  ApiKeyEnvironment?: Prisma.ApiKeyEnvironmentUpdateManyWithoutEnvironmentNestedInput
+  Contact?: Prisma.ContactUpdateManyWithoutEnvironmentNestedInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyUpdateManyWithoutEnvironmentNestedInput
+  Project?: Prisma.ProjectUpdateOneRequiredWithoutEnvironmentNestedInput
+  Integration?: Prisma.IntegrationUpdateManyWithoutEnvironmentNestedInput
+  Survey?: Prisma.SurveyUpdateManyWithoutEnvironmentNestedInput
+  Tag?: Prisma.TagUpdateManyWithoutEnvironmentNestedInput
+  Webhook?: Prisma.WebhookUpdateManyWithoutEnvironmentNestedInput
+}
+
+export type EnvironmentUncheckedUpdateWithoutSegmentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  type?: Prisma.EnumEnvironmentTypeFieldUpdateOperationsInput | $Enums.EnvironmentType
+  projectId?: Prisma.StringFieldUpdateOperationsInput | string
+  appSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  ActionClass?: Prisma.ActionClassUncheckedUpdateManyWithoutEnvironmentNestedInput
+  ApiKeyEnvironment?: Prisma.ApiKeyEnvironmentUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Contact?: Prisma.ContactUncheckedUpdateManyWithoutEnvironmentNestedInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Integration?: Prisma.IntegrationUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Survey?: Prisma.SurveyUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Tag?: Prisma.TagUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Webhook?: Prisma.WebhookUncheckedUpdateManyWithoutEnvironmentNestedInput
+}
+
+export type EnvironmentCreateWithoutTagInput = {
+  id: string
+  created_at?: Date | string
+  updated_at: Date | string
+  type: $Enums.EnvironmentType
+  appSetupCompleted?: boolean
+  ActionClass?: Prisma.ActionClassCreateNestedManyWithoutEnvironmentInput
+  ApiKeyEnvironment?: Prisma.ApiKeyEnvironmentCreateNestedManyWithoutEnvironmentInput
+  Contact?: Prisma.ContactCreateNestedManyWithoutEnvironmentInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyCreateNestedManyWithoutEnvironmentInput
+  Project: Prisma.ProjectCreateNestedOneWithoutEnvironmentInput
+  Integration?: Prisma.IntegrationCreateNestedManyWithoutEnvironmentInput
+  Segment?: Prisma.SegmentCreateNestedManyWithoutEnvironmentInput
+  Survey?: Prisma.SurveyCreateNestedManyWithoutEnvironmentInput
+  Webhook?: Prisma.WebhookCreateNestedManyWithoutEnvironmentInput
+}
+
+export type EnvironmentUncheckedCreateWithoutTagInput = {
+  id: string
+  created_at?: Date | string
+  updated_at: Date | string
+  type: $Enums.EnvironmentType
+  projectId: string
+  appSetupCompleted?: boolean
+  ActionClass?: Prisma.ActionClassUncheckedCreateNestedManyWithoutEnvironmentInput
+  ApiKeyEnvironment?: Prisma.ApiKeyEnvironmentUncheckedCreateNestedManyWithoutEnvironmentInput
+  Contact?: Prisma.ContactUncheckedCreateNestedManyWithoutEnvironmentInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyUncheckedCreateNestedManyWithoutEnvironmentInput
+  Integration?: Prisma.IntegrationUncheckedCreateNestedManyWithoutEnvironmentInput
+  Segment?: Prisma.SegmentUncheckedCreateNestedManyWithoutEnvironmentInput
+  Survey?: Prisma.SurveyUncheckedCreateNestedManyWithoutEnvironmentInput
+  Webhook?: Prisma.WebhookUncheckedCreateNestedManyWithoutEnvironmentInput
+}
+
+export type EnvironmentCreateOrConnectWithoutTagInput = {
+  where: Prisma.EnvironmentWhereUniqueInput
+  create: Prisma.XOR<Prisma.EnvironmentCreateWithoutTagInput, Prisma.EnvironmentUncheckedCreateWithoutTagInput>
+}
+
+export type EnvironmentUpsertWithoutTagInput = {
+  update: Prisma.XOR<Prisma.EnvironmentUpdateWithoutTagInput, Prisma.EnvironmentUncheckedUpdateWithoutTagInput>
+  create: Prisma.XOR<Prisma.EnvironmentCreateWithoutTagInput, Prisma.EnvironmentUncheckedCreateWithoutTagInput>
+  where?: Prisma.EnvironmentWhereInput
+}
+
+export type EnvironmentUpdateToOneWithWhereWithoutTagInput = {
+  where?: Prisma.EnvironmentWhereInput
+  data: Prisma.XOR<Prisma.EnvironmentUpdateWithoutTagInput, Prisma.EnvironmentUncheckedUpdateWithoutTagInput>
+}
+
+export type EnvironmentUpdateWithoutTagInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  type?: Prisma.EnumEnvironmentTypeFieldUpdateOperationsInput | $Enums.EnvironmentType
+  appSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  ActionClass?: Prisma.ActionClassUpdateManyWithoutEnvironmentNestedInput
+  ApiKeyEnvironment?: Prisma.ApiKeyEnvironmentUpdateManyWithoutEnvironmentNestedInput
+  Contact?: Prisma.ContactUpdateManyWithoutEnvironmentNestedInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyUpdateManyWithoutEnvironmentNestedInput
+  Project?: Prisma.ProjectUpdateOneRequiredWithoutEnvironmentNestedInput
+  Integration?: Prisma.IntegrationUpdateManyWithoutEnvironmentNestedInput
+  Segment?: Prisma.SegmentUpdateManyWithoutEnvironmentNestedInput
   Survey?: Prisma.SurveyUpdateManyWithoutEnvironmentNestedInput
   Webhook?: Prisma.WebhookUpdateManyWithoutEnvironmentNestedInput
 }
 
-export type EnvironmentUncheckedUpdateWithoutProductInput = {
+export type EnvironmentUncheckedUpdateWithoutTagInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   type?: Prisma.EnumEnvironmentTypeFieldUpdateOperationsInput | $Enums.EnvironmentType
-  widgetSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  ApiKey?: Prisma.ApiKeyUncheckedUpdateManyWithoutEnvironmentNestedInput
-  AttributeClass?: Prisma.AttributeClassUncheckedUpdateManyWithoutEnvironmentNestedInput
-  EventClass?: Prisma.EventClassUncheckedUpdateManyWithoutEnvironmentNestedInput
-  Person?: Prisma.PersonUncheckedUpdateManyWithoutEnvironmentNestedInput
+  projectId?: Prisma.StringFieldUpdateOperationsInput | string
+  appSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  ActionClass?: Prisma.ActionClassUncheckedUpdateManyWithoutEnvironmentNestedInput
+  ApiKeyEnvironment?: Prisma.ApiKeyEnvironmentUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Contact?: Prisma.ContactUncheckedUpdateManyWithoutEnvironmentNestedInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Integration?: Prisma.IntegrationUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Segment?: Prisma.SegmentUncheckedUpdateManyWithoutEnvironmentNestedInput
   Survey?: Prisma.SurveyUncheckedUpdateManyWithoutEnvironmentNestedInput
   Webhook?: Prisma.WebhookUncheckedUpdateManyWithoutEnvironmentNestedInput
 }
 
-export type EnvironmentUncheckedUpdateManyWithoutProductInput = {
+export type EnvironmentCreateManyProjectInput = {
+  id: string
+  created_at?: Date | string
+  updated_at: Date | string
+  type: $Enums.EnvironmentType
+  appSetupCompleted?: boolean
+}
+
+export type EnvironmentUpdateWithoutProjectInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   type?: Prisma.EnumEnvironmentTypeFieldUpdateOperationsInput | $Enums.EnvironmentType
-  widgetSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  appSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  ActionClass?: Prisma.ActionClassUpdateManyWithoutEnvironmentNestedInput
+  ApiKeyEnvironment?: Prisma.ApiKeyEnvironmentUpdateManyWithoutEnvironmentNestedInput
+  Contact?: Prisma.ContactUpdateManyWithoutEnvironmentNestedInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyUpdateManyWithoutEnvironmentNestedInput
+  Integration?: Prisma.IntegrationUpdateManyWithoutEnvironmentNestedInput
+  Segment?: Prisma.SegmentUpdateManyWithoutEnvironmentNestedInput
+  Survey?: Prisma.SurveyUpdateManyWithoutEnvironmentNestedInput
+  Tag?: Prisma.TagUpdateManyWithoutEnvironmentNestedInput
+  Webhook?: Prisma.WebhookUpdateManyWithoutEnvironmentNestedInput
+}
+
+export type EnvironmentUncheckedUpdateWithoutProjectInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  type?: Prisma.EnumEnvironmentTypeFieldUpdateOperationsInput | $Enums.EnvironmentType
+  appSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  ActionClass?: Prisma.ActionClassUncheckedUpdateManyWithoutEnvironmentNestedInput
+  ApiKeyEnvironment?: Prisma.ApiKeyEnvironmentUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Contact?: Prisma.ContactUncheckedUpdateManyWithoutEnvironmentNestedInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Integration?: Prisma.IntegrationUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Segment?: Prisma.SegmentUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Survey?: Prisma.SurveyUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Tag?: Prisma.TagUncheckedUpdateManyWithoutEnvironmentNestedInput
+  Webhook?: Prisma.WebhookUncheckedUpdateManyWithoutEnvironmentNestedInput
+}
+
+export type EnvironmentUncheckedUpdateManyWithoutProjectInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  type?: Prisma.EnumEnvironmentTypeFieldUpdateOperationsInput | $Enums.EnvironmentType
+  appSetupCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 
@@ -1068,20 +1467,26 @@ export type EnvironmentUncheckedUpdateManyWithoutProductInput = {
  */
 
 export type EnvironmentCountOutputType = {
-  ApiKey: number
-  AttributeClass: number
-  EventClass: number
-  Person: number
+  ActionClass: number
+  ApiKeyEnvironment: number
+  Contact: number
+  ContactAttributeKey: number
+  Integration: number
+  Segment: number
   Survey: number
+  Tag: number
   Webhook: number
 }
 
 export type EnvironmentCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  ApiKey?: boolean | EnvironmentCountOutputTypeCountApiKeyArgs
-  AttributeClass?: boolean | EnvironmentCountOutputTypeCountAttributeClassArgs
-  EventClass?: boolean | EnvironmentCountOutputTypeCountEventClassArgs
-  Person?: boolean | EnvironmentCountOutputTypeCountPersonArgs
+  ActionClass?: boolean | EnvironmentCountOutputTypeCountActionClassArgs
+  ApiKeyEnvironment?: boolean | EnvironmentCountOutputTypeCountApiKeyEnvironmentArgs
+  Contact?: boolean | EnvironmentCountOutputTypeCountContactArgs
+  ContactAttributeKey?: boolean | EnvironmentCountOutputTypeCountContactAttributeKeyArgs
+  Integration?: boolean | EnvironmentCountOutputTypeCountIntegrationArgs
+  Segment?: boolean | EnvironmentCountOutputTypeCountSegmentArgs
   Survey?: boolean | EnvironmentCountOutputTypeCountSurveyArgs
+  Tag?: boolean | EnvironmentCountOutputTypeCountTagArgs
   Webhook?: boolean | EnvironmentCountOutputTypeCountWebhookArgs
 }
 
@@ -1098,29 +1503,43 @@ export type EnvironmentCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.
 /**
  * EnvironmentCountOutputType without action
  */
-export type EnvironmentCountOutputTypeCountApiKeyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.ApiKeyWhereInput
+export type EnvironmentCountOutputTypeCountActionClassArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ActionClassWhereInput
 }
 
 /**
  * EnvironmentCountOutputType without action
  */
-export type EnvironmentCountOutputTypeCountAttributeClassArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.AttributeClassWhereInput
+export type EnvironmentCountOutputTypeCountApiKeyEnvironmentArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ApiKeyEnvironmentWhereInput
 }
 
 /**
  * EnvironmentCountOutputType without action
  */
-export type EnvironmentCountOutputTypeCountEventClassArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.EventClassWhereInput
+export type EnvironmentCountOutputTypeCountContactArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ContactWhereInput
 }
 
 /**
  * EnvironmentCountOutputType without action
  */
-export type EnvironmentCountOutputTypeCountPersonArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.PersonWhereInput
+export type EnvironmentCountOutputTypeCountContactAttributeKeyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ContactAttributeKeyWhereInput
+}
+
+/**
+ * EnvironmentCountOutputType without action
+ */
+export type EnvironmentCountOutputTypeCountIntegrationArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.IntegrationWhereInput
+}
+
+/**
+ * EnvironmentCountOutputType without action
+ */
+export type EnvironmentCountOutputTypeCountSegmentArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SegmentWhereInput
 }
 
 /**
@@ -1128,6 +1547,13 @@ export type EnvironmentCountOutputTypeCountPersonArgs<ExtArgs extends runtime.Ty
  */
 export type EnvironmentCountOutputTypeCountSurveyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.SurveyWhereInput
+}
+
+/**
+ * EnvironmentCountOutputType without action
+ */
+export type EnvironmentCountOutputTypeCountTagArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TagWhereInput
 }
 
 /**
@@ -1143,14 +1569,17 @@ export type EnvironmentSelect<ExtArgs extends runtime.Types.Extensions.InternalA
   created_at?: boolean
   updated_at?: boolean
   type?: boolean
-  productId?: boolean
-  widgetSetupCompleted?: boolean
-  ApiKey?: boolean | Prisma.Environment$ApiKeyArgs<ExtArgs>
-  AttributeClass?: boolean | Prisma.Environment$AttributeClassArgs<ExtArgs>
-  Product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
-  EventClass?: boolean | Prisma.Environment$EventClassArgs<ExtArgs>
-  Person?: boolean | Prisma.Environment$PersonArgs<ExtArgs>
+  projectId?: boolean
+  appSetupCompleted?: boolean
+  ActionClass?: boolean | Prisma.Environment$ActionClassArgs<ExtArgs>
+  ApiKeyEnvironment?: boolean | Prisma.Environment$ApiKeyEnvironmentArgs<ExtArgs>
+  Contact?: boolean | Prisma.Environment$ContactArgs<ExtArgs>
+  ContactAttributeKey?: boolean | Prisma.Environment$ContactAttributeKeyArgs<ExtArgs>
+  Project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
+  Integration?: boolean | Prisma.Environment$IntegrationArgs<ExtArgs>
+  Segment?: boolean | Prisma.Environment$SegmentArgs<ExtArgs>
   Survey?: boolean | Prisma.Environment$SurveyArgs<ExtArgs>
+  Tag?: boolean | Prisma.Environment$TagArgs<ExtArgs>
   Webhook?: boolean | Prisma.Environment$WebhookArgs<ExtArgs>
   _count?: boolean | Prisma.EnvironmentCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["environment"]>
@@ -1160,9 +1589,9 @@ export type EnvironmentSelectCreateManyAndReturn<ExtArgs extends runtime.Types.E
   created_at?: boolean
   updated_at?: boolean
   type?: boolean
-  productId?: boolean
-  widgetSetupCompleted?: boolean
-  Product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
+  projectId?: boolean
+  appSetupCompleted?: boolean
+  Project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["environment"]>
 
 export type EnvironmentSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1170,9 +1599,9 @@ export type EnvironmentSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.E
   created_at?: boolean
   updated_at?: boolean
   type?: boolean
-  productId?: boolean
-  widgetSetupCompleted?: boolean
-  Product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
+  projectId?: boolean
+  appSetupCompleted?: boolean
+  Project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["environment"]>
 
 export type EnvironmentSelectScalar = {
@@ -1180,37 +1609,43 @@ export type EnvironmentSelectScalar = {
   created_at?: boolean
   updated_at?: boolean
   type?: boolean
-  productId?: boolean
-  widgetSetupCompleted?: boolean
+  projectId?: boolean
+  appSetupCompleted?: boolean
 }
 
-export type EnvironmentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "created_at" | "updated_at" | "type" | "productId" | "widgetSetupCompleted", ExtArgs["result"]["environment"]>
+export type EnvironmentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "created_at" | "updated_at" | "type" | "projectId" | "appSetupCompleted", ExtArgs["result"]["environment"]>
 export type EnvironmentInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  ApiKey?: boolean | Prisma.Environment$ApiKeyArgs<ExtArgs>
-  AttributeClass?: boolean | Prisma.Environment$AttributeClassArgs<ExtArgs>
-  Product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
-  EventClass?: boolean | Prisma.Environment$EventClassArgs<ExtArgs>
-  Person?: boolean | Prisma.Environment$PersonArgs<ExtArgs>
+  ActionClass?: boolean | Prisma.Environment$ActionClassArgs<ExtArgs>
+  ApiKeyEnvironment?: boolean | Prisma.Environment$ApiKeyEnvironmentArgs<ExtArgs>
+  Contact?: boolean | Prisma.Environment$ContactArgs<ExtArgs>
+  ContactAttributeKey?: boolean | Prisma.Environment$ContactAttributeKeyArgs<ExtArgs>
+  Project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
+  Integration?: boolean | Prisma.Environment$IntegrationArgs<ExtArgs>
+  Segment?: boolean | Prisma.Environment$SegmentArgs<ExtArgs>
   Survey?: boolean | Prisma.Environment$SurveyArgs<ExtArgs>
+  Tag?: boolean | Prisma.Environment$TagArgs<ExtArgs>
   Webhook?: boolean | Prisma.Environment$WebhookArgs<ExtArgs>
   _count?: boolean | Prisma.EnvironmentCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type EnvironmentIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  Product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
+  Project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
 }
 export type EnvironmentIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  Product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
+  Project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
 }
 
 export type $EnvironmentPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Environment"
   objects: {
-    ApiKey: Prisma.$ApiKeyPayload<ExtArgs>[]
-    AttributeClass: Prisma.$AttributeClassPayload<ExtArgs>[]
-    Product: Prisma.$ProductPayload<ExtArgs>
-    EventClass: Prisma.$EventClassPayload<ExtArgs>[]
-    Person: Prisma.$PersonPayload<ExtArgs>[]
+    ActionClass: Prisma.$ActionClassPayload<ExtArgs>[]
+    ApiKeyEnvironment: Prisma.$ApiKeyEnvironmentPayload<ExtArgs>[]
+    Contact: Prisma.$ContactPayload<ExtArgs>[]
+    ContactAttributeKey: Prisma.$ContactAttributeKeyPayload<ExtArgs>[]
+    Project: Prisma.$ProjectPayload<ExtArgs>
+    Integration: Prisma.$IntegrationPayload<ExtArgs>[]
+    Segment: Prisma.$SegmentPayload<ExtArgs>[]
     Survey: Prisma.$SurveyPayload<ExtArgs>[]
+    Tag: Prisma.$TagPayload<ExtArgs>[]
     Webhook: Prisma.$WebhookPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -1218,8 +1653,8 @@ export type $EnvironmentPayload<ExtArgs extends runtime.Types.Extensions.Interna
     created_at: Date
     updated_at: Date
     type: $Enums.EnvironmentType
-    productId: string
-    widgetSetupCompleted: boolean
+    projectId: string
+    appSetupCompleted: boolean
   }, ExtArgs["result"]["environment"]>
   composites: {}
 }
@@ -1614,12 +2049,15 @@ readonly fields: EnvironmentFieldRefs;
  */
 export interface Prisma__EnvironmentClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  ApiKey<T extends Prisma.Environment$ApiKeyArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Environment$ApiKeyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ApiKeyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  AttributeClass<T extends Prisma.Environment$AttributeClassArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Environment$AttributeClassArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AttributeClassPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  Product<T extends Prisma.ProductDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ProductDefaultArgs<ExtArgs>>): Prisma.Prisma__ProductClient<runtime.Types.Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  EventClass<T extends Prisma.Environment$EventClassArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Environment$EventClassArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EventClassPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  Person<T extends Prisma.Environment$PersonArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Environment$PersonArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PersonPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  ActionClass<T extends Prisma.Environment$ActionClassArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Environment$ActionClassArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ActionClassPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  ApiKeyEnvironment<T extends Prisma.Environment$ApiKeyEnvironmentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Environment$ApiKeyEnvironmentArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ApiKeyEnvironmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  Contact<T extends Prisma.Environment$ContactArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Environment$ContactArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  ContactAttributeKey<T extends Prisma.Environment$ContactAttributeKeyArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Environment$ContactAttributeKeyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ContactAttributeKeyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  Project<T extends Prisma.ProjectDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ProjectDefaultArgs<ExtArgs>>): Prisma.Prisma__ProjectClient<runtime.Types.Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  Integration<T extends Prisma.Environment$IntegrationArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Environment$IntegrationArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$IntegrationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  Segment<T extends Prisma.Environment$SegmentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Environment$SegmentArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SegmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   Survey<T extends Prisma.Environment$SurveyArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Environment$SurveyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SurveyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  Tag<T extends Prisma.Environment$TagArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Environment$TagArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TagPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   Webhook<T extends Prisma.Environment$WebhookArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Environment$WebhookArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$WebhookPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1654,8 +2092,8 @@ export interface EnvironmentFieldRefs {
   readonly created_at: Prisma.FieldRef<"Environment", 'DateTime'>
   readonly updated_at: Prisma.FieldRef<"Environment", 'DateTime'>
   readonly type: Prisma.FieldRef<"Environment", 'EnvironmentType'>
-  readonly productId: Prisma.FieldRef<"Environment", 'String'>
-  readonly widgetSetupCompleted: Prisma.FieldRef<"Environment", 'Boolean'>
+  readonly projectId: Prisma.FieldRef<"Environment", 'String'>
+  readonly appSetupCompleted: Prisma.FieldRef<"Environment", 'Boolean'>
 }
     
 
@@ -2057,99 +2495,147 @@ export type EnvironmentDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.I
 }
 
 /**
- * Environment.ApiKey
+ * Environment.ActionClass
  */
-export type Environment$ApiKeyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Environment$ActionClassArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the ApiKey
+   * Select specific fields to fetch from the ActionClass
    */
-  select?: Prisma.ApiKeySelect<ExtArgs> | null
+  select?: Prisma.ActionClassSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the ApiKey
+   * Omit specific fields from the ActionClass
    */
-  omit?: Prisma.ApiKeyOmit<ExtArgs> | null
+  omit?: Prisma.ActionClassOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.ApiKeyInclude<ExtArgs> | null
-  where?: Prisma.ApiKeyWhereInput
-  orderBy?: Prisma.ApiKeyOrderByWithRelationInput | Prisma.ApiKeyOrderByWithRelationInput[]
-  cursor?: Prisma.ApiKeyWhereUniqueInput
+  include?: Prisma.ActionClassInclude<ExtArgs> | null
+  where?: Prisma.ActionClassWhereInput
+  orderBy?: Prisma.ActionClassOrderByWithRelationInput | Prisma.ActionClassOrderByWithRelationInput[]
+  cursor?: Prisma.ActionClassWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.ApiKeyScalarFieldEnum | Prisma.ApiKeyScalarFieldEnum[]
+  distinct?: Prisma.ActionClassScalarFieldEnum | Prisma.ActionClassScalarFieldEnum[]
 }
 
 /**
- * Environment.AttributeClass
+ * Environment.ApiKeyEnvironment
  */
-export type Environment$AttributeClassArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Environment$ApiKeyEnvironmentArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the AttributeClass
+   * Select specific fields to fetch from the ApiKeyEnvironment
    */
-  select?: Prisma.AttributeClassSelect<ExtArgs> | null
+  select?: Prisma.ApiKeyEnvironmentSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the AttributeClass
+   * Omit specific fields from the ApiKeyEnvironment
    */
-  omit?: Prisma.AttributeClassOmit<ExtArgs> | null
+  omit?: Prisma.ApiKeyEnvironmentOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.AttributeClassInclude<ExtArgs> | null
-  where?: Prisma.AttributeClassWhereInput
-  orderBy?: Prisma.AttributeClassOrderByWithRelationInput | Prisma.AttributeClassOrderByWithRelationInput[]
-  cursor?: Prisma.AttributeClassWhereUniqueInput
+  include?: Prisma.ApiKeyEnvironmentInclude<ExtArgs> | null
+  where?: Prisma.ApiKeyEnvironmentWhereInput
+  orderBy?: Prisma.ApiKeyEnvironmentOrderByWithRelationInput | Prisma.ApiKeyEnvironmentOrderByWithRelationInput[]
+  cursor?: Prisma.ApiKeyEnvironmentWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.AttributeClassScalarFieldEnum | Prisma.AttributeClassScalarFieldEnum[]
+  distinct?: Prisma.ApiKeyEnvironmentScalarFieldEnum | Prisma.ApiKeyEnvironmentScalarFieldEnum[]
 }
 
 /**
- * Environment.EventClass
+ * Environment.Contact
  */
-export type Environment$EventClassArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Environment$ContactArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the EventClass
+   * Select specific fields to fetch from the Contact
    */
-  select?: Prisma.EventClassSelect<ExtArgs> | null
+  select?: Prisma.ContactSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the EventClass
+   * Omit specific fields from the Contact
    */
-  omit?: Prisma.EventClassOmit<ExtArgs> | null
+  omit?: Prisma.ContactOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.EventClassInclude<ExtArgs> | null
-  where?: Prisma.EventClassWhereInput
-  orderBy?: Prisma.EventClassOrderByWithRelationInput | Prisma.EventClassOrderByWithRelationInput[]
-  cursor?: Prisma.EventClassWhereUniqueInput
+  include?: Prisma.ContactInclude<ExtArgs> | null
+  where?: Prisma.ContactWhereInput
+  orderBy?: Prisma.ContactOrderByWithRelationInput | Prisma.ContactOrderByWithRelationInput[]
+  cursor?: Prisma.ContactWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.EventClassScalarFieldEnum | Prisma.EventClassScalarFieldEnum[]
+  distinct?: Prisma.ContactScalarFieldEnum | Prisma.ContactScalarFieldEnum[]
 }
 
 /**
- * Environment.Person
+ * Environment.ContactAttributeKey
  */
-export type Environment$PersonArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Environment$ContactAttributeKeyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Person
+   * Select specific fields to fetch from the ContactAttributeKey
    */
-  select?: Prisma.PersonSelect<ExtArgs> | null
+  select?: Prisma.ContactAttributeKeySelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Person
+   * Omit specific fields from the ContactAttributeKey
    */
-  omit?: Prisma.PersonOmit<ExtArgs> | null
+  omit?: Prisma.ContactAttributeKeyOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.PersonInclude<ExtArgs> | null
-  where?: Prisma.PersonWhereInput
-  orderBy?: Prisma.PersonOrderByWithRelationInput | Prisma.PersonOrderByWithRelationInput[]
-  cursor?: Prisma.PersonWhereUniqueInput
+  include?: Prisma.ContactAttributeKeyInclude<ExtArgs> | null
+  where?: Prisma.ContactAttributeKeyWhereInput
+  orderBy?: Prisma.ContactAttributeKeyOrderByWithRelationInput | Prisma.ContactAttributeKeyOrderByWithRelationInput[]
+  cursor?: Prisma.ContactAttributeKeyWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.PersonScalarFieldEnum | Prisma.PersonScalarFieldEnum[]
+  distinct?: Prisma.ContactAttributeKeyScalarFieldEnum | Prisma.ContactAttributeKeyScalarFieldEnum[]
+}
+
+/**
+ * Environment.Integration
+ */
+export type Environment$IntegrationArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Integration
+   */
+  select?: Prisma.IntegrationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Integration
+   */
+  omit?: Prisma.IntegrationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.IntegrationInclude<ExtArgs> | null
+  where?: Prisma.IntegrationWhereInput
+  orderBy?: Prisma.IntegrationOrderByWithRelationInput | Prisma.IntegrationOrderByWithRelationInput[]
+  cursor?: Prisma.IntegrationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.IntegrationScalarFieldEnum | Prisma.IntegrationScalarFieldEnum[]
+}
+
+/**
+ * Environment.Segment
+ */
+export type Environment$SegmentArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Segment
+   */
+  select?: Prisma.SegmentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Segment
+   */
+  omit?: Prisma.SegmentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SegmentInclude<ExtArgs> | null
+  where?: Prisma.SegmentWhereInput
+  orderBy?: Prisma.SegmentOrderByWithRelationInput | Prisma.SegmentOrderByWithRelationInput[]
+  cursor?: Prisma.SegmentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SegmentScalarFieldEnum | Prisma.SegmentScalarFieldEnum[]
 }
 
 /**
@@ -2174,6 +2660,30 @@ export type Environment$SurveyArgs<ExtArgs extends runtime.Types.Extensions.Inte
   take?: number
   skip?: number
   distinct?: Prisma.SurveyScalarFieldEnum | Prisma.SurveyScalarFieldEnum[]
+}
+
+/**
+ * Environment.Tag
+ */
+export type Environment$TagArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Tag
+   */
+  select?: Prisma.TagSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Tag
+   */
+  omit?: Prisma.TagOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TagInclude<ExtArgs> | null
+  where?: Prisma.TagWhereInput
+  orderBy?: Prisma.TagOrderByWithRelationInput | Prisma.TagOrderByWithRelationInput[]
+  cursor?: Prisma.TagWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TagScalarFieldEnum | Prisma.TagScalarFieldEnum[]
 }
 
 /**

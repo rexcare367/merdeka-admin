@@ -28,7 +28,7 @@ export type SurveyAttributeFilterMinAggregateOutputType = {
   id: string | null
   created_at: Date | null
   updated_at: Date | null
-  attributeClassId: string | null
+  attributeKeyId: string | null
   surveyId: string | null
   condition: $Enums.SurveyAttributeFilterCondition | null
   value: string | null
@@ -38,7 +38,7 @@ export type SurveyAttributeFilterMaxAggregateOutputType = {
   id: string | null
   created_at: Date | null
   updated_at: Date | null
-  attributeClassId: string | null
+  attributeKeyId: string | null
   surveyId: string | null
   condition: $Enums.SurveyAttributeFilterCondition | null
   value: string | null
@@ -48,7 +48,7 @@ export type SurveyAttributeFilterCountAggregateOutputType = {
   id: number
   created_at: number
   updated_at: number
-  attributeClassId: number
+  attributeKeyId: number
   surveyId: number
   condition: number
   value: number
@@ -60,7 +60,7 @@ export type SurveyAttributeFilterMinAggregateInputType = {
   id?: true
   created_at?: true
   updated_at?: true
-  attributeClassId?: true
+  attributeKeyId?: true
   surveyId?: true
   condition?: true
   value?: true
@@ -70,7 +70,7 @@ export type SurveyAttributeFilterMaxAggregateInputType = {
   id?: true
   created_at?: true
   updated_at?: true
-  attributeClassId?: true
+  attributeKeyId?: true
   surveyId?: true
   condition?: true
   value?: true
@@ -80,7 +80,7 @@ export type SurveyAttributeFilterCountAggregateInputType = {
   id?: true
   created_at?: true
   updated_at?: true
-  attributeClassId?: true
+  attributeKeyId?: true
   surveyId?: true
   condition?: true
   value?: true
@@ -163,7 +163,7 @@ export type SurveyAttributeFilterGroupByOutputType = {
   id: string
   created_at: Date
   updated_at: Date
-  attributeClassId: string
+  attributeKeyId: string
   surveyId: string
   condition: $Enums.SurveyAttributeFilterCondition
   value: string
@@ -194,11 +194,11 @@ export type SurveyAttributeFilterWhereInput = {
   id?: Prisma.StringFilter<"SurveyAttributeFilter"> | string
   created_at?: Prisma.DateTimeFilter<"SurveyAttributeFilter"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"SurveyAttributeFilter"> | Date | string
-  attributeClassId?: Prisma.StringFilter<"SurveyAttributeFilter"> | string
+  attributeKeyId?: Prisma.StringFilter<"SurveyAttributeFilter"> | string
   surveyId?: Prisma.StringFilter<"SurveyAttributeFilter"> | string
   condition?: Prisma.EnumSurveyAttributeFilterConditionFilter<"SurveyAttributeFilter"> | $Enums.SurveyAttributeFilterCondition
   value?: Prisma.StringFilter<"SurveyAttributeFilter"> | string
-  AttributeClass?: Prisma.XOR<Prisma.AttributeClassScalarRelationFilter, Prisma.AttributeClassWhereInput>
+  ContactAttributeKey?: Prisma.XOR<Prisma.ContactAttributeKeyScalarRelationFilter, Prisma.ContactAttributeKeyWhereInput>
   Survey?: Prisma.XOR<Prisma.SurveyScalarRelationFilter, Prisma.SurveyWhereInput>
 }
 
@@ -206,35 +206,35 @@ export type SurveyAttributeFilterOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
-  attributeClassId?: Prisma.SortOrder
+  attributeKeyId?: Prisma.SortOrder
   surveyId?: Prisma.SortOrder
   condition?: Prisma.SortOrder
   value?: Prisma.SortOrder
-  AttributeClass?: Prisma.AttributeClassOrderByWithRelationInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyOrderByWithRelationInput
   Survey?: Prisma.SurveyOrderByWithRelationInput
 }
 
 export type SurveyAttributeFilterWhereUniqueInput = Prisma.AtLeast<{
   id?: string
-  surveyId_attributeClassId?: Prisma.SurveyAttributeFilterSurveyIdAttributeClassIdCompoundUniqueInput
+  surveyId_attributeKeyId?: Prisma.SurveyAttributeFilterSurveyIdAttributeKeyIdCompoundUniqueInput
   AND?: Prisma.SurveyAttributeFilterWhereInput | Prisma.SurveyAttributeFilterWhereInput[]
   OR?: Prisma.SurveyAttributeFilterWhereInput[]
   NOT?: Prisma.SurveyAttributeFilterWhereInput | Prisma.SurveyAttributeFilterWhereInput[]
   created_at?: Prisma.DateTimeFilter<"SurveyAttributeFilter"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"SurveyAttributeFilter"> | Date | string
-  attributeClassId?: Prisma.StringFilter<"SurveyAttributeFilter"> | string
+  attributeKeyId?: Prisma.StringFilter<"SurveyAttributeFilter"> | string
   surveyId?: Prisma.StringFilter<"SurveyAttributeFilter"> | string
   condition?: Prisma.EnumSurveyAttributeFilterConditionFilter<"SurveyAttributeFilter"> | $Enums.SurveyAttributeFilterCondition
   value?: Prisma.StringFilter<"SurveyAttributeFilter"> | string
-  AttributeClass?: Prisma.XOR<Prisma.AttributeClassScalarRelationFilter, Prisma.AttributeClassWhereInput>
+  ContactAttributeKey?: Prisma.XOR<Prisma.ContactAttributeKeyScalarRelationFilter, Prisma.ContactAttributeKeyWhereInput>
   Survey?: Prisma.XOR<Prisma.SurveyScalarRelationFilter, Prisma.SurveyWhereInput>
-}, "id" | "surveyId_attributeClassId">
+}, "id" | "surveyId_attributeKeyId">
 
 export type SurveyAttributeFilterOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
-  attributeClassId?: Prisma.SortOrder
+  attributeKeyId?: Prisma.SortOrder
   surveyId?: Prisma.SortOrder
   condition?: Prisma.SortOrder
   value?: Prisma.SortOrder
@@ -250,7 +250,7 @@ export type SurveyAttributeFilterScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"SurveyAttributeFilter"> | string
   created_at?: Prisma.DateTimeWithAggregatesFilter<"SurveyAttributeFilter"> | Date | string
   updated_at?: Prisma.DateTimeWithAggregatesFilter<"SurveyAttributeFilter"> | Date | string
-  attributeClassId?: Prisma.StringWithAggregatesFilter<"SurveyAttributeFilter"> | string
+  attributeKeyId?: Prisma.StringWithAggregatesFilter<"SurveyAttributeFilter"> | string
   surveyId?: Prisma.StringWithAggregatesFilter<"SurveyAttributeFilter"> | string
   condition?: Prisma.EnumSurveyAttributeFilterConditionWithAggregatesFilter<"SurveyAttributeFilter"> | $Enums.SurveyAttributeFilterCondition
   value?: Prisma.StringWithAggregatesFilter<"SurveyAttributeFilter"> | string
@@ -262,7 +262,7 @@ export type SurveyAttributeFilterCreateInput = {
   updated_at: Date | string
   condition: $Enums.SurveyAttributeFilterCondition
   value: string
-  AttributeClass: Prisma.AttributeClassCreateNestedOneWithoutSurveyAttributeFilterInput
+  ContactAttributeKey: Prisma.ContactAttributeKeyCreateNestedOneWithoutSurveyAttributeFilterInput
   Survey: Prisma.SurveyCreateNestedOneWithoutSurveyAttributeFilterInput
 }
 
@@ -270,7 +270,7 @@ export type SurveyAttributeFilterUncheckedCreateInput = {
   id: string
   created_at?: Date | string
   updated_at: Date | string
-  attributeClassId: string
+  attributeKeyId: string
   surveyId: string
   condition: $Enums.SurveyAttributeFilterCondition
   value: string
@@ -282,7 +282,7 @@ export type SurveyAttributeFilterUpdateInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   condition?: Prisma.EnumSurveyAttributeFilterConditionFieldUpdateOperationsInput | $Enums.SurveyAttributeFilterCondition
   value?: Prisma.StringFieldUpdateOperationsInput | string
-  AttributeClass?: Prisma.AttributeClassUpdateOneRequiredWithoutSurveyAttributeFilterNestedInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyUpdateOneRequiredWithoutSurveyAttributeFilterNestedInput
   Survey?: Prisma.SurveyUpdateOneRequiredWithoutSurveyAttributeFilterNestedInput
 }
 
@@ -290,7 +290,7 @@ export type SurveyAttributeFilterUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  attributeClassId?: Prisma.StringFieldUpdateOperationsInput | string
+  attributeKeyId?: Prisma.StringFieldUpdateOperationsInput | string
   surveyId?: Prisma.StringFieldUpdateOperationsInput | string
   condition?: Prisma.EnumSurveyAttributeFilterConditionFieldUpdateOperationsInput | $Enums.SurveyAttributeFilterCondition
   value?: Prisma.StringFieldUpdateOperationsInput | string
@@ -300,7 +300,7 @@ export type SurveyAttributeFilterCreateManyInput = {
   id: string
   created_at?: Date | string
   updated_at: Date | string
-  attributeClassId: string
+  attributeKeyId: string
   surveyId: string
   condition: $Enums.SurveyAttributeFilterCondition
   value: string
@@ -318,7 +318,7 @@ export type SurveyAttributeFilterUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  attributeClassId?: Prisma.StringFieldUpdateOperationsInput | string
+  attributeKeyId?: Prisma.StringFieldUpdateOperationsInput | string
   surveyId?: Prisma.StringFieldUpdateOperationsInput | string
   condition?: Prisma.EnumSurveyAttributeFilterConditionFieldUpdateOperationsInput | $Enums.SurveyAttributeFilterCondition
   value?: Prisma.StringFieldUpdateOperationsInput | string
@@ -334,16 +334,16 @@ export type SurveyAttributeFilterOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type SurveyAttributeFilterSurveyIdAttributeClassIdCompoundUniqueInput = {
+export type SurveyAttributeFilterSurveyIdAttributeKeyIdCompoundUniqueInput = {
   surveyId: string
-  attributeClassId: string
+  attributeKeyId: string
 }
 
 export type SurveyAttributeFilterCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
-  attributeClassId?: Prisma.SortOrder
+  attributeKeyId?: Prisma.SortOrder
   surveyId?: Prisma.SortOrder
   condition?: Prisma.SortOrder
   value?: Prisma.SortOrder
@@ -353,7 +353,7 @@ export type SurveyAttributeFilterMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
-  attributeClassId?: Prisma.SortOrder
+  attributeKeyId?: Prisma.SortOrder
   surveyId?: Prisma.SortOrder
   condition?: Prisma.SortOrder
   value?: Prisma.SortOrder
@@ -363,52 +363,10 @@ export type SurveyAttributeFilterMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
-  attributeClassId?: Prisma.SortOrder
+  attributeKeyId?: Prisma.SortOrder
   surveyId?: Prisma.SortOrder
   condition?: Prisma.SortOrder
   value?: Prisma.SortOrder
-}
-
-export type SurveyAttributeFilterCreateNestedManyWithoutAttributeClassInput = {
-  create?: Prisma.XOR<Prisma.SurveyAttributeFilterCreateWithoutAttributeClassInput, Prisma.SurveyAttributeFilterUncheckedCreateWithoutAttributeClassInput> | Prisma.SurveyAttributeFilterCreateWithoutAttributeClassInput[] | Prisma.SurveyAttributeFilterUncheckedCreateWithoutAttributeClassInput[]
-  connectOrCreate?: Prisma.SurveyAttributeFilterCreateOrConnectWithoutAttributeClassInput | Prisma.SurveyAttributeFilterCreateOrConnectWithoutAttributeClassInput[]
-  createMany?: Prisma.SurveyAttributeFilterCreateManyAttributeClassInputEnvelope
-  connect?: Prisma.SurveyAttributeFilterWhereUniqueInput | Prisma.SurveyAttributeFilterWhereUniqueInput[]
-}
-
-export type SurveyAttributeFilterUncheckedCreateNestedManyWithoutAttributeClassInput = {
-  create?: Prisma.XOR<Prisma.SurveyAttributeFilterCreateWithoutAttributeClassInput, Prisma.SurveyAttributeFilterUncheckedCreateWithoutAttributeClassInput> | Prisma.SurveyAttributeFilterCreateWithoutAttributeClassInput[] | Prisma.SurveyAttributeFilterUncheckedCreateWithoutAttributeClassInput[]
-  connectOrCreate?: Prisma.SurveyAttributeFilterCreateOrConnectWithoutAttributeClassInput | Prisma.SurveyAttributeFilterCreateOrConnectWithoutAttributeClassInput[]
-  createMany?: Prisma.SurveyAttributeFilterCreateManyAttributeClassInputEnvelope
-  connect?: Prisma.SurveyAttributeFilterWhereUniqueInput | Prisma.SurveyAttributeFilterWhereUniqueInput[]
-}
-
-export type SurveyAttributeFilterUpdateManyWithoutAttributeClassNestedInput = {
-  create?: Prisma.XOR<Prisma.SurveyAttributeFilterCreateWithoutAttributeClassInput, Prisma.SurveyAttributeFilterUncheckedCreateWithoutAttributeClassInput> | Prisma.SurveyAttributeFilterCreateWithoutAttributeClassInput[] | Prisma.SurveyAttributeFilterUncheckedCreateWithoutAttributeClassInput[]
-  connectOrCreate?: Prisma.SurveyAttributeFilterCreateOrConnectWithoutAttributeClassInput | Prisma.SurveyAttributeFilterCreateOrConnectWithoutAttributeClassInput[]
-  upsert?: Prisma.SurveyAttributeFilterUpsertWithWhereUniqueWithoutAttributeClassInput | Prisma.SurveyAttributeFilterUpsertWithWhereUniqueWithoutAttributeClassInput[]
-  createMany?: Prisma.SurveyAttributeFilterCreateManyAttributeClassInputEnvelope
-  set?: Prisma.SurveyAttributeFilterWhereUniqueInput | Prisma.SurveyAttributeFilterWhereUniqueInput[]
-  disconnect?: Prisma.SurveyAttributeFilterWhereUniqueInput | Prisma.SurveyAttributeFilterWhereUniqueInput[]
-  delete?: Prisma.SurveyAttributeFilterWhereUniqueInput | Prisma.SurveyAttributeFilterWhereUniqueInput[]
-  connect?: Prisma.SurveyAttributeFilterWhereUniqueInput | Prisma.SurveyAttributeFilterWhereUniqueInput[]
-  update?: Prisma.SurveyAttributeFilterUpdateWithWhereUniqueWithoutAttributeClassInput | Prisma.SurveyAttributeFilterUpdateWithWhereUniqueWithoutAttributeClassInput[]
-  updateMany?: Prisma.SurveyAttributeFilterUpdateManyWithWhereWithoutAttributeClassInput | Prisma.SurveyAttributeFilterUpdateManyWithWhereWithoutAttributeClassInput[]
-  deleteMany?: Prisma.SurveyAttributeFilterScalarWhereInput | Prisma.SurveyAttributeFilterScalarWhereInput[]
-}
-
-export type SurveyAttributeFilterUncheckedUpdateManyWithoutAttributeClassNestedInput = {
-  create?: Prisma.XOR<Prisma.SurveyAttributeFilterCreateWithoutAttributeClassInput, Prisma.SurveyAttributeFilterUncheckedCreateWithoutAttributeClassInput> | Prisma.SurveyAttributeFilterCreateWithoutAttributeClassInput[] | Prisma.SurveyAttributeFilterUncheckedCreateWithoutAttributeClassInput[]
-  connectOrCreate?: Prisma.SurveyAttributeFilterCreateOrConnectWithoutAttributeClassInput | Prisma.SurveyAttributeFilterCreateOrConnectWithoutAttributeClassInput[]
-  upsert?: Prisma.SurveyAttributeFilterUpsertWithWhereUniqueWithoutAttributeClassInput | Prisma.SurveyAttributeFilterUpsertWithWhereUniqueWithoutAttributeClassInput[]
-  createMany?: Prisma.SurveyAttributeFilterCreateManyAttributeClassInputEnvelope
-  set?: Prisma.SurveyAttributeFilterWhereUniqueInput | Prisma.SurveyAttributeFilterWhereUniqueInput[]
-  disconnect?: Prisma.SurveyAttributeFilterWhereUniqueInput | Prisma.SurveyAttributeFilterWhereUniqueInput[]
-  delete?: Prisma.SurveyAttributeFilterWhereUniqueInput | Prisma.SurveyAttributeFilterWhereUniqueInput[]
-  connect?: Prisma.SurveyAttributeFilterWhereUniqueInput | Prisma.SurveyAttributeFilterWhereUniqueInput[]
-  update?: Prisma.SurveyAttributeFilterUpdateWithWhereUniqueWithoutAttributeClassInput | Prisma.SurveyAttributeFilterUpdateWithWhereUniqueWithoutAttributeClassInput[]
-  updateMany?: Prisma.SurveyAttributeFilterUpdateManyWithWhereWithoutAttributeClassInput | Prisma.SurveyAttributeFilterUpdateManyWithWhereWithoutAttributeClassInput[]
-  deleteMany?: Prisma.SurveyAttributeFilterScalarWhereInput | Prisma.SurveyAttributeFilterScalarWhereInput[]
 }
 
 export type SurveyAttributeFilterCreateNestedManyWithoutSurveyInput = {
@@ -457,61 +415,46 @@ export type EnumSurveyAttributeFilterConditionFieldUpdateOperationsInput = {
   set?: $Enums.SurveyAttributeFilterCondition
 }
 
-export type SurveyAttributeFilterCreateWithoutAttributeClassInput = {
-  id: string
-  created_at?: Date | string
-  updated_at: Date | string
-  condition: $Enums.SurveyAttributeFilterCondition
-  value: string
-  Survey: Prisma.SurveyCreateNestedOneWithoutSurveyAttributeFilterInput
+export type SurveyAttributeFilterCreateNestedManyWithoutContactAttributeKeyInput = {
+  create?: Prisma.XOR<Prisma.SurveyAttributeFilterCreateWithoutContactAttributeKeyInput, Prisma.SurveyAttributeFilterUncheckedCreateWithoutContactAttributeKeyInput> | Prisma.SurveyAttributeFilterCreateWithoutContactAttributeKeyInput[] | Prisma.SurveyAttributeFilterUncheckedCreateWithoutContactAttributeKeyInput[]
+  connectOrCreate?: Prisma.SurveyAttributeFilterCreateOrConnectWithoutContactAttributeKeyInput | Prisma.SurveyAttributeFilterCreateOrConnectWithoutContactAttributeKeyInput[]
+  createMany?: Prisma.SurveyAttributeFilterCreateManyContactAttributeKeyInputEnvelope
+  connect?: Prisma.SurveyAttributeFilterWhereUniqueInput | Prisma.SurveyAttributeFilterWhereUniqueInput[]
 }
 
-export type SurveyAttributeFilterUncheckedCreateWithoutAttributeClassInput = {
-  id: string
-  created_at?: Date | string
-  updated_at: Date | string
-  surveyId: string
-  condition: $Enums.SurveyAttributeFilterCondition
-  value: string
+export type SurveyAttributeFilterUncheckedCreateNestedManyWithoutContactAttributeKeyInput = {
+  create?: Prisma.XOR<Prisma.SurveyAttributeFilterCreateWithoutContactAttributeKeyInput, Prisma.SurveyAttributeFilterUncheckedCreateWithoutContactAttributeKeyInput> | Prisma.SurveyAttributeFilterCreateWithoutContactAttributeKeyInput[] | Prisma.SurveyAttributeFilterUncheckedCreateWithoutContactAttributeKeyInput[]
+  connectOrCreate?: Prisma.SurveyAttributeFilterCreateOrConnectWithoutContactAttributeKeyInput | Prisma.SurveyAttributeFilterCreateOrConnectWithoutContactAttributeKeyInput[]
+  createMany?: Prisma.SurveyAttributeFilterCreateManyContactAttributeKeyInputEnvelope
+  connect?: Prisma.SurveyAttributeFilterWhereUniqueInput | Prisma.SurveyAttributeFilterWhereUniqueInput[]
 }
 
-export type SurveyAttributeFilterCreateOrConnectWithoutAttributeClassInput = {
-  where: Prisma.SurveyAttributeFilterWhereUniqueInput
-  create: Prisma.XOR<Prisma.SurveyAttributeFilterCreateWithoutAttributeClassInput, Prisma.SurveyAttributeFilterUncheckedCreateWithoutAttributeClassInput>
+export type SurveyAttributeFilterUpdateManyWithoutContactAttributeKeyNestedInput = {
+  create?: Prisma.XOR<Prisma.SurveyAttributeFilterCreateWithoutContactAttributeKeyInput, Prisma.SurveyAttributeFilterUncheckedCreateWithoutContactAttributeKeyInput> | Prisma.SurveyAttributeFilterCreateWithoutContactAttributeKeyInput[] | Prisma.SurveyAttributeFilterUncheckedCreateWithoutContactAttributeKeyInput[]
+  connectOrCreate?: Prisma.SurveyAttributeFilterCreateOrConnectWithoutContactAttributeKeyInput | Prisma.SurveyAttributeFilterCreateOrConnectWithoutContactAttributeKeyInput[]
+  upsert?: Prisma.SurveyAttributeFilterUpsertWithWhereUniqueWithoutContactAttributeKeyInput | Prisma.SurveyAttributeFilterUpsertWithWhereUniqueWithoutContactAttributeKeyInput[]
+  createMany?: Prisma.SurveyAttributeFilterCreateManyContactAttributeKeyInputEnvelope
+  set?: Prisma.SurveyAttributeFilterWhereUniqueInput | Prisma.SurveyAttributeFilterWhereUniqueInput[]
+  disconnect?: Prisma.SurveyAttributeFilterWhereUniqueInput | Prisma.SurveyAttributeFilterWhereUniqueInput[]
+  delete?: Prisma.SurveyAttributeFilterWhereUniqueInput | Prisma.SurveyAttributeFilterWhereUniqueInput[]
+  connect?: Prisma.SurveyAttributeFilterWhereUniqueInput | Prisma.SurveyAttributeFilterWhereUniqueInput[]
+  update?: Prisma.SurveyAttributeFilterUpdateWithWhereUniqueWithoutContactAttributeKeyInput | Prisma.SurveyAttributeFilterUpdateWithWhereUniqueWithoutContactAttributeKeyInput[]
+  updateMany?: Prisma.SurveyAttributeFilterUpdateManyWithWhereWithoutContactAttributeKeyInput | Prisma.SurveyAttributeFilterUpdateManyWithWhereWithoutContactAttributeKeyInput[]
+  deleteMany?: Prisma.SurveyAttributeFilterScalarWhereInput | Prisma.SurveyAttributeFilterScalarWhereInput[]
 }
 
-export type SurveyAttributeFilterCreateManyAttributeClassInputEnvelope = {
-  data: Prisma.SurveyAttributeFilterCreateManyAttributeClassInput | Prisma.SurveyAttributeFilterCreateManyAttributeClassInput[]
-  skipDuplicates?: boolean
-}
-
-export type SurveyAttributeFilterUpsertWithWhereUniqueWithoutAttributeClassInput = {
-  where: Prisma.SurveyAttributeFilterWhereUniqueInput
-  update: Prisma.XOR<Prisma.SurveyAttributeFilterUpdateWithoutAttributeClassInput, Prisma.SurveyAttributeFilterUncheckedUpdateWithoutAttributeClassInput>
-  create: Prisma.XOR<Prisma.SurveyAttributeFilterCreateWithoutAttributeClassInput, Prisma.SurveyAttributeFilterUncheckedCreateWithoutAttributeClassInput>
-}
-
-export type SurveyAttributeFilterUpdateWithWhereUniqueWithoutAttributeClassInput = {
-  where: Prisma.SurveyAttributeFilterWhereUniqueInput
-  data: Prisma.XOR<Prisma.SurveyAttributeFilterUpdateWithoutAttributeClassInput, Prisma.SurveyAttributeFilterUncheckedUpdateWithoutAttributeClassInput>
-}
-
-export type SurveyAttributeFilterUpdateManyWithWhereWithoutAttributeClassInput = {
-  where: Prisma.SurveyAttributeFilterScalarWhereInput
-  data: Prisma.XOR<Prisma.SurveyAttributeFilterUpdateManyMutationInput, Prisma.SurveyAttributeFilterUncheckedUpdateManyWithoutAttributeClassInput>
-}
-
-export type SurveyAttributeFilterScalarWhereInput = {
-  AND?: Prisma.SurveyAttributeFilterScalarWhereInput | Prisma.SurveyAttributeFilterScalarWhereInput[]
-  OR?: Prisma.SurveyAttributeFilterScalarWhereInput[]
-  NOT?: Prisma.SurveyAttributeFilterScalarWhereInput | Prisma.SurveyAttributeFilterScalarWhereInput[]
-  id?: Prisma.StringFilter<"SurveyAttributeFilter"> | string
-  created_at?: Prisma.DateTimeFilter<"SurveyAttributeFilter"> | Date | string
-  updated_at?: Prisma.DateTimeFilter<"SurveyAttributeFilter"> | Date | string
-  attributeClassId?: Prisma.StringFilter<"SurveyAttributeFilter"> | string
-  surveyId?: Prisma.StringFilter<"SurveyAttributeFilter"> | string
-  condition?: Prisma.EnumSurveyAttributeFilterConditionFilter<"SurveyAttributeFilter"> | $Enums.SurveyAttributeFilterCondition
-  value?: Prisma.StringFilter<"SurveyAttributeFilter"> | string
+export type SurveyAttributeFilterUncheckedUpdateManyWithoutContactAttributeKeyNestedInput = {
+  create?: Prisma.XOR<Prisma.SurveyAttributeFilterCreateWithoutContactAttributeKeyInput, Prisma.SurveyAttributeFilterUncheckedCreateWithoutContactAttributeKeyInput> | Prisma.SurveyAttributeFilterCreateWithoutContactAttributeKeyInput[] | Prisma.SurveyAttributeFilterUncheckedCreateWithoutContactAttributeKeyInput[]
+  connectOrCreate?: Prisma.SurveyAttributeFilterCreateOrConnectWithoutContactAttributeKeyInput | Prisma.SurveyAttributeFilterCreateOrConnectWithoutContactAttributeKeyInput[]
+  upsert?: Prisma.SurveyAttributeFilterUpsertWithWhereUniqueWithoutContactAttributeKeyInput | Prisma.SurveyAttributeFilterUpsertWithWhereUniqueWithoutContactAttributeKeyInput[]
+  createMany?: Prisma.SurveyAttributeFilterCreateManyContactAttributeKeyInputEnvelope
+  set?: Prisma.SurveyAttributeFilterWhereUniqueInput | Prisma.SurveyAttributeFilterWhereUniqueInput[]
+  disconnect?: Prisma.SurveyAttributeFilterWhereUniqueInput | Prisma.SurveyAttributeFilterWhereUniqueInput[]
+  delete?: Prisma.SurveyAttributeFilterWhereUniqueInput | Prisma.SurveyAttributeFilterWhereUniqueInput[]
+  connect?: Prisma.SurveyAttributeFilterWhereUniqueInput | Prisma.SurveyAttributeFilterWhereUniqueInput[]
+  update?: Prisma.SurveyAttributeFilterUpdateWithWhereUniqueWithoutContactAttributeKeyInput | Prisma.SurveyAttributeFilterUpdateWithWhereUniqueWithoutContactAttributeKeyInput[]
+  updateMany?: Prisma.SurveyAttributeFilterUpdateManyWithWhereWithoutContactAttributeKeyInput | Prisma.SurveyAttributeFilterUpdateManyWithWhereWithoutContactAttributeKeyInput[]
+  deleteMany?: Prisma.SurveyAttributeFilterScalarWhereInput | Prisma.SurveyAttributeFilterScalarWhereInput[]
 }
 
 export type SurveyAttributeFilterCreateWithoutSurveyInput = {
@@ -520,14 +463,14 @@ export type SurveyAttributeFilterCreateWithoutSurveyInput = {
   updated_at: Date | string
   condition: $Enums.SurveyAttributeFilterCondition
   value: string
-  AttributeClass: Prisma.AttributeClassCreateNestedOneWithoutSurveyAttributeFilterInput
+  ContactAttributeKey: Prisma.ContactAttributeKeyCreateNestedOneWithoutSurveyAttributeFilterInput
 }
 
 export type SurveyAttributeFilterUncheckedCreateWithoutSurveyInput = {
   id: string
   created_at?: Date | string
   updated_at: Date | string
-  attributeClassId: string
+  attributeKeyId: string
   condition: $Enums.SurveyAttributeFilterCondition
   value: string
 }
@@ -558,7 +501,29 @@ export type SurveyAttributeFilterUpdateManyWithWhereWithoutSurveyInput = {
   data: Prisma.XOR<Prisma.SurveyAttributeFilterUpdateManyMutationInput, Prisma.SurveyAttributeFilterUncheckedUpdateManyWithoutSurveyInput>
 }
 
-export type SurveyAttributeFilterCreateManyAttributeClassInput = {
+export type SurveyAttributeFilterScalarWhereInput = {
+  AND?: Prisma.SurveyAttributeFilterScalarWhereInput | Prisma.SurveyAttributeFilterScalarWhereInput[]
+  OR?: Prisma.SurveyAttributeFilterScalarWhereInput[]
+  NOT?: Prisma.SurveyAttributeFilterScalarWhereInput | Prisma.SurveyAttributeFilterScalarWhereInput[]
+  id?: Prisma.StringFilter<"SurveyAttributeFilter"> | string
+  created_at?: Prisma.DateTimeFilter<"SurveyAttributeFilter"> | Date | string
+  updated_at?: Prisma.DateTimeFilter<"SurveyAttributeFilter"> | Date | string
+  attributeKeyId?: Prisma.StringFilter<"SurveyAttributeFilter"> | string
+  surveyId?: Prisma.StringFilter<"SurveyAttributeFilter"> | string
+  condition?: Prisma.EnumSurveyAttributeFilterConditionFilter<"SurveyAttributeFilter"> | $Enums.SurveyAttributeFilterCondition
+  value?: Prisma.StringFilter<"SurveyAttributeFilter"> | string
+}
+
+export type SurveyAttributeFilterCreateWithoutContactAttributeKeyInput = {
+  id: string
+  created_at?: Date | string
+  updated_at: Date | string
+  condition: $Enums.SurveyAttributeFilterCondition
+  value: string
+  Survey: Prisma.SurveyCreateNestedOneWithoutSurveyAttributeFilterInput
+}
+
+export type SurveyAttributeFilterUncheckedCreateWithoutContactAttributeKeyInput = {
   id: string
   created_at?: Date | string
   updated_at: Date | string
@@ -567,38 +532,37 @@ export type SurveyAttributeFilterCreateManyAttributeClassInput = {
   value: string
 }
 
-export type SurveyAttributeFilterUpdateWithoutAttributeClassInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  condition?: Prisma.EnumSurveyAttributeFilterConditionFieldUpdateOperationsInput | $Enums.SurveyAttributeFilterCondition
-  value?: Prisma.StringFieldUpdateOperationsInput | string
-  Survey?: Prisma.SurveyUpdateOneRequiredWithoutSurveyAttributeFilterNestedInput
+export type SurveyAttributeFilterCreateOrConnectWithoutContactAttributeKeyInput = {
+  where: Prisma.SurveyAttributeFilterWhereUniqueInput
+  create: Prisma.XOR<Prisma.SurveyAttributeFilterCreateWithoutContactAttributeKeyInput, Prisma.SurveyAttributeFilterUncheckedCreateWithoutContactAttributeKeyInput>
 }
 
-export type SurveyAttributeFilterUncheckedUpdateWithoutAttributeClassInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  surveyId?: Prisma.StringFieldUpdateOperationsInput | string
-  condition?: Prisma.EnumSurveyAttributeFilterConditionFieldUpdateOperationsInput | $Enums.SurveyAttributeFilterCondition
-  value?: Prisma.StringFieldUpdateOperationsInput | string
+export type SurveyAttributeFilterCreateManyContactAttributeKeyInputEnvelope = {
+  data: Prisma.SurveyAttributeFilterCreateManyContactAttributeKeyInput | Prisma.SurveyAttributeFilterCreateManyContactAttributeKeyInput[]
+  skipDuplicates?: boolean
 }
 
-export type SurveyAttributeFilterUncheckedUpdateManyWithoutAttributeClassInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  surveyId?: Prisma.StringFieldUpdateOperationsInput | string
-  condition?: Prisma.EnumSurveyAttributeFilterConditionFieldUpdateOperationsInput | $Enums.SurveyAttributeFilterCondition
-  value?: Prisma.StringFieldUpdateOperationsInput | string
+export type SurveyAttributeFilterUpsertWithWhereUniqueWithoutContactAttributeKeyInput = {
+  where: Prisma.SurveyAttributeFilterWhereUniqueInput
+  update: Prisma.XOR<Prisma.SurveyAttributeFilterUpdateWithoutContactAttributeKeyInput, Prisma.SurveyAttributeFilterUncheckedUpdateWithoutContactAttributeKeyInput>
+  create: Prisma.XOR<Prisma.SurveyAttributeFilterCreateWithoutContactAttributeKeyInput, Prisma.SurveyAttributeFilterUncheckedCreateWithoutContactAttributeKeyInput>
+}
+
+export type SurveyAttributeFilterUpdateWithWhereUniqueWithoutContactAttributeKeyInput = {
+  where: Prisma.SurveyAttributeFilterWhereUniqueInput
+  data: Prisma.XOR<Prisma.SurveyAttributeFilterUpdateWithoutContactAttributeKeyInput, Prisma.SurveyAttributeFilterUncheckedUpdateWithoutContactAttributeKeyInput>
+}
+
+export type SurveyAttributeFilterUpdateManyWithWhereWithoutContactAttributeKeyInput = {
+  where: Prisma.SurveyAttributeFilterScalarWhereInput
+  data: Prisma.XOR<Prisma.SurveyAttributeFilterUpdateManyMutationInput, Prisma.SurveyAttributeFilterUncheckedUpdateManyWithoutContactAttributeKeyInput>
 }
 
 export type SurveyAttributeFilterCreateManySurveyInput = {
   id: string
   created_at?: Date | string
   updated_at: Date | string
-  attributeClassId: string
+  attributeKeyId: string
   condition: $Enums.SurveyAttributeFilterCondition
   value: string
 }
@@ -609,14 +573,14 @@ export type SurveyAttributeFilterUpdateWithoutSurveyInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   condition?: Prisma.EnumSurveyAttributeFilterConditionFieldUpdateOperationsInput | $Enums.SurveyAttributeFilterCondition
   value?: Prisma.StringFieldUpdateOperationsInput | string
-  AttributeClass?: Prisma.AttributeClassUpdateOneRequiredWithoutSurveyAttributeFilterNestedInput
+  ContactAttributeKey?: Prisma.ContactAttributeKeyUpdateOneRequiredWithoutSurveyAttributeFilterNestedInput
 }
 
 export type SurveyAttributeFilterUncheckedUpdateWithoutSurveyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  attributeClassId?: Prisma.StringFieldUpdateOperationsInput | string
+  attributeKeyId?: Prisma.StringFieldUpdateOperationsInput | string
   condition?: Prisma.EnumSurveyAttributeFilterConditionFieldUpdateOperationsInput | $Enums.SurveyAttributeFilterCondition
   value?: Prisma.StringFieldUpdateOperationsInput | string
 }
@@ -625,7 +589,43 @@ export type SurveyAttributeFilterUncheckedUpdateManyWithoutSurveyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  attributeClassId?: Prisma.StringFieldUpdateOperationsInput | string
+  attributeKeyId?: Prisma.StringFieldUpdateOperationsInput | string
+  condition?: Prisma.EnumSurveyAttributeFilterConditionFieldUpdateOperationsInput | $Enums.SurveyAttributeFilterCondition
+  value?: Prisma.StringFieldUpdateOperationsInput | string
+}
+
+export type SurveyAttributeFilterCreateManyContactAttributeKeyInput = {
+  id: string
+  created_at?: Date | string
+  updated_at: Date | string
+  surveyId: string
+  condition: $Enums.SurveyAttributeFilterCondition
+  value: string
+}
+
+export type SurveyAttributeFilterUpdateWithoutContactAttributeKeyInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  condition?: Prisma.EnumSurveyAttributeFilterConditionFieldUpdateOperationsInput | $Enums.SurveyAttributeFilterCondition
+  value?: Prisma.StringFieldUpdateOperationsInput | string
+  Survey?: Prisma.SurveyUpdateOneRequiredWithoutSurveyAttributeFilterNestedInput
+}
+
+export type SurveyAttributeFilterUncheckedUpdateWithoutContactAttributeKeyInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  surveyId?: Prisma.StringFieldUpdateOperationsInput | string
+  condition?: Prisma.EnumSurveyAttributeFilterConditionFieldUpdateOperationsInput | $Enums.SurveyAttributeFilterCondition
+  value?: Prisma.StringFieldUpdateOperationsInput | string
+}
+
+export type SurveyAttributeFilterUncheckedUpdateManyWithoutContactAttributeKeyInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  surveyId?: Prisma.StringFieldUpdateOperationsInput | string
   condition?: Prisma.EnumSurveyAttributeFilterConditionFieldUpdateOperationsInput | $Enums.SurveyAttributeFilterCondition
   value?: Prisma.StringFieldUpdateOperationsInput | string
 }
@@ -636,11 +636,11 @@ export type SurveyAttributeFilterSelect<ExtArgs extends runtime.Types.Extensions
   id?: boolean
   created_at?: boolean
   updated_at?: boolean
-  attributeClassId?: boolean
+  attributeKeyId?: boolean
   surveyId?: boolean
   condition?: boolean
   value?: boolean
-  AttributeClass?: boolean | Prisma.AttributeClassDefaultArgs<ExtArgs>
+  ContactAttributeKey?: boolean | Prisma.ContactAttributeKeyDefaultArgs<ExtArgs>
   Survey?: boolean | Prisma.SurveyDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["surveyAttributeFilter"]>
 
@@ -648,11 +648,11 @@ export type SurveyAttributeFilterSelectCreateManyAndReturn<ExtArgs extends runti
   id?: boolean
   created_at?: boolean
   updated_at?: boolean
-  attributeClassId?: boolean
+  attributeKeyId?: boolean
   surveyId?: boolean
   condition?: boolean
   value?: boolean
-  AttributeClass?: boolean | Prisma.AttributeClassDefaultArgs<ExtArgs>
+  ContactAttributeKey?: boolean | Prisma.ContactAttributeKeyDefaultArgs<ExtArgs>
   Survey?: boolean | Prisma.SurveyDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["surveyAttributeFilter"]>
 
@@ -660,11 +660,11 @@ export type SurveyAttributeFilterSelectUpdateManyAndReturn<ExtArgs extends runti
   id?: boolean
   created_at?: boolean
   updated_at?: boolean
-  attributeClassId?: boolean
+  attributeKeyId?: boolean
   surveyId?: boolean
   condition?: boolean
   value?: boolean
-  AttributeClass?: boolean | Prisma.AttributeClassDefaultArgs<ExtArgs>
+  ContactAttributeKey?: boolean | Prisma.ContactAttributeKeyDefaultArgs<ExtArgs>
   Survey?: boolean | Prisma.SurveyDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["surveyAttributeFilter"]>
 
@@ -672,37 +672,37 @@ export type SurveyAttributeFilterSelectScalar = {
   id?: boolean
   created_at?: boolean
   updated_at?: boolean
-  attributeClassId?: boolean
+  attributeKeyId?: boolean
   surveyId?: boolean
   condition?: boolean
   value?: boolean
 }
 
-export type SurveyAttributeFilterOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "created_at" | "updated_at" | "attributeClassId" | "surveyId" | "condition" | "value", ExtArgs["result"]["surveyAttributeFilter"]>
+export type SurveyAttributeFilterOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "created_at" | "updated_at" | "attributeKeyId" | "surveyId" | "condition" | "value", ExtArgs["result"]["surveyAttributeFilter"]>
 export type SurveyAttributeFilterInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  AttributeClass?: boolean | Prisma.AttributeClassDefaultArgs<ExtArgs>
+  ContactAttributeKey?: boolean | Prisma.ContactAttributeKeyDefaultArgs<ExtArgs>
   Survey?: boolean | Prisma.SurveyDefaultArgs<ExtArgs>
 }
 export type SurveyAttributeFilterIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  AttributeClass?: boolean | Prisma.AttributeClassDefaultArgs<ExtArgs>
+  ContactAttributeKey?: boolean | Prisma.ContactAttributeKeyDefaultArgs<ExtArgs>
   Survey?: boolean | Prisma.SurveyDefaultArgs<ExtArgs>
 }
 export type SurveyAttributeFilterIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  AttributeClass?: boolean | Prisma.AttributeClassDefaultArgs<ExtArgs>
+  ContactAttributeKey?: boolean | Prisma.ContactAttributeKeyDefaultArgs<ExtArgs>
   Survey?: boolean | Prisma.SurveyDefaultArgs<ExtArgs>
 }
 
 export type $SurveyAttributeFilterPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "SurveyAttributeFilter"
   objects: {
-    AttributeClass: Prisma.$AttributeClassPayload<ExtArgs>
+    ContactAttributeKey: Prisma.$ContactAttributeKeyPayload<ExtArgs>
     Survey: Prisma.$SurveyPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     created_at: Date
     updated_at: Date
-    attributeClassId: string
+    attributeKeyId: string
     surveyId: string
     condition: $Enums.SurveyAttributeFilterCondition
     value: string
@@ -1100,7 +1100,7 @@ readonly fields: SurveyAttributeFilterFieldRefs;
  */
 export interface Prisma__SurveyAttributeFilterClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  AttributeClass<T extends Prisma.AttributeClassDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AttributeClassDefaultArgs<ExtArgs>>): Prisma.Prisma__AttributeClassClient<runtime.Types.Result.GetResult<Prisma.$AttributeClassPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  ContactAttributeKey<T extends Prisma.ContactAttributeKeyDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ContactAttributeKeyDefaultArgs<ExtArgs>>): Prisma.Prisma__ContactAttributeKeyClient<runtime.Types.Result.GetResult<Prisma.$ContactAttributeKeyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   Survey<T extends Prisma.SurveyDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SurveyDefaultArgs<ExtArgs>>): Prisma.Prisma__SurveyClient<runtime.Types.Result.GetResult<Prisma.$SurveyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1134,7 +1134,7 @@ export interface SurveyAttributeFilterFieldRefs {
   readonly id: Prisma.FieldRef<"SurveyAttributeFilter", 'String'>
   readonly created_at: Prisma.FieldRef<"SurveyAttributeFilter", 'DateTime'>
   readonly updated_at: Prisma.FieldRef<"SurveyAttributeFilter", 'DateTime'>
-  readonly attributeClassId: Prisma.FieldRef<"SurveyAttributeFilter", 'String'>
+  readonly attributeKeyId: Prisma.FieldRef<"SurveyAttributeFilter", 'String'>
   readonly surveyId: Prisma.FieldRef<"SurveyAttributeFilter", 'String'>
   readonly condition: Prisma.FieldRef<"SurveyAttributeFilter", 'SurveyAttributeFilterCondition'>
   readonly value: Prisma.FieldRef<"SurveyAttributeFilter", 'String'>

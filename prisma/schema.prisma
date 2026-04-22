@@ -22,274 +22,581 @@ model Account {
   scope             String?
   id_token          String?
   session_state     String?
+  ext_expires_in    Int?
   User              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
+  @@index([userId])
 }
 
 model ApiKey {
-  id            String      @id @unique
-  createdAt     DateTime    @default(now())
-  lastUsedAt    DateTime?
-  label         String?
-  hashedKey     String      @unique
-  environmentId String
-  Environment   Environment @relation(fields: [environmentId], references: [id], onDelete: Cascade)
-}
+  id                 String              @id
+  createdAt          DateTime            @default(now())
+  createdBy          String?
+  lastUsedAt         DateTime?
+  label              String
+  hashedKey          String
+  organizationId     String
+  organizationAccess Json                @default("{}")
+  lookupHash         String?             @unique
+  Organization       Organization        @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  ApiKeyEnvironment  ApiKeyEnvironment[]
 
-model Attribute {
-  id               String         @id
-  created_at       DateTime       @default(now())
-  updated_at       DateTime
-  attributeClassId String
-  personId         String
-  value            String
-  AttributeClass   AttributeClass @relation(fields: [attributeClassId], references: [id], onDelete: Cascade)
-  Person           Person         @relation(fields: [personId], references: [id], onDelete: Cascade)
-
-  @@unique([attributeClassId, personId])
-}
-
-model AttributeClass {
-  id                    String                  @id
-  created_at            DateTime                @default(now())
-  updated_at            DateTime
-  name                  String
-  description           String?
-  type                  AttributeType
-  environmentId         String
-  Attribute             Attribute[]
-  Environment           Environment             @relation(fields: [environmentId], references: [id], onDelete: Cascade)
-  SurveyAttributeFilter SurveyAttributeFilter[]
-
-  @@unique([name, environmentId])
+  @@index([organizationId])
 }
 
 model Display {
-  id         String        @id
-  created_at DateTime      @default(now())
+  id         String    @id
+  created_at DateTime  @default(now())
   updated_at DateTime
   surveyId   String
-  personId   String?
-  status     DisplayStatus @default(seen)
-  Person     Person?       @relation(fields: [personId], references: [id], onDelete: Cascade)
-  Survey     Survey        @relation(fields: [surveyId], references: [id], onDelete: Cascade)
+  contactId  String?
+  Contact    Contact?  @relation(fields: [contactId], references: [id], onDelete: Cascade)
+  Survey     Survey    @relation(fields: [surveyId], references: [id], onDelete: Cascade)
+  Response   Response?
+
+  @@index([contactId, created_at])
+  @@index([surveyId])
 }
 
 model Environment {
-  id                   String           @id
-  created_at           DateTime         @default(now())
-  updated_at           DateTime
-  type                 EnvironmentType
-  productId            String
-  widgetSetupCompleted Boolean          @default(false)
-  ApiKey               ApiKey[]
-  AttributeClass       AttributeClass[]
-  Product              Product          @relation(fields: [productId], references: [id], onDelete: Cascade)
-  EventClass           EventClass[]
-  Person               Person[]
-  Survey               Survey[]
-  Webhook              Webhook[]
-}
+  id                  String                @id
+  created_at          DateTime              @default(now())
+  updated_at          DateTime
+  type                EnvironmentType
+  projectId           String
+  appSetupCompleted   Boolean               @default(false)
+  ActionClass         ActionClass[]
+  ApiKeyEnvironment   ApiKeyEnvironment[]
+  Contact             Contact[]
+  ContactAttributeKey ContactAttributeKey[]
+  Project             Project               @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  Integration         Integration[]
+  Segment             Segment[]
+  Survey              Survey[]
+  Tag                 Tag[]
+  Webhook             Webhook[]
 
-model Event {
-  id           String      @id
-  created_at   DateTime    @default(now())
-  eventClassId String?
-  sessionId    String
-  properties   Json        @default("{}")
-  EventClass   EventClass? @relation(fields: [eventClassId], references: [id])
-  Session      Session     @relation(fields: [sessionId], references: [id], onDelete: Cascade)
-}
-
-model EventClass {
-  id            String          @id
-  created_at    DateTime        @default(now())
-  updated_at    DateTime
-  name          String
-  description   String?
-  type          EventType
-  noCodeConfig  Json?
-  environmentId String
-  Event         Event[]
-  Environment   Environment     @relation(fields: [environmentId], references: [id], onDelete: Cascade)
-  SurveyTrigger SurveyTrigger[]
-
-  @@unique([name, environmentId])
+  @@index([projectId])
 }
 
 model Invite {
-  id                           String         @id
+  id                           String           @id
   email                        String
   name                         String?
-  teamId                       String
+  organizationId               String
   creatorId                    String
   acceptorId                   String?
-  accepted                     Boolean        @default(false)
-  createdAt                    DateTime       @default(now())
+  createdAt                    DateTime         @default(now())
   expiresAt                    DateTime
-  role                         MembershipRole @default(admin)
-  User_Invite_acceptorIdToUser User?          @relation("Invite_acceptorIdToUser", fields: [acceptorId], references: [id], onDelete: Cascade)
-  User_Invite_creatorIdToUser  User           @relation("Invite_creatorIdToUser", fields: [creatorId], references: [id])
-  Team                         Team           @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  role                         OrganizationRole @default(member)
+  teamIds                      String[]         @default([])
+  User_Invite_acceptorIdToUser User?            @relation("Invite_acceptorIdToUser", fields: [acceptorId], references: [id], onDelete: Cascade)
+  User_Invite_creatorIdToUser  User             @relation("Invite_creatorIdToUser", fields: [creatorId], references: [id])
+  Organization                 Organization     @relation(fields: [organizationId], references: [id], onDelete: Cascade)
 
-  @@index([email, teamId], map: "email_teamId_unique")
+  @@index([email, organizationId])
+  @@index([organizationId])
 }
 
 model Membership {
-  teamId   String
-  userId   String
-  accepted Boolean        @default(false)
-  role     MembershipRole
-  Team     Team           @relation(fields: [teamId], references: [id], onDelete: Cascade)
-  User     User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  organizationId String
+  userId         String
+  accepted       Boolean          @default(false)
+  role           OrganizationRole @default(member)
+  Organization   Organization     @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  User           User             @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@id([userId, teamId])
-}
-
-model Person {
-  id            String      @id
-  created_at    DateTime    @default(now())
-  updated_at    DateTime
-  environmentId String
-  Attribute     Attribute[]
-  Display       Display[]
-  Environment   Environment @relation(fields: [environmentId], references: [id], onDelete: Cascade)
-  Response      Response[]
-  Session       Session[]
-}
-
-model Product {
-  id            String        @id
-  created_at    DateTime      @default(now())
-  updated_at    DateTime
-  name          String
-  teamId        String
-  brandColor    String        @default("#64748b")
-  recontactDays Int           @default(7)
-  Environment   Environment[]
-  Team          Team          @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  @@id([userId, organizationId])
+  @@index([organizationId])
+  @@index([userId])
 }
 
 model Response {
-  id             String   @id
-  created_at     DateTime @default(now())
-  updated_at     DateTime
-  finished       Boolean  @default(false)
-  surveyId       String
-  personId       String?
-  data           Json     @default("{}")
-  meta           Json     @default("{}")
-  userAttributes Json     @default("[]")
-  Person         Person?  @relation(fields: [personId], references: [id], onDelete: Cascade)
-  Survey         Survey   @relation(fields: [surveyId], references: [id], onDelete: Cascade)
-}
+  id                String              @id
+  created_at        DateTime            @default(now())
+  updated_at        DateTime            @default(now())
+  finished          Boolean             @default(false)
+  surveyId          String
+  contactId         String?
+  data              Json                @default("{}")
+  meta              Json                @default("{}")
+  contactAttributes Json?
+  singleUseId       String?
+  ttc               Json                @default("{}")
+  language          String?
+  variables         Json                @default("{}")
+  displayId         String?             @unique
+  endingId          String?
+  Contact           Contact?            @relation(fields: [contactId], references: [id], onDelete: Cascade)
+  Display           Display?            @relation(fields: [displayId], references: [id])
+  Survey            Survey              @relation(fields: [surveyId], references: [id], onDelete: Cascade)
+  ResponseQuotaLink ResponseQuotaLink[]
+  TagsOnResponses   TagsOnResponses[]
 
-model Session {
-  id         String   @id
-  created_at DateTime @default(now())
-  updated_at DateTime
-  personId   String
-  Event      Event[]
-  Person     Person   @relation(fields: [personId], references: [id], onDelete: Cascade)
+  @@unique([surveyId, singleUseId])
+  @@index([contactId, created_at])
+  @@index([created_at])
+  @@index([surveyId, created_at])
+  @@index([surveyId])
 }
 
 model Survey {
-  id                    String                  @id
-  created_at            DateTime                @default(now())
-  updated_at            DateTime
-  name                  String
-  environmentId         String
-  status                SurveyStatus            @default(draft)
-  questions             Json                    @default("[]")
-  displayOption         displayOptions          @default(displayOnce)
-  recontactDays         Int?
-  thankYouCard          Json                    @default("{\"enabled\": false}")
-  type                  SurveyType              @default(web)
-  Display               Display[]
-  Response              Response[]
-  Environment           Environment             @relation(fields: [environmentId], references: [id], onDelete: Cascade)
-  SurveyAttributeFilter SurveyAttributeFilter[]
-  SurveyTrigger         SurveyTrigger[]
+  id                              String                  @id
+  created_at                      DateTime                @default(now())
+  updated_at                      DateTime
+  name                            String
+  environmentId                   String
+  status                          SurveyStatus            @default(draft)
+  questions                       Json                    @default("[]")
+  displayOption                   displayOptions          @default(displayOnce)
+  recontactDays                   Int?
+  type                            SurveyType              @default(app)
+  autoClose                       Int?
+  delay                           Int                     @default(0)
+  autoComplete                    Int?
+  redirectUrl                     String?
+  surveyClosedMessage             Json?
+  singleUse                       Json?                   @default("{\"enabled\": false, \"isEncrypted\": true}")
+  projectOverwrites               Json?
+  hiddenFields                    Json                    @default("{\"enabled\": false}")
+  pin                             String?
+  welcomeCard                     Json                    @default("{\"enabled\": false}")
+  styling                         Json?
+  displayPercentage               Decimal?
+  createdBy                       String?
+  segmentId                       String?
+  inlineTriggers                  Json?
+  displayLimit                    Int?
+  showLanguageSwitch              Boolean?
+  isVerifyEmailEnabled            Boolean                 @default(false)
+  endings                         Json[]                  @default([])
+  variables                       Json                    @default("[]")
+  isSingleResponsePerEmailEnabled Boolean                 @default(false)
+  isBackButtonHidden              Boolean                 @default(false)
+  recaptcha                       Json?                   @default("{\"enabled\": false, \"threshold\": 0.1}")
+  metadata                        Json                    @default("{}")
+  blocks                          Json[]                  @default([])
+  Display                         Display[]
+  Response                        Response[]
+  User                            User?                   @relation(fields: [createdBy], references: [id])
+  Environment                     Environment             @relation(fields: [environmentId], references: [id], onDelete: Cascade)
+  Segment                         Segment?                @relation(fields: [segmentId], references: [id])
+  SurveyAttributeFilter           SurveyAttributeFilter[]
+  SurveyFollowUp                  SurveyFollowUp[]
+  SurveyLanguage                  SurveyLanguage[]
+  SurveyQuota                     SurveyQuota[]
+  SurveyTrigger                   SurveyTrigger[]
+
+  @@index([environmentId, updated_at])
+  @@index([segmentId])
 }
 
 model SurveyAttributeFilter {
-  id               String                         @id
-  created_at       DateTime                       @default(now())
-  updated_at       DateTime
-  attributeClassId String
-  surveyId         String
-  condition        SurveyAttributeFilterCondition
-  value            String
-  AttributeClass   AttributeClass                 @relation(fields: [attributeClassId], references: [id], onDelete: Cascade)
-  Survey           Survey                         @relation(fields: [surveyId], references: [id], onDelete: Cascade)
+  id                  String                         @id
+  created_at          DateTime                       @default(now())
+  updated_at          DateTime
+  attributeKeyId      String
+  surveyId            String
+  condition           SurveyAttributeFilterCondition
+  value               String
+  ContactAttributeKey ContactAttributeKey            @relation(fields: [attributeKeyId], references: [id], onDelete: Cascade)
+  Survey              Survey                         @relation(fields: [surveyId], references: [id], onDelete: Cascade)
 
-  @@unique([surveyId, attributeClassId])
+  @@unique([surveyId, attributeKeyId])
+  @@index([attributeKeyId])
+  @@index([surveyId])
 }
 
 model SurveyTrigger {
-  id           String     @id
-  created_at   DateTime   @default(now())
-  updated_at   DateTime
-  surveyId     String
-  eventClassId String
-  EventClass   EventClass @relation(fields: [eventClassId], references: [id], onDelete: Cascade)
-  Survey       Survey     @relation(fields: [surveyId], references: [id], onDelete: Cascade)
+  id            String      @id
+  created_at    DateTime    @default(now())
+  updated_at    DateTime
+  surveyId      String
+  actionClassId String
+  ActionClass   ActionClass @relation(fields: [actionClassId], references: [id], onDelete: Cascade)
+  Survey        Survey      @relation(fields: [surveyId], references: [id], onDelete: Cascade)
 
-  @@unique([surveyId, eventClassId])
+  @@unique([surveyId, actionClassId])
+  @@index([surveyId])
 }
 
 model Team {
-  id               String       @id
-  created_at       DateTime     @default(now())
-  updated_at       DateTime
-  name             String
-  plan             Plan         @default(free)
-  stripeCustomerId String?
-  Invite           Invite[]
-  Membership       Membership[]
-  Product          Product[]
+  id             String        @id
+  created_at     DateTime      @default(now())
+  updated_at     DateTime
+  name           String
+  organizationId String
+  ProjectTeam    ProjectTeam[]
+  Organization   Organization  @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  TeamUser       TeamUser[]
+
+  @@unique([organizationId, name])
 }
 
 model User {
   id                             String           @id
   created_at                     DateTime         @default(now())
   updated_at                     DateTime
-  name                           String?
+  name                           String
   email                          String           @unique
   email_verified                 DateTime?
   password                       String?
   identityProvider               IdentityProvider @default(email)
   identityProviderAccountId      String?
   groupId                        String?
-  objective                      Objective?
-  role                           Role?
-  onboardingCompleted            Boolean          @default(false)
+  notificationSettings           Json             @default("{}")
+  backupCodes                    String?
+  twoFactorEnabled               Boolean          @default(false)
+  twoFactorSecret                String?
+  locale                         String           @default("en-US")
+  isActive                       Boolean          @default(true)
+  lastLoginAt                    DateTime?
   Account                        Account[]
   Invite_Invite_acceptorIdToUser Invite[]         @relation("Invite_acceptorIdToUser")
   Invite_Invite_creatorIdToUser  Invite[]         @relation("Invite_creatorIdToUser")
   Membership                     Membership[]
+  Survey                         Survey[]
+  TeamUser                       TeamUser[]
+
+  @@index([email])
 }
 
 model Webhook {
   id            String             @id
   created_at    DateTime           @default(now())
-  updated_at    DateTime
+  updated_at    DateTime           @default(now())
   url           String
   environmentId String
   triggers      PipelineTriggers[]
+  surveyIds     String[]
+  name          String?
+  source        WebhookSource      @default(user)
   Environment   Environment        @relation(fields: [environmentId], references: [id], onDelete: Cascade)
+
+  @@index([environmentId])
 }
 
-enum AttributeType {
-  code
-  noCode
-  automatic
+model ActionClass {
+  id            String          @id
+  created_at    DateTime        @default(now())
+  updated_at    DateTime
+  name          String
+  description   String?
+  type          ActionType
+  noCodeConfig  Json?
+  environmentId String
+  key           String?
+  Environment   Environment     @relation(fields: [environmentId], references: [id], onDelete: Cascade)
+  SurveyTrigger SurveyTrigger[]
+
+  @@unique([key, environmentId])
+  @@unique([name, environmentId])
+  @@index([environmentId, created_at])
 }
 
-enum DisplayStatus {
-  seen
-  responded
+model Admin {
+  id                      String                    @id
+  created_at              DateTime                  @default(now())
+  updated_at              DateTime
+  email                   String                    @unique
+  name                    String?
+  password_hash           String
+  last_login_at           DateTime?
+  is_active               Boolean                   @default(true)
+  two_factor_secret       String?
+  two_factor_enabled      Boolean                   @default(false)
+  backup_codes            String?
+  role                    AdminRole                 @default(supportAdmin)
+  notes                   String?
+  AdminAuditLog           AdminAuditLog[]
+  AdminOrganizationAccess AdminOrganizationAccess[]
+
+  @@index([is_active, role])
+  @@index([role])
+}
+
+model AdminAuditLog {
+  id             String               @id
+  created_at     DateTime             @default(now())
+  adminId        String
+  action         String
+  targetType     AdminAuditTargetType
+  targetId       String?
+  organizationId String?
+  metadata       Json                 @default("{}")
+  ip             String?
+  user_agent     String?
+  Admin          Admin                @relation(fields: [adminId], references: [id], onDelete: Cascade)
+  Organization   Organization?        @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([action, created_at])
+  @@index([adminId, created_at])
+  @@index([organizationId, created_at])
+}
+
+model AdminOrganizationAccess {
+  adminId        String
+  organizationId String
+  access         AdminOrgAccessLevel @default(read)
+  created_at     DateTime            @default(now())
+  updated_at     DateTime
+  Admin          Admin               @relation(fields: [adminId], references: [id], onDelete: Cascade)
+  Organization   Organization        @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@id([adminId, organizationId])
+  @@index([adminId])
+  @@index([organizationId])
+}
+
+model ApiKeyEnvironment {
+  id            String           @id
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime
+  apiKeyId      String
+  environmentId String
+  permission    ApiKeyPermission
+  ApiKey        ApiKey           @relation(fields: [apiKeyId], references: [id], onDelete: Cascade)
+  Environment   Environment      @relation(fields: [environmentId], references: [id], onDelete: Cascade)
+
+  @@unique([apiKeyId, environmentId])
+  @@index([environmentId])
+}
+
+model Contact {
+  id               String             @id
+  created_at       DateTime           @default(now())
+  updated_at       DateTime
+  environmentId    String
+  Environment      Environment        @relation(fields: [environmentId], references: [id], onDelete: Cascade)
+  ContactAttribute ContactAttribute[]
+  Display          Display[]
+  Response         Response[]
+
+  @@index([environmentId])
+}
+
+model ContactAttribute {
+  id                  String              @id
+  created_at          DateTime            @default(now())
+  updated_at          DateTime
+  attributeKeyId      String
+  contactId           String
+  value               String
+  ContactAttributeKey ContactAttributeKey @relation(fields: [attributeKeyId], references: [id], onDelete: Cascade)
+  Contact             Contact             @relation(fields: [contactId], references: [id], onDelete: Cascade)
+
+  @@unique([contactId, attributeKeyId])
+  @@index([attributeKeyId, value])
+}
+
+model ContactAttributeKey {
+  id                    String                  @id
+  created_at            DateTime                @default(now())
+  updated_at            DateTime
+  name                  String?
+  description           String?
+  environmentId         String
+  type                  ContactAttributeType    @default(custom)
+  key                   String
+  isUnique              Boolean                 @default(false)
+  ContactAttribute      ContactAttribute[]
+  Environment           Environment             @relation(fields: [environmentId], references: [id], onDelete: Cascade)
+  SurveyAttributeFilter SurveyAttributeFilter[]
+
+  @@unique([key, environmentId])
+  @@index([environmentId, created_at])
+}
+
+model DataMigration {
+  id          String              @id
+  started_at  DateTime            @default(now())
+  finished_at DateTime?
+  status      DataMigrationStatus
+  name        String              @unique
+}
+
+model Integration {
+  id            String          @id
+  type          IntegrationType
+  environmentId String
+  config        Json
+  Environment   Environment     @relation(fields: [environmentId], references: [id], onDelete: Cascade)
+
+  @@unique([type, environmentId])
+  @@index([environmentId])
+}
+
+model Language {
+  id             String           @id
+  created_at     DateTime         @default(now())
+  updated_at     DateTime
+  code           String
+  alias          String?
+  projectId      String
+  Project        Project          @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  SurveyLanguage SurveyLanguage[]
+
+  @@unique([projectId, code])
+}
+
+model Organization {
+  id                      String                    @id
+  created_at              DateTime                  @default(now())
+  updated_at              DateTime
+  name                    String
+  billing                 Json
+  isAIEnabled             Boolean                   @default(false)
+  whitelabel              Json                      @default("{}")
+  AdminAuditLog           AdminAuditLog[]
+  AdminOrganizationAccess AdminOrganizationAccess[]
+  ApiKey                  ApiKey[]
+  Invite                  Invite[]
+  Membership              Membership[]
+  Project                 Project[]
+  Team                    Team[]
+}
+
+model Project {
+  id                  String          @id
+  created_at          DateTime        @default(now())
+  updated_at          DateTime
+  name                String
+  organizationId      String
+  recontactDays       Int             @default(7)
+  linkSurveyBranding  Boolean         @default(true)
+  clickOutsideClose   Boolean         @default(true)
+  darkOverlay         Boolean         @default(false)
+  placement           WidgetPlacement @default(bottomRight)
+  inAppSurveyBranding Boolean         @default(true)
+  styling             Json            @default("{\"allowStyleOverwrite\": true}")
+  logo                Json?
+  config              Json            @default("{}")
+  Environment         Environment[]
+  Language            Language[]
+  Organization        Organization    @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  ProjectTeam         ProjectTeam[]
+
+  @@unique([organizationId, name])
+  @@index([organizationId])
+}
+
+model ProjectTeam {
+  created_at DateTime              @default(now())
+  updated_at DateTime
+  projectId  String
+  teamId     String
+  permission ProjectTeamPermission @default(read)
+  Project    Project               @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  Team       Team                  @relation(fields: [teamId], references: [id], onDelete: Cascade)
+
+  @@id([projectId, teamId])
+  @@index([teamId])
+}
+
+model ResponseQuotaLink {
+  responseId  String
+  quotaId     String
+  status      ResponseQuotaLinkStatus
+  SurveyQuota SurveyQuota             @relation(fields: [quotaId], references: [id], onDelete: Cascade)
+  Response    Response                @relation(fields: [responseId], references: [id], onDelete: Cascade)
+
+  @@id([responseId, quotaId])
+  @@index([quotaId, status])
+}
+
+model Segment {
+  id            String      @id
+  created_at    DateTime    @default(now())
+  updated_at    DateTime
+  title         String
+  description   String?
+  isPrivate     Boolean     @default(true)
+  filters       Json        @default("[]")
+  environmentId String
+  Environment   Environment @relation(fields: [environmentId], references: [id], onDelete: Cascade)
+  Survey        Survey[]
+
+  @@unique([environmentId, title])
+  @@index([environmentId])
+}
+
+model SurveyFollowUp {
+  id         String   @id
+  created_at DateTime @default(now())
+  updated_at DateTime
+  surveyId   String
+  name       String
+  trigger    Json
+  action     Json
+  Survey     Survey   @relation(fields: [surveyId], references: [id], onDelete: Cascade)
+}
+
+model SurveyLanguage {
+  languageId String
+  surveyId   String
+  default    Boolean  @default(false)
+  enabled    Boolean  @default(true)
+  Language   Language @relation(fields: [languageId], references: [id], onDelete: Cascade)
+  Survey     Survey   @relation(fields: [surveyId], references: [id], onDelete: Cascade)
+
+  @@id([languageId, surveyId])
+  @@index([languageId])
+  @@index([surveyId])
+}
+
+model SurveyQuota {
+  id                      String              @id
+  created_at              DateTime            @default(now())
+  updated_at              DateTime
+  surveyId                String
+  name                    String
+  limit                   Int
+  logic                   Json                @default("{}")
+  action                  SurveyQuotaAction
+  endingCardId            String?
+  countPartialSubmissions Boolean             @default(false)
+  ResponseQuotaLink       ResponseQuotaLink[]
+  Survey                  Survey              @relation(fields: [surveyId], references: [id], onDelete: Cascade)
+
+  @@unique([surveyId, name])
+  @@index([surveyId])
+}
+
+model Tag {
+  id              String            @id
+  created_at      DateTime          @default(now())
+  updated_at      DateTime
+  name            String
+  environmentId   String
+  Environment     Environment       @relation(fields: [environmentId], references: [id], onDelete: Cascade)
+  TagsOnResponses TagsOnResponses[]
+
+  @@unique([environmentId, name])
+  @@index([environmentId])
+}
+
+model TagsOnResponses {
+  responseId String
+  tagId      String
+  Response   Response @relation(fields: [responseId], references: [id], onDelete: Cascade)
+  Tag        Tag      @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([responseId, tagId])
+  @@index([responseId])
+}
+
+model TeamUser {
+  created_at DateTime     @default(now())
+  updated_at DateTime
+  teamId     String
+  userId     String
+  role       TeamUserRole
+  Team       Team         @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  User       User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([teamId, userId])
+  @@index([userId])
 }
 
 enum EnvironmentType {
@@ -297,59 +604,19 @@ enum EnvironmentType {
   development
 }
 
-enum EventType {
-  code
-  noCode
-  automatic
-}
-
 enum IdentityProvider {
   email
   github
-}
-
-enum Intention {
-  survey_user_segments
-  survey_at_specific_point_in_user_journey
-  enrich_customer_profiles
-  collect_all_user_feedback_on_one_platform
-  other
-}
-
-enum MembershipRole {
-  owner
-  admin
-  editor
-  developer
-  viewer
-}
-
-enum Objective {
-  increase_conversion
-  improve_user_retention
-  increase_user_adoption
-  sharpen_marketing_messaging
-  support_sales
-  other
+  google
+  azuread
+  openid
+  saml
 }
 
 enum PipelineTriggers {
   responseCreated
   responseUpdated
   responseFinished
-}
-
-enum Plan {
-  free
-  pro
-}
-
-enum Role {
-  project_manager
-  engineer
-  founder
-  marketing_specialist
-  other
 }
 
 enum SurveyAttributeFilterCondition {
@@ -362,18 +629,116 @@ enum SurveyStatus {
   inProgress
   paused
   completed
-  archived
 }
 
 enum SurveyType {
-  email
   link
-  mobile
-  web
+  app
 }
 
 enum displayOptions {
   displayOnce
   displayMultiple
   respondMultiple
+  displaySome
+}
+
+enum ActionType {
+  code
+  noCode
+}
+
+enum AdminAuditTargetType {
+  organization
+  membership
+  project
+  environment
+  survey
+  response
+  contact
+  tag
+  team
+  invite
+  apiKey
+  webhook
+  other
+}
+
+enum AdminOrgAccessLevel {
+  read
+  manage
+}
+
+enum AdminRole {
+  superAdmin
+  supportAdmin
+  readOnly
+}
+
+enum ApiKeyPermission {
+  read
+  write
+  manage
+}
+
+enum ContactAttributeType {
+  default
+  custom
+}
+
+enum DataMigrationStatus {
+  pending
+  applied
+  failed
+}
+
+enum IntegrationType {
+  googleSheets
+  airtable
+  notion
+  slack
+}
+
+enum OrganizationRole {
+  owner
+  manager
+  member
+  billing
+}
+
+enum ProjectTeamPermission {
+  read
+  readWrite
+  manage
+}
+
+enum ResponseQuotaLinkStatus {
+  screenedIn
+  screenedOut
+}
+
+enum SurveyQuotaAction {
+  endSurvey
+  continueSurvey
+}
+
+enum TeamUserRole {
+  admin
+  contributor
+}
+
+enum WebhookSource {
+  user
+  zapier
+  make
+  n8n
+  activepieces
+}
+
+enum WidgetPlacement {
+  bottomLeft
+  bottomRight
+  topLeft
+  topRight
+  center
 }

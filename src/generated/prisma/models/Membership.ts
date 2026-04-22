@@ -25,21 +25,21 @@ export type AggregateMembership = {
 }
 
 export type MembershipMinAggregateOutputType = {
-  teamId: string | null
+  organizationId: string | null
   userId: string | null
   accepted: boolean | null
-  role: $Enums.MembershipRole | null
+  role: $Enums.OrganizationRole | null
 }
 
 export type MembershipMaxAggregateOutputType = {
-  teamId: string | null
+  organizationId: string | null
   userId: string | null
   accepted: boolean | null
-  role: $Enums.MembershipRole | null
+  role: $Enums.OrganizationRole | null
 }
 
 export type MembershipCountAggregateOutputType = {
-  teamId: number
+  organizationId: number
   userId: number
   accepted: number
   role: number
@@ -48,21 +48,21 @@ export type MembershipCountAggregateOutputType = {
 
 
 export type MembershipMinAggregateInputType = {
-  teamId?: true
+  organizationId?: true
   userId?: true
   accepted?: true
   role?: true
 }
 
 export type MembershipMaxAggregateInputType = {
-  teamId?: true
+  organizationId?: true
   userId?: true
   accepted?: true
   role?: true
 }
 
 export type MembershipCountAggregateInputType = {
-  teamId?: true
+  organizationId?: true
   userId?: true
   accepted?: true
   role?: true
@@ -142,10 +142,10 @@ export type MembershipGroupByArgs<ExtArgs extends runtime.Types.Extensions.Inter
 }
 
 export type MembershipGroupByOutputType = {
-  teamId: string
+  organizationId: string
   userId: string
   accepted: boolean
-  role: $Enums.MembershipRole
+  role: $Enums.OrganizationRole
   _count: MembershipCountAggregateOutputType | null
   _min: MembershipMinAggregateOutputType | null
   _max: MembershipMaxAggregateOutputType | null
@@ -170,38 +170,38 @@ export type MembershipWhereInput = {
   AND?: Prisma.MembershipWhereInput | Prisma.MembershipWhereInput[]
   OR?: Prisma.MembershipWhereInput[]
   NOT?: Prisma.MembershipWhereInput | Prisma.MembershipWhereInput[]
-  teamId?: Prisma.StringFilter<"Membership"> | string
+  organizationId?: Prisma.StringFilter<"Membership"> | string
   userId?: Prisma.StringFilter<"Membership"> | string
   accepted?: Prisma.BoolFilter<"Membership"> | boolean
-  role?: Prisma.EnumMembershipRoleFilter<"Membership"> | $Enums.MembershipRole
-  Team?: Prisma.XOR<Prisma.TeamScalarRelationFilter, Prisma.TeamWhereInput>
+  role?: Prisma.EnumOrganizationRoleFilter<"Membership"> | $Enums.OrganizationRole
+  Organization?: Prisma.XOR<Prisma.OrganizationScalarRelationFilter, Prisma.OrganizationWhereInput>
   User?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
 
 export type MembershipOrderByWithRelationInput = {
-  teamId?: Prisma.SortOrder
+  organizationId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   accepted?: Prisma.SortOrder
   role?: Prisma.SortOrder
-  Team?: Prisma.TeamOrderByWithRelationInput
+  Organization?: Prisma.OrganizationOrderByWithRelationInput
   User?: Prisma.UserOrderByWithRelationInput
 }
 
 export type MembershipWhereUniqueInput = Prisma.AtLeast<{
-  userId_teamId?: Prisma.MembershipUserIdTeamIdCompoundUniqueInput
+  userId_organizationId?: Prisma.MembershipUserIdOrganizationIdCompoundUniqueInput
   AND?: Prisma.MembershipWhereInput | Prisma.MembershipWhereInput[]
   OR?: Prisma.MembershipWhereInput[]
   NOT?: Prisma.MembershipWhereInput | Prisma.MembershipWhereInput[]
-  teamId?: Prisma.StringFilter<"Membership"> | string
+  organizationId?: Prisma.StringFilter<"Membership"> | string
   userId?: Prisma.StringFilter<"Membership"> | string
   accepted?: Prisma.BoolFilter<"Membership"> | boolean
-  role?: Prisma.EnumMembershipRoleFilter<"Membership"> | $Enums.MembershipRole
-  Team?: Prisma.XOR<Prisma.TeamScalarRelationFilter, Prisma.TeamWhereInput>
+  role?: Prisma.EnumOrganizationRoleFilter<"Membership"> | $Enums.OrganizationRole
+  Organization?: Prisma.XOR<Prisma.OrganizationScalarRelationFilter, Prisma.OrganizationWhereInput>
   User?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-}, "userId_teamId">
+}, "userId_organizationId">
 
 export type MembershipOrderByWithAggregationInput = {
-  teamId?: Prisma.SortOrder
+  organizationId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   accepted?: Prisma.SortOrder
   role?: Prisma.SortOrder
@@ -214,80 +214,80 @@ export type MembershipScalarWhereWithAggregatesInput = {
   AND?: Prisma.MembershipScalarWhereWithAggregatesInput | Prisma.MembershipScalarWhereWithAggregatesInput[]
   OR?: Prisma.MembershipScalarWhereWithAggregatesInput[]
   NOT?: Prisma.MembershipScalarWhereWithAggregatesInput | Prisma.MembershipScalarWhereWithAggregatesInput[]
-  teamId?: Prisma.StringWithAggregatesFilter<"Membership"> | string
+  organizationId?: Prisma.StringWithAggregatesFilter<"Membership"> | string
   userId?: Prisma.StringWithAggregatesFilter<"Membership"> | string
   accepted?: Prisma.BoolWithAggregatesFilter<"Membership"> | boolean
-  role?: Prisma.EnumMembershipRoleWithAggregatesFilter<"Membership"> | $Enums.MembershipRole
+  role?: Prisma.EnumOrganizationRoleWithAggregatesFilter<"Membership"> | $Enums.OrganizationRole
 }
 
 export type MembershipCreateInput = {
   accepted?: boolean
-  role: $Enums.MembershipRole
-  Team: Prisma.TeamCreateNestedOneWithoutMembershipInput
+  role?: $Enums.OrganizationRole
+  Organization: Prisma.OrganizationCreateNestedOneWithoutMembershipInput
   User: Prisma.UserCreateNestedOneWithoutMembershipInput
 }
 
 export type MembershipUncheckedCreateInput = {
-  teamId: string
+  organizationId: string
   userId: string
   accepted?: boolean
-  role: $Enums.MembershipRole
+  role?: $Enums.OrganizationRole
 }
 
 export type MembershipUpdateInput = {
   accepted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  role?: Prisma.EnumMembershipRoleFieldUpdateOperationsInput | $Enums.MembershipRole
-  Team?: Prisma.TeamUpdateOneRequiredWithoutMembershipNestedInput
+  role?: Prisma.EnumOrganizationRoleFieldUpdateOperationsInput | $Enums.OrganizationRole
+  Organization?: Prisma.OrganizationUpdateOneRequiredWithoutMembershipNestedInput
   User?: Prisma.UserUpdateOneRequiredWithoutMembershipNestedInput
 }
 
 export type MembershipUncheckedUpdateInput = {
-  teamId?: Prisma.StringFieldUpdateOperationsInput | string
+  organizationId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   accepted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  role?: Prisma.EnumMembershipRoleFieldUpdateOperationsInput | $Enums.MembershipRole
+  role?: Prisma.EnumOrganizationRoleFieldUpdateOperationsInput | $Enums.OrganizationRole
 }
 
 export type MembershipCreateManyInput = {
-  teamId: string
+  organizationId: string
   userId: string
   accepted?: boolean
-  role: $Enums.MembershipRole
+  role?: $Enums.OrganizationRole
 }
 
 export type MembershipUpdateManyMutationInput = {
   accepted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  role?: Prisma.EnumMembershipRoleFieldUpdateOperationsInput | $Enums.MembershipRole
+  role?: Prisma.EnumOrganizationRoleFieldUpdateOperationsInput | $Enums.OrganizationRole
 }
 
 export type MembershipUncheckedUpdateManyInput = {
-  teamId?: Prisma.StringFieldUpdateOperationsInput | string
+  organizationId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   accepted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  role?: Prisma.EnumMembershipRoleFieldUpdateOperationsInput | $Enums.MembershipRole
+  role?: Prisma.EnumOrganizationRoleFieldUpdateOperationsInput | $Enums.OrganizationRole
 }
 
-export type MembershipUserIdTeamIdCompoundUniqueInput = {
+export type MembershipUserIdOrganizationIdCompoundUniqueInput = {
   userId: string
-  teamId: string
+  organizationId: string
 }
 
 export type MembershipCountOrderByAggregateInput = {
-  teamId?: Prisma.SortOrder
+  organizationId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   accepted?: Prisma.SortOrder
   role?: Prisma.SortOrder
 }
 
 export type MembershipMaxOrderByAggregateInput = {
-  teamId?: Prisma.SortOrder
+  organizationId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   accepted?: Prisma.SortOrder
   role?: Prisma.SortOrder
 }
 
 export type MembershipMinOrderByAggregateInput = {
-  teamId?: Prisma.SortOrder
+  organizationId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   accepted?: Prisma.SortOrder
   role?: Prisma.SortOrder
@@ -301,48 +301,6 @@ export type MembershipListRelationFilter = {
 
 export type MembershipOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
-}
-
-export type MembershipCreateNestedManyWithoutTeamInput = {
-  create?: Prisma.XOR<Prisma.MembershipCreateWithoutTeamInput, Prisma.MembershipUncheckedCreateWithoutTeamInput> | Prisma.MembershipCreateWithoutTeamInput[] | Prisma.MembershipUncheckedCreateWithoutTeamInput[]
-  connectOrCreate?: Prisma.MembershipCreateOrConnectWithoutTeamInput | Prisma.MembershipCreateOrConnectWithoutTeamInput[]
-  createMany?: Prisma.MembershipCreateManyTeamInputEnvelope
-  connect?: Prisma.MembershipWhereUniqueInput | Prisma.MembershipWhereUniqueInput[]
-}
-
-export type MembershipUncheckedCreateNestedManyWithoutTeamInput = {
-  create?: Prisma.XOR<Prisma.MembershipCreateWithoutTeamInput, Prisma.MembershipUncheckedCreateWithoutTeamInput> | Prisma.MembershipCreateWithoutTeamInput[] | Prisma.MembershipUncheckedCreateWithoutTeamInput[]
-  connectOrCreate?: Prisma.MembershipCreateOrConnectWithoutTeamInput | Prisma.MembershipCreateOrConnectWithoutTeamInput[]
-  createMany?: Prisma.MembershipCreateManyTeamInputEnvelope
-  connect?: Prisma.MembershipWhereUniqueInput | Prisma.MembershipWhereUniqueInput[]
-}
-
-export type MembershipUpdateManyWithoutTeamNestedInput = {
-  create?: Prisma.XOR<Prisma.MembershipCreateWithoutTeamInput, Prisma.MembershipUncheckedCreateWithoutTeamInput> | Prisma.MembershipCreateWithoutTeamInput[] | Prisma.MembershipUncheckedCreateWithoutTeamInput[]
-  connectOrCreate?: Prisma.MembershipCreateOrConnectWithoutTeamInput | Prisma.MembershipCreateOrConnectWithoutTeamInput[]
-  upsert?: Prisma.MembershipUpsertWithWhereUniqueWithoutTeamInput | Prisma.MembershipUpsertWithWhereUniqueWithoutTeamInput[]
-  createMany?: Prisma.MembershipCreateManyTeamInputEnvelope
-  set?: Prisma.MembershipWhereUniqueInput | Prisma.MembershipWhereUniqueInput[]
-  disconnect?: Prisma.MembershipWhereUniqueInput | Prisma.MembershipWhereUniqueInput[]
-  delete?: Prisma.MembershipWhereUniqueInput | Prisma.MembershipWhereUniqueInput[]
-  connect?: Prisma.MembershipWhereUniqueInput | Prisma.MembershipWhereUniqueInput[]
-  update?: Prisma.MembershipUpdateWithWhereUniqueWithoutTeamInput | Prisma.MembershipUpdateWithWhereUniqueWithoutTeamInput[]
-  updateMany?: Prisma.MembershipUpdateManyWithWhereWithoutTeamInput | Prisma.MembershipUpdateManyWithWhereWithoutTeamInput[]
-  deleteMany?: Prisma.MembershipScalarWhereInput | Prisma.MembershipScalarWhereInput[]
-}
-
-export type MembershipUncheckedUpdateManyWithoutTeamNestedInput = {
-  create?: Prisma.XOR<Prisma.MembershipCreateWithoutTeamInput, Prisma.MembershipUncheckedCreateWithoutTeamInput> | Prisma.MembershipCreateWithoutTeamInput[] | Prisma.MembershipUncheckedCreateWithoutTeamInput[]
-  connectOrCreate?: Prisma.MembershipCreateOrConnectWithoutTeamInput | Prisma.MembershipCreateOrConnectWithoutTeamInput[]
-  upsert?: Prisma.MembershipUpsertWithWhereUniqueWithoutTeamInput | Prisma.MembershipUpsertWithWhereUniqueWithoutTeamInput[]
-  createMany?: Prisma.MembershipCreateManyTeamInputEnvelope
-  set?: Prisma.MembershipWhereUniqueInput | Prisma.MembershipWhereUniqueInput[]
-  disconnect?: Prisma.MembershipWhereUniqueInput | Prisma.MembershipWhereUniqueInput[]
-  delete?: Prisma.MembershipWhereUniqueInput | Prisma.MembershipWhereUniqueInput[]
-  connect?: Prisma.MembershipWhereUniqueInput | Prisma.MembershipWhereUniqueInput[]
-  update?: Prisma.MembershipUpdateWithWhereUniqueWithoutTeamInput | Prisma.MembershipUpdateWithWhereUniqueWithoutTeamInput[]
-  updateMany?: Prisma.MembershipUpdateManyWithWhereWithoutTeamInput | Prisma.MembershipUpdateManyWithWhereWithoutTeamInput[]
-  deleteMany?: Prisma.MembershipScalarWhereInput | Prisma.MembershipScalarWhereInput[]
 }
 
 export type MembershipCreateNestedManyWithoutUserInput = {
@@ -387,64 +345,58 @@ export type MembershipUncheckedUpdateManyWithoutUserNestedInput = {
   deleteMany?: Prisma.MembershipScalarWhereInput | Prisma.MembershipScalarWhereInput[]
 }
 
-export type MembershipCreateWithoutTeamInput = {
-  accepted?: boolean
-  role: $Enums.MembershipRole
-  User: Prisma.UserCreateNestedOneWithoutMembershipInput
+export type MembershipCreateNestedManyWithoutOrganizationInput = {
+  create?: Prisma.XOR<Prisma.MembershipCreateWithoutOrganizationInput, Prisma.MembershipUncheckedCreateWithoutOrganizationInput> | Prisma.MembershipCreateWithoutOrganizationInput[] | Prisma.MembershipUncheckedCreateWithoutOrganizationInput[]
+  connectOrCreate?: Prisma.MembershipCreateOrConnectWithoutOrganizationInput | Prisma.MembershipCreateOrConnectWithoutOrganizationInput[]
+  createMany?: Prisma.MembershipCreateManyOrganizationInputEnvelope
+  connect?: Prisma.MembershipWhereUniqueInput | Prisma.MembershipWhereUniqueInput[]
 }
 
-export type MembershipUncheckedCreateWithoutTeamInput = {
-  userId: string
-  accepted?: boolean
-  role: $Enums.MembershipRole
+export type MembershipUncheckedCreateNestedManyWithoutOrganizationInput = {
+  create?: Prisma.XOR<Prisma.MembershipCreateWithoutOrganizationInput, Prisma.MembershipUncheckedCreateWithoutOrganizationInput> | Prisma.MembershipCreateWithoutOrganizationInput[] | Prisma.MembershipUncheckedCreateWithoutOrganizationInput[]
+  connectOrCreate?: Prisma.MembershipCreateOrConnectWithoutOrganizationInput | Prisma.MembershipCreateOrConnectWithoutOrganizationInput[]
+  createMany?: Prisma.MembershipCreateManyOrganizationInputEnvelope
+  connect?: Prisma.MembershipWhereUniqueInput | Prisma.MembershipWhereUniqueInput[]
 }
 
-export type MembershipCreateOrConnectWithoutTeamInput = {
-  where: Prisma.MembershipWhereUniqueInput
-  create: Prisma.XOR<Prisma.MembershipCreateWithoutTeamInput, Prisma.MembershipUncheckedCreateWithoutTeamInput>
+export type MembershipUpdateManyWithoutOrganizationNestedInput = {
+  create?: Prisma.XOR<Prisma.MembershipCreateWithoutOrganizationInput, Prisma.MembershipUncheckedCreateWithoutOrganizationInput> | Prisma.MembershipCreateWithoutOrganizationInput[] | Prisma.MembershipUncheckedCreateWithoutOrganizationInput[]
+  connectOrCreate?: Prisma.MembershipCreateOrConnectWithoutOrganizationInput | Prisma.MembershipCreateOrConnectWithoutOrganizationInput[]
+  upsert?: Prisma.MembershipUpsertWithWhereUniqueWithoutOrganizationInput | Prisma.MembershipUpsertWithWhereUniqueWithoutOrganizationInput[]
+  createMany?: Prisma.MembershipCreateManyOrganizationInputEnvelope
+  set?: Prisma.MembershipWhereUniqueInput | Prisma.MembershipWhereUniqueInput[]
+  disconnect?: Prisma.MembershipWhereUniqueInput | Prisma.MembershipWhereUniqueInput[]
+  delete?: Prisma.MembershipWhereUniqueInput | Prisma.MembershipWhereUniqueInput[]
+  connect?: Prisma.MembershipWhereUniqueInput | Prisma.MembershipWhereUniqueInput[]
+  update?: Prisma.MembershipUpdateWithWhereUniqueWithoutOrganizationInput | Prisma.MembershipUpdateWithWhereUniqueWithoutOrganizationInput[]
+  updateMany?: Prisma.MembershipUpdateManyWithWhereWithoutOrganizationInput | Prisma.MembershipUpdateManyWithWhereWithoutOrganizationInput[]
+  deleteMany?: Prisma.MembershipScalarWhereInput | Prisma.MembershipScalarWhereInput[]
 }
 
-export type MembershipCreateManyTeamInputEnvelope = {
-  data: Prisma.MembershipCreateManyTeamInput | Prisma.MembershipCreateManyTeamInput[]
-  skipDuplicates?: boolean
-}
-
-export type MembershipUpsertWithWhereUniqueWithoutTeamInput = {
-  where: Prisma.MembershipWhereUniqueInput
-  update: Prisma.XOR<Prisma.MembershipUpdateWithoutTeamInput, Prisma.MembershipUncheckedUpdateWithoutTeamInput>
-  create: Prisma.XOR<Prisma.MembershipCreateWithoutTeamInput, Prisma.MembershipUncheckedCreateWithoutTeamInput>
-}
-
-export type MembershipUpdateWithWhereUniqueWithoutTeamInput = {
-  where: Prisma.MembershipWhereUniqueInput
-  data: Prisma.XOR<Prisma.MembershipUpdateWithoutTeamInput, Prisma.MembershipUncheckedUpdateWithoutTeamInput>
-}
-
-export type MembershipUpdateManyWithWhereWithoutTeamInput = {
-  where: Prisma.MembershipScalarWhereInput
-  data: Prisma.XOR<Prisma.MembershipUpdateManyMutationInput, Prisma.MembershipUncheckedUpdateManyWithoutTeamInput>
-}
-
-export type MembershipScalarWhereInput = {
-  AND?: Prisma.MembershipScalarWhereInput | Prisma.MembershipScalarWhereInput[]
-  OR?: Prisma.MembershipScalarWhereInput[]
-  NOT?: Prisma.MembershipScalarWhereInput | Prisma.MembershipScalarWhereInput[]
-  teamId?: Prisma.StringFilter<"Membership"> | string
-  userId?: Prisma.StringFilter<"Membership"> | string
-  accepted?: Prisma.BoolFilter<"Membership"> | boolean
-  role?: Prisma.EnumMembershipRoleFilter<"Membership"> | $Enums.MembershipRole
+export type MembershipUncheckedUpdateManyWithoutOrganizationNestedInput = {
+  create?: Prisma.XOR<Prisma.MembershipCreateWithoutOrganizationInput, Prisma.MembershipUncheckedCreateWithoutOrganizationInput> | Prisma.MembershipCreateWithoutOrganizationInput[] | Prisma.MembershipUncheckedCreateWithoutOrganizationInput[]
+  connectOrCreate?: Prisma.MembershipCreateOrConnectWithoutOrganizationInput | Prisma.MembershipCreateOrConnectWithoutOrganizationInput[]
+  upsert?: Prisma.MembershipUpsertWithWhereUniqueWithoutOrganizationInput | Prisma.MembershipUpsertWithWhereUniqueWithoutOrganizationInput[]
+  createMany?: Prisma.MembershipCreateManyOrganizationInputEnvelope
+  set?: Prisma.MembershipWhereUniqueInput | Prisma.MembershipWhereUniqueInput[]
+  disconnect?: Prisma.MembershipWhereUniqueInput | Prisma.MembershipWhereUniqueInput[]
+  delete?: Prisma.MembershipWhereUniqueInput | Prisma.MembershipWhereUniqueInput[]
+  connect?: Prisma.MembershipWhereUniqueInput | Prisma.MembershipWhereUniqueInput[]
+  update?: Prisma.MembershipUpdateWithWhereUniqueWithoutOrganizationInput | Prisma.MembershipUpdateWithWhereUniqueWithoutOrganizationInput[]
+  updateMany?: Prisma.MembershipUpdateManyWithWhereWithoutOrganizationInput | Prisma.MembershipUpdateManyWithWhereWithoutOrganizationInput[]
+  deleteMany?: Prisma.MembershipScalarWhereInput | Prisma.MembershipScalarWhereInput[]
 }
 
 export type MembershipCreateWithoutUserInput = {
   accepted?: boolean
-  role: $Enums.MembershipRole
-  Team: Prisma.TeamCreateNestedOneWithoutMembershipInput
+  role?: $Enums.OrganizationRole
+  Organization: Prisma.OrganizationCreateNestedOneWithoutMembershipInput
 }
 
 export type MembershipUncheckedCreateWithoutUserInput = {
-  teamId: string
+  organizationId: string
   accepted?: boolean
-  role: $Enums.MembershipRole
+  role?: $Enums.OrganizationRole
 }
 
 export type MembershipCreateOrConnectWithoutUserInput = {
@@ -473,115 +425,163 @@ export type MembershipUpdateManyWithWhereWithoutUserInput = {
   data: Prisma.XOR<Prisma.MembershipUpdateManyMutationInput, Prisma.MembershipUncheckedUpdateManyWithoutUserInput>
 }
 
-export type MembershipCreateManyTeamInput = {
+export type MembershipScalarWhereInput = {
+  AND?: Prisma.MembershipScalarWhereInput | Prisma.MembershipScalarWhereInput[]
+  OR?: Prisma.MembershipScalarWhereInput[]
+  NOT?: Prisma.MembershipScalarWhereInput | Prisma.MembershipScalarWhereInput[]
+  organizationId?: Prisma.StringFilter<"Membership"> | string
+  userId?: Prisma.StringFilter<"Membership"> | string
+  accepted?: Prisma.BoolFilter<"Membership"> | boolean
+  role?: Prisma.EnumOrganizationRoleFilter<"Membership"> | $Enums.OrganizationRole
+}
+
+export type MembershipCreateWithoutOrganizationInput = {
+  accepted?: boolean
+  role?: $Enums.OrganizationRole
+  User: Prisma.UserCreateNestedOneWithoutMembershipInput
+}
+
+export type MembershipUncheckedCreateWithoutOrganizationInput = {
   userId: string
   accepted?: boolean
-  role: $Enums.MembershipRole
+  role?: $Enums.OrganizationRole
 }
 
-export type MembershipUpdateWithoutTeamInput = {
-  accepted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  role?: Prisma.EnumMembershipRoleFieldUpdateOperationsInput | $Enums.MembershipRole
-  User?: Prisma.UserUpdateOneRequiredWithoutMembershipNestedInput
+export type MembershipCreateOrConnectWithoutOrganizationInput = {
+  where: Prisma.MembershipWhereUniqueInput
+  create: Prisma.XOR<Prisma.MembershipCreateWithoutOrganizationInput, Prisma.MembershipUncheckedCreateWithoutOrganizationInput>
 }
 
-export type MembershipUncheckedUpdateWithoutTeamInput = {
-  userId?: Prisma.StringFieldUpdateOperationsInput | string
-  accepted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  role?: Prisma.EnumMembershipRoleFieldUpdateOperationsInput | $Enums.MembershipRole
+export type MembershipCreateManyOrganizationInputEnvelope = {
+  data: Prisma.MembershipCreateManyOrganizationInput | Prisma.MembershipCreateManyOrganizationInput[]
+  skipDuplicates?: boolean
 }
 
-export type MembershipUncheckedUpdateManyWithoutTeamInput = {
-  userId?: Prisma.StringFieldUpdateOperationsInput | string
-  accepted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  role?: Prisma.EnumMembershipRoleFieldUpdateOperationsInput | $Enums.MembershipRole
+export type MembershipUpsertWithWhereUniqueWithoutOrganizationInput = {
+  where: Prisma.MembershipWhereUniqueInput
+  update: Prisma.XOR<Prisma.MembershipUpdateWithoutOrganizationInput, Prisma.MembershipUncheckedUpdateWithoutOrganizationInput>
+  create: Prisma.XOR<Prisma.MembershipCreateWithoutOrganizationInput, Prisma.MembershipUncheckedCreateWithoutOrganizationInput>
+}
+
+export type MembershipUpdateWithWhereUniqueWithoutOrganizationInput = {
+  where: Prisma.MembershipWhereUniqueInput
+  data: Prisma.XOR<Prisma.MembershipUpdateWithoutOrganizationInput, Prisma.MembershipUncheckedUpdateWithoutOrganizationInput>
+}
+
+export type MembershipUpdateManyWithWhereWithoutOrganizationInput = {
+  where: Prisma.MembershipScalarWhereInput
+  data: Prisma.XOR<Prisma.MembershipUpdateManyMutationInput, Prisma.MembershipUncheckedUpdateManyWithoutOrganizationInput>
 }
 
 export type MembershipCreateManyUserInput = {
-  teamId: string
+  organizationId: string
   accepted?: boolean
-  role: $Enums.MembershipRole
+  role?: $Enums.OrganizationRole
 }
 
 export type MembershipUpdateWithoutUserInput = {
   accepted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  role?: Prisma.EnumMembershipRoleFieldUpdateOperationsInput | $Enums.MembershipRole
-  Team?: Prisma.TeamUpdateOneRequiredWithoutMembershipNestedInput
+  role?: Prisma.EnumOrganizationRoleFieldUpdateOperationsInput | $Enums.OrganizationRole
+  Organization?: Prisma.OrganizationUpdateOneRequiredWithoutMembershipNestedInput
 }
 
 export type MembershipUncheckedUpdateWithoutUserInput = {
-  teamId?: Prisma.StringFieldUpdateOperationsInput | string
+  organizationId?: Prisma.StringFieldUpdateOperationsInput | string
   accepted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  role?: Prisma.EnumMembershipRoleFieldUpdateOperationsInput | $Enums.MembershipRole
+  role?: Prisma.EnumOrganizationRoleFieldUpdateOperationsInput | $Enums.OrganizationRole
 }
 
 export type MembershipUncheckedUpdateManyWithoutUserInput = {
-  teamId?: Prisma.StringFieldUpdateOperationsInput | string
+  organizationId?: Prisma.StringFieldUpdateOperationsInput | string
   accepted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  role?: Prisma.EnumMembershipRoleFieldUpdateOperationsInput | $Enums.MembershipRole
+  role?: Prisma.EnumOrganizationRoleFieldUpdateOperationsInput | $Enums.OrganizationRole
+}
+
+export type MembershipCreateManyOrganizationInput = {
+  userId: string
+  accepted?: boolean
+  role?: $Enums.OrganizationRole
+}
+
+export type MembershipUpdateWithoutOrganizationInput = {
+  accepted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  role?: Prisma.EnumOrganizationRoleFieldUpdateOperationsInput | $Enums.OrganizationRole
+  User?: Prisma.UserUpdateOneRequiredWithoutMembershipNestedInput
+}
+
+export type MembershipUncheckedUpdateWithoutOrganizationInput = {
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  accepted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  role?: Prisma.EnumOrganizationRoleFieldUpdateOperationsInput | $Enums.OrganizationRole
+}
+
+export type MembershipUncheckedUpdateManyWithoutOrganizationInput = {
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  accepted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  role?: Prisma.EnumOrganizationRoleFieldUpdateOperationsInput | $Enums.OrganizationRole
 }
 
 
 
 export type MembershipSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  teamId?: boolean
+  organizationId?: boolean
   userId?: boolean
   accepted?: boolean
   role?: boolean
-  Team?: boolean | Prisma.TeamDefaultArgs<ExtArgs>
+  Organization?: boolean | Prisma.OrganizationDefaultArgs<ExtArgs>
   User?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["membership"]>
 
 export type MembershipSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  teamId?: boolean
+  organizationId?: boolean
   userId?: boolean
   accepted?: boolean
   role?: boolean
-  Team?: boolean | Prisma.TeamDefaultArgs<ExtArgs>
+  Organization?: boolean | Prisma.OrganizationDefaultArgs<ExtArgs>
   User?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["membership"]>
 
 export type MembershipSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  teamId?: boolean
+  organizationId?: boolean
   userId?: boolean
   accepted?: boolean
   role?: boolean
-  Team?: boolean | Prisma.TeamDefaultArgs<ExtArgs>
+  Organization?: boolean | Prisma.OrganizationDefaultArgs<ExtArgs>
   User?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["membership"]>
 
 export type MembershipSelectScalar = {
-  teamId?: boolean
+  organizationId?: boolean
   userId?: boolean
   accepted?: boolean
   role?: boolean
 }
 
-export type MembershipOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"teamId" | "userId" | "accepted" | "role", ExtArgs["result"]["membership"]>
+export type MembershipOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"organizationId" | "userId" | "accepted" | "role", ExtArgs["result"]["membership"]>
 export type MembershipInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  Team?: boolean | Prisma.TeamDefaultArgs<ExtArgs>
+  Organization?: boolean | Prisma.OrganizationDefaultArgs<ExtArgs>
   User?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 export type MembershipIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  Team?: boolean | Prisma.TeamDefaultArgs<ExtArgs>
+  Organization?: boolean | Prisma.OrganizationDefaultArgs<ExtArgs>
   User?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 export type MembershipIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  Team?: boolean | Prisma.TeamDefaultArgs<ExtArgs>
+  Organization?: boolean | Prisma.OrganizationDefaultArgs<ExtArgs>
   User?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 
 export type $MembershipPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Membership"
   objects: {
-    Team: Prisma.$TeamPayload<ExtArgs>
+    Organization: Prisma.$OrganizationPayload<ExtArgs>
     User: Prisma.$UserPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
-    teamId: string
+    organizationId: string
     userId: string
     accepted: boolean
-    role: $Enums.MembershipRole
+    role: $Enums.OrganizationRole
   }, ExtArgs["result"]["membership"]>
   composites: {}
 }
@@ -665,8 +665,8 @@ export interface MembershipDelegate<ExtArgs extends runtime.Types.Extensions.Int
    * // Get first 10 Memberships
    * const memberships = await prisma.membership.findMany({ take: 10 })
    * 
-   * // Only select the `teamId`
-   * const membershipWithTeamIdOnly = await prisma.membership.findMany({ select: { teamId: true } })
+   * // Only select the `organizationId`
+   * const membershipWithOrganizationIdOnly = await prisma.membership.findMany({ select: { organizationId: true } })
    * 
    */
   findMany<T extends MembershipFindManyArgs>(args?: Prisma.SelectSubset<T, MembershipFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MembershipPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -710,9 +710,9 @@ export interface MembershipDelegate<ExtArgs extends runtime.Types.Extensions.Int
    *   ]
    * })
    * 
-   * // Create many Memberships and only return the `teamId`
-   * const membershipWithTeamIdOnly = await prisma.membership.createManyAndReturn({
-   *   select: { teamId: true },
+   * // Create many Memberships and only return the `organizationId`
+   * const membershipWithOrganizationIdOnly = await prisma.membership.createManyAndReturn({
+   *   select: { organizationId: true },
    *   data: [
    *     // ... provide data here
    *   ]
@@ -801,9 +801,9 @@ export interface MembershipDelegate<ExtArgs extends runtime.Types.Extensions.Int
    *   ]
    * })
    * 
-   * // Update zero or more Memberships and only return the `teamId`
-   * const membershipWithTeamIdOnly = await prisma.membership.updateManyAndReturn({
-   *   select: { teamId: true },
+   * // Update zero or more Memberships and only return the `organizationId`
+   * const membershipWithOrganizationIdOnly = await prisma.membership.updateManyAndReturn({
+   *   select: { organizationId: true },
    *   where: {
    *     // ... provide filter here
    *   },
@@ -976,7 +976,7 @@ readonly fields: MembershipFieldRefs;
  */
 export interface Prisma__MembershipClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  Team<T extends Prisma.TeamDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TeamDefaultArgs<ExtArgs>>): Prisma.Prisma__TeamClient<runtime.Types.Result.GetResult<Prisma.$TeamPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  Organization<T extends Prisma.OrganizationDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.OrganizationDefaultArgs<ExtArgs>>): Prisma.Prisma__OrganizationClient<runtime.Types.Result.GetResult<Prisma.$OrganizationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   User<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1007,10 +1007,10 @@ export interface Prisma__MembershipClient<T, Null = never, ExtArgs extends runti
  * Fields of the Membership model
  */
 export interface MembershipFieldRefs {
-  readonly teamId: Prisma.FieldRef<"Membership", 'String'>
+  readonly organizationId: Prisma.FieldRef<"Membership", 'String'>
   readonly userId: Prisma.FieldRef<"Membership", 'String'>
   readonly accepted: Prisma.FieldRef<"Membership", 'Boolean'>
-  readonly role: Prisma.FieldRef<"Membership", 'MembershipRole'>
+  readonly role: Prisma.FieldRef<"Membership", 'OrganizationRole'>
 }
     
 

@@ -30,6 +30,8 @@ export type WebhookMinAggregateOutputType = {
   updated_at: Date | null
   url: string | null
   environmentId: string | null
+  name: string | null
+  source: $Enums.WebhookSource | null
 }
 
 export type WebhookMaxAggregateOutputType = {
@@ -38,6 +40,8 @@ export type WebhookMaxAggregateOutputType = {
   updated_at: Date | null
   url: string | null
   environmentId: string | null
+  name: string | null
+  source: $Enums.WebhookSource | null
 }
 
 export type WebhookCountAggregateOutputType = {
@@ -47,6 +51,9 @@ export type WebhookCountAggregateOutputType = {
   url: number
   environmentId: number
   triggers: number
+  surveyIds: number
+  name: number
+  source: number
   _all: number
 }
 
@@ -57,6 +64,8 @@ export type WebhookMinAggregateInputType = {
   updated_at?: true
   url?: true
   environmentId?: true
+  name?: true
+  source?: true
 }
 
 export type WebhookMaxAggregateInputType = {
@@ -65,6 +74,8 @@ export type WebhookMaxAggregateInputType = {
   updated_at?: true
   url?: true
   environmentId?: true
+  name?: true
+  source?: true
 }
 
 export type WebhookCountAggregateInputType = {
@@ -74,6 +85,9 @@ export type WebhookCountAggregateInputType = {
   url?: true
   environmentId?: true
   triggers?: true
+  surveyIds?: true
+  name?: true
+  source?: true
   _all?: true
 }
 
@@ -156,6 +170,9 @@ export type WebhookGroupByOutputType = {
   url: string
   environmentId: string
   triggers: $Enums.PipelineTriggers[]
+  surveyIds: string[]
+  name: string | null
+  source: $Enums.WebhookSource
   _count: WebhookCountAggregateOutputType | null
   _min: WebhookMinAggregateOutputType | null
   _max: WebhookMaxAggregateOutputType | null
@@ -186,6 +203,9 @@ export type WebhookWhereInput = {
   url?: Prisma.StringFilter<"Webhook"> | string
   environmentId?: Prisma.StringFilter<"Webhook"> | string
   triggers?: Prisma.EnumPipelineTriggersNullableListFilter<"Webhook">
+  surveyIds?: Prisma.StringNullableListFilter<"Webhook">
+  name?: Prisma.StringNullableFilter<"Webhook"> | string | null
+  source?: Prisma.EnumWebhookSourceFilter<"Webhook"> | $Enums.WebhookSource
   Environment?: Prisma.XOR<Prisma.EnvironmentScalarRelationFilter, Prisma.EnvironmentWhereInput>
 }
 
@@ -196,6 +216,9 @@ export type WebhookOrderByWithRelationInput = {
   url?: Prisma.SortOrder
   environmentId?: Prisma.SortOrder
   triggers?: Prisma.SortOrder
+  surveyIds?: Prisma.SortOrder
+  name?: Prisma.SortOrderInput | Prisma.SortOrder
+  source?: Prisma.SortOrder
   Environment?: Prisma.EnvironmentOrderByWithRelationInput
 }
 
@@ -209,6 +232,9 @@ export type WebhookWhereUniqueInput = Prisma.AtLeast<{
   url?: Prisma.StringFilter<"Webhook"> | string
   environmentId?: Prisma.StringFilter<"Webhook"> | string
   triggers?: Prisma.EnumPipelineTriggersNullableListFilter<"Webhook">
+  surveyIds?: Prisma.StringNullableListFilter<"Webhook">
+  name?: Prisma.StringNullableFilter<"Webhook"> | string | null
+  source?: Prisma.EnumWebhookSourceFilter<"Webhook"> | $Enums.WebhookSource
   Environment?: Prisma.XOR<Prisma.EnvironmentScalarRelationFilter, Prisma.EnvironmentWhereInput>
 }, "id">
 
@@ -219,6 +245,9 @@ export type WebhookOrderByWithAggregationInput = {
   url?: Prisma.SortOrder
   environmentId?: Prisma.SortOrder
   triggers?: Prisma.SortOrder
+  surveyIds?: Prisma.SortOrder
+  name?: Prisma.SortOrderInput | Prisma.SortOrder
+  source?: Prisma.SortOrder
   _count?: Prisma.WebhookCountOrderByAggregateInput
   _max?: Prisma.WebhookMaxOrderByAggregateInput
   _min?: Prisma.WebhookMinOrderByAggregateInput
@@ -234,24 +263,33 @@ export type WebhookScalarWhereWithAggregatesInput = {
   url?: Prisma.StringWithAggregatesFilter<"Webhook"> | string
   environmentId?: Prisma.StringWithAggregatesFilter<"Webhook"> | string
   triggers?: Prisma.EnumPipelineTriggersNullableListFilter<"Webhook">
+  surveyIds?: Prisma.StringNullableListFilter<"Webhook">
+  name?: Prisma.StringNullableWithAggregatesFilter<"Webhook"> | string | null
+  source?: Prisma.EnumWebhookSourceWithAggregatesFilter<"Webhook"> | $Enums.WebhookSource
 }
 
 export type WebhookCreateInput = {
   id: string
   created_at?: Date | string
-  updated_at: Date | string
+  updated_at?: Date | string
   url: string
   triggers?: Prisma.WebhookCreatetriggersInput | $Enums.PipelineTriggers[]
+  surveyIds?: Prisma.WebhookCreatesurveyIdsInput | string[]
+  name?: string | null
+  source?: $Enums.WebhookSource
   Environment: Prisma.EnvironmentCreateNestedOneWithoutWebhookInput
 }
 
 export type WebhookUncheckedCreateInput = {
   id: string
   created_at?: Date | string
-  updated_at: Date | string
+  updated_at?: Date | string
   url: string
   environmentId: string
   triggers?: Prisma.WebhookCreatetriggersInput | $Enums.PipelineTriggers[]
+  surveyIds?: Prisma.WebhookCreatesurveyIdsInput | string[]
+  name?: string | null
+  source?: $Enums.WebhookSource
 }
 
 export type WebhookUpdateInput = {
@@ -260,6 +298,9 @@ export type WebhookUpdateInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   url?: Prisma.StringFieldUpdateOperationsInput | string
   triggers?: Prisma.WebhookUpdatetriggersInput | $Enums.PipelineTriggers[]
+  surveyIds?: Prisma.WebhookUpdatesurveyIdsInput | string[]
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  source?: Prisma.EnumWebhookSourceFieldUpdateOperationsInput | $Enums.WebhookSource
   Environment?: Prisma.EnvironmentUpdateOneRequiredWithoutWebhookNestedInput
 }
 
@@ -270,15 +311,21 @@ export type WebhookUncheckedUpdateInput = {
   url?: Prisma.StringFieldUpdateOperationsInput | string
   environmentId?: Prisma.StringFieldUpdateOperationsInput | string
   triggers?: Prisma.WebhookUpdatetriggersInput | $Enums.PipelineTriggers[]
+  surveyIds?: Prisma.WebhookUpdatesurveyIdsInput | string[]
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  source?: Prisma.EnumWebhookSourceFieldUpdateOperationsInput | $Enums.WebhookSource
 }
 
 export type WebhookCreateManyInput = {
   id: string
   created_at?: Date | string
-  updated_at: Date | string
+  updated_at?: Date | string
   url: string
   environmentId: string
   triggers?: Prisma.WebhookCreatetriggersInput | $Enums.PipelineTriggers[]
+  surveyIds?: Prisma.WebhookCreatesurveyIdsInput | string[]
+  name?: string | null
+  source?: $Enums.WebhookSource
 }
 
 export type WebhookUpdateManyMutationInput = {
@@ -287,6 +334,9 @@ export type WebhookUpdateManyMutationInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   url?: Prisma.StringFieldUpdateOperationsInput | string
   triggers?: Prisma.WebhookUpdatetriggersInput | $Enums.PipelineTriggers[]
+  surveyIds?: Prisma.WebhookUpdatesurveyIdsInput | string[]
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  source?: Prisma.EnumWebhookSourceFieldUpdateOperationsInput | $Enums.WebhookSource
 }
 
 export type WebhookUncheckedUpdateManyInput = {
@@ -296,6 +346,9 @@ export type WebhookUncheckedUpdateManyInput = {
   url?: Prisma.StringFieldUpdateOperationsInput | string
   environmentId?: Prisma.StringFieldUpdateOperationsInput | string
   triggers?: Prisma.WebhookUpdatetriggersInput | $Enums.PipelineTriggers[]
+  surveyIds?: Prisma.WebhookUpdatesurveyIdsInput | string[]
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  source?: Prisma.EnumWebhookSourceFieldUpdateOperationsInput | $Enums.WebhookSource
 }
 
 export type WebhookListRelationFilter = {
@@ -323,6 +376,9 @@ export type WebhookCountOrderByAggregateInput = {
   url?: Prisma.SortOrder
   environmentId?: Prisma.SortOrder
   triggers?: Prisma.SortOrder
+  surveyIds?: Prisma.SortOrder
+  name?: Prisma.SortOrder
+  source?: Prisma.SortOrder
 }
 
 export type WebhookMaxOrderByAggregateInput = {
@@ -331,6 +387,8 @@ export type WebhookMaxOrderByAggregateInput = {
   updated_at?: Prisma.SortOrder
   url?: Prisma.SortOrder
   environmentId?: Prisma.SortOrder
+  name?: Prisma.SortOrder
+  source?: Prisma.SortOrder
 }
 
 export type WebhookMinOrderByAggregateInput = {
@@ -339,6 +397,8 @@ export type WebhookMinOrderByAggregateInput = {
   updated_at?: Prisma.SortOrder
   url?: Prisma.SortOrder
   environmentId?: Prisma.SortOrder
+  name?: Prisma.SortOrder
+  source?: Prisma.SortOrder
 }
 
 export type WebhookCreateNestedManyWithoutEnvironmentInput = {
@@ -387,25 +447,44 @@ export type WebhookCreatetriggersInput = {
   set: $Enums.PipelineTriggers[]
 }
 
+export type WebhookCreatesurveyIdsInput = {
+  set: string[]
+}
+
 export type WebhookUpdatetriggersInput = {
   set?: $Enums.PipelineTriggers[]
   push?: $Enums.PipelineTriggers | $Enums.PipelineTriggers[]
 }
 
+export type WebhookUpdatesurveyIdsInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
+export type EnumWebhookSourceFieldUpdateOperationsInput = {
+  set?: $Enums.WebhookSource
+}
+
 export type WebhookCreateWithoutEnvironmentInput = {
   id: string
   created_at?: Date | string
-  updated_at: Date | string
+  updated_at?: Date | string
   url: string
   triggers?: Prisma.WebhookCreatetriggersInput | $Enums.PipelineTriggers[]
+  surveyIds?: Prisma.WebhookCreatesurveyIdsInput | string[]
+  name?: string | null
+  source?: $Enums.WebhookSource
 }
 
 export type WebhookUncheckedCreateWithoutEnvironmentInput = {
   id: string
   created_at?: Date | string
-  updated_at: Date | string
+  updated_at?: Date | string
   url: string
   triggers?: Prisma.WebhookCreatetriggersInput | $Enums.PipelineTriggers[]
+  surveyIds?: Prisma.WebhookCreatesurveyIdsInput | string[]
+  name?: string | null
+  source?: $Enums.WebhookSource
 }
 
 export type WebhookCreateOrConnectWithoutEnvironmentInput = {
@@ -444,14 +523,20 @@ export type WebhookScalarWhereInput = {
   url?: Prisma.StringFilter<"Webhook"> | string
   environmentId?: Prisma.StringFilter<"Webhook"> | string
   triggers?: Prisma.EnumPipelineTriggersNullableListFilter<"Webhook">
+  surveyIds?: Prisma.StringNullableListFilter<"Webhook">
+  name?: Prisma.StringNullableFilter<"Webhook"> | string | null
+  source?: Prisma.EnumWebhookSourceFilter<"Webhook"> | $Enums.WebhookSource
 }
 
 export type WebhookCreateManyEnvironmentInput = {
   id: string
   created_at?: Date | string
-  updated_at: Date | string
+  updated_at?: Date | string
   url: string
   triggers?: Prisma.WebhookCreatetriggersInput | $Enums.PipelineTriggers[]
+  surveyIds?: Prisma.WebhookCreatesurveyIdsInput | string[]
+  name?: string | null
+  source?: $Enums.WebhookSource
 }
 
 export type WebhookUpdateWithoutEnvironmentInput = {
@@ -460,6 +545,9 @@ export type WebhookUpdateWithoutEnvironmentInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   url?: Prisma.StringFieldUpdateOperationsInput | string
   triggers?: Prisma.WebhookUpdatetriggersInput | $Enums.PipelineTriggers[]
+  surveyIds?: Prisma.WebhookUpdatesurveyIdsInput | string[]
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  source?: Prisma.EnumWebhookSourceFieldUpdateOperationsInput | $Enums.WebhookSource
 }
 
 export type WebhookUncheckedUpdateWithoutEnvironmentInput = {
@@ -468,6 +556,9 @@ export type WebhookUncheckedUpdateWithoutEnvironmentInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   url?: Prisma.StringFieldUpdateOperationsInput | string
   triggers?: Prisma.WebhookUpdatetriggersInput | $Enums.PipelineTriggers[]
+  surveyIds?: Prisma.WebhookUpdatesurveyIdsInput | string[]
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  source?: Prisma.EnumWebhookSourceFieldUpdateOperationsInput | $Enums.WebhookSource
 }
 
 export type WebhookUncheckedUpdateManyWithoutEnvironmentInput = {
@@ -476,6 +567,9 @@ export type WebhookUncheckedUpdateManyWithoutEnvironmentInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   url?: Prisma.StringFieldUpdateOperationsInput | string
   triggers?: Prisma.WebhookUpdatetriggersInput | $Enums.PipelineTriggers[]
+  surveyIds?: Prisma.WebhookUpdatesurveyIdsInput | string[]
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  source?: Prisma.EnumWebhookSourceFieldUpdateOperationsInput | $Enums.WebhookSource
 }
 
 
@@ -487,6 +581,9 @@ export type WebhookSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   url?: boolean
   environmentId?: boolean
   triggers?: boolean
+  surveyIds?: boolean
+  name?: boolean
+  source?: boolean
   Environment?: boolean | Prisma.EnvironmentDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["webhook"]>
 
@@ -497,6 +594,9 @@ export type WebhookSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   url?: boolean
   environmentId?: boolean
   triggers?: boolean
+  surveyIds?: boolean
+  name?: boolean
+  source?: boolean
   Environment?: boolean | Prisma.EnvironmentDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["webhook"]>
 
@@ -507,6 +607,9 @@ export type WebhookSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   url?: boolean
   environmentId?: boolean
   triggers?: boolean
+  surveyIds?: boolean
+  name?: boolean
+  source?: boolean
   Environment?: boolean | Prisma.EnvironmentDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["webhook"]>
 
@@ -517,9 +620,12 @@ export type WebhookSelectScalar = {
   url?: boolean
   environmentId?: boolean
   triggers?: boolean
+  surveyIds?: boolean
+  name?: boolean
+  source?: boolean
 }
 
-export type WebhookOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "created_at" | "updated_at" | "url" | "environmentId" | "triggers", ExtArgs["result"]["webhook"]>
+export type WebhookOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "created_at" | "updated_at" | "url" | "environmentId" | "triggers" | "surveyIds" | "name" | "source", ExtArgs["result"]["webhook"]>
 export type WebhookInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   Environment?: boolean | Prisma.EnvironmentDefaultArgs<ExtArgs>
 }
@@ -542,6 +648,9 @@ export type $WebhookPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     url: string
     environmentId: string
     triggers: $Enums.PipelineTriggers[]
+    surveyIds: string[]
+    name: string | null
+    source: $Enums.WebhookSource
   }, ExtArgs["result"]["webhook"]>
   composites: {}
 }
@@ -972,6 +1081,9 @@ export interface WebhookFieldRefs {
   readonly url: Prisma.FieldRef<"Webhook", 'String'>
   readonly environmentId: Prisma.FieldRef<"Webhook", 'String'>
   readonly triggers: Prisma.FieldRef<"Webhook", 'PipelineTriggers[]'>
+  readonly surveyIds: Prisma.FieldRef<"Webhook", 'String[]'>
+  readonly name: Prisma.FieldRef<"Webhook", 'String'>
+  readonly source: Prisma.FieldRef<"Webhook", 'WebhookSource'>
 }
     
 

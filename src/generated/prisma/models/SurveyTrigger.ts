@@ -29,7 +29,7 @@ export type SurveyTriggerMinAggregateOutputType = {
   created_at: Date | null
   updated_at: Date | null
   surveyId: string | null
-  eventClassId: string | null
+  actionClassId: string | null
 }
 
 export type SurveyTriggerMaxAggregateOutputType = {
@@ -37,7 +37,7 @@ export type SurveyTriggerMaxAggregateOutputType = {
   created_at: Date | null
   updated_at: Date | null
   surveyId: string | null
-  eventClassId: string | null
+  actionClassId: string | null
 }
 
 export type SurveyTriggerCountAggregateOutputType = {
@@ -45,7 +45,7 @@ export type SurveyTriggerCountAggregateOutputType = {
   created_at: number
   updated_at: number
   surveyId: number
-  eventClassId: number
+  actionClassId: number
   _all: number
 }
 
@@ -55,7 +55,7 @@ export type SurveyTriggerMinAggregateInputType = {
   created_at?: true
   updated_at?: true
   surveyId?: true
-  eventClassId?: true
+  actionClassId?: true
 }
 
 export type SurveyTriggerMaxAggregateInputType = {
@@ -63,7 +63,7 @@ export type SurveyTriggerMaxAggregateInputType = {
   created_at?: true
   updated_at?: true
   surveyId?: true
-  eventClassId?: true
+  actionClassId?: true
 }
 
 export type SurveyTriggerCountAggregateInputType = {
@@ -71,7 +71,7 @@ export type SurveyTriggerCountAggregateInputType = {
   created_at?: true
   updated_at?: true
   surveyId?: true
-  eventClassId?: true
+  actionClassId?: true
   _all?: true
 }
 
@@ -152,7 +152,7 @@ export type SurveyTriggerGroupByOutputType = {
   created_at: Date
   updated_at: Date
   surveyId: string
-  eventClassId: string
+  actionClassId: string
   _count: SurveyTriggerCountAggregateOutputType | null
   _min: SurveyTriggerMinAggregateOutputType | null
   _max: SurveyTriggerMaxAggregateOutputType | null
@@ -181,8 +181,8 @@ export type SurveyTriggerWhereInput = {
   created_at?: Prisma.DateTimeFilter<"SurveyTrigger"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"SurveyTrigger"> | Date | string
   surveyId?: Prisma.StringFilter<"SurveyTrigger"> | string
-  eventClassId?: Prisma.StringFilter<"SurveyTrigger"> | string
-  EventClass?: Prisma.XOR<Prisma.EventClassScalarRelationFilter, Prisma.EventClassWhereInput>
+  actionClassId?: Prisma.StringFilter<"SurveyTrigger"> | string
+  ActionClass?: Prisma.XOR<Prisma.ActionClassScalarRelationFilter, Prisma.ActionClassWhereInput>
   Survey?: Prisma.XOR<Prisma.SurveyScalarRelationFilter, Prisma.SurveyWhereInput>
 }
 
@@ -191,31 +191,31 @@ export type SurveyTriggerOrderByWithRelationInput = {
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   surveyId?: Prisma.SortOrder
-  eventClassId?: Prisma.SortOrder
-  EventClass?: Prisma.EventClassOrderByWithRelationInput
+  actionClassId?: Prisma.SortOrder
+  ActionClass?: Prisma.ActionClassOrderByWithRelationInput
   Survey?: Prisma.SurveyOrderByWithRelationInput
 }
 
 export type SurveyTriggerWhereUniqueInput = Prisma.AtLeast<{
   id?: string
-  surveyId_eventClassId?: Prisma.SurveyTriggerSurveyIdEventClassIdCompoundUniqueInput
+  surveyId_actionClassId?: Prisma.SurveyTriggerSurveyIdActionClassIdCompoundUniqueInput
   AND?: Prisma.SurveyTriggerWhereInput | Prisma.SurveyTriggerWhereInput[]
   OR?: Prisma.SurveyTriggerWhereInput[]
   NOT?: Prisma.SurveyTriggerWhereInput | Prisma.SurveyTriggerWhereInput[]
   created_at?: Prisma.DateTimeFilter<"SurveyTrigger"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"SurveyTrigger"> | Date | string
   surveyId?: Prisma.StringFilter<"SurveyTrigger"> | string
-  eventClassId?: Prisma.StringFilter<"SurveyTrigger"> | string
-  EventClass?: Prisma.XOR<Prisma.EventClassScalarRelationFilter, Prisma.EventClassWhereInput>
+  actionClassId?: Prisma.StringFilter<"SurveyTrigger"> | string
+  ActionClass?: Prisma.XOR<Prisma.ActionClassScalarRelationFilter, Prisma.ActionClassWhereInput>
   Survey?: Prisma.XOR<Prisma.SurveyScalarRelationFilter, Prisma.SurveyWhereInput>
-}, "id" | "surveyId_eventClassId">
+}, "id" | "surveyId_actionClassId">
 
 export type SurveyTriggerOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   surveyId?: Prisma.SortOrder
-  eventClassId?: Prisma.SortOrder
+  actionClassId?: Prisma.SortOrder
   _count?: Prisma.SurveyTriggerCountOrderByAggregateInput
   _max?: Prisma.SurveyTriggerMaxOrderByAggregateInput
   _min?: Prisma.SurveyTriggerMinOrderByAggregateInput
@@ -229,14 +229,14 @@ export type SurveyTriggerScalarWhereWithAggregatesInput = {
   created_at?: Prisma.DateTimeWithAggregatesFilter<"SurveyTrigger"> | Date | string
   updated_at?: Prisma.DateTimeWithAggregatesFilter<"SurveyTrigger"> | Date | string
   surveyId?: Prisma.StringWithAggregatesFilter<"SurveyTrigger"> | string
-  eventClassId?: Prisma.StringWithAggregatesFilter<"SurveyTrigger"> | string
+  actionClassId?: Prisma.StringWithAggregatesFilter<"SurveyTrigger"> | string
 }
 
 export type SurveyTriggerCreateInput = {
   id: string
   created_at?: Date | string
   updated_at: Date | string
-  EventClass: Prisma.EventClassCreateNestedOneWithoutSurveyTriggerInput
+  ActionClass: Prisma.ActionClassCreateNestedOneWithoutSurveyTriggerInput
   Survey: Prisma.SurveyCreateNestedOneWithoutSurveyTriggerInput
 }
 
@@ -245,14 +245,14 @@ export type SurveyTriggerUncheckedCreateInput = {
   created_at?: Date | string
   updated_at: Date | string
   surveyId: string
-  eventClassId: string
+  actionClassId: string
 }
 
 export type SurveyTriggerUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  EventClass?: Prisma.EventClassUpdateOneRequiredWithoutSurveyTriggerNestedInput
+  ActionClass?: Prisma.ActionClassUpdateOneRequiredWithoutSurveyTriggerNestedInput
   Survey?: Prisma.SurveyUpdateOneRequiredWithoutSurveyTriggerNestedInput
 }
 
@@ -261,7 +261,7 @@ export type SurveyTriggerUncheckedUpdateInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   surveyId?: Prisma.StringFieldUpdateOperationsInput | string
-  eventClassId?: Prisma.StringFieldUpdateOperationsInput | string
+  actionClassId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type SurveyTriggerCreateManyInput = {
@@ -269,7 +269,7 @@ export type SurveyTriggerCreateManyInput = {
   created_at?: Date | string
   updated_at: Date | string
   surveyId: string
-  eventClassId: string
+  actionClassId: string
 }
 
 export type SurveyTriggerUpdateManyMutationInput = {
@@ -283,7 +283,7 @@ export type SurveyTriggerUncheckedUpdateManyInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   surveyId?: Prisma.StringFieldUpdateOperationsInput | string
-  eventClassId?: Prisma.StringFieldUpdateOperationsInput | string
+  actionClassId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type SurveyTriggerListRelationFilter = {
@@ -296,9 +296,9 @@ export type SurveyTriggerOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type SurveyTriggerSurveyIdEventClassIdCompoundUniqueInput = {
+export type SurveyTriggerSurveyIdActionClassIdCompoundUniqueInput = {
   surveyId: string
-  eventClassId: string
+  actionClassId: string
 }
 
 export type SurveyTriggerCountOrderByAggregateInput = {
@@ -306,7 +306,7 @@ export type SurveyTriggerCountOrderByAggregateInput = {
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   surveyId?: Prisma.SortOrder
-  eventClassId?: Prisma.SortOrder
+  actionClassId?: Prisma.SortOrder
 }
 
 export type SurveyTriggerMaxOrderByAggregateInput = {
@@ -314,7 +314,7 @@ export type SurveyTriggerMaxOrderByAggregateInput = {
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   surveyId?: Prisma.SortOrder
-  eventClassId?: Prisma.SortOrder
+  actionClassId?: Prisma.SortOrder
 }
 
 export type SurveyTriggerMinOrderByAggregateInput = {
@@ -322,49 +322,7 @@ export type SurveyTriggerMinOrderByAggregateInput = {
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   surveyId?: Prisma.SortOrder
-  eventClassId?: Prisma.SortOrder
-}
-
-export type SurveyTriggerCreateNestedManyWithoutEventClassInput = {
-  create?: Prisma.XOR<Prisma.SurveyTriggerCreateWithoutEventClassInput, Prisma.SurveyTriggerUncheckedCreateWithoutEventClassInput> | Prisma.SurveyTriggerCreateWithoutEventClassInput[] | Prisma.SurveyTriggerUncheckedCreateWithoutEventClassInput[]
-  connectOrCreate?: Prisma.SurveyTriggerCreateOrConnectWithoutEventClassInput | Prisma.SurveyTriggerCreateOrConnectWithoutEventClassInput[]
-  createMany?: Prisma.SurveyTriggerCreateManyEventClassInputEnvelope
-  connect?: Prisma.SurveyTriggerWhereUniqueInput | Prisma.SurveyTriggerWhereUniqueInput[]
-}
-
-export type SurveyTriggerUncheckedCreateNestedManyWithoutEventClassInput = {
-  create?: Prisma.XOR<Prisma.SurveyTriggerCreateWithoutEventClassInput, Prisma.SurveyTriggerUncheckedCreateWithoutEventClassInput> | Prisma.SurveyTriggerCreateWithoutEventClassInput[] | Prisma.SurveyTriggerUncheckedCreateWithoutEventClassInput[]
-  connectOrCreate?: Prisma.SurveyTriggerCreateOrConnectWithoutEventClassInput | Prisma.SurveyTriggerCreateOrConnectWithoutEventClassInput[]
-  createMany?: Prisma.SurveyTriggerCreateManyEventClassInputEnvelope
-  connect?: Prisma.SurveyTriggerWhereUniqueInput | Prisma.SurveyTriggerWhereUniqueInput[]
-}
-
-export type SurveyTriggerUpdateManyWithoutEventClassNestedInput = {
-  create?: Prisma.XOR<Prisma.SurveyTriggerCreateWithoutEventClassInput, Prisma.SurveyTriggerUncheckedCreateWithoutEventClassInput> | Prisma.SurveyTriggerCreateWithoutEventClassInput[] | Prisma.SurveyTriggerUncheckedCreateWithoutEventClassInput[]
-  connectOrCreate?: Prisma.SurveyTriggerCreateOrConnectWithoutEventClassInput | Prisma.SurveyTriggerCreateOrConnectWithoutEventClassInput[]
-  upsert?: Prisma.SurveyTriggerUpsertWithWhereUniqueWithoutEventClassInput | Prisma.SurveyTriggerUpsertWithWhereUniqueWithoutEventClassInput[]
-  createMany?: Prisma.SurveyTriggerCreateManyEventClassInputEnvelope
-  set?: Prisma.SurveyTriggerWhereUniqueInput | Prisma.SurveyTriggerWhereUniqueInput[]
-  disconnect?: Prisma.SurveyTriggerWhereUniqueInput | Prisma.SurveyTriggerWhereUniqueInput[]
-  delete?: Prisma.SurveyTriggerWhereUniqueInput | Prisma.SurveyTriggerWhereUniqueInput[]
-  connect?: Prisma.SurveyTriggerWhereUniqueInput | Prisma.SurveyTriggerWhereUniqueInput[]
-  update?: Prisma.SurveyTriggerUpdateWithWhereUniqueWithoutEventClassInput | Prisma.SurveyTriggerUpdateWithWhereUniqueWithoutEventClassInput[]
-  updateMany?: Prisma.SurveyTriggerUpdateManyWithWhereWithoutEventClassInput | Prisma.SurveyTriggerUpdateManyWithWhereWithoutEventClassInput[]
-  deleteMany?: Prisma.SurveyTriggerScalarWhereInput | Prisma.SurveyTriggerScalarWhereInput[]
-}
-
-export type SurveyTriggerUncheckedUpdateManyWithoutEventClassNestedInput = {
-  create?: Prisma.XOR<Prisma.SurveyTriggerCreateWithoutEventClassInput, Prisma.SurveyTriggerUncheckedCreateWithoutEventClassInput> | Prisma.SurveyTriggerCreateWithoutEventClassInput[] | Prisma.SurveyTriggerUncheckedCreateWithoutEventClassInput[]
-  connectOrCreate?: Prisma.SurveyTriggerCreateOrConnectWithoutEventClassInput | Prisma.SurveyTriggerCreateOrConnectWithoutEventClassInput[]
-  upsert?: Prisma.SurveyTriggerUpsertWithWhereUniqueWithoutEventClassInput | Prisma.SurveyTriggerUpsertWithWhereUniqueWithoutEventClassInput[]
-  createMany?: Prisma.SurveyTriggerCreateManyEventClassInputEnvelope
-  set?: Prisma.SurveyTriggerWhereUniqueInput | Prisma.SurveyTriggerWhereUniqueInput[]
-  disconnect?: Prisma.SurveyTriggerWhereUniqueInput | Prisma.SurveyTriggerWhereUniqueInput[]
-  delete?: Prisma.SurveyTriggerWhereUniqueInput | Prisma.SurveyTriggerWhereUniqueInput[]
-  connect?: Prisma.SurveyTriggerWhereUniqueInput | Prisma.SurveyTriggerWhereUniqueInput[]
-  update?: Prisma.SurveyTriggerUpdateWithWhereUniqueWithoutEventClassInput | Prisma.SurveyTriggerUpdateWithWhereUniqueWithoutEventClassInput[]
-  updateMany?: Prisma.SurveyTriggerUpdateManyWithWhereWithoutEventClassInput | Prisma.SurveyTriggerUpdateManyWithWhereWithoutEventClassInput[]
-  deleteMany?: Prisma.SurveyTriggerScalarWhereInput | Prisma.SurveyTriggerScalarWhereInput[]
+  actionClassId?: Prisma.SortOrder
 }
 
 export type SurveyTriggerCreateNestedManyWithoutSurveyInput = {
@@ -409,69 +367,60 @@ export type SurveyTriggerUncheckedUpdateManyWithoutSurveyNestedInput = {
   deleteMany?: Prisma.SurveyTriggerScalarWhereInput | Prisma.SurveyTriggerScalarWhereInput[]
 }
 
-export type SurveyTriggerCreateWithoutEventClassInput = {
-  id: string
-  created_at?: Date | string
-  updated_at: Date | string
-  Survey: Prisma.SurveyCreateNestedOneWithoutSurveyTriggerInput
+export type SurveyTriggerCreateNestedManyWithoutActionClassInput = {
+  create?: Prisma.XOR<Prisma.SurveyTriggerCreateWithoutActionClassInput, Prisma.SurveyTriggerUncheckedCreateWithoutActionClassInput> | Prisma.SurveyTriggerCreateWithoutActionClassInput[] | Prisma.SurveyTriggerUncheckedCreateWithoutActionClassInput[]
+  connectOrCreate?: Prisma.SurveyTriggerCreateOrConnectWithoutActionClassInput | Prisma.SurveyTriggerCreateOrConnectWithoutActionClassInput[]
+  createMany?: Prisma.SurveyTriggerCreateManyActionClassInputEnvelope
+  connect?: Prisma.SurveyTriggerWhereUniqueInput | Prisma.SurveyTriggerWhereUniqueInput[]
 }
 
-export type SurveyTriggerUncheckedCreateWithoutEventClassInput = {
-  id: string
-  created_at?: Date | string
-  updated_at: Date | string
-  surveyId: string
+export type SurveyTriggerUncheckedCreateNestedManyWithoutActionClassInput = {
+  create?: Prisma.XOR<Prisma.SurveyTriggerCreateWithoutActionClassInput, Prisma.SurveyTriggerUncheckedCreateWithoutActionClassInput> | Prisma.SurveyTriggerCreateWithoutActionClassInput[] | Prisma.SurveyTriggerUncheckedCreateWithoutActionClassInput[]
+  connectOrCreate?: Prisma.SurveyTriggerCreateOrConnectWithoutActionClassInput | Prisma.SurveyTriggerCreateOrConnectWithoutActionClassInput[]
+  createMany?: Prisma.SurveyTriggerCreateManyActionClassInputEnvelope
+  connect?: Prisma.SurveyTriggerWhereUniqueInput | Prisma.SurveyTriggerWhereUniqueInput[]
 }
 
-export type SurveyTriggerCreateOrConnectWithoutEventClassInput = {
-  where: Prisma.SurveyTriggerWhereUniqueInput
-  create: Prisma.XOR<Prisma.SurveyTriggerCreateWithoutEventClassInput, Prisma.SurveyTriggerUncheckedCreateWithoutEventClassInput>
+export type SurveyTriggerUpdateManyWithoutActionClassNestedInput = {
+  create?: Prisma.XOR<Prisma.SurveyTriggerCreateWithoutActionClassInput, Prisma.SurveyTriggerUncheckedCreateWithoutActionClassInput> | Prisma.SurveyTriggerCreateWithoutActionClassInput[] | Prisma.SurveyTriggerUncheckedCreateWithoutActionClassInput[]
+  connectOrCreate?: Prisma.SurveyTriggerCreateOrConnectWithoutActionClassInput | Prisma.SurveyTriggerCreateOrConnectWithoutActionClassInput[]
+  upsert?: Prisma.SurveyTriggerUpsertWithWhereUniqueWithoutActionClassInput | Prisma.SurveyTriggerUpsertWithWhereUniqueWithoutActionClassInput[]
+  createMany?: Prisma.SurveyTriggerCreateManyActionClassInputEnvelope
+  set?: Prisma.SurveyTriggerWhereUniqueInput | Prisma.SurveyTriggerWhereUniqueInput[]
+  disconnect?: Prisma.SurveyTriggerWhereUniqueInput | Prisma.SurveyTriggerWhereUniqueInput[]
+  delete?: Prisma.SurveyTriggerWhereUniqueInput | Prisma.SurveyTriggerWhereUniqueInput[]
+  connect?: Prisma.SurveyTriggerWhereUniqueInput | Prisma.SurveyTriggerWhereUniqueInput[]
+  update?: Prisma.SurveyTriggerUpdateWithWhereUniqueWithoutActionClassInput | Prisma.SurveyTriggerUpdateWithWhereUniqueWithoutActionClassInput[]
+  updateMany?: Prisma.SurveyTriggerUpdateManyWithWhereWithoutActionClassInput | Prisma.SurveyTriggerUpdateManyWithWhereWithoutActionClassInput[]
+  deleteMany?: Prisma.SurveyTriggerScalarWhereInput | Prisma.SurveyTriggerScalarWhereInput[]
 }
 
-export type SurveyTriggerCreateManyEventClassInputEnvelope = {
-  data: Prisma.SurveyTriggerCreateManyEventClassInput | Prisma.SurveyTriggerCreateManyEventClassInput[]
-  skipDuplicates?: boolean
-}
-
-export type SurveyTriggerUpsertWithWhereUniqueWithoutEventClassInput = {
-  where: Prisma.SurveyTriggerWhereUniqueInput
-  update: Prisma.XOR<Prisma.SurveyTriggerUpdateWithoutEventClassInput, Prisma.SurveyTriggerUncheckedUpdateWithoutEventClassInput>
-  create: Prisma.XOR<Prisma.SurveyTriggerCreateWithoutEventClassInput, Prisma.SurveyTriggerUncheckedCreateWithoutEventClassInput>
-}
-
-export type SurveyTriggerUpdateWithWhereUniqueWithoutEventClassInput = {
-  where: Prisma.SurveyTriggerWhereUniqueInput
-  data: Prisma.XOR<Prisma.SurveyTriggerUpdateWithoutEventClassInput, Prisma.SurveyTriggerUncheckedUpdateWithoutEventClassInput>
-}
-
-export type SurveyTriggerUpdateManyWithWhereWithoutEventClassInput = {
-  where: Prisma.SurveyTriggerScalarWhereInput
-  data: Prisma.XOR<Prisma.SurveyTriggerUpdateManyMutationInput, Prisma.SurveyTriggerUncheckedUpdateManyWithoutEventClassInput>
-}
-
-export type SurveyTriggerScalarWhereInput = {
-  AND?: Prisma.SurveyTriggerScalarWhereInput | Prisma.SurveyTriggerScalarWhereInput[]
-  OR?: Prisma.SurveyTriggerScalarWhereInput[]
-  NOT?: Prisma.SurveyTriggerScalarWhereInput | Prisma.SurveyTriggerScalarWhereInput[]
-  id?: Prisma.StringFilter<"SurveyTrigger"> | string
-  created_at?: Prisma.DateTimeFilter<"SurveyTrigger"> | Date | string
-  updated_at?: Prisma.DateTimeFilter<"SurveyTrigger"> | Date | string
-  surveyId?: Prisma.StringFilter<"SurveyTrigger"> | string
-  eventClassId?: Prisma.StringFilter<"SurveyTrigger"> | string
+export type SurveyTriggerUncheckedUpdateManyWithoutActionClassNestedInput = {
+  create?: Prisma.XOR<Prisma.SurveyTriggerCreateWithoutActionClassInput, Prisma.SurveyTriggerUncheckedCreateWithoutActionClassInput> | Prisma.SurveyTriggerCreateWithoutActionClassInput[] | Prisma.SurveyTriggerUncheckedCreateWithoutActionClassInput[]
+  connectOrCreate?: Prisma.SurveyTriggerCreateOrConnectWithoutActionClassInput | Prisma.SurveyTriggerCreateOrConnectWithoutActionClassInput[]
+  upsert?: Prisma.SurveyTriggerUpsertWithWhereUniqueWithoutActionClassInput | Prisma.SurveyTriggerUpsertWithWhereUniqueWithoutActionClassInput[]
+  createMany?: Prisma.SurveyTriggerCreateManyActionClassInputEnvelope
+  set?: Prisma.SurveyTriggerWhereUniqueInput | Prisma.SurveyTriggerWhereUniqueInput[]
+  disconnect?: Prisma.SurveyTriggerWhereUniqueInput | Prisma.SurveyTriggerWhereUniqueInput[]
+  delete?: Prisma.SurveyTriggerWhereUniqueInput | Prisma.SurveyTriggerWhereUniqueInput[]
+  connect?: Prisma.SurveyTriggerWhereUniqueInput | Prisma.SurveyTriggerWhereUniqueInput[]
+  update?: Prisma.SurveyTriggerUpdateWithWhereUniqueWithoutActionClassInput | Prisma.SurveyTriggerUpdateWithWhereUniqueWithoutActionClassInput[]
+  updateMany?: Prisma.SurveyTriggerUpdateManyWithWhereWithoutActionClassInput | Prisma.SurveyTriggerUpdateManyWithWhereWithoutActionClassInput[]
+  deleteMany?: Prisma.SurveyTriggerScalarWhereInput | Prisma.SurveyTriggerScalarWhereInput[]
 }
 
 export type SurveyTriggerCreateWithoutSurveyInput = {
   id: string
   created_at?: Date | string
   updated_at: Date | string
-  EventClass: Prisma.EventClassCreateNestedOneWithoutSurveyTriggerInput
+  ActionClass: Prisma.ActionClassCreateNestedOneWithoutSurveyTriggerInput
 }
 
 export type SurveyTriggerUncheckedCreateWithoutSurveyInput = {
   id: string
   created_at?: Date | string
   updated_at: Date | string
-  eventClassId: string
+  actionClassId: string
 }
 
 export type SurveyTriggerCreateOrConnectWithoutSurveyInput = {
@@ -500,60 +449,111 @@ export type SurveyTriggerUpdateManyWithWhereWithoutSurveyInput = {
   data: Prisma.XOR<Prisma.SurveyTriggerUpdateManyMutationInput, Prisma.SurveyTriggerUncheckedUpdateManyWithoutSurveyInput>
 }
 
-export type SurveyTriggerCreateManyEventClassInput = {
+export type SurveyTriggerScalarWhereInput = {
+  AND?: Prisma.SurveyTriggerScalarWhereInput | Prisma.SurveyTriggerScalarWhereInput[]
+  OR?: Prisma.SurveyTriggerScalarWhereInput[]
+  NOT?: Prisma.SurveyTriggerScalarWhereInput | Prisma.SurveyTriggerScalarWhereInput[]
+  id?: Prisma.StringFilter<"SurveyTrigger"> | string
+  created_at?: Prisma.DateTimeFilter<"SurveyTrigger"> | Date | string
+  updated_at?: Prisma.DateTimeFilter<"SurveyTrigger"> | Date | string
+  surveyId?: Prisma.StringFilter<"SurveyTrigger"> | string
+  actionClassId?: Prisma.StringFilter<"SurveyTrigger"> | string
+}
+
+export type SurveyTriggerCreateWithoutActionClassInput = {
+  id: string
+  created_at?: Date | string
+  updated_at: Date | string
+  Survey: Prisma.SurveyCreateNestedOneWithoutSurveyTriggerInput
+}
+
+export type SurveyTriggerUncheckedCreateWithoutActionClassInput = {
   id: string
   created_at?: Date | string
   updated_at: Date | string
   surveyId: string
 }
 
-export type SurveyTriggerUpdateWithoutEventClassInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  Survey?: Prisma.SurveyUpdateOneRequiredWithoutSurveyTriggerNestedInput
+export type SurveyTriggerCreateOrConnectWithoutActionClassInput = {
+  where: Prisma.SurveyTriggerWhereUniqueInput
+  create: Prisma.XOR<Prisma.SurveyTriggerCreateWithoutActionClassInput, Prisma.SurveyTriggerUncheckedCreateWithoutActionClassInput>
 }
 
-export type SurveyTriggerUncheckedUpdateWithoutEventClassInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  surveyId?: Prisma.StringFieldUpdateOperationsInput | string
+export type SurveyTriggerCreateManyActionClassInputEnvelope = {
+  data: Prisma.SurveyTriggerCreateManyActionClassInput | Prisma.SurveyTriggerCreateManyActionClassInput[]
+  skipDuplicates?: boolean
 }
 
-export type SurveyTriggerUncheckedUpdateManyWithoutEventClassInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  surveyId?: Prisma.StringFieldUpdateOperationsInput | string
+export type SurveyTriggerUpsertWithWhereUniqueWithoutActionClassInput = {
+  where: Prisma.SurveyTriggerWhereUniqueInput
+  update: Prisma.XOR<Prisma.SurveyTriggerUpdateWithoutActionClassInput, Prisma.SurveyTriggerUncheckedUpdateWithoutActionClassInput>
+  create: Prisma.XOR<Prisma.SurveyTriggerCreateWithoutActionClassInput, Prisma.SurveyTriggerUncheckedCreateWithoutActionClassInput>
+}
+
+export type SurveyTriggerUpdateWithWhereUniqueWithoutActionClassInput = {
+  where: Prisma.SurveyTriggerWhereUniqueInput
+  data: Prisma.XOR<Prisma.SurveyTriggerUpdateWithoutActionClassInput, Prisma.SurveyTriggerUncheckedUpdateWithoutActionClassInput>
+}
+
+export type SurveyTriggerUpdateManyWithWhereWithoutActionClassInput = {
+  where: Prisma.SurveyTriggerScalarWhereInput
+  data: Prisma.XOR<Prisma.SurveyTriggerUpdateManyMutationInput, Prisma.SurveyTriggerUncheckedUpdateManyWithoutActionClassInput>
 }
 
 export type SurveyTriggerCreateManySurveyInput = {
   id: string
   created_at?: Date | string
   updated_at: Date | string
-  eventClassId: string
+  actionClassId: string
 }
 
 export type SurveyTriggerUpdateWithoutSurveyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  EventClass?: Prisma.EventClassUpdateOneRequiredWithoutSurveyTriggerNestedInput
+  ActionClass?: Prisma.ActionClassUpdateOneRequiredWithoutSurveyTriggerNestedInput
 }
 
 export type SurveyTriggerUncheckedUpdateWithoutSurveyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  eventClassId?: Prisma.StringFieldUpdateOperationsInput | string
+  actionClassId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type SurveyTriggerUncheckedUpdateManyWithoutSurveyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  eventClassId?: Prisma.StringFieldUpdateOperationsInput | string
+  actionClassId?: Prisma.StringFieldUpdateOperationsInput | string
+}
+
+export type SurveyTriggerCreateManyActionClassInput = {
+  id: string
+  created_at?: Date | string
+  updated_at: Date | string
+  surveyId: string
+}
+
+export type SurveyTriggerUpdateWithoutActionClassInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  Survey?: Prisma.SurveyUpdateOneRequiredWithoutSurveyTriggerNestedInput
+}
+
+export type SurveyTriggerUncheckedUpdateWithoutActionClassInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  surveyId?: Prisma.StringFieldUpdateOperationsInput | string
+}
+
+export type SurveyTriggerUncheckedUpdateManyWithoutActionClassInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  surveyId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 
@@ -563,8 +563,8 @@ export type SurveyTriggerSelect<ExtArgs extends runtime.Types.Extensions.Interna
   created_at?: boolean
   updated_at?: boolean
   surveyId?: boolean
-  eventClassId?: boolean
-  EventClass?: boolean | Prisma.EventClassDefaultArgs<ExtArgs>
+  actionClassId?: boolean
+  ActionClass?: boolean | Prisma.ActionClassDefaultArgs<ExtArgs>
   Survey?: boolean | Prisma.SurveyDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["surveyTrigger"]>
 
@@ -573,8 +573,8 @@ export type SurveyTriggerSelectCreateManyAndReturn<ExtArgs extends runtime.Types
   created_at?: boolean
   updated_at?: boolean
   surveyId?: boolean
-  eventClassId?: boolean
-  EventClass?: boolean | Prisma.EventClassDefaultArgs<ExtArgs>
+  actionClassId?: boolean
+  ActionClass?: boolean | Prisma.ActionClassDefaultArgs<ExtArgs>
   Survey?: boolean | Prisma.SurveyDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["surveyTrigger"]>
 
@@ -583,8 +583,8 @@ export type SurveyTriggerSelectUpdateManyAndReturn<ExtArgs extends runtime.Types
   created_at?: boolean
   updated_at?: boolean
   surveyId?: boolean
-  eventClassId?: boolean
-  EventClass?: boolean | Prisma.EventClassDefaultArgs<ExtArgs>
+  actionClassId?: boolean
+  ActionClass?: boolean | Prisma.ActionClassDefaultArgs<ExtArgs>
   Survey?: boolean | Prisma.SurveyDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["surveyTrigger"]>
 
@@ -593,27 +593,27 @@ export type SurveyTriggerSelectScalar = {
   created_at?: boolean
   updated_at?: boolean
   surveyId?: boolean
-  eventClassId?: boolean
+  actionClassId?: boolean
 }
 
-export type SurveyTriggerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "created_at" | "updated_at" | "surveyId" | "eventClassId", ExtArgs["result"]["surveyTrigger"]>
+export type SurveyTriggerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "created_at" | "updated_at" | "surveyId" | "actionClassId", ExtArgs["result"]["surveyTrigger"]>
 export type SurveyTriggerInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  EventClass?: boolean | Prisma.EventClassDefaultArgs<ExtArgs>
+  ActionClass?: boolean | Prisma.ActionClassDefaultArgs<ExtArgs>
   Survey?: boolean | Prisma.SurveyDefaultArgs<ExtArgs>
 }
 export type SurveyTriggerIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  EventClass?: boolean | Prisma.EventClassDefaultArgs<ExtArgs>
+  ActionClass?: boolean | Prisma.ActionClassDefaultArgs<ExtArgs>
   Survey?: boolean | Prisma.SurveyDefaultArgs<ExtArgs>
 }
 export type SurveyTriggerIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  EventClass?: boolean | Prisma.EventClassDefaultArgs<ExtArgs>
+  ActionClass?: boolean | Prisma.ActionClassDefaultArgs<ExtArgs>
   Survey?: boolean | Prisma.SurveyDefaultArgs<ExtArgs>
 }
 
 export type $SurveyTriggerPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "SurveyTrigger"
   objects: {
-    EventClass: Prisma.$EventClassPayload<ExtArgs>
+    ActionClass: Prisma.$ActionClassPayload<ExtArgs>
     Survey: Prisma.$SurveyPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -621,7 +621,7 @@ export type $SurveyTriggerPayload<ExtArgs extends runtime.Types.Extensions.Inter
     created_at: Date
     updated_at: Date
     surveyId: string
-    eventClassId: string
+    actionClassId: string
   }, ExtArgs["result"]["surveyTrigger"]>
   composites: {}
 }
@@ -1016,7 +1016,7 @@ readonly fields: SurveyTriggerFieldRefs;
  */
 export interface Prisma__SurveyTriggerClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  EventClass<T extends Prisma.EventClassDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.EventClassDefaultArgs<ExtArgs>>): Prisma.Prisma__EventClassClient<runtime.Types.Result.GetResult<Prisma.$EventClassPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  ActionClass<T extends Prisma.ActionClassDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ActionClassDefaultArgs<ExtArgs>>): Prisma.Prisma__ActionClassClient<runtime.Types.Result.GetResult<Prisma.$ActionClassPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   Survey<T extends Prisma.SurveyDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SurveyDefaultArgs<ExtArgs>>): Prisma.Prisma__SurveyClient<runtime.Types.Result.GetResult<Prisma.$SurveyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1051,7 +1051,7 @@ export interface SurveyTriggerFieldRefs {
   readonly created_at: Prisma.FieldRef<"SurveyTrigger", 'DateTime'>
   readonly updated_at: Prisma.FieldRef<"SurveyTrigger", 'DateTime'>
   readonly surveyId: Prisma.FieldRef<"SurveyTrigger", 'String'>
-  readonly eventClassId: Prisma.FieldRef<"SurveyTrigger", 'String'>
+  readonly actionClassId: Prisma.FieldRef<"SurveyTrigger", 'String'>
 }
     
 

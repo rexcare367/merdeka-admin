@@ -35,9 +35,12 @@ export type UserMinAggregateOutputType = {
   identityProvider: $Enums.IdentityProvider | null
   identityProviderAccountId: string | null
   groupId: string | null
-  objective: $Enums.Objective | null
-  role: $Enums.Role | null
-  onboardingCompleted: boolean | null
+  backupCodes: string | null
+  twoFactorEnabled: boolean | null
+  twoFactorSecret: string | null
+  locale: string | null
+  isActive: boolean | null
+  lastLoginAt: Date | null
 }
 
 export type UserMaxAggregateOutputType = {
@@ -51,9 +54,12 @@ export type UserMaxAggregateOutputType = {
   identityProvider: $Enums.IdentityProvider | null
   identityProviderAccountId: string | null
   groupId: string | null
-  objective: $Enums.Objective | null
-  role: $Enums.Role | null
-  onboardingCompleted: boolean | null
+  backupCodes: string | null
+  twoFactorEnabled: boolean | null
+  twoFactorSecret: string | null
+  locale: string | null
+  isActive: boolean | null
+  lastLoginAt: Date | null
 }
 
 export type UserCountAggregateOutputType = {
@@ -67,9 +73,13 @@ export type UserCountAggregateOutputType = {
   identityProvider: number
   identityProviderAccountId: number
   groupId: number
-  objective: number
-  role: number
-  onboardingCompleted: number
+  notificationSettings: number
+  backupCodes: number
+  twoFactorEnabled: number
+  twoFactorSecret: number
+  locale: number
+  isActive: number
+  lastLoginAt: number
   _all: number
 }
 
@@ -85,9 +95,12 @@ export type UserMinAggregateInputType = {
   identityProvider?: true
   identityProviderAccountId?: true
   groupId?: true
-  objective?: true
-  role?: true
-  onboardingCompleted?: true
+  backupCodes?: true
+  twoFactorEnabled?: true
+  twoFactorSecret?: true
+  locale?: true
+  isActive?: true
+  lastLoginAt?: true
 }
 
 export type UserMaxAggregateInputType = {
@@ -101,9 +114,12 @@ export type UserMaxAggregateInputType = {
   identityProvider?: true
   identityProviderAccountId?: true
   groupId?: true
-  objective?: true
-  role?: true
-  onboardingCompleted?: true
+  backupCodes?: true
+  twoFactorEnabled?: true
+  twoFactorSecret?: true
+  locale?: true
+  isActive?: true
+  lastLoginAt?: true
 }
 
 export type UserCountAggregateInputType = {
@@ -117,9 +133,13 @@ export type UserCountAggregateInputType = {
   identityProvider?: true
   identityProviderAccountId?: true
   groupId?: true
-  objective?: true
-  role?: true
-  onboardingCompleted?: true
+  notificationSettings?: true
+  backupCodes?: true
+  twoFactorEnabled?: true
+  twoFactorSecret?: true
+  locale?: true
+  isActive?: true
+  lastLoginAt?: true
   _all?: true
 }
 
@@ -199,16 +219,20 @@ export type UserGroupByOutputType = {
   id: string
   created_at: Date
   updated_at: Date
-  name: string | null
+  name: string
   email: string
   email_verified: Date | null
   password: string | null
   identityProvider: $Enums.IdentityProvider
   identityProviderAccountId: string | null
   groupId: string | null
-  objective: $Enums.Objective | null
-  role: $Enums.Role | null
-  onboardingCompleted: boolean
+  notificationSettings: runtime.JsonValue
+  backupCodes: string | null
+  twoFactorEnabled: boolean
+  twoFactorSecret: string | null
+  locale: string
+  isActive: boolean
+  lastLoginAt: Date | null
   _count: UserCountAggregateOutputType | null
   _min: UserMinAggregateOutputType | null
   _max: UserMaxAggregateOutputType | null
@@ -236,40 +260,52 @@ export type UserWhereInput = {
   id?: Prisma.StringFilter<"User"> | string
   created_at?: Prisma.DateTimeFilter<"User"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"User"> | Date | string
-  name?: Prisma.StringNullableFilter<"User"> | string | null
+  name?: Prisma.StringFilter<"User"> | string
   email?: Prisma.StringFilter<"User"> | string
   email_verified?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   password?: Prisma.StringNullableFilter<"User"> | string | null
   identityProvider?: Prisma.EnumIdentityProviderFilter<"User"> | $Enums.IdentityProvider
   identityProviderAccountId?: Prisma.StringNullableFilter<"User"> | string | null
   groupId?: Prisma.StringNullableFilter<"User"> | string | null
-  objective?: Prisma.EnumObjectiveNullableFilter<"User"> | $Enums.Objective | null
-  role?: Prisma.EnumRoleNullableFilter<"User"> | $Enums.Role | null
-  onboardingCompleted?: Prisma.BoolFilter<"User"> | boolean
+  notificationSettings?: Prisma.JsonFilter<"User">
+  backupCodes?: Prisma.StringNullableFilter<"User"> | string | null
+  twoFactorEnabled?: Prisma.BoolFilter<"User"> | boolean
+  twoFactorSecret?: Prisma.StringNullableFilter<"User"> | string | null
+  locale?: Prisma.StringFilter<"User"> | string
+  isActive?: Prisma.BoolFilter<"User"> | boolean
+  lastLoginAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   Account?: Prisma.AccountListRelationFilter
   Invite_Invite_acceptorIdToUser?: Prisma.InviteListRelationFilter
   Invite_Invite_creatorIdToUser?: Prisma.InviteListRelationFilter
   Membership?: Prisma.MembershipListRelationFilter
+  Survey?: Prisma.SurveyListRelationFilter
+  TeamUser?: Prisma.TeamUserListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
-  name?: Prisma.SortOrderInput | Prisma.SortOrder
+  name?: Prisma.SortOrder
   email?: Prisma.SortOrder
   email_verified?: Prisma.SortOrderInput | Prisma.SortOrder
   password?: Prisma.SortOrderInput | Prisma.SortOrder
   identityProvider?: Prisma.SortOrder
   identityProviderAccountId?: Prisma.SortOrderInput | Prisma.SortOrder
   groupId?: Prisma.SortOrderInput | Prisma.SortOrder
-  objective?: Prisma.SortOrderInput | Prisma.SortOrder
-  role?: Prisma.SortOrderInput | Prisma.SortOrder
-  onboardingCompleted?: Prisma.SortOrder
+  notificationSettings?: Prisma.SortOrder
+  backupCodes?: Prisma.SortOrderInput | Prisma.SortOrder
+  twoFactorEnabled?: Prisma.SortOrder
+  twoFactorSecret?: Prisma.SortOrderInput | Prisma.SortOrder
+  locale?: Prisma.SortOrder
+  isActive?: Prisma.SortOrder
+  lastLoginAt?: Prisma.SortOrderInput | Prisma.SortOrder
   Account?: Prisma.AccountOrderByRelationAggregateInput
   Invite_Invite_acceptorIdToUser?: Prisma.InviteOrderByRelationAggregateInput
   Invite_Invite_creatorIdToUser?: Prisma.InviteOrderByRelationAggregateInput
   Membership?: Prisma.MembershipOrderByRelationAggregateInput
+  Survey?: Prisma.SurveyOrderByRelationAggregateInput
+  TeamUser?: Prisma.TeamUserOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -280,35 +316,45 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   created_at?: Prisma.DateTimeFilter<"User"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"User"> | Date | string
-  name?: Prisma.StringNullableFilter<"User"> | string | null
+  name?: Prisma.StringFilter<"User"> | string
   email_verified?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   password?: Prisma.StringNullableFilter<"User"> | string | null
   identityProvider?: Prisma.EnumIdentityProviderFilter<"User"> | $Enums.IdentityProvider
   identityProviderAccountId?: Prisma.StringNullableFilter<"User"> | string | null
   groupId?: Prisma.StringNullableFilter<"User"> | string | null
-  objective?: Prisma.EnumObjectiveNullableFilter<"User"> | $Enums.Objective | null
-  role?: Prisma.EnumRoleNullableFilter<"User"> | $Enums.Role | null
-  onboardingCompleted?: Prisma.BoolFilter<"User"> | boolean
+  notificationSettings?: Prisma.JsonFilter<"User">
+  backupCodes?: Prisma.StringNullableFilter<"User"> | string | null
+  twoFactorEnabled?: Prisma.BoolFilter<"User"> | boolean
+  twoFactorSecret?: Prisma.StringNullableFilter<"User"> | string | null
+  locale?: Prisma.StringFilter<"User"> | string
+  isActive?: Prisma.BoolFilter<"User"> | boolean
+  lastLoginAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   Account?: Prisma.AccountListRelationFilter
   Invite_Invite_acceptorIdToUser?: Prisma.InviteListRelationFilter
   Invite_Invite_creatorIdToUser?: Prisma.InviteListRelationFilter
   Membership?: Prisma.MembershipListRelationFilter
+  Survey?: Prisma.SurveyListRelationFilter
+  TeamUser?: Prisma.TeamUserListRelationFilter
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
-  name?: Prisma.SortOrderInput | Prisma.SortOrder
+  name?: Prisma.SortOrder
   email?: Prisma.SortOrder
   email_verified?: Prisma.SortOrderInput | Prisma.SortOrder
   password?: Prisma.SortOrderInput | Prisma.SortOrder
   identityProvider?: Prisma.SortOrder
   identityProviderAccountId?: Prisma.SortOrderInput | Prisma.SortOrder
   groupId?: Prisma.SortOrderInput | Prisma.SortOrder
-  objective?: Prisma.SortOrderInput | Prisma.SortOrder
-  role?: Prisma.SortOrderInput | Prisma.SortOrder
-  onboardingCompleted?: Prisma.SortOrder
+  notificationSettings?: Prisma.SortOrder
+  backupCodes?: Prisma.SortOrderInput | Prisma.SortOrder
+  twoFactorEnabled?: Prisma.SortOrder
+  twoFactorSecret?: Prisma.SortOrderInput | Prisma.SortOrder
+  locale?: Prisma.SortOrder
+  isActive?: Prisma.SortOrder
+  lastLoginAt?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
   _max?: Prisma.UserMaxOrderByAggregateInput
   _min?: Prisma.UserMinOrderByAggregateInput
@@ -321,144 +367,184 @@ export type UserScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"User"> | string
   created_at?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   updated_at?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
-  name?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  name?: Prisma.StringWithAggregatesFilter<"User"> | string
   email?: Prisma.StringWithAggregatesFilter<"User"> | string
   email_verified?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   password?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   identityProvider?: Prisma.EnumIdentityProviderWithAggregatesFilter<"User"> | $Enums.IdentityProvider
   identityProviderAccountId?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   groupId?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
-  objective?: Prisma.EnumObjectiveNullableWithAggregatesFilter<"User"> | $Enums.Objective | null
-  role?: Prisma.EnumRoleNullableWithAggregatesFilter<"User"> | $Enums.Role | null
-  onboardingCompleted?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
+  notificationSettings?: Prisma.JsonWithAggregatesFilter<"User">
+  backupCodes?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  twoFactorEnabled?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
+  twoFactorSecret?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  locale?: Prisma.StringWithAggregatesFilter<"User"> | string
+  isActive?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
+  lastLoginAt?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
 }
 
 export type UserCreateInput = {
   id: string
   created_at?: Date | string
   updated_at: Date | string
-  name?: string | null
+  name: string
   email: string
   email_verified?: Date | string | null
   password?: string | null
   identityProvider?: $Enums.IdentityProvider
   identityProviderAccountId?: string | null
   groupId?: string | null
-  objective?: $Enums.Objective | null
-  role?: $Enums.Role | null
-  onboardingCompleted?: boolean
+  notificationSettings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  backupCodes?: string | null
+  twoFactorEnabled?: boolean
+  twoFactorSecret?: string | null
+  locale?: string
+  isActive?: boolean
+  lastLoginAt?: Date | string | null
   Account?: Prisma.AccountCreateNestedManyWithoutUserInput
   Invite_Invite_acceptorIdToUser?: Prisma.InviteCreateNestedManyWithoutUser_Invite_acceptorIdToUserInput
   Invite_Invite_creatorIdToUser?: Prisma.InviteCreateNestedManyWithoutUser_Invite_creatorIdToUserInput
   Membership?: Prisma.MembershipCreateNestedManyWithoutUserInput
+  Survey?: Prisma.SurveyCreateNestedManyWithoutUserInput
+  TeamUser?: Prisma.TeamUserCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
   id: string
   created_at?: Date | string
   updated_at: Date | string
-  name?: string | null
+  name: string
   email: string
   email_verified?: Date | string | null
   password?: string | null
   identityProvider?: $Enums.IdentityProvider
   identityProviderAccountId?: string | null
   groupId?: string | null
-  objective?: $Enums.Objective | null
-  role?: $Enums.Role | null
-  onboardingCompleted?: boolean
+  notificationSettings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  backupCodes?: string | null
+  twoFactorEnabled?: boolean
+  twoFactorSecret?: string | null
+  locale?: string
+  isActive?: boolean
+  lastLoginAt?: Date | string | null
   Account?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   Invite_Invite_acceptorIdToUser?: Prisma.InviteUncheckedCreateNestedManyWithoutUser_Invite_acceptorIdToUserInput
   Invite_Invite_creatorIdToUser?: Prisma.InviteUncheckedCreateNestedManyWithoutUser_Invite_creatorIdToUserInput
   Membership?: Prisma.MembershipUncheckedCreateNestedManyWithoutUserInput
+  Survey?: Prisma.SurveyUncheckedCreateNestedManyWithoutUserInput
+  TeamUser?: Prisma.TeamUserUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   email_verified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   identityProvider?: Prisma.EnumIdentityProviderFieldUpdateOperationsInput | $Enums.IdentityProvider
   identityProviderAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  objective?: Prisma.NullableEnumObjectiveFieldUpdateOperationsInput | $Enums.Objective | null
-  role?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
-  onboardingCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notificationSettings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  backupCodes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   Account?: Prisma.AccountUpdateManyWithoutUserNestedInput
   Invite_Invite_acceptorIdToUser?: Prisma.InviteUpdateManyWithoutUser_Invite_acceptorIdToUserNestedInput
   Invite_Invite_creatorIdToUser?: Prisma.InviteUpdateManyWithoutUser_Invite_creatorIdToUserNestedInput
   Membership?: Prisma.MembershipUpdateManyWithoutUserNestedInput
+  Survey?: Prisma.SurveyUpdateManyWithoutUserNestedInput
+  TeamUser?: Prisma.TeamUserUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   email_verified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   identityProvider?: Prisma.EnumIdentityProviderFieldUpdateOperationsInput | $Enums.IdentityProvider
   identityProviderAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  objective?: Prisma.NullableEnumObjectiveFieldUpdateOperationsInput | $Enums.Objective | null
-  role?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
-  onboardingCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notificationSettings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  backupCodes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   Account?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   Invite_Invite_acceptorIdToUser?: Prisma.InviteUncheckedUpdateManyWithoutUser_Invite_acceptorIdToUserNestedInput
   Invite_Invite_creatorIdToUser?: Prisma.InviteUncheckedUpdateManyWithoutUser_Invite_creatorIdToUserNestedInput
   Membership?: Prisma.MembershipUncheckedUpdateManyWithoutUserNestedInput
+  Survey?: Prisma.SurveyUncheckedUpdateManyWithoutUserNestedInput
+  TeamUser?: Prisma.TeamUserUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
   id: string
   created_at?: Date | string
   updated_at: Date | string
-  name?: string | null
+  name: string
   email: string
   email_verified?: Date | string | null
   password?: string | null
   identityProvider?: $Enums.IdentityProvider
   identityProviderAccountId?: string | null
   groupId?: string | null
-  objective?: $Enums.Objective | null
-  role?: $Enums.Role | null
-  onboardingCompleted?: boolean
+  notificationSettings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  backupCodes?: string | null
+  twoFactorEnabled?: boolean
+  twoFactorSecret?: string | null
+  locale?: string
+  isActive?: boolean
+  lastLoginAt?: Date | string | null
 }
 
 export type UserUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   email_verified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   identityProvider?: Prisma.EnumIdentityProviderFieldUpdateOperationsInput | $Enums.IdentityProvider
   identityProviderAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  objective?: Prisma.NullableEnumObjectiveFieldUpdateOperationsInput | $Enums.Objective | null
-  role?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
-  onboardingCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notificationSettings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  backupCodes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type UserUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   email_verified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   identityProvider?: Prisma.EnumIdentityProviderFieldUpdateOperationsInput | $Enums.IdentityProvider
   identityProviderAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  objective?: Prisma.NullableEnumObjectiveFieldUpdateOperationsInput | $Enums.Objective | null
-  role?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
-  onboardingCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notificationSettings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  backupCodes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type UserScalarRelationFilter = {
@@ -482,9 +568,13 @@ export type UserCountOrderByAggregateInput = {
   identityProvider?: Prisma.SortOrder
   identityProviderAccountId?: Prisma.SortOrder
   groupId?: Prisma.SortOrder
-  objective?: Prisma.SortOrder
-  role?: Prisma.SortOrder
-  onboardingCompleted?: Prisma.SortOrder
+  notificationSettings?: Prisma.SortOrder
+  backupCodes?: Prisma.SortOrder
+  twoFactorEnabled?: Prisma.SortOrder
+  twoFactorSecret?: Prisma.SortOrder
+  locale?: Prisma.SortOrder
+  isActive?: Prisma.SortOrder
+  lastLoginAt?: Prisma.SortOrder
 }
 
 export type UserMaxOrderByAggregateInput = {
@@ -498,9 +588,12 @@ export type UserMaxOrderByAggregateInput = {
   identityProvider?: Prisma.SortOrder
   identityProviderAccountId?: Prisma.SortOrder
   groupId?: Prisma.SortOrder
-  objective?: Prisma.SortOrder
-  role?: Prisma.SortOrder
-  onboardingCompleted?: Prisma.SortOrder
+  backupCodes?: Prisma.SortOrder
+  twoFactorEnabled?: Prisma.SortOrder
+  twoFactorSecret?: Prisma.SortOrder
+  locale?: Prisma.SortOrder
+  isActive?: Prisma.SortOrder
+  lastLoginAt?: Prisma.SortOrder
 }
 
 export type UserMinOrderByAggregateInput = {
@@ -514,9 +607,12 @@ export type UserMinOrderByAggregateInput = {
   identityProvider?: Prisma.SortOrder
   identityProviderAccountId?: Prisma.SortOrder
   groupId?: Prisma.SortOrder
-  objective?: Prisma.SortOrder
-  role?: Prisma.SortOrder
-  onboardingCompleted?: Prisma.SortOrder
+  backupCodes?: Prisma.SortOrder
+  twoFactorEnabled?: Prisma.SortOrder
+  twoFactorSecret?: Prisma.SortOrder
+  locale?: Prisma.SortOrder
+  isActive?: Prisma.SortOrder
+  lastLoginAt?: Prisma.SortOrder
 }
 
 export type UserCreateNestedOneWithoutAccountInput = {
@@ -577,54 +673,88 @@ export type UserUpdateOneRequiredWithoutMembershipNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutMembershipInput, Prisma.UserUpdateWithoutMembershipInput>, Prisma.UserUncheckedUpdateWithoutMembershipInput>
 }
 
+export type UserCreateNestedOneWithoutSurveyInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSurveyInput, Prisma.UserUncheckedCreateWithoutSurveyInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSurveyInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneWithoutSurveyNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSurveyInput, Prisma.UserUncheckedCreateWithoutSurveyInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSurveyInput
+  upsert?: Prisma.UserUpsertWithoutSurveyInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSurveyInput, Prisma.UserUpdateWithoutSurveyInput>, Prisma.UserUncheckedUpdateWithoutSurveyInput>
+}
+
 export type EnumIdentityProviderFieldUpdateOperationsInput = {
   set?: $Enums.IdentityProvider
 }
 
-export type NullableEnumObjectiveFieldUpdateOperationsInput = {
-  set?: $Enums.Objective | null
+export type UserCreateNestedOneWithoutTeamUserInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutTeamUserInput, Prisma.UserUncheckedCreateWithoutTeamUserInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTeamUserInput
+  connect?: Prisma.UserWhereUniqueInput
 }
 
-export type NullableEnumRoleFieldUpdateOperationsInput = {
-  set?: $Enums.Role | null
+export type UserUpdateOneRequiredWithoutTeamUserNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutTeamUserInput, Prisma.UserUncheckedCreateWithoutTeamUserInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTeamUserInput
+  upsert?: Prisma.UserUpsertWithoutTeamUserInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutTeamUserInput, Prisma.UserUpdateWithoutTeamUserInput>, Prisma.UserUncheckedUpdateWithoutTeamUserInput>
 }
 
 export type UserCreateWithoutAccountInput = {
   id: string
   created_at?: Date | string
   updated_at: Date | string
-  name?: string | null
+  name: string
   email: string
   email_verified?: Date | string | null
   password?: string | null
   identityProvider?: $Enums.IdentityProvider
   identityProviderAccountId?: string | null
   groupId?: string | null
-  objective?: $Enums.Objective | null
-  role?: $Enums.Role | null
-  onboardingCompleted?: boolean
+  notificationSettings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  backupCodes?: string | null
+  twoFactorEnabled?: boolean
+  twoFactorSecret?: string | null
+  locale?: string
+  isActive?: boolean
+  lastLoginAt?: Date | string | null
   Invite_Invite_acceptorIdToUser?: Prisma.InviteCreateNestedManyWithoutUser_Invite_acceptorIdToUserInput
   Invite_Invite_creatorIdToUser?: Prisma.InviteCreateNestedManyWithoutUser_Invite_creatorIdToUserInput
   Membership?: Prisma.MembershipCreateNestedManyWithoutUserInput
+  Survey?: Prisma.SurveyCreateNestedManyWithoutUserInput
+  TeamUser?: Prisma.TeamUserCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutAccountInput = {
   id: string
   created_at?: Date | string
   updated_at: Date | string
-  name?: string | null
+  name: string
   email: string
   email_verified?: Date | string | null
   password?: string | null
   identityProvider?: $Enums.IdentityProvider
   identityProviderAccountId?: string | null
   groupId?: string | null
-  objective?: $Enums.Objective | null
-  role?: $Enums.Role | null
-  onboardingCompleted?: boolean
+  notificationSettings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  backupCodes?: string | null
+  twoFactorEnabled?: boolean
+  twoFactorSecret?: string | null
+  locale?: string
+  isActive?: boolean
+  lastLoginAt?: Date | string | null
   Invite_Invite_acceptorIdToUser?: Prisma.InviteUncheckedCreateNestedManyWithoutUser_Invite_acceptorIdToUserInput
   Invite_Invite_creatorIdToUser?: Prisma.InviteUncheckedCreateNestedManyWithoutUser_Invite_creatorIdToUserInput
   Membership?: Prisma.MembershipUncheckedCreateNestedManyWithoutUserInput
+  Survey?: Prisma.SurveyUncheckedCreateNestedManyWithoutUserInput
+  TeamUser?: Prisma.TeamUserUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAccountInput = {
@@ -647,76 +777,100 @@ export type UserUpdateWithoutAccountInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   email_verified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   identityProvider?: Prisma.EnumIdentityProviderFieldUpdateOperationsInput | $Enums.IdentityProvider
   identityProviderAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  objective?: Prisma.NullableEnumObjectiveFieldUpdateOperationsInput | $Enums.Objective | null
-  role?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
-  onboardingCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notificationSettings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  backupCodes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   Invite_Invite_acceptorIdToUser?: Prisma.InviteUpdateManyWithoutUser_Invite_acceptorIdToUserNestedInput
   Invite_Invite_creatorIdToUser?: Prisma.InviteUpdateManyWithoutUser_Invite_creatorIdToUserNestedInput
   Membership?: Prisma.MembershipUpdateManyWithoutUserNestedInput
+  Survey?: Prisma.SurveyUpdateManyWithoutUserNestedInput
+  TeamUser?: Prisma.TeamUserUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAccountInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   email_verified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   identityProvider?: Prisma.EnumIdentityProviderFieldUpdateOperationsInput | $Enums.IdentityProvider
   identityProviderAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  objective?: Prisma.NullableEnumObjectiveFieldUpdateOperationsInput | $Enums.Objective | null
-  role?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
-  onboardingCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notificationSettings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  backupCodes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   Invite_Invite_acceptorIdToUser?: Prisma.InviteUncheckedUpdateManyWithoutUser_Invite_acceptorIdToUserNestedInput
   Invite_Invite_creatorIdToUser?: Prisma.InviteUncheckedUpdateManyWithoutUser_Invite_creatorIdToUserNestedInput
   Membership?: Prisma.MembershipUncheckedUpdateManyWithoutUserNestedInput
+  Survey?: Prisma.SurveyUncheckedUpdateManyWithoutUserNestedInput
+  TeamUser?: Prisma.TeamUserUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutInvite_Invite_acceptorIdToUserInput = {
   id: string
   created_at?: Date | string
   updated_at: Date | string
-  name?: string | null
+  name: string
   email: string
   email_verified?: Date | string | null
   password?: string | null
   identityProvider?: $Enums.IdentityProvider
   identityProviderAccountId?: string | null
   groupId?: string | null
-  objective?: $Enums.Objective | null
-  role?: $Enums.Role | null
-  onboardingCompleted?: boolean
+  notificationSettings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  backupCodes?: string | null
+  twoFactorEnabled?: boolean
+  twoFactorSecret?: string | null
+  locale?: string
+  isActive?: boolean
+  lastLoginAt?: Date | string | null
   Account?: Prisma.AccountCreateNestedManyWithoutUserInput
   Invite_Invite_creatorIdToUser?: Prisma.InviteCreateNestedManyWithoutUser_Invite_creatorIdToUserInput
   Membership?: Prisma.MembershipCreateNestedManyWithoutUserInput
+  Survey?: Prisma.SurveyCreateNestedManyWithoutUserInput
+  TeamUser?: Prisma.TeamUserCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutInvite_Invite_acceptorIdToUserInput = {
   id: string
   created_at?: Date | string
   updated_at: Date | string
-  name?: string | null
+  name: string
   email: string
   email_verified?: Date | string | null
   password?: string | null
   identityProvider?: $Enums.IdentityProvider
   identityProviderAccountId?: string | null
   groupId?: string | null
-  objective?: $Enums.Objective | null
-  role?: $Enums.Role | null
-  onboardingCompleted?: boolean
+  notificationSettings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  backupCodes?: string | null
+  twoFactorEnabled?: boolean
+  twoFactorSecret?: string | null
+  locale?: string
+  isActive?: boolean
+  lastLoginAt?: Date | string | null
   Account?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   Invite_Invite_creatorIdToUser?: Prisma.InviteUncheckedCreateNestedManyWithoutUser_Invite_creatorIdToUserInput
   Membership?: Prisma.MembershipUncheckedCreateNestedManyWithoutUserInput
+  Survey?: Prisma.SurveyUncheckedCreateNestedManyWithoutUserInput
+  TeamUser?: Prisma.TeamUserUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutInvite_Invite_acceptorIdToUserInput = {
@@ -728,38 +882,50 @@ export type UserCreateWithoutInvite_Invite_creatorIdToUserInput = {
   id: string
   created_at?: Date | string
   updated_at: Date | string
-  name?: string | null
+  name: string
   email: string
   email_verified?: Date | string | null
   password?: string | null
   identityProvider?: $Enums.IdentityProvider
   identityProviderAccountId?: string | null
   groupId?: string | null
-  objective?: $Enums.Objective | null
-  role?: $Enums.Role | null
-  onboardingCompleted?: boolean
+  notificationSettings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  backupCodes?: string | null
+  twoFactorEnabled?: boolean
+  twoFactorSecret?: string | null
+  locale?: string
+  isActive?: boolean
+  lastLoginAt?: Date | string | null
   Account?: Prisma.AccountCreateNestedManyWithoutUserInput
   Invite_Invite_acceptorIdToUser?: Prisma.InviteCreateNestedManyWithoutUser_Invite_acceptorIdToUserInput
   Membership?: Prisma.MembershipCreateNestedManyWithoutUserInput
+  Survey?: Prisma.SurveyCreateNestedManyWithoutUserInput
+  TeamUser?: Prisma.TeamUserCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutInvite_Invite_creatorIdToUserInput = {
   id: string
   created_at?: Date | string
   updated_at: Date | string
-  name?: string | null
+  name: string
   email: string
   email_verified?: Date | string | null
   password?: string | null
   identityProvider?: $Enums.IdentityProvider
   identityProviderAccountId?: string | null
   groupId?: string | null
-  objective?: $Enums.Objective | null
-  role?: $Enums.Role | null
-  onboardingCompleted?: boolean
+  notificationSettings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  backupCodes?: string | null
+  twoFactorEnabled?: boolean
+  twoFactorSecret?: string | null
+  locale?: string
+  isActive?: boolean
+  lastLoginAt?: Date | string | null
   Account?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   Invite_Invite_acceptorIdToUser?: Prisma.InviteUncheckedCreateNestedManyWithoutUser_Invite_acceptorIdToUserInput
   Membership?: Prisma.MembershipUncheckedCreateNestedManyWithoutUserInput
+  Survey?: Prisma.SurveyUncheckedCreateNestedManyWithoutUserInput
+  TeamUser?: Prisma.TeamUserUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutInvite_Invite_creatorIdToUserInput = {
@@ -782,38 +948,50 @@ export type UserUpdateWithoutInvite_Invite_acceptorIdToUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   email_verified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   identityProvider?: Prisma.EnumIdentityProviderFieldUpdateOperationsInput | $Enums.IdentityProvider
   identityProviderAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  objective?: Prisma.NullableEnumObjectiveFieldUpdateOperationsInput | $Enums.Objective | null
-  role?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
-  onboardingCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notificationSettings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  backupCodes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   Account?: Prisma.AccountUpdateManyWithoutUserNestedInput
   Invite_Invite_creatorIdToUser?: Prisma.InviteUpdateManyWithoutUser_Invite_creatorIdToUserNestedInput
   Membership?: Prisma.MembershipUpdateManyWithoutUserNestedInput
+  Survey?: Prisma.SurveyUpdateManyWithoutUserNestedInput
+  TeamUser?: Prisma.TeamUserUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutInvite_Invite_acceptorIdToUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   email_verified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   identityProvider?: Prisma.EnumIdentityProviderFieldUpdateOperationsInput | $Enums.IdentityProvider
   identityProviderAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  objective?: Prisma.NullableEnumObjectiveFieldUpdateOperationsInput | $Enums.Objective | null
-  role?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
-  onboardingCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notificationSettings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  backupCodes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   Account?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   Invite_Invite_creatorIdToUser?: Prisma.InviteUncheckedUpdateManyWithoutUser_Invite_creatorIdToUserNestedInput
   Membership?: Prisma.MembershipUncheckedUpdateManyWithoutUserNestedInput
+  Survey?: Prisma.SurveyUncheckedUpdateManyWithoutUserNestedInput
+  TeamUser?: Prisma.TeamUserUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutInvite_Invite_creatorIdToUserInput = {
@@ -831,76 +1009,100 @@ export type UserUpdateWithoutInvite_Invite_creatorIdToUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   email_verified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   identityProvider?: Prisma.EnumIdentityProviderFieldUpdateOperationsInput | $Enums.IdentityProvider
   identityProviderAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  objective?: Prisma.NullableEnumObjectiveFieldUpdateOperationsInput | $Enums.Objective | null
-  role?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
-  onboardingCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notificationSettings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  backupCodes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   Account?: Prisma.AccountUpdateManyWithoutUserNestedInput
   Invite_Invite_acceptorIdToUser?: Prisma.InviteUpdateManyWithoutUser_Invite_acceptorIdToUserNestedInput
   Membership?: Prisma.MembershipUpdateManyWithoutUserNestedInput
+  Survey?: Prisma.SurveyUpdateManyWithoutUserNestedInput
+  TeamUser?: Prisma.TeamUserUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutInvite_Invite_creatorIdToUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   email_verified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   identityProvider?: Prisma.EnumIdentityProviderFieldUpdateOperationsInput | $Enums.IdentityProvider
   identityProviderAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  objective?: Prisma.NullableEnumObjectiveFieldUpdateOperationsInput | $Enums.Objective | null
-  role?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
-  onboardingCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notificationSettings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  backupCodes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   Account?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   Invite_Invite_acceptorIdToUser?: Prisma.InviteUncheckedUpdateManyWithoutUser_Invite_acceptorIdToUserNestedInput
   Membership?: Prisma.MembershipUncheckedUpdateManyWithoutUserNestedInput
+  Survey?: Prisma.SurveyUncheckedUpdateManyWithoutUserNestedInput
+  TeamUser?: Prisma.TeamUserUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutMembershipInput = {
   id: string
   created_at?: Date | string
   updated_at: Date | string
-  name?: string | null
+  name: string
   email: string
   email_verified?: Date | string | null
   password?: string | null
   identityProvider?: $Enums.IdentityProvider
   identityProviderAccountId?: string | null
   groupId?: string | null
-  objective?: $Enums.Objective | null
-  role?: $Enums.Role | null
-  onboardingCompleted?: boolean
+  notificationSettings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  backupCodes?: string | null
+  twoFactorEnabled?: boolean
+  twoFactorSecret?: string | null
+  locale?: string
+  isActive?: boolean
+  lastLoginAt?: Date | string | null
   Account?: Prisma.AccountCreateNestedManyWithoutUserInput
   Invite_Invite_acceptorIdToUser?: Prisma.InviteCreateNestedManyWithoutUser_Invite_acceptorIdToUserInput
   Invite_Invite_creatorIdToUser?: Prisma.InviteCreateNestedManyWithoutUser_Invite_creatorIdToUserInput
+  Survey?: Prisma.SurveyCreateNestedManyWithoutUserInput
+  TeamUser?: Prisma.TeamUserCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutMembershipInput = {
   id: string
   created_at?: Date | string
   updated_at: Date | string
-  name?: string | null
+  name: string
   email: string
   email_verified?: Date | string | null
   password?: string | null
   identityProvider?: $Enums.IdentityProvider
   identityProviderAccountId?: string | null
   groupId?: string | null
-  objective?: $Enums.Objective | null
-  role?: $Enums.Role | null
-  onboardingCompleted?: boolean
+  notificationSettings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  backupCodes?: string | null
+  twoFactorEnabled?: boolean
+  twoFactorSecret?: string | null
+  locale?: string
+  isActive?: boolean
+  lastLoginAt?: Date | string | null
   Account?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   Invite_Invite_acceptorIdToUser?: Prisma.InviteUncheckedCreateNestedManyWithoutUser_Invite_acceptorIdToUserInput
   Invite_Invite_creatorIdToUser?: Prisma.InviteUncheckedCreateNestedManyWithoutUser_Invite_creatorIdToUserInput
+  Survey?: Prisma.SurveyUncheckedCreateNestedManyWithoutUserInput
+  TeamUser?: Prisma.TeamUserUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutMembershipInput = {
@@ -923,38 +1125,282 @@ export type UserUpdateWithoutMembershipInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   email_verified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   identityProvider?: Prisma.EnumIdentityProviderFieldUpdateOperationsInput | $Enums.IdentityProvider
   identityProviderAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  objective?: Prisma.NullableEnumObjectiveFieldUpdateOperationsInput | $Enums.Objective | null
-  role?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
-  onboardingCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notificationSettings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  backupCodes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   Account?: Prisma.AccountUpdateManyWithoutUserNestedInput
   Invite_Invite_acceptorIdToUser?: Prisma.InviteUpdateManyWithoutUser_Invite_acceptorIdToUserNestedInput
   Invite_Invite_creatorIdToUser?: Prisma.InviteUpdateManyWithoutUser_Invite_creatorIdToUserNestedInput
+  Survey?: Prisma.SurveyUpdateManyWithoutUserNestedInput
+  TeamUser?: Prisma.TeamUserUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMembershipInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   email_verified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   identityProvider?: Prisma.EnumIdentityProviderFieldUpdateOperationsInput | $Enums.IdentityProvider
   identityProviderAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  objective?: Prisma.NullableEnumObjectiveFieldUpdateOperationsInput | $Enums.Objective | null
-  role?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
-  onboardingCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notificationSettings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  backupCodes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   Account?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   Invite_Invite_acceptorIdToUser?: Prisma.InviteUncheckedUpdateManyWithoutUser_Invite_acceptorIdToUserNestedInput
   Invite_Invite_creatorIdToUser?: Prisma.InviteUncheckedUpdateManyWithoutUser_Invite_creatorIdToUserNestedInput
+  Survey?: Prisma.SurveyUncheckedUpdateManyWithoutUserNestedInput
+  TeamUser?: Prisma.TeamUserUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutSurveyInput = {
+  id: string
+  created_at?: Date | string
+  updated_at: Date | string
+  name: string
+  email: string
+  email_verified?: Date | string | null
+  password?: string | null
+  identityProvider?: $Enums.IdentityProvider
+  identityProviderAccountId?: string | null
+  groupId?: string | null
+  notificationSettings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  backupCodes?: string | null
+  twoFactorEnabled?: boolean
+  twoFactorSecret?: string | null
+  locale?: string
+  isActive?: boolean
+  lastLoginAt?: Date | string | null
+  Account?: Prisma.AccountCreateNestedManyWithoutUserInput
+  Invite_Invite_acceptorIdToUser?: Prisma.InviteCreateNestedManyWithoutUser_Invite_acceptorIdToUserInput
+  Invite_Invite_creatorIdToUser?: Prisma.InviteCreateNestedManyWithoutUser_Invite_creatorIdToUserInput
+  Membership?: Prisma.MembershipCreateNestedManyWithoutUserInput
+  TeamUser?: Prisma.TeamUserCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutSurveyInput = {
+  id: string
+  created_at?: Date | string
+  updated_at: Date | string
+  name: string
+  email: string
+  email_verified?: Date | string | null
+  password?: string | null
+  identityProvider?: $Enums.IdentityProvider
+  identityProviderAccountId?: string | null
+  groupId?: string | null
+  notificationSettings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  backupCodes?: string | null
+  twoFactorEnabled?: boolean
+  twoFactorSecret?: string | null
+  locale?: string
+  isActive?: boolean
+  lastLoginAt?: Date | string | null
+  Account?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  Invite_Invite_acceptorIdToUser?: Prisma.InviteUncheckedCreateNestedManyWithoutUser_Invite_acceptorIdToUserInput
+  Invite_Invite_creatorIdToUser?: Prisma.InviteUncheckedCreateNestedManyWithoutUser_Invite_creatorIdToUserInput
+  Membership?: Prisma.MembershipUncheckedCreateNestedManyWithoutUserInput
+  TeamUser?: Prisma.TeamUserUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutSurveyInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutSurveyInput, Prisma.UserUncheckedCreateWithoutSurveyInput>
+}
+
+export type UserUpsertWithoutSurveyInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutSurveyInput, Prisma.UserUncheckedUpdateWithoutSurveyInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutSurveyInput, Prisma.UserUncheckedCreateWithoutSurveyInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutSurveyInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutSurveyInput, Prisma.UserUncheckedUpdateWithoutSurveyInput>
+}
+
+export type UserUpdateWithoutSurveyInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  email_verified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  identityProvider?: Prisma.EnumIdentityProviderFieldUpdateOperationsInput | $Enums.IdentityProvider
+  identityProviderAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  notificationSettings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  backupCodes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  Account?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  Invite_Invite_acceptorIdToUser?: Prisma.InviteUpdateManyWithoutUser_Invite_acceptorIdToUserNestedInput
+  Invite_Invite_creatorIdToUser?: Prisma.InviteUpdateManyWithoutUser_Invite_creatorIdToUserNestedInput
+  Membership?: Prisma.MembershipUpdateManyWithoutUserNestedInput
+  TeamUser?: Prisma.TeamUserUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutSurveyInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  email_verified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  identityProvider?: Prisma.EnumIdentityProviderFieldUpdateOperationsInput | $Enums.IdentityProvider
+  identityProviderAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  notificationSettings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  backupCodes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  Account?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  Invite_Invite_acceptorIdToUser?: Prisma.InviteUncheckedUpdateManyWithoutUser_Invite_acceptorIdToUserNestedInput
+  Invite_Invite_creatorIdToUser?: Prisma.InviteUncheckedUpdateManyWithoutUser_Invite_creatorIdToUserNestedInput
+  Membership?: Prisma.MembershipUncheckedUpdateManyWithoutUserNestedInput
+  TeamUser?: Prisma.TeamUserUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutTeamUserInput = {
+  id: string
+  created_at?: Date | string
+  updated_at: Date | string
+  name: string
+  email: string
+  email_verified?: Date | string | null
+  password?: string | null
+  identityProvider?: $Enums.IdentityProvider
+  identityProviderAccountId?: string | null
+  groupId?: string | null
+  notificationSettings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  backupCodes?: string | null
+  twoFactorEnabled?: boolean
+  twoFactorSecret?: string | null
+  locale?: string
+  isActive?: boolean
+  lastLoginAt?: Date | string | null
+  Account?: Prisma.AccountCreateNestedManyWithoutUserInput
+  Invite_Invite_acceptorIdToUser?: Prisma.InviteCreateNestedManyWithoutUser_Invite_acceptorIdToUserInput
+  Invite_Invite_creatorIdToUser?: Prisma.InviteCreateNestedManyWithoutUser_Invite_creatorIdToUserInput
+  Membership?: Prisma.MembershipCreateNestedManyWithoutUserInput
+  Survey?: Prisma.SurveyCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutTeamUserInput = {
+  id: string
+  created_at?: Date | string
+  updated_at: Date | string
+  name: string
+  email: string
+  email_verified?: Date | string | null
+  password?: string | null
+  identityProvider?: $Enums.IdentityProvider
+  identityProviderAccountId?: string | null
+  groupId?: string | null
+  notificationSettings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  backupCodes?: string | null
+  twoFactorEnabled?: boolean
+  twoFactorSecret?: string | null
+  locale?: string
+  isActive?: boolean
+  lastLoginAt?: Date | string | null
+  Account?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  Invite_Invite_acceptorIdToUser?: Prisma.InviteUncheckedCreateNestedManyWithoutUser_Invite_acceptorIdToUserInput
+  Invite_Invite_creatorIdToUser?: Prisma.InviteUncheckedCreateNestedManyWithoutUser_Invite_creatorIdToUserInput
+  Membership?: Prisma.MembershipUncheckedCreateNestedManyWithoutUserInput
+  Survey?: Prisma.SurveyUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutTeamUserInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutTeamUserInput, Prisma.UserUncheckedCreateWithoutTeamUserInput>
+}
+
+export type UserUpsertWithoutTeamUserInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutTeamUserInput, Prisma.UserUncheckedUpdateWithoutTeamUserInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutTeamUserInput, Prisma.UserUncheckedCreateWithoutTeamUserInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutTeamUserInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutTeamUserInput, Prisma.UserUncheckedUpdateWithoutTeamUserInput>
+}
+
+export type UserUpdateWithoutTeamUserInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  email_verified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  identityProvider?: Prisma.EnumIdentityProviderFieldUpdateOperationsInput | $Enums.IdentityProvider
+  identityProviderAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  notificationSettings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  backupCodes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  Account?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  Invite_Invite_acceptorIdToUser?: Prisma.InviteUpdateManyWithoutUser_Invite_acceptorIdToUserNestedInput
+  Invite_Invite_creatorIdToUser?: Prisma.InviteUpdateManyWithoutUser_Invite_creatorIdToUserNestedInput
+  Membership?: Prisma.MembershipUpdateManyWithoutUserNestedInput
+  Survey?: Prisma.SurveyUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutTeamUserInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  email_verified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  identityProvider?: Prisma.EnumIdentityProviderFieldUpdateOperationsInput | $Enums.IdentityProvider
+  identityProviderAccountId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  groupId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  notificationSettings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  backupCodes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locale?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  Account?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  Invite_Invite_acceptorIdToUser?: Prisma.InviteUncheckedUpdateManyWithoutUser_Invite_acceptorIdToUserNestedInput
+  Invite_Invite_creatorIdToUser?: Prisma.InviteUncheckedUpdateManyWithoutUser_Invite_creatorIdToUserNestedInput
+  Membership?: Prisma.MembershipUncheckedUpdateManyWithoutUserNestedInput
+  Survey?: Prisma.SurveyUncheckedUpdateManyWithoutUserNestedInput
 }
 
 
@@ -967,6 +1413,8 @@ export type UserCountOutputType = {
   Invite_Invite_acceptorIdToUser: number
   Invite_Invite_creatorIdToUser: number
   Membership: number
+  Survey: number
+  TeamUser: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -974,6 +1422,8 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   Invite_Invite_acceptorIdToUser?: boolean | UserCountOutputTypeCountInvite_Invite_acceptorIdToUserArgs
   Invite_Invite_creatorIdToUser?: boolean | UserCountOutputTypeCountInvite_Invite_creatorIdToUserArgs
   Membership?: boolean | UserCountOutputTypeCountMembershipArgs
+  Survey?: boolean | UserCountOutputTypeCountSurveyArgs
+  TeamUser?: boolean | UserCountOutputTypeCountTeamUserArgs
 }
 
 /**
@@ -1014,6 +1464,20 @@ export type UserCountOutputTypeCountMembershipArgs<ExtArgs extends runtime.Types
   where?: Prisma.MembershipWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountSurveyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SurveyWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountTeamUserArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TeamUserWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1026,13 +1490,19 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   identityProvider?: boolean
   identityProviderAccountId?: boolean
   groupId?: boolean
-  objective?: boolean
-  role?: boolean
-  onboardingCompleted?: boolean
+  notificationSettings?: boolean
+  backupCodes?: boolean
+  twoFactorEnabled?: boolean
+  twoFactorSecret?: boolean
+  locale?: boolean
+  isActive?: boolean
+  lastLoginAt?: boolean
   Account?: boolean | Prisma.User$AccountArgs<ExtArgs>
   Invite_Invite_acceptorIdToUser?: boolean | Prisma.User$Invite_Invite_acceptorIdToUserArgs<ExtArgs>
   Invite_Invite_creatorIdToUser?: boolean | Prisma.User$Invite_Invite_creatorIdToUserArgs<ExtArgs>
   Membership?: boolean | Prisma.User$MembershipArgs<ExtArgs>
+  Survey?: boolean | Prisma.User$SurveyArgs<ExtArgs>
+  TeamUser?: boolean | Prisma.User$TeamUserArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -1047,9 +1517,13 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   identityProvider?: boolean
   identityProviderAccountId?: boolean
   groupId?: boolean
-  objective?: boolean
-  role?: boolean
-  onboardingCompleted?: boolean
+  notificationSettings?: boolean
+  backupCodes?: boolean
+  twoFactorEnabled?: boolean
+  twoFactorSecret?: boolean
+  locale?: boolean
+  isActive?: boolean
+  lastLoginAt?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1063,9 +1537,13 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   identityProvider?: boolean
   identityProviderAccountId?: boolean
   groupId?: boolean
-  objective?: boolean
-  role?: boolean
-  onboardingCompleted?: boolean
+  notificationSettings?: boolean
+  backupCodes?: boolean
+  twoFactorEnabled?: boolean
+  twoFactorSecret?: boolean
+  locale?: boolean
+  isActive?: boolean
+  lastLoginAt?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectScalar = {
@@ -1079,17 +1557,23 @@ export type UserSelectScalar = {
   identityProvider?: boolean
   identityProviderAccountId?: boolean
   groupId?: boolean
-  objective?: boolean
-  role?: boolean
-  onboardingCompleted?: boolean
+  notificationSettings?: boolean
+  backupCodes?: boolean
+  twoFactorEnabled?: boolean
+  twoFactorSecret?: boolean
+  locale?: boolean
+  isActive?: boolean
+  lastLoginAt?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "created_at" | "updated_at" | "name" | "email" | "email_verified" | "password" | "identityProvider" | "identityProviderAccountId" | "groupId" | "objective" | "role" | "onboardingCompleted", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "created_at" | "updated_at" | "name" | "email" | "email_verified" | "password" | "identityProvider" | "identityProviderAccountId" | "groupId" | "notificationSettings" | "backupCodes" | "twoFactorEnabled" | "twoFactorSecret" | "locale" | "isActive" | "lastLoginAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   Account?: boolean | Prisma.User$AccountArgs<ExtArgs>
   Invite_Invite_acceptorIdToUser?: boolean | Prisma.User$Invite_Invite_acceptorIdToUserArgs<ExtArgs>
   Invite_Invite_creatorIdToUser?: boolean | Prisma.User$Invite_Invite_creatorIdToUserArgs<ExtArgs>
   Membership?: boolean | Prisma.User$MembershipArgs<ExtArgs>
+  Survey?: boolean | Prisma.User$SurveyArgs<ExtArgs>
+  TeamUser?: boolean | Prisma.User$TeamUserArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -1102,21 +1586,27 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     Invite_Invite_acceptorIdToUser: Prisma.$InvitePayload<ExtArgs>[]
     Invite_Invite_creatorIdToUser: Prisma.$InvitePayload<ExtArgs>[]
     Membership: Prisma.$MembershipPayload<ExtArgs>[]
+    Survey: Prisma.$SurveyPayload<ExtArgs>[]
+    TeamUser: Prisma.$TeamUserPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     created_at: Date
     updated_at: Date
-    name: string | null
+    name: string
     email: string
     email_verified: Date | null
     password: string | null
     identityProvider: $Enums.IdentityProvider
     identityProviderAccountId: string | null
     groupId: string | null
-    objective: $Enums.Objective | null
-    role: $Enums.Role | null
-    onboardingCompleted: boolean
+    notificationSettings: runtime.JsonValue
+    backupCodes: string | null
+    twoFactorEnabled: boolean
+    twoFactorSecret: string | null
+    locale: string
+    isActive: boolean
+    lastLoginAt: Date | null
   }, ExtArgs["result"]["user"]>
   composites: {}
 }
@@ -1515,6 +2005,8 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   Invite_Invite_acceptorIdToUser<T extends Prisma.User$Invite_Invite_acceptorIdToUserArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$Invite_Invite_acceptorIdToUserArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InvitePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   Invite_Invite_creatorIdToUser<T extends Prisma.User$Invite_Invite_creatorIdToUserArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$Invite_Invite_creatorIdToUserArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InvitePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   Membership<T extends Prisma.User$MembershipArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$MembershipArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MembershipPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  Survey<T extends Prisma.User$SurveyArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$SurveyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SurveyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  TeamUser<T extends Prisma.User$TeamUserArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$TeamUserArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TeamUserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1554,9 +2046,13 @@ export interface UserFieldRefs {
   readonly identityProvider: Prisma.FieldRef<"User", 'IdentityProvider'>
   readonly identityProviderAccountId: Prisma.FieldRef<"User", 'String'>
   readonly groupId: Prisma.FieldRef<"User", 'String'>
-  readonly objective: Prisma.FieldRef<"User", 'Objective'>
-  readonly role: Prisma.FieldRef<"User", 'Role'>
-  readonly onboardingCompleted: Prisma.FieldRef<"User", 'Boolean'>
+  readonly notificationSettings: Prisma.FieldRef<"User", 'Json'>
+  readonly backupCodes: Prisma.FieldRef<"User", 'String'>
+  readonly twoFactorEnabled: Prisma.FieldRef<"User", 'Boolean'>
+  readonly twoFactorSecret: Prisma.FieldRef<"User", 'String'>
+  readonly locale: Prisma.FieldRef<"User", 'String'>
+  readonly isActive: Prisma.FieldRef<"User", 'Boolean'>
+  readonly lastLoginAt: Prisma.FieldRef<"User", 'DateTime'>
 }
     
 
@@ -2043,6 +2539,54 @@ export type User$MembershipArgs<ExtArgs extends runtime.Types.Extensions.Interna
   take?: number
   skip?: number
   distinct?: Prisma.MembershipScalarFieldEnum | Prisma.MembershipScalarFieldEnum[]
+}
+
+/**
+ * User.Survey
+ */
+export type User$SurveyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Survey
+   */
+  select?: Prisma.SurveySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Survey
+   */
+  omit?: Prisma.SurveyOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SurveyInclude<ExtArgs> | null
+  where?: Prisma.SurveyWhereInput
+  orderBy?: Prisma.SurveyOrderByWithRelationInput | Prisma.SurveyOrderByWithRelationInput[]
+  cursor?: Prisma.SurveyWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SurveyScalarFieldEnum | Prisma.SurveyScalarFieldEnum[]
+}
+
+/**
+ * User.TeamUser
+ */
+export type User$TeamUserArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the TeamUser
+   */
+  select?: Prisma.TeamUserSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the TeamUser
+   */
+  omit?: Prisma.TeamUserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TeamUserInclude<ExtArgs> | null
+  where?: Prisma.TeamUserWhereInput
+  orderBy?: Prisma.TeamUserOrderByWithRelationInput | Prisma.TeamUserOrderByWithRelationInput[]
+  cursor?: Prisma.TeamUserWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TeamUserScalarFieldEnum | Prisma.TeamUserScalarFieldEnum[]
 }
 
 /**

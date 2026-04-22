@@ -28,16 +28,6 @@ export type Account = Prisma.AccountModel
  */
 export type ApiKey = Prisma.ApiKeyModel
 /**
- * Model Attribute
- * 
- */
-export type Attribute = Prisma.AttributeModel
-/**
- * Model AttributeClass
- * 
- */
-export type AttributeClass = Prisma.AttributeClassModel
-/**
  * Model Display
  * 
  */
@@ -47,16 +37,6 @@ export type Display = Prisma.DisplayModel
  * 
  */
 export type Environment = Prisma.EnvironmentModel
-/**
- * Model Event
- * 
- */
-export type Event = Prisma.EventModel
-/**
- * Model EventClass
- * 
- */
-export type EventClass = Prisma.EventClassModel
 /**
  * Model Invite
  * 
@@ -68,25 +48,10 @@ export type Invite = Prisma.InviteModel
  */
 export type Membership = Prisma.MembershipModel
 /**
- * Model Person
- * 
- */
-export type Person = Prisma.PersonModel
-/**
- * Model Product
- * 
- */
-export type Product = Prisma.ProductModel
-/**
  * Model Response
  * 
  */
 export type Response = Prisma.ResponseModel
-/**
- * Model Session
- * 
- */
-export type Session = Prisma.SessionModel
 /**
  * Model Survey
  * 
@@ -117,3 +82,113 @@ export type User = Prisma.UserModel
  * 
  */
 export type Webhook = Prisma.WebhookModel
+/**
+ * Model ActionClass
+ * 
+ */
+export type ActionClass = Prisma.ActionClassModel
+/**
+ * Model Admin
+ * 
+ */
+export type Admin = Prisma.AdminModel
+/**
+ * Model AdminAuditLog
+ * 
+ */
+export type AdminAuditLog = Prisma.AdminAuditLogModel
+/**
+ * Model AdminOrganizationAccess
+ * 
+ */
+export type AdminOrganizationAccess = Prisma.AdminOrganizationAccessModel
+/**
+ * Model ApiKeyEnvironment
+ * 
+ */
+export type ApiKeyEnvironment = Prisma.ApiKeyEnvironmentModel
+/**
+ * Model Contact
+ * 
+ */
+export type Contact = Prisma.ContactModel
+/**
+ * Model ContactAttribute
+ * 
+ */
+export type ContactAttribute = Prisma.ContactAttributeModel
+/**
+ * Model ContactAttributeKey
+ * 
+ */
+export type ContactAttributeKey = Prisma.ContactAttributeKeyModel
+/**
+ * Model DataMigration
+ * 
+ */
+export type DataMigration = Prisma.DataMigrationModel
+/**
+ * Model Integration
+ * 
+ */
+export type Integration = Prisma.IntegrationModel
+/**
+ * Model Language
+ * 
+ */
+export type Language = Prisma.LanguageModel
+/**
+ * Model Organization
+ * 
+ */
+export type Organization = Prisma.OrganizationModel
+/**
+ * Model Project
+ * 
+ */
+export type Project = Prisma.ProjectModel
+/**
+ * Model ProjectTeam
+ * 
+ */
+export type ProjectTeam = Prisma.ProjectTeamModel
+/**
+ * Model ResponseQuotaLink
+ * 
+ */
+export type ResponseQuotaLink = Prisma.ResponseQuotaLinkModel
+/**
+ * Model Segment
+ * 
+ */
+export type Segment = Prisma.SegmentModel
+/**
+ * Model SurveyFollowUp
+ * 
+ */
+export type SurveyFollowUp = Prisma.SurveyFollowUpModel
+/**
+ * Model SurveyLanguage
+ * 
+ */
+export type SurveyLanguage = Prisma.SurveyLanguageModel
+/**
+ * Model SurveyQuota
+ * 
+ */
+export type SurveyQuota = Prisma.SurveyQuotaModel
+/**
+ * Model Tag
+ * 
+ */
+export type Tag = Prisma.TagModel
+/**
+ * Model TagsOnResponses
+ * 
+ */
+export type TagsOnResponses = Prisma.TagsOnResponsesModel
+/**
+ * Model TeamUser
+ * 
+ */
+export type TeamUser = Prisma.TeamUserModel
