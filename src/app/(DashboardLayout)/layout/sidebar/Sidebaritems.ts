@@ -50,6 +50,13 @@ const SidebarContent: MenuItem[] = [
     isPro: false,
     children: [
       {
+        name: "Surveys",
+        icon: "solar:clipboard-list-line-duotone",
+        id: uniqueId(),
+        url: "/surveys",
+        isPro: false,
+      },
+      {
         name: "Organizations",
         icon: "solar:buildings-3-line-duotone",
         id: uniqueId(),
