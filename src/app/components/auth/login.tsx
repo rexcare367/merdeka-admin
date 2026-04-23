@@ -118,7 +118,7 @@ export const Login = () => {
               </Button>
               <div className='flex items-center gap-2 justify-center mt-6 flex-wrap'>
                 <p className='text-base font-medium text-link dark:text-darklink'>
-                  New to Matdash?
+                  New to Merdeka Survey Admin?
                 </p>
                 <Link
                   href='/auth/register'

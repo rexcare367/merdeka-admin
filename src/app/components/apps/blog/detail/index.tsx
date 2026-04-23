@@ -71,13 +71,13 @@ const BlogDetailData = () => {
               <div className="overflow-hidden max-h-[440px]">
                 <Image
                   src={post?.coverImg}
-                  alt="Matdash"
+                  alt="Merdeka Survey"
                   height={440}
                   width={1500}
                   className="w-full object-cover object-center"
                 />
               </div>
-              <Badge variant={"gray"} className="absolute bottom-8 end-6">2 min Read</Badge>
+              <Badge variant={"gray"} className="absolute bottom-8 end-6">{Math.floor(Math.random() * 10) + 1} min Read</Badge>
             </div>
             <div className="flex justify-between items-center -mt-11 px-6 w-fit">
               <div>
