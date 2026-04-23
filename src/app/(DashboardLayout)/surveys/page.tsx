@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/table"
 import { Badge } from "@/components/ui/badge"
 import { format } from "date-fns"
+import { api } from "@/lib/api-client"
 
 type SurveyRow = {
   id: string
@@ -93,28 +94,16 @@ export default function SurveysPage() {
 
   async function fetchStats() {
     if (!token) return
-    const res = await fetch("/api/v1/survey/stats", {
-      headers: { authorization: `Bearer ${token}` },
-    })
-    if (!res.ok) throw new Error("Failed to load survey statistics.")
-    setStats((await res.json()) as Stats)
+    const { data } = await api.get<Stats>("/api/v1/survey/stats")
+    setStats(data)
   }
 
   async function fetchPage(nextPage: number, pageSize: number) {
     if (!token) return
-    const url = new URL("/api/v1/survey", window.location.origin)
-    url.searchParams.set("page", String(nextPage))
-    url.searchParams.set("pageSize", String(pageSize))
-
-    const res = await fetch(url.pathname + url.search, {
-      headers: { authorization: `Bearer ${token}` },
-    })
-    if (!res.ok) throw new Error("Failed to load surveys.")
-
-    const data = (await res.json()) as {
+    const { data } = await api.get<{
       surveys: SurveyRow[]
       pagination: Pagination
-    }
+    }>("/api/v1/survey", { params: { page: nextPage, pageSize } })
     setRows(data.surveys)
     setPagination(data.pagination)
   }

@@ -46,7 +46,7 @@ const SidebarContent: MenuItem[] = [
   },
 
   {
-    heading: "Extra",
+    heading: "Main",
     isPro: false,
     children: [
       {
@@ -63,106 +63,106 @@ const SidebarContent: MenuItem[] = [
         url: "/organizations",
         isPro: false,
       },
-      {
-        name: "Icons",
-        icon: "solar:smile-circle-outline",
-        id: uniqueId(),
-        url: "/icons/solar",
-        isPro: false
-      },
-      {
-        name: "Sample Page",
-        icon: "solar:notes-minimalistic-outline",
-        id: uniqueId(),
-        url: "/sample-page",
-        isPro: false
-      },
+      // {
+      //   name: "Icons",
+      //   icon: "solar:smile-circle-outline",
+      //   id: uniqueId(),
+      //   url: "/icons/solar",
+      //   isPro: false
+      // },
+      // {
+      //   name: "Sample Page",
+      //   icon: "solar:notes-minimalistic-outline",
+      //   id: uniqueId(),
+      //   url: "/sample-page",
+      //   isPro: false
+      // },
     ],
   },
-  {
-    heading: 'AI',
-    children: [
-      {
-        name: 'Ai Table Builder',
-        icon: 'solar:server-linear',
-        id: uniqueId(),
-        url: 'https://tailwindbuilder.ai/table-builder',
-        isPro: false,
+  // {
+  //   heading: 'AI',
+  //   children: [
+  //     {
+  //       name: 'Ai Table Builder',
+  //       icon: 'solar:server-linear',
+  //       id: uniqueId(),
+  //       url: 'https://tailwindbuilder.ai/table-builder',
+  //       isPro: false,
 
-      },
-      {
-        name: 'Ai Form Builder',
-        icon: 'solar:document-add-linear',
-        id: uniqueId(),
-        url: 'https://tailwindbuilder.ai/form-builder',
-        isPro: false,
+  //     },
+  //     {
+  //       name: 'Ai Form Builder',
+  //       icon: 'solar:document-add-linear',
+  //       id: uniqueId(),
+  //       url: 'https://tailwindbuilder.ai/form-builder',
+  //       isPro: false,
 
-      },
-      {
-        id: uniqueId(),
-        name: 'Ai Chart Builder',
-        icon: 'solar:pie-chart-2-linear',
-        url: 'https://tailwindbuilder.ai/chart-builder',
-        isPro: false,
+  //     },
+  //     {
+  //       id: uniqueId(),
+  //       name: 'Ai Chart Builder',
+  //       icon: 'solar:pie-chart-2-linear',
+  //       url: 'https://tailwindbuilder.ai/chart-builder',
+  //       isPro: false,
 
-      },
-    ],
-  },
-  {
-    heading: 'Utilities',
-    children: [
-      {
-        name: 'Typography',
-        icon: 'solar:text-circle-outline',
-        id: uniqueId(),
-        url: '/utilities/typography',
-      },
-      {
-        name: 'Table',
-        icon: 'solar:server-linear',
-        id: uniqueId(),
-        url: '/utilities/table',
-      },
-      {
-        name: 'Form',
-        icon: 'solar:document-add-linear',
-        id: uniqueId(),
-        url: '/utilities/form',
-      },
-      {
-        name: "Shadow",
-        icon: "solar:airbuds-case-charge-outline",
-        id: uniqueId(),
-        url: "/utilities/shadow",
-      },
-      {
-        id: uniqueId(),
-        name: 'User Profile',
-        icon: 'solar:user-circle-linear',
-        url: '/user-profile',
-        isPro: false,
-      },
-    ],
-  },
-  {
-    heading: 'Apps',
-    children: [
-      {
-        id: uniqueId(),
-        name: 'Notes',
-        icon: 'solar:notes-linear',
-        url: '/apps/notes',
-        isPro: false,
-      },
-      {
-        id: uniqueId(),
-        name: 'Tickets',
-        icon: 'solar:ticker-star-linear',
-        url: '/apps/tickets',
-        isPro: false,
-      },
-    ],
-  },
+  //     },
+  //   ],
+  // },
+  // {
+  //   heading: 'Utilities',
+  //   children: [
+  //     {
+  //       name: 'Typography',
+  //       icon: 'solar:text-circle-outline',
+  //       id: uniqueId(),
+  //       url: '/utilities/typography',
+  //     },
+  //     {
+  //       name: 'Table',
+  //       icon: 'solar:server-linear',
+  //       id: uniqueId(),
+  //       url: '/utilities/table',
+  //     },
+  //     {
+  //       name: 'Form',
+  //       icon: 'solar:document-add-linear',
+  //       id: uniqueId(),
+  //       url: '/utilities/form',
+  //     },
+  //     {
+  //       name: "Shadow",
+  //       icon: "solar:airbuds-case-charge-outline",
+  //       id: uniqueId(),
+  //       url: "/utilities/shadow",
+  //     },
+  //     {
+  //       id: uniqueId(),
+  //       name: 'User Profile',
+  //       icon: 'solar:user-circle-linear',
+  //       url: '/user-profile',
+  //       isPro: false,
+  //     },
+  //   ],
+  // },
+  // {
+  //   heading: 'Apps',
+  //   children: [
+  //     {
+  //       id: uniqueId(),
+  //       name: 'Notes',
+  //       icon: 'solar:notes-linear',
+  //       url: '/apps/notes',
+  //       isPro: false,
+  //     },
+  //     {
+  //       id: uniqueId(),
+  //       name: 'Tickets',
+  //       icon: 'solar:ticker-star-linear',
+  //       url: '/apps/tickets',
+  //       isPro: false,
+  //     },
+  //   ],
+  // },
 ]
 
 export default SidebarContent
