@@ -10,8 +10,33 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import { Icon } from "@iconify/react";
+import { signOut } from "next-auth/react";
 
 const Profile = () => {
+  async function handleLogout() {
+    try {
+      const token = sessionStorage.getItem("adminAccessToken");
+      if (token) {
+        fetch("/api/v1/auth/logout", {
+          method: "POST",
+          headers: { authorization: `Bearer ${token}` },
+        }).catch(() => {
+          /* ignore */
+        });
+      }
+    } catch {
+      /* ignore */
+    }
+
+    try {
+      sessionStorage.removeItem("adminAccessToken");
+    } catch {
+      /* ignore */
+    }
+
+    await signOut({ redirectTo: "/auth/login" });
+  }
+
   return (
     <div className="relative group/menu">
       <DropdownMenu>
@@ -63,12 +88,12 @@ const Profile = () => {
 
           <div className="p-3 pt-0">
             <Button
-              asChild
               variant="outline"
               size="sm"
               className="mt-2 w-full"
+              onClick={handleLogout}
             >
-              <Link href="/auth/login">Logout</Link>
+              Logout
             </Button>
           </div>
         </DropdownMenuContent>

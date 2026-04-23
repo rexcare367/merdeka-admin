@@ -44,6 +44,34 @@ const SidebarContent: MenuItem[] = [
       },
     ],
   },
+
+  {
+    heading: "Extra",
+    isPro: false,
+    children: [
+      {
+        name: "Organizations",
+        icon: "solar:buildings-3-line-duotone",
+        id: uniqueId(),
+        url: "/organizations",
+        isPro: false,
+      },
+      {
+        name: "Icons",
+        icon: "solar:smile-circle-outline",
+        id: uniqueId(),
+        url: "/icons/solar",
+        isPro: false
+      },
+      {
+        name: "Sample Page",
+        icon: "solar:notes-minimalistic-outline",
+        id: uniqueId(),
+        url: "/sample-page",
+        isPro: false
+      },
+    ],
+  },
   {
     heading: 'AI',
     children: [
@@ -125,46 +153,6 @@ const SidebarContent: MenuItem[] = [
         icon: 'solar:ticker-star-linear',
         url: '/apps/tickets',
         isPro: false,
-      },
-    ],
-  },
-  {
-    isPro: true,
-    heading: "Auth",
-    children: [
-      {
-        name: "Login",
-        icon: "solar:login-2-linear",
-        id: uniqueId(),
-        url: "/auth/login",
-        isPro: false
-      },
-      {
-        name: "Register",
-        icon: "solar:shield-user-outline",
-        id: uniqueId(),
-        url: "/auth/register",
-        isPro: false
-      },
-    ],
-  },
-  {
-    heading: "Extra",
-    isPro: false,
-    children: [
-      {
-        name: "Icons",
-        icon: "solar:smile-circle-outline",
-        id: uniqueId(),
-        url: "/icons/solar",
-        isPro: false
-      },
-      {
-        name: "Sample Page",
-        icon: "solar:notes-minimalistic-outline",
-        id: uniqueId(),
-        url: "/sample-page",
-        isPro: false
       },
     ],
   },

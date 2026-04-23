@@ -5,7 +5,6 @@ import { usePathname } from 'next/navigation'
 import SidebarContent from './Sidebaritems'
 import SimpleBar from 'simplebar-react'
 import { Icon } from '@iconify/react'
-import { Button } from '@/components/ui/button'
 import {
   AMLogo,
   AMMenu,
@@ -132,28 +131,6 @@ const SidebarLayout = ({ onClose }: { onClose?: () => void }) => {
               )}
             </div>
           ))}
-
-          {/* Promo Section */}
-          <div className='mt-9  overflow-hidden'>
-            <div className='flex items-center w-full bg-lightprimary rounded-lg p-6'>
-              <div className='lg:w-1/2 w-full'>
-                <h5 className='text-base text-charcoal'>Check Pro Version</h5>
-                <Link href="https://adminmart.com/product/matdash-next-js-admin-dashboard-template/?ref=56#product-demo-section" target="_blank">
-                  <Button className='whitespace-nowrap mt-2 text-[13px]'>
-                    Check
-                  </Button>
-                </Link>
-              </div>
-              <div className='lg:w-1/2 w-full -mt-4 ml-[26px] scale-[1.2] shrink-0'>
-                <Image
-                  src={'/images/backgrounds/upgrade.png'}
-                  alt='rocket'
-                  width={100}
-                  height={100}
-                />
-              </div>
-            </div>
-          </div>
         </div>
       </SimpleBar>
     </AMSidebar>
