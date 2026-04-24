@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useMemo, useState } from "react"
+import { useRouter } from "next/navigation"
 import BreadcrumbComp from "../layout/shared/breadcrumb/BreadcrumbComp"
 import CardBox from "@/app/components/shared/CardBox"
 import { Button } from "@/components/ui/button"
@@ -22,6 +23,12 @@ type OrgRow = {
   isAIEnabled: boolean
   created_at: string
   updated_at: string
+  projectsCount?: number
+  membersCount?: number
+  teamsCount?: number
+  projects_count?: number
+  members_count?: number
+  teams_count?: number
 }
 
 type Pagination = {
@@ -38,6 +45,7 @@ type Stats = {
 }
 
 export default function OrganizationsPage() {
+  const router = useRouter()
   const [stats, setStats] = useState<Stats | null>(null)
   const [rows, setRows] = useState<OrgRow[]>([])
   const [pagination, setPagination] = useState<Pagination>({
@@ -102,6 +110,26 @@ export default function OrganizationsPage() {
 
   const canPrev = pagination.page > 1 && !loading
   const canNext = pagination.page < pagination.totalPages && !loading
+
+  const getCount = (
+    org: OrgRow,
+    key: "projects" | "members" | "teams"
+  ): number | null => {
+    const camel =
+      key === "projects"
+        ? org.projectsCount
+        : key === "members"
+          ? org.membersCount
+          : org.teamsCount
+    const snake =
+      key === "projects"
+        ? org.projects_count
+        : key === "members"
+          ? org.members_count
+          : org.teams_count
+    const value = typeof camel === "number" ? camel : typeof snake === "number" ? snake : null
+    return value
+  }
 
   return (
     <>
@@ -182,14 +210,18 @@ export default function OrganizationsPage() {
                     <TableHead>ID</TableHead>
                     <TableHead>Name</TableHead>
                     <TableHead>AI</TableHead>
+                    <TableHead className="text-right">Projects</TableHead>
+                    <TableHead className="text-right">Members</TableHead>
+                    <TableHead className="text-right">Teams</TableHead>
                     <TableHead>Created</TableHead>
                     <TableHead>Updated</TableHead>
+                    <TableHead />
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   {rows.length === 0 ? (
                     <TableRow>
-                      <TableCell colSpan={5} className="text-sm text-muted-foreground">
+                      <TableCell colSpan={9} className="text-sm text-muted-foreground">
                         {loading ? "Loading…" : "No organizations found."}
                       </TableCell>
                     </TableRow>
@@ -205,11 +237,29 @@ export default function OrganizationsPage() {
                             {org.isAIEnabled ? "Enabled" : "Disabled"}
                           </Badge>
                         </TableCell>
+                        <TableCell className="text-right whitespace-nowrap">
+                          {getCount(org, "projects") ?? "—"}
+                        </TableCell>
+                        <TableCell className="text-right whitespace-nowrap">
+                          {getCount(org, "members") ?? "—"}
+                        </TableCell>
+                        <TableCell className="text-right whitespace-nowrap">
+                          {getCount(org, "teams") ?? "—"}
+                        </TableCell>
                         <TableCell className="whitespace-nowrap text-sm text-muted-foreground">
                           {format(new Date(org.created_at), "yyyy-MM-dd")}
                         </TableCell>
                         <TableCell className="whitespace-nowrap text-sm text-muted-foreground">
                           {format(new Date(org.updated_at), "yyyy-MM-dd")}
+                        </TableCell>
+                        <TableCell className="whitespace-nowrap text-right">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => router.push(`/organizations/${org.id}`)}
+                          >
+                            View detail
+                          </Button>
                         </TableCell>
                       </TableRow>
                     ))

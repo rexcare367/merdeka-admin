@@ -37,12 +37,22 @@ export async function GET(request: Request) {
         isAIEnabled: true,
         created_at: true,
         updated_at: true,
+        _count: { select: { Project: true, Membership: true, Team: true } },
       },
     }),
   ])
 
   return NextResponse.json({
-    organizations,
+    organizations: organizations.map((o) => ({
+      id: o.id,
+      name: o.name,
+      isAIEnabled: o.isAIEnabled,
+      created_at: o.created_at,
+      updated_at: o.updated_at,
+      projectsCount: o._count.Project,
+      membersCount: o._count.Membership,
+      teamsCount: o._count.Team,
+    })),
     pagination: {
       page,
       pageSize,

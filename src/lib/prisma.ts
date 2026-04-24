@@ -11,7 +11,10 @@ function createPrismaClient() {
   if (!connectionString) {
     throw new Error("DATABASE_URL is not set")
   }
-  const pool = new Pool({ connectionString })
+  const pool = new Pool({
+    connectionString,
+    connectionTimeoutMillis: 8_000,
+  })
   const adapter = new PrismaPg(pool)
   return new PrismaClient({ adapter })
 }
