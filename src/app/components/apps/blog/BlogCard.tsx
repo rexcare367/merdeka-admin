@@ -38,14 +38,14 @@ const BlogCard = ({ post }: Btype) => {
             <div className="overflow-hidden h-60">
               <Image
                 src={coverImg}
-                alt="Matdash"
+                alt="Merdeka Survey"
                 height={240}
                 width={500}
                 className="w-full"
               />
             </div>
             <Badge className="absolute bottom-8 end-6 rounded-md bg-white text-black">
-              2 min Read
+              {Math.floor(Math.random() * 10) + 1} min Read
             </Badge>
           </Link>
 
