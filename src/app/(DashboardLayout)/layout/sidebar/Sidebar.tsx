@@ -106,7 +106,7 @@ const SidebarLayout = ({ onClose }: { onClose?: () => void }) => {
         <AMLogo component={Link} href='/' img=''>
           {/* <FullLogo /> */}
           <Image
-            src="/images/logos/dark-logo.svg"
+            src="/images/logos/light-logo.png"
             alt="logo"
             width={135}
             height={40}
