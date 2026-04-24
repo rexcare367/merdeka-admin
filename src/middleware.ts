@@ -61,6 +61,11 @@ export async function middleware(req: NextRequest) {
   const token = await getToken({
     req,
     secret: process.env.AUTH_SECRET,
+    // When deployed behind HTTPS (or a proxy/ingress that terminates TLS),
+    // NextAuth will typically use secure cookie names. If `getToken` infers
+    // the wrong value here, it will fail to read the cookie and you'll get
+    // redirected back to login despite having a valid session.
+    secureCookie: process.env.NODE_ENV === "production",
   })
   const isLoggedIn = !!token
   const isAuthRoute = pathname.startsWith("/auth/")
