@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/table"
 import { Badge } from "@/components/ui/badge"
 import { format } from "date-fns"
+import { api } from "@/lib/api-client"
 
 type OrgRow = {
   id: string
@@ -58,33 +59,16 @@ export default function OrganizationsPage() {
 
   async function fetchStats() {
     if (!token) return
-    const res = await fetch("/api/v1/organization/stats", {
-      headers: { authorization: `Bearer ${token}` },
-    })
-    if (!res.ok) {
-      throw new Error("Failed to load organization statistics.")
-    }
-    const data = (await res.json()) as Stats
+    const { data } = await api.get<Stats>("/api/v1/organization/stats")
     setStats(data)
   }
 
   async function fetchPage(nextPage: number, pageSize: number) {
     if (!token) return
-    const url = new URL("/api/v1/organization", window.location.origin)
-    url.searchParams.set("page", String(nextPage))
-    url.searchParams.set("pageSize", String(pageSize))
-
-    const res = await fetch(url.pathname + url.search, {
-      headers: { authorization: `Bearer ${token}` },
-    })
-    if (!res.ok) {
-      throw new Error("Failed to load organizations.")
-    }
-
-    const data = (await res.json()) as {
+    const { data } = await api.get<{
       organizations: OrgRow[]
       pagination: Pagination
-    }
+    }>("/api/v1/organization", { params: { page: nextPage, pageSize } })
     setRows(data.organizations)
     setPagination(data.pagination)
   }
