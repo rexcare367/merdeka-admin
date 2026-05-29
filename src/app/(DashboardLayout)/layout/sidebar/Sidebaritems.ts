@@ -63,6 +63,13 @@ const SidebarContent: MenuItem[] = [
         url: "/organizations",
         isPro: false,
       },
+      {
+        name: "Enumerators",
+        icon: "solar:users-group-rounded-line-duotone",
+        id: uniqueId(),
+        url: "/enumerators",
+        isPro: false,
+      },
       // {
       //   name: "Icons",
       //   icon: "solar:smile-circle-outline",

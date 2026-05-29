@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useMemo, useState } from "react"
+import { useRouter } from "next/navigation"
 import BreadcrumbComp from "../layout/shared/breadcrumb/BreadcrumbComp"
 import CardBox from "@/app/components/shared/CardBox"
 import { Button } from "@/components/ui/button"
@@ -25,6 +26,15 @@ type SurveyRow = {
   created_at: string
   updated_at: string
   responsesCount: number
+  displaysCount: number
+  complete: number
+  notComplete: number
+  disqualified: number
+  averageDurationMs: number
+  durationSampleSize: number
+  onlineCount: number
+  offlineCount: number
+  linkUsageRatio: number | null
 }
 
 type Pagination = {
@@ -42,6 +52,27 @@ type Stats = {
   completed: number
   createdLast30Days: number
   totalResponses: number
+  surveysAnswered: number
+  responseStatus: {
+    complete: number
+    notComplete: number
+    disqualified: number
+  }
+  duration: {
+    averageMs: number
+    sampleSize: number
+  }
+  delivery: {
+    online: number
+    offline: number
+    sampleSize: number
+  }
+  links: {
+    surveysWithLinks: number
+    appSurveys: number
+    displaysTotal: number
+    responsesTotal: number
+  }
 }
 
 function statusBadgeVariant(status: SurveyRow["status"]) {
@@ -72,7 +103,17 @@ function statusLabel(status: SurveyRow["status"]) {
   }
 }
 
+function formatDurationMs(ms: number): string {
+  if (!Number.isFinite(ms) || ms <= 0) return "—"
+  const totalSeconds = Math.round(ms / 1000)
+  const minutes = Math.floor(totalSeconds / 60)
+  const seconds = totalSeconds % 60
+  if (minutes <= 0) return `${seconds}s`
+  return `${minutes}m ${seconds.toString().padStart(2, "0")}s`
+}
+
 export default function SurveysPage() {
+  const router = useRouter()
   const [stats, setStats] = useState<Stats | null>(null)
   const [rows, setRows] = useState<SurveyRow[]>([])
   const [pagination, setPagination] = useState<Pagination>({
@@ -165,15 +206,15 @@ export default function SurveysPage() {
             </div>
             <div className="md:col-span-3 col-span-12">
               <CardBox className="p-6">
-                <p className="text-sm text-muted-foreground">In progress</p>
+                <p className="text-sm text-muted-foreground">Surveys answered</p>
                 <p className="text-2xl font-semibold">
-                  {stats ? stats.inProgress : loading ? "…" : "—"}
+                  {stats ? stats.surveysAnswered : loading ? "…" : "—"}
                 </p>
               </CardBox>
             </div>
             <div className="md:col-span-3 col-span-12">
               <CardBox className="p-6">
-                <p className="text-sm text-muted-foreground">Responses (all)</p>
+                <p className="text-sm text-muted-foreground">Total responses</p>
                 <p className="text-2xl font-semibold">
                   {stats ? stats.totalResponses : loading ? "…" : "—"}
                 </p>
@@ -181,10 +222,86 @@ export default function SurveysPage() {
             </div>
             <div className="md:col-span-3 col-span-12">
               <CardBox className="p-6">
-                <p className="text-sm text-muted-foreground">Created (30d)</p>
+                <p className="text-sm text-muted-foreground">Avg duration</p>
                 <p className="text-2xl font-semibold">
-                  {stats ? stats.createdLast30Days : loading ? "…" : "—"}
+                  {stats ? formatDurationMs(stats.duration.averageMs) : loading ? "…" : "—"}
                 </p>
+              </CardBox>
+            </div>
+          </div>
+        </div>
+
+        <div className="col-span-12">
+          <div className="grid grid-cols-12 gap-30">
+            <div className="md:col-span-4 col-span-12">
+              <CardBox className="p-6">
+                <p className="text-sm text-muted-foreground mb-3">Response status</p>
+                <div className="space-y-2 text-sm">
+                  <div className="flex items-center justify-between">
+                    <span>Complete</span>
+                    <span className="font-medium">
+                      {stats ? stats.responseStatus.complete : "—"}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span>Not complete</span>
+                    <span className="font-medium">
+                      {stats ? stats.responseStatus.notComplete : "—"}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span>Disqualified</span>
+                    <span className="font-medium">
+                      {stats ? stats.responseStatus.disqualified : "—"}
+                    </span>
+                  </div>
+                </div>
+              </CardBox>
+            </div>
+            <div className="md:col-span-4 col-span-12">
+              <CardBox className="p-6">
+                <p className="text-sm text-muted-foreground mb-3">Online vs offline</p>
+                <div className="space-y-2 text-sm">
+                  <div className="flex items-center justify-between">
+                    <span>Online</span>
+                    <span className="font-medium">
+                      {stats ? stats.delivery.online : "—"}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span>Offline</span>
+                    <span className="font-medium">
+                      {stats ? stats.delivery.offline : "—"}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between text-xs text-muted-foreground">
+                    <span>Sample size</span>
+                    <span>{stats ? stats.delivery.sampleSize : "—"}</span>
+                  </div>
+                </div>
+              </CardBox>
+            </div>
+            <div className="md:col-span-4 col-span-12">
+              <CardBox className="p-6">
+                <p className="text-sm text-muted-foreground mb-3">Links shared / used</p>
+                <div className="space-y-2 text-sm">
+                  <div className="flex items-center justify-between">
+                    <span>Displays (shared)</span>
+                    <span className="font-medium">
+                      {stats ? stats.links.displaysTotal : "—"}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span>Responses (used)</span>
+                    <span className="font-medium">
+                      {stats ? stats.links.responsesTotal : "—"}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between text-xs text-muted-foreground">
+                    <span>Link surveys</span>
+                    <span>{stats ? stats.links.surveysWithLinks : "—"}</span>
+                  </div>
+                </div>
               </CardBox>
             </div>
           </div>
@@ -220,29 +337,33 @@ export default function SurveysPage() {
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>ID</TableHead>
                     <TableHead>Name</TableHead>
                     <TableHead>Status</TableHead>
                     <TableHead>Type</TableHead>
-                    <TableHead className="text-right">Responses</TableHead>
-                    <TableHead>Environment</TableHead>
+                    <TableHead className="text-right">Resp.</TableHead>
+                    <TableHead className="text-right">Complete</TableHead>
+                    <TableHead className="text-right">Not Complete</TableHead>
+                    <TableHead className="text-right">Disq.</TableHead>
+                    <TableHead className="text-right">Avg Dur.</TableHead>
+                    <TableHead className="text-right">Online / Offline</TableHead>
+                    <TableHead className="text-right">Shared / Used</TableHead>
                     <TableHead>Created</TableHead>
-                    <TableHead>Updated</TableHead>
+                    <TableHead />
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   {rows.length === 0 ? (
                     <TableRow>
-                      <TableCell colSpan={8} className="text-sm text-muted-foreground">
+                      <TableCell colSpan={12} className="text-sm text-muted-foreground">
                         {loading ? "Loading…" : "No surveys found."}
                       </TableCell>
                     </TableRow>
                   ) : (
                     rows.map((s) => (
                       <TableRow key={s.id}>
-                        <TableCell className="whitespace-nowrap">{s.id}</TableCell>
                         <TableCell className="max-w-md">
-                          <span className="truncate block">{s.name}</span>
+                          <span className="truncate block font-medium">{s.name}</span>
+                          <span className="text-xs text-muted-foreground">{s.id}</span>
                         </TableCell>
                         <TableCell>
                           <Badge variant={statusBadgeVariant(s.status)}>
@@ -253,14 +374,35 @@ export default function SurveysPage() {
                         <TableCell className="text-right whitespace-nowrap">
                           {s.responsesCount}
                         </TableCell>
-                        <TableCell className="whitespace-nowrap text-sm text-muted-foreground">
-                          {s.environmentId}
+                        <TableCell className="text-right whitespace-nowrap">
+                          <span className="text-success font-medium">{s.complete}</span>
+                        </TableCell>
+                        <TableCell className="text-right whitespace-nowrap">
+                          <span className="text-warning font-medium">{s.notComplete}</span>
+                        </TableCell>
+                        <TableCell className="text-right whitespace-nowrap">
+                          <span className="text-error font-medium">{s.disqualified}</span>
+                        </TableCell>
+                        <TableCell className="text-right whitespace-nowrap text-sm">
+                          {formatDurationMs(s.averageDurationMs)}
+                        </TableCell>
+                        <TableCell className="text-right whitespace-nowrap text-sm">
+                          {s.onlineCount} / {s.offlineCount}
+                        </TableCell>
+                        <TableCell className="text-right whitespace-nowrap text-sm">
+                          {s.displaysCount} / {s.responsesCount}
                         </TableCell>
                         <TableCell className="whitespace-nowrap text-sm text-muted-foreground">
                           {format(new Date(s.created_at), "yyyy-MM-dd")}
                         </TableCell>
-                        <TableCell className="whitespace-nowrap text-sm text-muted-foreground">
-                          {format(new Date(s.updated_at), "yyyy-MM-dd")}
+                        <TableCell className="text-right">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => router.push(`/surveys/${s.id}`)}
+                          >
+                            Detail
+                          </Button>
                         </TableCell>
                       </TableRow>
                     ))
