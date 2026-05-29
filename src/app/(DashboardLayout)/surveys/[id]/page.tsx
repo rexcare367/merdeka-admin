@@ -280,24 +280,24 @@ export default function SurveyDetailPage() {
               </div>
               <div className="col-span-12 md:col-span-4">
                 <p>Created by</p>
-                <p className="mt-1 text-foreground">
+                <div className="mt-1 text-foreground flex items-center gap-2 flex-wrap">
                   {detail?.createdBy ? (
                     <>
-                      {detail.createdBy.name ?? detail.createdBy.email}
-                      <span className="ml-2">
-                        <Badge
-                          variant={
-                            detail.createdBy.isActive ? "lightSuccess" : "secondary"
-                          }
-                        >
-                          {detail.createdBy.isActive ? "Active" : "Inactive"}
-                        </Badge>
+                      <span>
+                        {detail.createdBy.name ?? detail.createdBy.email}
                       </span>
+                      <Badge
+                        variant={
+                          detail.createdBy.isActive ? "lightSuccess" : "secondary"
+                        }
+                      >
+                        {detail.createdBy.isActive ? "Active" : "Inactive"}
+                      </Badge>
                     </>
                   ) : (
-                    "—"
+                    <span>—</span>
                   )}
-                </p>
+                </div>
               </div>
               <div className="col-span-12 md:col-span-4">
                 <p>Environment</p>
